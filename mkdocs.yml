@@ -55,9 +55,9 @@ nav:
   - Tutorials:
       - Get Started: tutorials/index.md
       - State Objects:
-          - Values: tutorials/fundamentals/values.md
+          - Value: tutorials/fundamentals/values.md
           - Changed: tutorials/fundamentals/changed.md
-          - Computeds: tutorials/fundamentals/computeds.md
+          - Computed: tutorials/fundamentals/computeds.md
           - Destructors: tutorials/fundamentals/destructors.md
       - Networking:
           - ServerValue: tutorials/networking/servervalue.md
