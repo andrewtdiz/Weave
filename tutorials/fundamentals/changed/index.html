@@ -485,7 +485,7 @@
         
   
   <span class="md-ellipsis">
-    Values
+    Value
   </span>
   
 
@@ -581,7 +581,7 @@
         
   
   <span class="md-ellipsis">
-    Computeds
+    Computed
   </span>
   
 
@@ -1396,29 +1396,26 @@
 
 
 <!-- Markdown content -->
-<p>Weave Values let you detect when the state object changes value via the 
+<p>Weave Values let you detect when the state object changes value via the
 <code>.Changed</code> property, which is a <code>RBXScriptSignal</code>. You can connect to them
 just like any other Roblox Signal using <code>:Connect()</code> syntax.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">health</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-<span class="kd">local</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">health</span><span class="p">.</span><span class="n">Changed</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">updatedHealth</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+<span class="n">health</span><span class="p">.</span><span class="n">Changed</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">updatedHealth</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="err">`</span><span class="n">The</span> <span class="n">new</span> <span class="n">health</span> <span class="n">is</span><span class="p">:</span> <span class="p">{</span><span class="n">updatedHealth</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
-
-<span class="n">task</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">connection</span><span class="p">:</span><span class="n">Disconnect</span><span class="p">()</span>
 </code></pre></div>
-<p>Since <code>.Changed</code> callback also passes in the new state of the <code>Value</code>, 
+<p>Since <code>.Changed</code> callback also passes in the new state of the <code>Value</code>,
 we don't need to say <code>health:get()</code>.</p>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Weave Values come with a <code>.Changed</code> <code>RBXEventSignal</code> that fires when the value changes.</p>
 <p>To listen to value changes simply use <code>:Connect()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">disconnect</span> <span class="o">=</span> <span class="n">health</span><span class="p">.</span><span class="n">Changed</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">health</span><span class="p">.</span><span class="n">Changed</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The new value is: &quot;</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">get</span><span class="p">())</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
-<p>When you're done with the handler, it's very important to disconnect it. The
+<p>When you're done with the handler, it's important to disconnect it. The
 <code>:onChange()</code> method returns a function you can call to disconnect your handler:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">disconnect</span> <span class="o">=</span> <span class="n">health</span><span class="p">.</span><span class="n">Changed</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The new value is: &quot;</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">get</span><span class="p">())</span>
@@ -1430,12 +1427,13 @@ we don't need to say <code>health:get()</code>.</p>
 </code></pre></div>
 <details class="question">
 <summary>Why is disconnecting so important?</summary>
+</details>
 <p>While an observer has at least one active handler, it will hold the watched
 object in memory forcibly. This is done to make sure that changes aren't
 missed.</p>
-<p>Disconnecting your handlers tells Fusion you don't need to track changes
-any more, which allows it to clean up the observer and the watched object.</p>
-</details>
+<div class="highlight"><pre><span></span><code>Disconnecting your handlers tells Fusion you don&#39;t need to track changes
+any more, which allows it to clean up the observer and the watched object.
+</code></pre></div>
 <hr />
 <h2 id="what-counts-as-a-change">What Counts As A Change?<a class="headerlink" href="#what-counts-as-a-change" title="Permanent link">&para;</a></h2>
 <p>You might notice that not all calls to <code>Value:set()</code> will cause your observer to
@@ -1536,7 +1534,7 @@ Setting thing twice...
 		  <a
 			href="../values/"
 			class="md-footer__link md-footer__link--prev"
-			aria-label="Previous: Values"
+			aria-label="Previous: Value"
 			rel="prev"
 		  >
 			<div class="md-footer__button md-icon">
@@ -1547,7 +1545,7 @@ Setting thing twice...
 				<span class="md-footer__direction">
 				  Previous
 				</span>
-				Values
+				Value
 			  </div>
 			</div>
 		  </a>
@@ -1559,7 +1557,7 @@ Setting thing twice...
 		  <a
 			href="../computeds/"
 			class="md-footer__link md-footer__link--next"
-			aria-label="Next: Computeds"
+			aria-label="Next: Computed"
 			rel="next"
 		  >
 			<div class="md-footer__title">
@@ -1567,7 +1565,7 @@ Setting thing twice...
 				<span class="md-footer__direction">
 				  Next
 				</span>
-				Computeds
+				Computed
 			  </div>
 			</div>
 			<div class="md-footer__button md-icon">
