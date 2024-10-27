@@ -14,22 +14,22 @@
 }
 
 .md-typeset hr {
-	border-bottom-color: var(--fusiondoc-stroke) !important;
+	border-bottom-color: var(--weavedoc-stroke) !important;
 }
 
 .js .md-typeset .tabbed-labels::before {
-	background-color: var(--fusiondoc-grey-a10);
+	background-color: var(--weavedoc-grey-a10);
 	height: 100%;
-	box-shadow: 0 2px var(--fusiondoc-fg-1) inset;
+	box-shadow: 0 2px var(--weavedoc-fg-1) inset;
 }
 
 .md-typeset .tabbed-labels>label {
-	color: var(--fusiondoc-fg-3);
+	color: var(--weavedoc-fg-3);
 	font-weight: 500;
 }
 
 .md-typeset .tabbed-labels {
-	background-color: var(--fusiondoc-bg-2);
+	background-color: var(--weavedoc-bg-2);
 	box-shadow: none;
 }
 
@@ -64,27 +64,27 @@ h6 > .twemoji:first-child {
 .md-typeset .tabbed-set>input:nth-child(18):checked~.tabbed-labels>:nth-child(18),
 .md-typeset .tabbed-set>input:nth-child(19):checked~.tabbed-labels>:nth-child(19),
 .md-typeset .tabbed-set>input:nth-child(20):checked~.tabbed-labels>:nth-child(20) {
-	color: var(--fusiondoc-fg-1);
+	color: var(--weavedoc-fg-1);
 	font-weight: 600;
 }
 
-.fusiondoc-yt-embed {
+.weavedoc-yt-embed {
 	width: 100%;
 	aspect-ratio: 16/9;
 }
 
 .md-typeset figcaption {
-	color: var(--fusiondoc-fg-3);
+	color: var(--weavedoc-fg-3);
 	font-style: normal;
 	font-size: 0.8em;
 	letter-spacing: 0.02em;
 }
 
-.fusiondoc-index-multicol {
+.weavedoc-index-multicol {
 	column-width: 15em;
 }
 
-.fusiondoc-index-multicol .fusiondoc-index-multicol-section {
+.weavedoc-index-multicol .weavedoc-index-multicol-section {
 	break-inside: avoid;
 	padding-top: 0.001em; /* prevent margins collapsing */
 }

@@ -3,7 +3,7 @@
 		scroll-behavior: smooth;
 	}
 
-	:root.fusiondoc-inhibit-smooth-scrolling {
+	:root.weavedoc-inhibit-smooth-scrolling {
 		scroll-behavior: auto;
 	}
 }
@@ -20,8 +20,8 @@ body {
 
 .md-header[data-md-state=shadow] {
 	box-shadow: none !important;
-	background-color: var(--fusiondoc-bg-1-a80);
-	border-bottom: 1px solid var(--fusiondoc-stroke);
+	background-color: var(--weavedoc-bg-1-a80);
+	border-bottom: 1px solid var(--weavedoc-stroke);
 	backdrop-filter: saturate(200%) blur(1rem);
 	transform: translateY(0.00000001px); /* fix weird blur darkening issue */
 }
@@ -60,8 +60,8 @@ body {
 
 .md-top {
 	box-shadow: none !important;
-	background-color: var(--fusiondoc-bg-1-a80);
-	border: 1px solid var(--fusiondoc-stroke);
+	background-color: var(--weavedoc-bg-1-a80);
+	border: 1px solid var(--weavedoc-stroke);
 	backdrop-filter: saturate(200%) blur(1rem);
 }
 
@@ -77,7 +77,7 @@ body {
 
 
 .md-banner {
-	background-color: var(--fusiondoc-accent-a20);
+	background-color: var(--weavedoc-accent-a20);
 	text-align: center;
 }
 
@@ -106,7 +106,7 @@ body {
 
 .md-search__overlay,
 .md-overlay {
-    background-color: var(--fusiondoc-smoke);
+    background-color: var(--weavedoc-smoke);
 }
 
 .md-search__form {
@@ -145,7 +145,7 @@ body {
 }
 
 .md-search-result__meta {
-	background-color: var(--fusiondoc-bg-1);
+	background-color: var(--weavedoc-bg-1);
 }
 
 .md-search-result__item {
@@ -153,7 +153,7 @@ body {
 }
 
 .md-search-result__teaser {
-	color: var(--fusiondoc-fg-3);
+	color: var(--weavedoc-fg-3);
 }
 
 .md-search-result__title {
@@ -190,15 +190,15 @@ body {
 }
 
 .md-input {
-	background: var(--fusiondoc-bg-2);
+	background: var(--weavedoc-bg-2);
 }
 
 .md-input:not(:hover, :focus) {
-	border-bottom-color: var(--fusiondoc-grey-a10) !important;
+	border-bottom-color: var(--weavedoc-grey-a10) !important;
 }
 
 .md-input:focus {
-	--md-accent-fg-color: var(--fusiondoc-accent);
+	--md-accent-fg-color: var(--weavedoc-accent);
 }
 
 .md-input::placeholder {
@@ -213,10 +213,10 @@ body {
 }
 
 ::selection {
-	background-color: var(--fusiondoc-orange-n1);
-	color: var(--fusiondoc-grey-10);
+	background-color: var(--weavedoc-orange-n1);
+	color: var(--weavedoc-grey-10);
 }
 
-#fusiondoc-home {
+#weavedoc-home {
 	opacity: 0;
 }
