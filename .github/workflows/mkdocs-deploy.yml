@@ -25,10 +25,10 @@ jobs:
       - name: Install mike
         run: pip install mike==1.1.2
 
-      - name: Configure FusionDoc Git user
+      - name: Configure WeaveDoc Git user
         run: |
-          git config user.name fusiondoc
-          git config user.email fusiondoc@example.com
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: Fetch gh-pages branch
         run: git fetch origin gh-pages --depth=1

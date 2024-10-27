@@ -1,44 +1,33 @@
-Observers allow you to detect when any state object changes value. You can
-connect handlers using `:onChange()`, which returns a function you can call to
-disconnect it later.
+Weave Values let you detect when the state object changes value via the 
+`.Changed` property, which is a `RBXScriptSignal`. You can connect to them
+just like any other Roblox Signal using `:Connect()` syntax.
+
 
 ```Lua
-local observer = Observer(health)
+local health = Value.new(100)
 
-local disconnect = observer:onChange(function()
-	print("The new value is: ", health:get())
+local connection = health.Changed:Connect(function(updatedHealth: number)
+	print(`The new health is: {updatedHealth}`)
 end)
 
 task.wait(5)
-disconnect()
+connection:Disconnect()
 ```
+
+Since `.Changed` callback also passes in the new state of the `Value`, 
+we don't need to say `health:get()`.
+
 
 -----
 
 ## Usage
 
-To use `Observer` in your code, you first need to import it from the Fusion
-module, so that you can refer to it by name:
+Weave Values come with a `.Changed` `RBXEventSignal` that fires when the value changes.
 
-```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local Observer = Fusion.Observer
-```
-
-To create a new observer, call the `Observer` function with an object to watch:
+To listen to value changes simply use `:Connect()`:
 
 ```Lua
-local health = Value(100)
-
--- This observer will watch `health` for changes:
-local observer = Observer(health)
-```
-
-When the watched object changes value, the observer will run all of its handlers.
-To add a handler, you can use `:onChange()`:
-
-```Lua
-local disconnect = observer:onChange(function()
+local disconnect = health.Changed:Connect(function()
 	print("The new value is: ", health:get())
 end)
 ```
@@ -47,7 +36,7 @@ When you're done with the handler, it's very important to disconnect it. The
 `:onChange()` method returns a function you can call to disconnect your handler:
 
 ```Lua
-local disconnect = observer:onChange(function()
+local disconnect = health.Changed:Connect(function()
 	print("The new value is: ", health:get())
 end)
 
@@ -74,9 +63,9 @@ run:
 === "Script code"
 
 	```Lua
-	local thing = Value("Hello")
+	local thing = Value.new("Hello")
 
-	Observer(thing):onChange(function()
+	thing.Changed:Connect(function()
 		print("=> Thing changed to", thing:get())
 	end)
 
@@ -98,7 +87,7 @@ run:
 	```
 
 When you set the value, if it's the same as the existing value, an update won't
-be sent out. This means observers won't re-run when you set the
+be sent out. This means Changed events won't re-run when you set the
 value multiple times in a row.
 
 ![A diagram showing how value objects only send updates if the new value and previous value aren't equal.](Value-Equality-Dark.svg#only-dark)
@@ -111,9 +100,9 @@ second argument - if you set it to `true`, an update will be forced:
 === "Script code"
 
 	```Lua hl_lines="11-12"
-	local thing = Value("Hello")
+	local thing = Value.new("Hello")
 
-	Observer(thing):onChange(function()
+	thing.Changed:Connect(function()
 		print("=> Thing changed to", thing:get())
 	end)
 

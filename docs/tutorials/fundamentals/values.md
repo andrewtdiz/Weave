@@ -2,7 +2,10 @@ Values are objects which store single values. You can read from them with
 `:get()`, and write to them with `:set()`.
 
 ```Lua
-local health = Value(100)
+local Weave = require(ReplicatedStorage.Weave)
+local Value = Weave.Value
+
+local health = Value.new(100)
 
 print(health:get()) --> 100
 health:set(25)
@@ -17,21 +20,21 @@ To use `Value` in your code, you first need to import it from the Fusion module,
 so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local Value = Fusion.Value
+local Weave = require(ReplicatedStorage.Weave)
+local Value = Weave.Value
 ```
 
 To create a new value, call the `Value` function:
 
 ```Lua
-local health = Value() -- this will create and return a new Value object
+local health = Value.new() -- this will create and return a new Value object
 ```
 
 By default, new `Value` objects store `nil`. If you want the `Value` object to
 start with a different value, you can provide one:
 
 ```Lua
-local health = Value(100) -- the Value will initially store a value of 100
+local health = Value.new(100) -- the Value will initially store a value of 100
 ```
 
 You can retrieve the currently stored value at any time with `:get()`:
@@ -122,21 +125,18 @@ directly with other code. Every usage of that object will refer to the
 same underlying value:
 
 ```Lua
--- someObject is a `Value` object
-local function printValue(someObject)
-	print(someObject:get())
-end
+-- Tycoon.Cash is a `Value` object
+local Tycoon = {
+	Cash = Value.new(0)
+}
+return Tycoon
 
-local health = Value(100)
-printValue(health) --> 100
 
-local myDogsName = Value("Dan")
-printValue(myDogsName) --> Dan
+-- Some other script
+local Tycoon = require(ReplicatedStorage.Tycoon)
+
+print(Tycoon.Cash:get()) -- 0
 ```
 
 This is something that normal variables can't do by default, and is a benefit
 exclusive to state objects.
-
-In the above code, `printValue` can operate on *any* arbitrary variable without
-knowing what it is, or where it comes from. This is very useful for writing
-generic, reusable code, and you'll see it used a lot throughout Fusion.

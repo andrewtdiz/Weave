@@ -1,5 +1,5 @@
 site_name: Fusion
-site_url: https://elttob.uk/Fusion/
+site_url: https://andrewtdiz.github.com/Weave
 repo_name: Elttob/Fusion
 repo_url: https://github.com/Elttob/Fusion
 
@@ -56,9 +56,11 @@ nav:
     - Get Started: tutorials/index.md
     - State Objects:
       - Values: tutorials/fundamentals/values.md
-      - Observers: tutorials/fundamentals/observers.md
+      - Changed: tutorials/fundamentals/changed.md
       - Computeds: tutorials/fundamentals/computeds.md
       - Destructors: tutorials/fundamentals/destructors.md
+    - Networking:
+      - Values: tutorials/fundamentals/values.md
     - Instances:
       - Hydration: tutorials/instances/hydration.md
       - New Instances: tutorials/instances/new-instances.md

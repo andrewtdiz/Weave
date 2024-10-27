@@ -66,6 +66,7 @@ function class:update(): boolean
 			self._destructor(oldValue)
 		end
 		self._value = newValue
+		self._OnChanged:Fire(self._value)
 
 		-- add this object to the dependencies' dependent sets
 		for dependency in pairs(self.dependencySet) do
@@ -90,14 +91,17 @@ function class:update(): boolean
 	end
 end
 
-local function Computed<T>(processor: () -> T, destructor: ((T) -> ())?): Types.Computed<T>
+function class.new<T>(processor: () -> T, destructor: ((T) -> ())?): Types.Computed<T>
+	local OnChanged = Instance.new("BindableEvent")
 	local self = setmetatable({
 		type = "State",
 		kind = "Computed",
+		Changed = OnChanged.Event,
 		dependencySet = {},
 		-- if we held strong references to the dependents, then they wouldn't be
 		-- able to get garbage collected when they fall out of scope
 		dependentSet = setmetatable({}, WEAK_KEYS_METATABLE),
+		_OnChanged = OnChanged,
 		_oldDependencySet = {},
 		_processor = processor,
 		_destructor = destructor,
@@ -106,8 +110,12 @@ local function Computed<T>(processor: () -> T, destructor: ((T) -> ())?): Types.
 
 	initDependency(self)
 	self:update()
+	
+	task.delay(0, function()
+		self._OnChanged:Fire(self._value)
+	end)
 
 	return self
 end
 
-return Computed
+return class

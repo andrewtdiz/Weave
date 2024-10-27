@@ -6,7 +6,7 @@ local function callDestroy(x)
     x:Destroy()
 end
 
-local brick = Computed(function()
+local brick = Computed.new(function()
     return Instance.new("Part")
 end, callDestroy)
 ```
@@ -56,9 +56,9 @@ Those types of values are a problem for Computed objects. For example, if they
 generate fresh instances, they need to destroy those instances too:
 
 ```Lua
-local className = Value("Frame")
+local className = Value.new("Frame")
 -- `instance` will generate a Frame at first
-local instance = Computed(function()
+local instance = Computed.new(function()
     return Instance.new(className:get())
 end)
 -- This will cause it to generate a TextLabel - but we didn't destroy the Frame!
@@ -73,7 +73,7 @@ local function callDestroy(x)
     x:Destroy()
 end
 
-local instance = Computed(function()
+local instance = Computed.new(function()
     return Instance.new(className:get())
 end, callDestroy)
 ```
@@ -115,7 +115,7 @@ Fusion provides default destructors for both of these situations.
 You can use this when generating unmanaged values:
 
 ```Lua
-local instance = Computed(function()
+local instance = Computed.new(function()
     return Instance.new(className:get())
 end, Fusion.cleanup) 
 ```
@@ -128,7 +128,7 @@ You can use this when passing 'through' unmanaged values that you don't control.
 It makes it clear that your code is supposed to leave the values alone:
 
 ```Lua
-local instance = Computed(function()
+local instance = Computed.new(function()
     return workspace:FindFirstChild(name:get())
 end, Fusion.doNothing)
 ```

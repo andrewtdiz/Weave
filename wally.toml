@@ -1,5 +1,5 @@
 [package]
-name = "elttob/fusion"
+name = "andrewtdiz/weave"
 description = "A modern reactive UI library, built specifically for Roblox and Luau"
 license = "MIT"
 authors = ["Elttob"]

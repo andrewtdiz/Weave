@@ -1,15 +1,16 @@
 {
-    "name": "fission",
+    "name": "@andrewtdiz/weave",
     "version": "0.1.0",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/andrewtdiz/Fission"
+        "url": "https://github.com/andrewtdiz/Weave"
     },
     "contributors": [
-        "elttob"
+        "andrewtdiz",
+        "creebin4"
     ],
     "bugs": {
-        "url": "https://github.com/andrewtdiz/Fission/issues"
+        "url": "https://github.com/andrewtdiz/Weave/issues"
     }
 }
