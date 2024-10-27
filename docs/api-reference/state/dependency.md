@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">State</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-checklist-24:</span>
-	<span class="fusiondoc-api-name">Dependency</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">type</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-checklist-24:</span>
+	<span class="weavedoc-api-name">Dependency</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">type</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -24,7 +24,7 @@ does not require objects to store state.
 }
 ```
 
------
+---
 
 ## Example Usage
 
@@ -39,11 +39,11 @@ end)
 updateAll(value)
 ```
 
------
+---
 
 ## Automatic Dependency Manager
 
-Fusion includes an automatic dependency manager which can detect when graph
+Weave includes an automatic dependency manager which can detect when graph
 objects are used in certain contexts and automatically form reactive graphs.
 
 In order to do this, dependencies should signal to the system when they are

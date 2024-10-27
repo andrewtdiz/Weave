@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Instances</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-checklist-24:</span>
-	<span class="fusiondoc-api-name">Component</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">type</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-checklist-24:</span>
+	<span class="weavedoc-api-name">Component</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">type</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -19,7 +19,7 @@ return a [child type](./child.md).
 (props: {[any]: any}) -> Child
 ```
 
------
+---
 
 ## Example Usage
 

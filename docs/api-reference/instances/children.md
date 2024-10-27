@@ -1,20 +1,20 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Instances</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-key-24:</span>
-	<span class="fusiondoc-api-name">Children</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">special key</span>
-		<span class="fusiondoc-api-pill-since">since v0.1</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-key-24:</span>
+	<span class="weavedoc-api-name">Children</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">special key</span>
+		<span class="weavedoc-api-pill-since">since v0.1</span>
 	</span>
 </h1>
 
 Allows parenting children to an instance, both statically and dynamically.
 
------
+---
 
 ## Example Usage
 
@@ -26,7 +26,7 @@ local example = New "Folder" {
 }
 ```
 
------
+---
 
 ## Processing Children
 
@@ -88,8 +88,8 @@ as children and watch for changes. When the value of the state object changes,
 it'll unparent the old children and parent the new children.
 
 !!! note
-	As with bound properties, updates are deferred to the next render step, and
-	so parenting won't occur right away.
+As with bound properties, updates are deferred to the next render step, and
+so parenting won't occur right away.
 
 ```Lua
 local child1 = New "Folder" {
@@ -114,13 +114,13 @@ print(parent:GetChildren()) -- { Child two }
 ```
 
 !!! warning
-	When using state objects, note that old children *won't* be destroyed, only
-	unparented - it's up to you to decide if/when children need to be destroyed.
+When using state objects, note that old children _won't_ be destroyed, only
+unparented - it's up to you to decide if/when children need to be destroyed.
 
-	If you're using a helper like [ForValues](../../state/forvalues), instance
-	cleanup is handled for you by default (though this is configurable).
+    If you're using a helper like [ForValues](../../state/forvalues), instance
+    cleanup is handled for you by default (though this is configurable).
 
------
+---
 
 ## Technical Details
 

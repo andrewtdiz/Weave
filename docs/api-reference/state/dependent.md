@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">State</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-checklist-24:</span>
-	<span class="fusiondoc-api-name">Dependent</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">type</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-checklist-24:</span>
+	<span class="weavedoc-api-name">Dependent</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">type</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -25,19 +25,19 @@ does not require objects to store state.
 }
 ```
 
------
+---
 
 ## Fields
 
 - `dependencySet` - stores the graph objects which this object can receive
-updates from
+  updates from
 
------
+---
 
 ## Methods
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ### :octicons-code-24: Dependent:update()
@@ -53,7 +53,7 @@ this method should return false.
 () -> boolean
 ```
 
------
+---
 
 ## Example Usage
 
@@ -65,11 +65,11 @@ end)
 local observer: Dependent = Observer(computed)
 ```
 
------
+---
 
 ## Automatic Dependency Manager
 
-Fusion includes an automatic dependency manager which can detect when graph
+Weave includes an automatic dependency manager which can detect when graph
 objects are used in certain contexts and automatically form reactive graphs.
 
 If a dependent wants to automatically capture uses of dependencies inside of

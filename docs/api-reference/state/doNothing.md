@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">State</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-code-24:</span>
-	<span class="fusiondoc-api-name">doNothing</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">function</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-code-24:</span>
+	<span class="weavedoc-api-name">doNothing</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">function</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -19,18 +19,18 @@ use as a destructor when no destruction is needed.
 (...any) -> ()
 ```
 
------
+---
 
 ## Parameters
 
 - `...` - Any objects.
 
------
+---
 
 ## Example Usage
 
 ```Lua
 local foo = Computed(function()
 	return workspace.Part
-end, Fusion.doNothing)
+end, Weave.doNothing)
 ```

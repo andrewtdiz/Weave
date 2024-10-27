@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Instances</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-code-24:</span>
-	<span class="fusiondoc-api-name">New</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">function</span>
-		<span class="fusiondoc-api-pill-since">since v0.1</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-code-24:</span>
+	<span class="weavedoc-api-name">New</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">function</span>
+		<span class="weavedoc-api-pill-since">since v0.1</span>
 	</span>
 </h1>
 
@@ -21,20 +21,20 @@ operations.
 (className: string) -> Component
 ```
 
------
+---
 
 ## Parameters
 
 - `className` - the instance class that should be created
 
------
+---
 
 ## Returns
 
 A component function. When called, it creates a new instance of the given class,
 populates it using the property table, and returns it.
 
------
+---
 
 ## Example Usage
 
@@ -62,7 +62,7 @@ local myButton: TextButton = New "TextButton" {
 }
 ```
 
------
+---
 
 ## Property Table Processing
 
@@ -100,7 +100,7 @@ Special keys, such as [Children](../children) or [OnEvent](../onevent), may also
 be used as keys in the property table. For more information about how special
 keys work, [see the SpecialKey page.](../../types/specialkey)
 
------
+---
 
 ## Default Properties
 

@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Instances</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-code-24:</span>
-	<span class="fusiondoc-api-name">Out</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">function</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-code-24:</span>
+	<span class="weavedoc-api-name">Out</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">function</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -19,13 +19,13 @@ the value of properties with that name. It should be used with a [value](../stat
 (propertyName: string) -> SpecialKey
 ```
 
------
+---
 
 ## Parameters
 
 - `propertyName` - The name of the property to output the value of.
 
------
+---
 
 ## Returns
 
@@ -33,7 +33,7 @@ A special key which runs at the `observer` stage. When applied to an instance,
 it sets the value object equal to the property with the given name. It then
 listens for further changes and updates the value object accordingly.
 
------
+---
 
 ## Example Usage
 

@@ -5,44 +5,44 @@
     - navigation
 ---
 
-<div id="fusiondoc-home" markdown>
-<section id="fusiondoc-home-main">
-<section id="fusiondoc-home-main-inner">
+<div id="weavedoc-home" markdown>
+<section id="weavedoc-home-main">
+<section id="weavedoc-home-main-inner">
 <h1>Rediscover the joy of UI.</h1>
 <p>
-Fusion is a UI, state management and animation library for Roblox. With Fusion,
+Weave is a UI, state management and animation library for Roblox. With Weave,
 you define declaratively what you want to see, rather than the steps the
 computer should take to get there.
 </p>
 <p>
 Starting from simple roots, concepts neatly combine and build up, so there’s
 very little learning curve. At every stage, you can robustly guarantee what your
-code will do - and when you come back in six months, Fusion code is designed to
+code will do - and when you come back in six months, Weave code is designed to
 be easy to pick back up.
 </p>
 <nav>
 <a href="./tutorials">Get started</a>
-<a href="https://github.com/Elttob/Fusion/releases">Download Fusion</a>
+<a href="https://github.com/andrewtdiz/Weave/releases">Download Weave</a>
 </nav>
 </section>
 </section>
 
-<aside id="fusiondoc-home-scroll">
+<aside id="weavedoc-home-scroll">
 Scroll down for a quick look at 3 main features.
 </aside>
 
-<section id="fusiondoc-home-belowfold" markdown>
+<section id="weavedoc-home-belowfold" markdown>
 
 ![Illustration of state objects](assets/home/State-Light.svg#only-light)
 ![Illustration of state objects](assets/home/State-Dark.svg#only-dark)
 
 <h2 class="first">Representing change</h2>
 
-Fusion introduces ‘state objects’. They aren’t that complex, but allow you
+Weave introduces ‘state objects’. They aren’t that complex, but allow you
 to write dynamic code that’s highly readable, behaves predictably and splits
 into parts easily.
 
------
+---
 
 State objects are used to represent changeable or dynamic values in your
 program. You can peek at their value at any time.
@@ -60,7 +60,7 @@ task.wait(5)
 print(currentTimeObj:get()) --> 5.0
 ```
 
-You can write out your logic using Fusion's built-in state objects.
+You can write out your logic using Weave's built-in state objects.
 Here's the two basic ones, Value and Computed:
 
 ```Lua
@@ -91,19 +91,19 @@ end)
 myName:set("Danny")
 ```
 
------
+---
 
 ![Illustration of creating instances](assets/home/Instances-Light.svg#only-light)
 ![Illustration of creating instances](assets/home/Instances-Dark.svg#only-dark)
 
 <h2 class="second">Building instances</h2>
 
-Fusion offers comprehensive APIs to build or enrich instances from code, so
+Weave offers comprehensive APIs to build or enrich instances from code, so
 you can easily integrate with your game scripts.
 
------
+---
 
-Fusion provides dedicated functions to create and modify instances. They allow
+Weave provides dedicated functions to create and modify instances. They allow
 you to easily configure your instance in one place.
 
 ```Lua
@@ -155,19 +155,19 @@ message:set("Goodbye!")
 print(myLabel.Text) --> Goodbye!
 ```
 
------
+---
 
 ![Illustration of processing animation](assets/home/Animation-Light.svg#only-light)
 ![Illustration of processing animation](assets/home/Animation-Dark.svg#only-dark)
 
 <h2 class="third">Animating anything</h2>
 
-Fusion gives you best-in-class tools to animate anything you can think of,
+Weave gives you best-in-class tools to animate anything you can think of,
 completely out of the box.
 
------
+---
 
-Fusion lets you use tweens or physically based springs to animate any value you
+Weave lets you use tweens or physically based springs to animate any value you
 want - not just instance properties.
 
 ```Lua
@@ -216,14 +216,15 @@ end)
 local tweenHealth = Tween(health, style)
 ```
 
------
+---
 
 ## Sparked your curiosity?
 
-Those are the core features of Fusion, and they're the foundation of everything
+Those are the core features of Weave, and they're the foundation of everything
+
 - whether it’s complex 3D UI systems, procedural animation, or just a hello
-world app. It all fits on one page, and that's the magic. You don't have to keep
-relearning ever-more-complex tools as you scale up from prototype to product.
+  world app. It all fits on one page, and that's the magic. You don't have to keep
+  relearning ever-more-complex tools as you scale up from prototype to product.
 
 If you'd like to learn in depth, <a href="./tutorials">we have a comprehensive
 beginner's tutorial track</a>, complete with diagrams, examples and code.

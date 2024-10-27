@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">State</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-checklist-24:</span>
-	<span class="fusiondoc-api-name">StateObject</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">type</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-checklist-24:</span>
+	<span class="weavedoc-api-name">StateObject</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">type</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -23,19 +23,19 @@ Dependency & {
 }
 ```
 
------
+---
 
 ## Fields
 
 - `type` - uniquely identifies state objects for runtime type checks
 - `kind` - holds a more specific type name for different kinds of state object
 
------
+---
 
 ## Methods
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ### :octicons-code-24: StateObject:get()
@@ -49,7 +49,7 @@ object will also be added as a dependency.
 (asDependency: boolean?) -> T
 ```
 
------
+---
 
 ## Example Usage
 
@@ -61,7 +61,7 @@ end)
 local observer: StateObject = Observer(computed)
 ```
 
------
+---
 
 ## Automatic Dependency Manager
 

@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Animation</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-checklist-24:</span>
-	<span class="fusiondoc-api-name">Animatable</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">type</span>
-		<span class="fusiondoc-api-pill-since">since v0.1</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-checklist-24:</span>
+	<span class="weavedoc-api-name">Animatable</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">type</span>
+		<span class="weavedoc-api-pill-since">since v0.1</span>
 	</span>
 </h1>
 
@@ -16,7 +16,7 @@ Represents types that can be animated component-wise. If a data type can
 reasonably be represented as a fixed-length array of numbers, then it is
 animatable.
 
-Any data type present in this type can be animated by Fusion.
+Any data type present in this type can be animated by Weave.
 
 ```Lua
 number | CFrame | Color3 | ColorSequenceKeypoint | DateTime | NumberRange |
@@ -24,7 +24,7 @@ NumberSequenceKeypoint | PhysicalProperties | Ray | Rect | Region3 |
 Region3int16 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3 | Vector3int16
 ```
 
------
+---
 
 ## Example Usage
 
@@ -36,7 +36,7 @@ local function withDefaultTween(target: StateObject<Animatable>)
 end
 ```
 
------
+---
 
 ## Animatability
 

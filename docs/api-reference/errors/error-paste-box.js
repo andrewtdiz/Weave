@@ -22,7 +22,7 @@ try {
 		return matches;
 	}
 
-	const pasteBox = document.querySelector("#fusiondoc-error-paste-box");
+	const pasteBox = document.querySelector("#weavedoc-error-paste-box");
 
 	pasteBox.addEventListener("input", () => {
 		let newText = pasteBox.value;
@@ -33,9 +33,9 @@ try {
 		for(heading of headings) {
 			let container = heading.element.parentElement;
 			if(match == null || match == heading) {
-				container.classList.remove("fusiondoc-error-api-section-defocus");
+				container.classList.remove("weavedoc-error-api-section-defocus");
 			} else {
-				container.classList.add("fusiondoc-error-api-section-defocus");
+				container.classList.add("weavedoc-error-api-section-defocus");
 			}
 		}
 

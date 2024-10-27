@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">State</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-package-24:</span>
-	<span class="fusiondoc-api-name">Value</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">state object</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-package-24:</span>
+	<span class="weavedoc-api-name">Value</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">state object</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -20,18 +20,18 @@ Stores a single value which can be updated at any time.
 ) -> Value<T>
 ```
 
------
+---
 
 ## Parameters
 
 - `initialValue` - The value that should be initially stored after construction.
 
------
+---
 
 ## Methods
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ### :octicons-code-24: Value:get()
@@ -48,12 +48,12 @@ object will also be added as a dependency.
 #### Parameters
 
 - `asDependency` - If this is explicitly set to false, no dependencies will be
-captured.
+  captured.
 
------
+---
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ### :octicons-code-24: Value:set()
@@ -74,26 +74,26 @@ updated.
 - `newValue` - The new value to be stored.
 
 ??? note "Table sameness"
-	Updates are always sent out when setting a table value, because it's much
-	more difficult to evaluate if two tables are the same. Therefore, this
-	method is conservative and labels all tables as different, even
-	compared to themselves.
+Updates are always sent out when setting a table value, because it's much
+more difficult to evaluate if two tables are the same. Therefore, this
+method is conservative and labels all tables as different, even
+compared to themselves.
 
 ??? caution "Legacy parameter: force"
-	Originally, a second `force` parameter was available in Fusion 0.1 so that
-	updates could forcibly be sent out, even when the new value was the same as
-	the old value. This is because Fusion 0.1 used equality to evaluate sameness
-	for all data types, including tables. This was problematic as many users
-	attempted to `:get()` the table value, modify it, and `:set()` it back into
-	the object, which would not cause an update as the table reference did not
-	change.
+Originally, a second `force` parameter was available in Fusion 0.1 so that
+updates could forcibly be sent out, even when the new value was the same as
+the old value. This is because Fusion 0.1 used equality to evaluate sameness
+for all data types, including tables. This was problematic as many users
+attempted to `:get()` the table value, modify it, and `:set()` it back into
+the object, which would not cause an update as the table reference did not
+change.
 
-	Fusion 0.2 uses a different sameness definition for tables to alleviate this
-	problem. As such, there is no longer a good reason to use this parameter,
-	and so it is not currently recommended for use. For backwards compatibility,
-	it will remain for the time being, but do not depend on it for new work.
+    Fusion 0.2 uses a different sameness definition for tables to alleviate this
+    problem. As such, there is no longer a good reason to use this parameter,
+    and so it is not currently recommended for use. For backwards compatibility,
+    it will remain for the time being, but do not depend on it for new work.
 
------
+---
 
 ## Example Usage
 

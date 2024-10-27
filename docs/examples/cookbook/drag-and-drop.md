@@ -2,7 +2,7 @@
 local GuiService = game:GetService("GuiService")
 local HttpService = game:GetService("HttpService")
 local UserInputService = game:GetService("UserInputService")
--- [Fusion imports omitted for clarity]
+-- [Weave imports omitted for clarity]
 
 -- This example shows a full drag-and-drop implementation for mouse input only.
 -- Extending this system to generically work with other input types, such as
@@ -84,11 +84,11 @@ local function Draggable(props: DraggableProps): Child
 	end)
 
 	-- Our item controls its own parent - one of the few times you'll see this
-	-- done in Fusion. This means we don't have to destroy and re-build the item
+	-- done in Weave. This means we don't have to destroy and re-build the item
 	-- when it moves to a new location.
 	local itemParent = Computed(function()
 		return if thisDragging:get() ~= nil then props.OverlayFrame else props.Parent:get()
-	end, Fusion.doNothing)
+	end, Weave.doNothing)
 
 	-- If we move a scaled UI into the `overlayBox`, by default it will stretch
 	-- to the screen size. Ideally we want it to preserve its current size while
@@ -403,10 +403,10 @@ local allEntries = ForValues(todoItems, function(item)
 		Item = item,
 		Parent = Computed(function()
 			return if item.completed:get() then completedList else incompleteList
-		end, Fusion.doNothing),
+		end, Weave.doNothing),
 		OverlayFrame = overlayFrame
 	}
-end, Fusion.cleanup)
+end, Weave.cleanup)
 
 -- Finally, construct the whole UI :)
 

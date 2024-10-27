@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Animation</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-package-24:</span>
-	<span class="fusiondoc-api-name">Spring</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">state object</span>
-		<span class="fusiondoc-api-pill-since">since v0.1</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-package-24:</span>
+	<span class="weavedoc-api-name">Spring</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">state object</span>
+		<span class="weavedoc-api-pill-since">since v0.1</span>
 	</span>
 </h1>
 
@@ -19,29 +19,29 @@ just snap to the goal value.
 
 ```Lua
 (
-	goal: StateObject<T>, 
-	speed: CanBeState<number>?, 
+	goal: StateObject<T>,
+	speed: CanBeState<number>?,
 	damping: CanBeState<number>?
 ) -> Spring<T>
 ```
 
------
+---
 
 ## Parameters
 
 - `goal` - The state object whose value should be followed.
 - `speed` - Scales the time it takes for the spring to move (but does not
-directly correlate to a duration). Defaults to `10`.
+  directly correlate to a duration). Defaults to `10`.
 - `damping` - Affects the friction/damping which the spring experiences. `0`
-represents no friction, and `1` is just enough friction to reach the goal
-without overshooting or oscillating. Defaults to `1`.
+  represents no friction, and `1` is just enough friction to reach the goal
+  without overshooting or oscillating. Defaults to `1`.
 
------
+---
 
 ## Methods
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ### :octicons-code-24: Spring:get()
@@ -58,12 +58,12 @@ object will also be added as a dependency.
 #### Parameters
 
 - `asDependency` - If this is explicitly set to false, no dependencies will be
-captured.
+  captured.
 
------
+---
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ### :octicons-code-24: Spring:setPosition()
@@ -82,10 +82,10 @@ the position will snap instantly to the new value.
 
 - `newPosition` - The value the spring's position should jump to.
 
------
+---
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ### :octicons-code-24: Spring:setVelocity()
@@ -104,10 +104,10 @@ the velocity will snap instantly to the new value.
 
 - `newVelocity` - The value the spring's velocity should jump to.
 
------
+---
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ### :octicons-code-24: Spring:addVelocity()
@@ -126,7 +126,7 @@ the velocity will snap instantly to the new value.
 
 - `deltaVelocity` - The velocity to add to the spring.
 
------
+---
 
 ## Example Usage
 

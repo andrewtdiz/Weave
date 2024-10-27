@@ -1,7 +1,7 @@
 The Fusion branding is designed to be simplistic, modern, easy to recognise and
 distinctive.
 
------
+---
 
 ## Colours
 
@@ -18,18 +18,18 @@ be suitable for text or all backgrounds.
 These colours are used by the FusionDoc theme on this website for all grey tones
 used on pages.
 
-![Showing previews of each grey colour and their hex code.](FusionDoc-Grey-Hex-Dark.svg#only-dark)
-![Showing previews of each grey colour and their hex code.](FusionDoc-Grey-Hex-Light.svg#only-light)
+![Showing previews of each grey colour and their hex code.](weavedoc-Grey-Hex-Dark.svg#only-dark)
+![Showing previews of each grey colour and their hex code.](weavedoc-Grey-Hex-Light.svg#only-light)
 
 ### FusionDoc accents
 
 These colours are used by the FusionDoc theme on this website for accent colours
 on links and interactive elements.
 
-![Showing previews of each accent colour and their hex code.](FusionDoc-Accent-Hex-Dark.svg#only-dark)
-![Showing previews of each accent colour and their hex code.](FusionDoc-Accent-Hex-Light.svg#only-light)
+![Showing previews of each accent colour and their hex code.](weavedoc-Accent-Hex-Dark.svg#only-dark)
+![Showing previews of each accent colour and their hex code.](weavedoc-Accent-Hex-Light.svg#only-light)
 
------
+---
 
 ## Best Practices
 
@@ -55,8 +55,8 @@ It's a good litmus test to imagine a first-time user who knows nothing about
 Fusion, and how they will perceive your project.
 
 !!! fail "Don't do this"
-    ![A recoloured Fusion logo with the text: Fusion 2 - Build your best UI, but bestier.](Fusion-2-Dark.svg#only-dark)
-    ![A recoloured Fusion logo with the text: Fusion 2 - Build your best UI, but bestier.](Fusion-2-Light.svg#only-light)
+![A recoloured Fusion logo with the text: Fusion 2 - Build your best UI, but bestier.](Fusion-2-Dark.svg#only-dark)
+![A recoloured Fusion logo with the text: Fusion 2 - Build your best UI, but bestier.](Fusion-2-Light.svg#only-light)
 
     In this example, someone made their own UI library and named it Fusion 2.
     Note that this is an extreme example for demonstration purposes - most
@@ -68,11 +68,9 @@ Fusion, and how they will perceive your project.
     two libraries. Plus, in this example, we reserve the right to update Fusion
     to version 2 at any time, which would immediately cause a naming conflict.
 
-
-
 !!! success "Instead, do this"
-    ![A distinct logo with the text: InfuseTS - A Fusion-like library for TypeScript](InfuseTS-Dark.svg#only-dark)
-    ![A distinct logo with the text: InfuseTS - A Fusion-like library for TypeScript](InfuseTS-Light.svg#only-light)
+![A distinct logo with the text: InfuseTS - A Fusion-like library for TypeScript](InfuseTS-Dark.svg#only-dark)
+![A distinct logo with the text: InfuseTS - A Fusion-like library for TypeScript](InfuseTS-Light.svg#only-light)
 
     This logo makes it more clear that the project is not a port of, update to
     or bindings for the Fusion library. Instead, it's a completely distinct
@@ -83,8 +81,8 @@ Fusion, and how they will perceive your project.
     confusing for people.
 
 !!! warning "Acceptable, but be careful"
-    ![A plugin using the Fusion logo to represent a 'Convert to Fusion' action.](Fusion-Plugin-Toolbar-Dark.png#only-dark)
-    ![A plugin using the Fusion logo to represent a 'Convert to Fusion' action.](Fusion-Plugin-Toolbar-Light.png#only-light)
+![A plugin using the Fusion logo to represent a 'Convert to Fusion' action.](Fusion-Plugin-Toolbar-Dark.png#only-dark)
+![A plugin using the Fusion logo to represent a 'Convert to Fusion' action.](Fusion-Plugin-Toolbar-Light.png#only-light)
 
     Here, this plugin is using the Fusion logo to represent a 'Convert to
     Fusion' action. This is fine, because users will understand the Fusion logo

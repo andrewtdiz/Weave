@@ -1,5 +1,5 @@
 ```Lua linenums="1"
--- [Fusion imports omitted for clarity]
+-- [Weave imports omitted for clarity]
 
 -- Oftentimes we calculate values for a single purpose, such as the position of
 -- a single UI element. These values are often calculated inline, like this:

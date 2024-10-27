@@ -1,19 +1,19 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Instances</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-checklist-24:</span>
-	<span class="fusiondoc-api-name">SpecialKey</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">type</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-checklist-24:</span>
+	<span class="weavedoc-api-name">SpecialKey</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">type</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
 The standard interface for special keys that can be used in property tables for
-instance processing. Compatible with the [New](./new.md) and 
+instance processing. Compatible with the [New](./new.md) and
 [Hydrate](./hydrate.md) functions.
 
 ```Lua
@@ -22,26 +22,26 @@ instance processing. Compatible with the [New](./new.md) and
     kind: string,
     stage: "self" | "descendants" | "ancestor" | "observer",
     apply: (
-        self: SpecialKey, 
-        value: any, 
-        applyTo: Instance, 
+        self: SpecialKey,
+        value: any,
+        applyTo: Instance,
         cleanupTasks: {Task}
     ) -> ()
 }
 ```
 
------
+---
 
 ## Fields
 
 - `type` - identifies this table as a special key
 - `kind` - gives a developer-friendly name to the object for debugging
 - `stage` - determines when
-the special key should apply itself during the hydration process
+  the special key should apply itself during the hydration process
 - `apply` - the method that will be called to apply the special key to an
-instance
+  instance
 
------
+---
 
 ## Example Usage
 
@@ -59,11 +59,11 @@ function Example:apply(value, applyTo, cleanupTasks)
 end
 ```
 
------
+---
 
 ## Stages
 
-When using [New](../instances/new.md) and [Hydrate](../instances/hydrate.md), 
+When using [New](../instances/new.md) and [Hydrate](../instances/hydrate.md),
 properties are applied in the following order:
 
 1. String keys, except Parent
@@ -76,11 +76,11 @@ properties are applied in the following order:
 There are multiple motivations for splitting special keys into stages like these:
 
 - Before we parent descendants to the instance, we want to initialise all of
-the instance's properties that don't depend on anything else
+  the instance's properties that don't depend on anything else
 - Before we parent the instance to an ancestor, we want to parent and initialise
-all of the instance's descendants as fully as possible
+  all of the instance's descendants as fully as possible
 - Before we attach handlers to anything, we want to parent to and initialise
-the instance's ancestor as fully as possible
+  the instance's ancestor as fully as possible
 
 For these reasons, the roles of each stage are as follows:
 

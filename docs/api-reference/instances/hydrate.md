@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Instances</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-code-24:</span>
-	<span class="fusiondoc-api-name">Hydrate</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">function</span>
-		<span class="fusiondoc-api-pill-since">since v0.2</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-code-24:</span>
+	<span class="weavedoc-api-name">Hydrate</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">function</span>
+		<span class="weavedoc-api-pill-since">since v0.2</span>
 	</span>
 </h1>
 
@@ -20,20 +20,20 @@ include [special keys](./specialkey.md) for more advanced operations.
 (target: Instance) -> Component
 ```
 
------
+---
 
 ## Parameters
 
 - `target` - the instance which the component should modify
 
------
+---
 
 ## Returns
 
 A component function. When called, it populates the target instance using the
 property table, then returns the target instance.
 
------
+---
 
 ## Example Usage
 
@@ -59,7 +59,7 @@ local myButton: TextButton = Hydrate(PlayerGui.ScreenGui.TextButton) {
 }
 ```
 
------
+---
 
 ## Property Table Processing
 

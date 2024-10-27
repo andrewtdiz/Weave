@@ -1,13 +1,13 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="..">Weave</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-x-circle-24:</span>
-	<span class="fusiondoc-api-name">Errors</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-x-circle-24:</span>
+	<span class="weavedoc-api-name">Errors</span>
 </h1>
 
-Whenever Fusion outputs any errors or messages to the console, it will have a
+Whenever Weave outputs any errors or messages to the console, it will have a
 short error ID at the end. This is used to uniquely identify what kind of error
 or message you're seeing.
 
@@ -15,19 +15,18 @@ Use the search box below to paste in or type an error ID, and it will scroll to
 the details for you.
 
 <input
-	id="fusiondoc-error-paste-box"
+	id="weavedoc-error-paste-box"
     class="md-input md-input--stretch"
     placeholder="Type or paste an error ID here..."
 />
 
 <script src="./error-paste-box.js" defer></script>
 
+---
 
------
-
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## cannotAssignProperty
@@ -51,16 +50,17 @@ local folder = New "Folder" {
 ```
 
 !!! tip
-	Different scripts may have different privileges - for example, plugins will
-	be allowed more privileges than in-game scripts. Make sure you have the
-	necessary privileges to assign to your properties!
+Different scripts may have different privileges - for example, plugins will
+be allowed more privileges than in-game scripts. Make sure you have the
+necessary privileges to assign to your properties!
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## cannotConnectChange
@@ -82,13 +82,14 @@ local textBox = New "TextBox" {
 	end)
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## cannotConnectEvent
@@ -110,13 +111,14 @@ local button = New "TextButton" {
 	end)
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## cannotCreateClass
@@ -135,13 +137,14 @@ local instance = New "ThisClassTypeIsInvalid" {
 	...
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## computedCallbackError
@@ -158,13 +161,14 @@ local example = Computed(function()
 	local badMath = 2 + "fish"
 end)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## destructorNeededComputed
@@ -184,13 +188,14 @@ local badComputed = Computed(function()
 	return New "Folder" { ... }
 end, nil)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## destructorNeededForKeys
@@ -212,16 +217,17 @@ end, nil)
 ```
 
 !!! note
-	For some time during the development of v0.2, `ForKeys` would implicitly
-	insert a destructor for you. This behaviour still works, but it's going to
-	be removed in an upcoming version.
+For some time during the development of v0.2, `ForKeys` would implicitly
+insert a destructor for you. This behaviour still works, but it's going to
+be removed in an upcoming version.
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## destructorNeededForPairs
@@ -243,16 +249,17 @@ end, nil)
 ```
 
 !!! note
-	For some time during the development of v0.2, `ForPairs` would implicitly
-	insert a destructor for you. This behaviour still works, but it's going to
-	be removed in an upcoming version.
+For some time during the development of v0.2, `ForPairs` would implicitly
+insert a destructor for you. This behaviour still works, but it's going to
+be removed in an upcoming version.
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## destructorNeededForValues
@@ -274,16 +281,17 @@ end, nil)
 ```
 
 !!! note
-	For some time during the development of v0.2, `ForValues` would implicitly
-	insert a destructor for you. This behaviour still works, but it's going to
-	be removed in an upcoming version.
+For some time during the development of v0.2, `ForValues` would implicitly
+insert a destructor for you. This behaviour still works, but it's going to
+be removed in an upcoming version.
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forKeysDestructorError
@@ -302,13 +310,14 @@ end
 
 local example = ForKeys(array, doSomething, destructor)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forKeysKeyCollision
@@ -331,13 +340,14 @@ local example = ForKeys(data, function(key)
 	end
 end)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forKeysProcessorError
@@ -354,13 +364,14 @@ local example = ForKeys(array, function(key)
 	local badMath = 2 + "fish"
 end)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forPairsDestructorError
@@ -379,13 +390,14 @@ end
 
 local example = ForPairs(array, doSomething, destructor)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forPairsKeyCollision
@@ -408,13 +420,14 @@ local example = ForPairs(data, function(key, value)
 	end
 end)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forPairsProcessorError
@@ -431,13 +444,14 @@ local example = ForPairs(array, function(key, value)
 	local badMath = 2 + "fish"
 end)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forValuesDestructorError
@@ -456,13 +470,14 @@ end
 
 local example = ForValues(array, doSomething, destructor)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## forValuesProcessorError
@@ -479,13 +494,14 @@ local example = ForValues(array, function(value)
 	local badMath = 2 + "fish"
 end)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## invalidChangeHandler
@@ -503,13 +519,14 @@ local input = New "TextBox" {
 	[OnChange "Text"] = "lemons"
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## invalidEventHandler
@@ -527,13 +544,14 @@ local button = New "TextButton" {
 	[OnEvent "Activated"] = "limes"
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## invalidPropertyType
@@ -555,13 +573,14 @@ local ui = New "Frame" {
 	end)
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## invalidRefType
@@ -578,13 +597,14 @@ local thing = New "Part" {
 	[Ref] = 2
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## invalidOutType
@@ -602,13 +622,14 @@ local thing = New "Part" {
 	[Out "Color"] = true
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## invalidOutProperty
@@ -628,13 +649,14 @@ local thing = New "Part" {
 	[Out "Flobulator"] = value
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## invalidSpringDamping
@@ -654,13 +676,14 @@ local spring = Spring(state, speed, damping)
 
 Damping ratio must always be between 0 and infinity for a spring to be
 physically simulatable.
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## invalidSpringSpeed
@@ -679,13 +702,14 @@ local spring = Spring(state, speed)
 
 Since a speed of 0 is equivalent to a spring that doesn't move, any slower speed
 is not simulatable or physically sensible.
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## mistypedSpringDamping
@@ -702,13 +726,14 @@ local speed = 10
 local damping = true
 local spring = Spring(state, speed, damping)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## mistypedSpringSpeed
@@ -724,13 +749,14 @@ which isn't a number.
 local speed = true
 local spring = Spring(state, speed)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## mistypedTweenInfo
@@ -746,13 +772,14 @@ which isn't a TweenInfo:
 local tweenInfo = true
 local tween = Tween(state, tweenInfo)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## multiReturnComputed
@@ -776,13 +803,14 @@ local badComputed = Computed(function()
 	return 1, 2, "foo", true
 end, nil)
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## springTypeMismatch
@@ -803,13 +831,14 @@ local colourSpring = Spring(colour)
 
 colourSpring:addVelocity(Vector2.new(2, 3))
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## strictReadError
@@ -825,13 +854,14 @@ returned by the module directly.
 ```Lua
 local Foo = Fusion.thisDoesNotExist
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## unknownMessage
@@ -848,13 +878,14 @@ provide an ID. This ID is used to show the correct message, and serves as a
 simple, memorable identifier if you need to look up the message later.
 However, if that code provides an invalid ID, then the message will be replaced
 with this one.
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## unrecognisedChildType
@@ -880,15 +911,16 @@ local instance = New "Folder" {
 ```
 
 !!! note
-	Note that state objects are allowed to store `nil` to represent the absence
-	of an instance, as an exception to these rules.
+Note that state objects are allowed to store `nil` to represent the absence
+of an instance, as an exception to these rules.
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ## unrecognisedPropertyKey
@@ -912,13 +944,14 @@ local folder = New "Folder" {
 	"This", "Shouldn't", "Be", "Here"
 }
 ```
+
 </div>
 
------
+---
 
-<div class="fusiondoc-error-api-section" markdown>
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.2</span>
+<div class="weavedoc-error-api-section" markdown>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.2</span>
 </p>
 
 ## unrecognisedPropertyStage

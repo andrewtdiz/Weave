@@ -1,14 +1,14 @@
-<nav class="fusiondoc-api-breadcrumbs">
-	<a href="../..">Fusion</a>
+<nav class="weavedoc-api-breadcrumbs">
+	<a href="../..">Weave</a>
 	<a href="..">Animation</a>
 </nav>
 
-<h1 class="fusiondoc-api-header" markdown>
-	<span class="fusiondoc-api-icon" markdown>:octicons-package-24:</span>
-	<span class="fusiondoc-api-name">Tween</span>
-	<span class="fusiondoc-api-pills">
-		<span class="fusiondoc-api-pill-type">state object</span>
-		<span class="fusiondoc-api-pill-since">since v0.1</span>
+<h1 class="weavedoc-api-header" markdown>
+	<span class="weavedoc-api-icon" markdown>:octicons-package-24:</span>
+	<span class="weavedoc-api-name">Tween</span>
+	<span class="weavedoc-api-pills">
+		<span class="weavedoc-api-pill-type">state object</span>
+		<span class="weavedoc-api-pill-since">since v0.1</span>
 	</span>
 </h1>
 
@@ -19,25 +19,25 @@ just snap to the goal value.
 
 ```Lua
 (
-	goal: StateObject<T>, 
+	goal: StateObject<T>,
 	tweenInfo: CanBeState<TweenInfo>?
 ) -> Tween<T>
 ```
 
------
+---
 
 ## Parameters
 
 - `goal` - The state object whose value should be followed.
 - `tweenInfo` - The style of tween to use when moving to the goal. Defaults
-to `TweenInfo.new()`.
+  to `TweenInfo.new()`.
 
------
+---
 
 ## Methods
 
-<p class="fusiondoc-api-pills">
-	<span class="fusiondoc-api-pill-since">since v0.1</span>
+<p class="weavedoc-api-pills">
+	<span class="weavedoc-api-pill-since">since v0.1</span>
 </p>
 
 ### :octicons-code-24: Tween:get()
@@ -54,9 +54,9 @@ object will also be added as a dependency.
 #### Parameters
 
 - `asDependency` - If this is explicitly set to false, no dependencies will be
-captured.
+  captured.
 
------
+---
 
 ## Example Usage
 

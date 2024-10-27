@@ -1,5 +1,5 @@
 ```Lua linenums="1"
--- [Fusion imports omitted for clarity]
+-- [Weave imports omitted for clarity]
 
 -- This is a relatively complete example of a button component.
 -- It handles many common interactions such as hovering and clicking.
@@ -27,7 +27,7 @@ export type Props = {
 	Disabled: CanBeState<boolean>?
 }
 
--- Returns `Child` to match Fusion's `Component` type. This should work for most
+-- Returns `Child` to match Weave's `Component` type. This should work for most
 -- use cases, and offers the greatest encapsulation as you're able to swap out
 -- your return type for an array or state object if you want to.
 local function Button(props: Props): Child

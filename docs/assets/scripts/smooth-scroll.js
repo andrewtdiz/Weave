@@ -14,10 +14,10 @@ document.body.addEventListener("click", e => {
     if(link != null) {
         if(link.href.includes("#")) {
             // enable smooth scrolling when clicking on section links
-            document.body.parentNode.classList.remove("fusiondoc-inhibit-smooth-scrolling");
+            document.body.parentNode.classList.remove("weavedoc-inhibit-smooth-scrolling");
         } else {
             // disable it everywhere else
-            document.body.parentNode.classList.add("fusiondoc-inhibit-smooth-scrolling");
+            document.body.parentNode.classList.add("weavedoc-inhibit-smooth-scrolling");
         }
     }
 })
