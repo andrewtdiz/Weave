@@ -1,12 +1,12 @@
 # How To Contribute
 
-Fusion welcomes issues and pull requests from the community! However, make sure
+Fission welcomes issues and pull requests from the community! However, make sure
 you've read the following first *before* opening any issues or pull requests, so
 the process can be as smooth as possible 🙂
 
-## I have a question, or am stuck and need help using Fusion
+## I have a question, or am stuck and need help using Fission
 Don't open an issue to ask a question - see our
-[Get Started page](https://elttob.uk/Fusion/tutorials/#where-to-get-help)
+[Get Started page](https://elttob.uk/Fission/tutorials/#where-to-get-help)
 to find a place to get help.
 
 ## I found a security vulnerability or other sensitive issue
@@ -14,7 +14,7 @@ Please use our [vulnerability reporting process](./SECURITY.md). Do not openly
 disclose sensitive bugs, issues or vulnerabilities - this is dangerous!
 
 ## I found a non-security bug or issue
-We're always looking for bug reports to make sure Fusion is the best it can be!
+We're always looking for bug reports to make sure Fission is the best it can be!
 While we do maintain unit tests and thoroughly check our work, sometimes issues
 can slip through. Here's what to do when you find one:
 - ***You're likely not the first person to report it.*** Please search for
@@ -44,7 +44,7 @@ appropriately.
 	occurs with bugs whose fixes would be breaking changes.
 	- Once a solution has been identified and approved. it will be labelled as
 	**'status: approved'**. Approved bugs will be fixed in a future version of
-	Fusion, and will be closed once the fix ships.
+	Fission, and will be closed once the fix ships.
 - Be patient - all project maintainers are voluteers, so it will likely take
 some time to respond.
 	- Don't bump or chase up your issue - commenting 'Any updates on this?' does
@@ -67,7 +67,7 @@ to wade through massive amounts of syntax to implement a simple concept.
 
 We also have some guidelines for what kind of features we tend to reject:
 
-- **Does not serve a majority of users** - Fusion should be a base that people
+- **Does not serve a majority of users** - Fission should be a base that people
 can build their own specific tooling on top of. More niche features would be
 better served by being part of third party libraries.
 - **Only serves code writability** - we shouldn't look for ways to 'save
@@ -104,13 +104,13 @@ your feature request.
 appropriately.
 	- Enhancements start out labelled as **'status: evaluating'**. This occurs
 	as soon as we notice the issue. At this stage, we are gathering community
-	sentiment and evaluating whether the idea aligns with our vision for Fusion.
+	sentiment and evaluating whether the idea aligns with our vision for Fission.
 	- If we like the general idea, it will be labelled as **'status: needs design'**
 	This means we would like to include your idea, but don't have a solid idea
-	of how it should look and function in Fusion.
+	of how it should look and function in Fission.
 	- Once a design has been identified and approved. it will be labelled as
 	**'status: approved'**. Approved features will be fixed in a future version
-	of Fusion, and will be closed once the feature ships.
+	of Fission, and will be closed once the feature ships.
 - Be patient - all project maintainers are voluteers, so it will likely take
 some time to respond.
 	- Don't bump or chase up your issue - commenting 'Any updates on this?' does
@@ -118,9 +118,9 @@ some time to respond.
 
 ## I want to make a code modification or open a pull request
 
-While we do accept community pull requests, please observe that Fusion is still
+While we do accept community pull requests, please observe that Fission is still
 a largely controlled project. This is not out of hostility to our contributors,
-but instead because Fusion is used in a lot of high profile projects, and has a
+but instead because Fission is used in a lot of high profile projects, and has a
 very high bar for code and API quality.
 
 - If you intend to work on a pull request, feel free to create a new branch and
@@ -131,7 +131,7 @@ working on it and what you aim to achieve with the pull request.
 	shortcomings while it's still early on and easy to rectify.
 - **Make sure your changes correspond to an approved issue.** While we appeciate
 the initiative to implement your own features in your own time, we want to make
-sure everything in Fusion is well designed and considered. Pull requests are not
+sure everything in Fission is well designed and considered. Pull requests are not
 the place to suggest new features.
 	- While we heavily discourage it, we do make exceptions for some bug fixes,
 	typically trivial ones that are easy to approve. *Do not depend on this
@@ -151,7 +151,7 @@ sure to read our [style guide document](./style-guide.md) and observe how code
 near your working area is written. Consistent code is much easier to maintain,
 and avoids style arguments.
 	- In particular, make sure that variable and function names are written to
-	the same standard as other Fusion code. Naming is where a lot of code falls
+	the same standard as other Fission code. Naming is where a lot of code falls
 	short, and leads to massive readability problems if left unchecked. We will
 	not hesitate to point these things out in code review.
 - When your pull request is noticed by a project maintainer, it will be subject
@@ -160,13 +160,13 @@ to a code review.
 	certainly be asked to make changes as part of this process, so please be
 	patient with us, and make sure to voice your opinion if you disagree with
 	any suggested changes or rationale so we can make your PR the best it can be!
-- Alternatively, if we decide your pull request doesn't quite align with Fusion,
+- Alternatively, if we decide your pull request doesn't quite align with Fission,
 then we'll explain in as much detail as possible why we don't want to merge it.
 Don't take this personally - some PRs are fantastic, but just in the wrong place
 or proposed at the wrong time.
 - If your code passes code review, your changes will be approved. They may then
-be merged into the main Fusion codebase at a later time, subject to conditions
-around what we intend to include in different Fusion versions.
+be merged into the main Fission codebase at a later time, subject to conditions
+around what we intend to include in different Fission versions.
 	- Sometimes, we may decide to merge your code, but disable it behind a flag.
 	This is often used to disable features we don't want to make public until
 	some other pull requests are implemented or further design work is done.
