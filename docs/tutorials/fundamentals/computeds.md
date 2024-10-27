@@ -1,53 +1,70 @@
-Computeds are state objects that can process values from other state objects.
-You pass in a callback which calculates the final value. Then, you can use
-`:get()` to retrieve that value at any time.
+`Computed` values can be used to calculate new values.
+
+Pass in a function that does the calculation. 
+
+Then, `:get()` the updated value.
 
 ```Lua
-local numCoins = Value.new(2)
-local itemPrice = Value.new(2)
+local jumpPower = Value.new(7)
+local boost = Value.new(3)
 
-local finalCoins = Computed.new(function()
-    return numCoins:get() + itemPrice:get()
+local totalJumpPower = Computed.new(function()
+    return jumpPower:get() + boost:get()
 end)
 
-print(finalCoins:get()) --> 4
+print(totalHealth:get()) --> 10
+```
 
-numCoins:set(3)
-itemPrice:set(5)
-print(finalCoins:get()) --> 8
+The `Computed` value updates when _either_ dependency changes.
+
+```Lua
+jumpPower:set(8)
+boost:set(4)
+
+print(totalJumpPower:get()) --> 12
 ```
 
 ---
 
 ## Usage
 
-To use `Computed` in your code, you first need to import it from the Weave
-module, so that you can refer to it by name:
+Import `Weave.Computed` from the Weave module.
 
 ```Lua linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Computed = Weave.Computed
 ```
 
-To create a new computed object, call the `Computed` function and pass it a
-callback returning a single value:
+`Computed.new` to instantiate a new object.
 
 ```Lua
-local hardMaths = Computed.new(function()
-    return 1 + 1
+local number = Value.new(2)
+local double = Computed.new(function()
+    return number:get() * 2
 end)
 ```
 
-The value your callback returns will be stored as the computed's value. You can
-get the computed's current value using `:get()`:
+You can get the computed's current value using `:get()`:
 
 ```Lua
-print(hardMaths:get()) --> 2
+print(double:get()) --> 4
 ```
 
-By default, a computed only runs its callback once. However, Weave can detect
-any time you call `:get()` on a state object inside the callback. If any of them
-change value, the callback will be re-run and the value will update:
+`Computed` values are recalculated when any of its dependencies change.
+
+Computed function will be re-run and the value will update:
+
+```Lua
+number:set(10)
+print(double:get()) --> 20
+```
+
+```Lua
+number:set(-5)
+print(double:get()) -->  -10
+```
+
+Putting it all together:
 
 ```Lua
 local number = Value.new(2)
@@ -55,102 +72,41 @@ local double = Computed.new(function()
     return number:get() * 2
 end)
 
-print(number:get(), "* 2 =", double:get()) --> 2 * 2 = 4
+print(double:get()) --> 4
 
 number:set(10)
-print(number:get(), "* 2 =", double:get()) --> 10 * 2 = 20
+print(double:get()) --> 20
 
 number:set(-5)
-print(number:get(), "* 2 =", double:get()) --> -5 * 2 = -10
+print(double:get()) -->  -10
 ```
 
 ---
 
 ## When To Use This
 
-Computeds are more specialist than regular values and changed listeners. They're
-designed for a single purpose: they make it easier and more efficient to derive
-new values from existing state objects.
+`Computed` values make it easier to calculate new state from existing state.
 
-Derived values show up in a lot of places throughout UIs. For example, you might
-want to insert a death counter into a string. Therefore, the contents of the
-string are derived from the death counter:
+Derived values show up a lot in games. 
+
+For example, you might want to insert a death counter into a string.
+
+Therefore, the contents of the string are derived from the death counter:
 
 ![Diagram showing how the message depends on the death counter.](Derived-Value-Dark.svg#only-dark)
 ![Diagram showing how the message depends on the death counter.](Derived-Value-Light.svg#only-light)
 
-While you can do this with values and changed listeners alone, your code could get messy.
+While you can do this with values and changed listeners alone, it could get messy.
 
-Consider the following code that doesn't use computeds - the intent is to create
-a derived value, `finalCoins`, which equals `numCoins - itemPrice` at all times:
-
-```Lua linenums="1"
-local numCoins = Value.new(50)
-local itemPrice = Value.new(10)
-
-local finalCoins = Value.new(numCoins:get() - itemPrice:get())
-local function updateFinalCoins()
-    finalCoins:set(numCoins:get() - itemPrice:get())
-end
-numCoins.Changed:Connect(updateFinalCoins)
-itemPrice.Changed:Connect(updateFinalCoins)
-```
-
-There are a few problems with this code currently:
-
-- It's not immediately clear what's happening at a glance; there's lots of
-  boilerplate code obscuring what the _intent_ of the code is.
-- The logic for calculating `finalCoins` is duplicated twice - on lines 4 and 6.
-- You have to manage updating the value yourself connecting to the Changed event. This is an
-  easy place for desynchronisation bugs to slip in.
-- Another part of the code base could call `finalCoins:set()` and mess with the
-  value.
-
-When written with computeds, the above problems are largely solved:
-
-```Lua linenums="1"
-local numCoins = Value.new(50)
-local itemPrice = Value.new(10)
-
-local finalCoins = Computed.new(function()
-    return numCoins:get() - itemPrice:get()
-end)
-```
-
-- The intent is immediately clear - this is a derived value.
-- The logic is only specified once, in one callback.
-- The computed updates itself when a state object you `:get()` changes value.
-- The callback is the only thing that can change the value - there is no `:set()`
-  method.
-
-??? warning "A warning about delays in computed callbacks"
+??? Don't use task.delay() in computed callbacks"
 
     One small caveat of computeds is that you must return the value immediately.
+    
+    
     If you need to send a request to the server or perform a long-running
     calculation, you shouldn't use computeds.
 
-    The reason for this is consistency between variables. When all computeds run
-    immediately (i.e. without yielding), all of your variables will behave
-    consistently:
-
-    ```Lua
-    local numCoins = Value.new(50)
-    local isEnoughCoins = Computed.new(function()
-        return numCoins:get() > 25
-    end)
-
-    local message = Computed.new(function()
-        if isEnoughCoins:get() then
-            return `{numCoins:get()} is enough coins.`
-        else
-            return `{numCoins:get()} is NOT enough coins.`
-        end
-    end)
-
-    print(message:get()) --> 50 is enough coins.
-    numCoins:set(2)
-    print(message:get()) --> 2 is NOT enough coins.
-    ```
+    The reason for this is consistency between variables. 
 
     If a delay is introduced, then inconsistencies and nonsense values could
     quickly appear:

@@ -67,15 +67,17 @@ run:
     ```
 
 When you set the value, if it's the same as the existing value, an update won't
-be sent out. This means Changed events won't re-run when you set the
-value multiple times in a row.
+be sent out. 
+
+This means Changed events won't re-run when you set the value multiple times in a row.
 
 ![A diagram showing how value objects only send updates if the new value and previous value aren't equal.](Value-Equality-Dark.svg#only-dark)
 ![A diagram showing how value objects only send updates if the new value and previous value aren't equal.](Value-Equality-Light.svg#only-light)
 
 In most cases, this leads to improved performance because your code runs less
-often. However, if you need to override this behaviour, `Value:set()` accepts a
-second argument - if you set it to `true`, an update will be forced:
+often. 
+
+To override this behaviour, `Value:set()` accepts a second argument that can force an update:
 
 === "Script code"
 

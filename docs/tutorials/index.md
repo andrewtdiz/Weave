@@ -2,20 +2,87 @@ Welcome to the Weave tutorial section! Here, you'll learn how to build great
 interfaces with Weave, even if you're a complete newcomer to the library.
 
 
-## What You Need To Know
+## Why Fusion?
 
-These tutorials assume:
+### The Problem
 
-- You're comfortable with Roblox and the Luau scripting language.
-	- These tutorials aren't an introduction to scripting! If you'd like to
-	  learn, check out the [Roblox DevHub](https://developer.roblox.com/).
-- You're familiar with how UI works on Roblox.
-    - You don't have to be a designer - knowing about UI instances, events
-	and data types like `UDim2` and `Color3` will be good enough.
+Imagine some state in your head. Think about what it looks like, and think about
+the different variables it's showing to you.
 
-Of course, based on your existing knowledge, you may find some tutorials easier
-or harder. Weave's built to be easy to learn, but it may still take a bit of
-time to absorb some concepts, so don't be discouraged :slightly_smiling_face:
+<figure markdown>
+![An example of a game's UI, with some variables labelled and linked to parts of the UI.](Game-UI-Variables-Light.svg#only-light)
+![An example of a game's UI, with some variables labelled and linked to parts of the UI.](Game-UI-Variables-Dark.svg#only-dark)
+<figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
+</figure>
+
+When variables change, you want your game to reflect those changes.
+
+Unfortunately, there's no way to listen for those changes in Lua. 
+
+You may try something like this:
+
+```Lua
+local ammo = 36
+local isOutOfAmmo = false
+
+local function updateHUD()
+	PlayerGui.HUD.WeaponFrame.AmmoText.Text = ammo
+end
+
+local function updateOutOfAmmoCheck()
+	isOutOfAmmo = ammo == 0
+end
+
+local function setAmmo(newAmmo)
+	ammo = newAmmo
+	-- you need to send out updates to every piece of code using `ammo` here
+	updateHUD()
+	updateOutOfAmmoCheck()
+	sendAmmoToServer()
+end
+```
+
+But often gets messy.
+
+- How do we share these updates across scripts?
+- What if there's another piece of code using `ammo` that we've forgotten to update here?
+
+### Building Better Variables
+
+What if we could just change value and it updates everywhere *automatically*, like magic.
+
+That's exactly what Weave does.
+
+Store state in a `Value` change the object's value using `:set()`. Then, when it changes, 
+it will notify anyone referencing it.
+
+Hence the motto, *set it and forget it*
+
+### Sharing Variables
+
+```Lua
+local Weapons = {
+	ammo = Value.new(36),
+	maxAmmo = Value.new(67),
+
+	distance = Value.new(59)
+}
+return Weapons
+
+-- HUD_GUI.lua
+local Weapons = require(StarterPlayerScripts.Weapons)
+
+Fusion.Hydrate(AmmoText) {
+	Text = Weapon.ammo
+}
+
+-- AmmoHandler.lua
+local Weapons = require(StarterPlayerScripts.Weapons)
+
+local isOutOfAmmo = Fusion.Computed(function()
+	return Weapons.ammo:get() == 0
+end)
+```
 
 -----
 
@@ -27,7 +94,6 @@ to add this module script to your game. Here's how:
 ### If you edit scripts in Roblox Studio...
 
 Click the 'Assets' dropdown to view the downloadable files:
-
 
 Now, click on the `Weave.rbxm` file to download it. This contains the module as
 a Roblox model:
