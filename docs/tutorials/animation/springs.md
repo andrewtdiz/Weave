@@ -5,7 +5,7 @@ Springs follow the value of other state objects using a physical spring
 simulation. This can be used for 'springy' effects, or for smoothing out
 movement naturally without abrupt changes in direction.
 
------
+---
 
 ## Usage
 
@@ -13,15 +13,15 @@ To use `Spring` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local Spring = Fusion.Spring
+local Weave = require(ReplicatedStorage.Weave)
+local Spring = Weave.Spring
 ```
 
 To create a new spring object, call the `Spring` function and pass it a state
 object to move towards:
 
 ```Lua
-local goal = Value(0)
+local goal = Value.new(0)
 local animated = Spring(target)
 ```
 
@@ -36,9 +36,9 @@ To configure how the spring moves, you can provide a speed and damping ratio to
 use. Both are optional, and both can be state objects if desired:
 
 ```Lua
-local goal = Value(0)
+local goal = Value.new(0)
 local speed = 25
-local damping = Value(0.5)
+local damping = Value.new(0.5)
 local animated = Spring(target, speed, damping)
 ```
 
@@ -47,11 +47,11 @@ Vectors, CFrames, Color3s, UDim2s and other number-based types are supported;
 each number inside the type is animated individually.
 
 ```Lua
-local goalPosition = Value(UDim2.new(0.5, 0, 0, 0))
+local goalPosition = Value.new(UDim2.new(0.5, 0, 0, 0))
 local animated = Spring(target, 25, 0.5)
 ```
 
------
+---
 
 ## Damping Ratio
 
@@ -96,7 +96,7 @@ like it's moving through honey, glue or some other viscous fluid.
 Overdamping reduces the effect of velocity changes, and makes movement more
 rigid.
 
------
+---
 
 ## Speed
 
@@ -107,7 +107,7 @@ twice as slow.
 ![Animation and graph showing speed changes.](Speed-Dark.png#only-dark)
 ![Animation and graph showing speed changes.](Speed-Light.png#only-light)
 
------
+---
 
 ## Interruption
 

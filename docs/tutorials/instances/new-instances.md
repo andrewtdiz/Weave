@@ -3,7 +3,7 @@ creates a new instance, applies some default properties, then hydrates it with
 a property table.
 
 ```Lua
-local message = Value("Hello there!")
+local message = Value.new("Hello there!")
 
 local ui = New "TextLabel" {
 	Name = "Greeting",
@@ -20,7 +20,7 @@ task.wait() -- important: changes are applied on the next frame!
 print(ui.Text) --> Goodbye friend!
 ```
 
------
+---
 
 ## Usage
 
@@ -28,8 +28,8 @@ To use `New` in your code, you first need to import it from the Fusion module,
 so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local New = Fusion.New
+local Weave = require(ReplicatedStorage.Weave)
+local New = Weave.New
 ```
 
 The `New` function is called in two parts. First, call the function with the
@@ -56,7 +56,7 @@ local instance = New "Part" {
 By design, `New` works just like `Hydrate` - it will apply properties the same
 way. [See the Hydrate tutorial to learn more.](../hydration)
 
------
+---
 
 ## Default Properties
 

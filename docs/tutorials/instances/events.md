@@ -9,7 +9,7 @@ local button = New "TextButton" {
 }
 ```
 
------
+---
 
 ## Usage
 
@@ -17,8 +17,8 @@ To use `OnEvent` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local OnEvent = Fusion.OnEvent
+local Weave = require(ReplicatedStorage.Weave)
+local OnEvent = Weave.OnEvent
 ```
 
 When you call `OnEvent` with an event name, it will return a special key:

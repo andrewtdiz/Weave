@@ -1,8 +1,7 @@
 The process of connecting your scripts to a pre-made UI template is known as
-*hydration*. This is where logic in your scripts translate into UI effects, for
+_hydration_. This is where logic in your scripts translate into UI effects, for
 example setting a message inside a TextLabel, moving menus around, or showing
 and hiding buttons.
-
 
 <figure markdown>
 ![A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements.](Hydration-Basic-Dark.svg#only-dark)
@@ -15,7 +14,7 @@ of properties. If you pass in Fusion objects, changes will be applied on the
 next frame:
 
 ```Lua
-local showUI = Value(false)
+local showUI = Value.new(false)
 
 local ui = Hydrate(StarterGui.Template:Clone()) {
 	Name = "MainGui",
@@ -30,7 +29,7 @@ task.wait() -- important: changes are applied on the next frame!
 print(ui.Enabled) --> true
 ```
 
------
+---
 
 ## Usage
 
@@ -38,8 +37,8 @@ To use `Hydrate` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local Hydrate = Fusion.Hydrate
+local Weave = require(ReplicatedStorage.Weave)
+local Hydrate = Weave.Hydrate
 ```
 
 The `Hydrate` function is called in two parts. First, call the function with the
@@ -78,7 +77,7 @@ instance directly. However, if you pass in a Fusion object (like `Value`), then
 changes will be applied on the next frame:
 
 ```Lua
-local message = Value("Loading...")
+local message = Value.new("Loading...")
 
 Hydrate(PlayerGui.LoadingText) {
 	Text = message

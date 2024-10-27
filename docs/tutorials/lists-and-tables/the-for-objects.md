@@ -15,7 +15,7 @@ So, to assist with these use cases, Fusion has a few state objects which are
 specially designed for working with arrays and tables. These are known as the
 `For` objects.
 
------
+---
 
 ## The Problem
 
@@ -23,7 +23,7 @@ To start, let's try making a player list using the basic state objects from
 before. Let's define a changeable list of player names and some basic UI:
 
 ```Lua linenums="1"
-local playerNames = Value({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
+local playerNames = Value.new({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
 
 local textLabels = {} -- TODO: implement this
 
@@ -51,7 +51,7 @@ local ui = New "ScreenGui" {
 Now, let's make a `Computed` which generates that list of text labels for us:
 
 ```Lua linenums="1" hl_lines="3-13"
-local playerNames = Value({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
+local playerNames = Value.new({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
 
 local textLabels = Computed(function()
     local out = {}
@@ -72,22 +72,20 @@ local ui = New "ScreenGui" {
 This is alright, but there are a few problems:
 
 - Firstly, there's a fair amount of boilerplate - in order to generate the list
-of text labels, you have to create a `Computed`, initialise a new table, write a
-for-loop to populate the table, then return it.
-    - Boilerplate is generally annoying, and especially so for a task as common
-    as dealing with lists and tables. It's less clear to read and more tedious
-    to write.
+  of text labels, you have to create a `Computed`, initialise a new table, write a
+  for-loop to populate the table, then return it. - Boilerplate is generally annoying, and especially so for a task as common
+  as dealing with lists and tables. It's less clear to read and more tedious
+  to write.
 - Secondly, whenever `playerNames` is changed, you reconstruct the entire list,
-destroying all of your instances and any data associated with them. This is both
-inefficient and also causes issues with data loss.
-    - Ideally, you should only modify the text labels for players that have
-    joined or left, leaving the rest of the text labels alone.
+  destroying all of your instances and any data associated with them. This is both
+  inefficient and also causes issues with data loss. - Ideally, you should only modify the text labels for players that have
+  joined or left, leaving the rest of the text labels alone.
 
 To address this shortcoming, the `For` objects provide a cleaner way to do the
 same thing, except with less boilerplate and leaving unchanged values alone:
 
 ```Lua linenums="1" hl_lines="3-9"
-local playerNames = Value({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
+local playerNames = Value.new({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
 
 local textLabels = ForValues(playerNames, function()
     return New "TextLabel" {

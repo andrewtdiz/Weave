@@ -2,18 +2,18 @@ Values are objects which store single values. You can read from them with
 `:get()`, and write to them with `:set()`.
 
 ```Lua
-local health = Value.new(100)
+local blueScore = ServerValue.new(0)
 
-print(health:get()) --> 100
-health:set(25)
-print(health:get()) --> 25
+print(blueScore:get()) --> 0
+blueScore:set(1)
+print(blueScore:get()) --> 1
 ```
 
 -----
 
 ## Usage
 
-To use `Value` in your code, you first need to import it from the Weave module,
+To use `ServerValue` in your code, you first need to import it from the Weave module,
 so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
@@ -102,7 +102,7 @@ variable. This is so we know who to notify when the value changes.
 - We need to run some code when the variable is set to a new value. If we can
 do that, then we can go through the list and notify everyone.
 
-To solve this, Weave introduces the idea of a 'state object'. These are objects
+To solve this, Fusion introduces the idea of a 'state object'. These are objects
 that represent a single value, which you can `:get()` at any time. They also
 keep a list of dependents; when the object's value changes, it can notify
 everyone so they can respond to the change.

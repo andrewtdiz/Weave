@@ -85,7 +85,7 @@ local multiplier = Value(2)
 local data = Value({1, 2, 3, 4, 5})
 
 local scaledData = ForValues(data, function(value)
-	-- Fusion detects you called :get() on `multiplier`, and so adds `multiplier`
+	-- Weave detects you called :get() on `multiplier`, and so adds `multiplier`
 	-- as a dependency specifically for this value.
 	return value * multiplier:get()
 end)
@@ -109,7 +109,7 @@ Destructors are required when working with data types that require destruction,
 such as instances. Otherwise, they are optional, so not all calculations have to
 specify destruction behaviour.
 
-Fusion guarantees that values passed to destructors by default will never be
+Weave guarantees that values passed to destructors by default will never be
 used again by the library, so it is safe to finalise them. This does not apply
 to the customisable second parameter, which the user is responsible for handling
 properly.

@@ -34,7 +34,7 @@ local part = New "Part" {
 }
 ```
 
------
+---
 
 ## Usage
 
@@ -42,8 +42,8 @@ To use `Cleanup` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local Cleanup = Fusion.Cleanup
+local Weave = require(ReplicatedStorage.Weave)
+local Cleanup = Weave.Cleanup
 ```
 
 When using `New` or `Hydrate`, you can use `[Cleanup]` as a key in the property
@@ -143,11 +143,11 @@ local part = New "Part" {
 
 Any other kind of value will do nothing by default.
 
------
+---
 
 ## Don't Use Destroyed
 
-While Roblox does provide it's own `Destroyed` event, it should *not* be relied
+While Roblox does provide it's own `Destroyed` event, it should _not_ be relied
 upon for cleaning up correctly in all cases. It only fires when the `Destroy`
 method is called, meaning other kinds of destruction are ignored.
 
@@ -161,7 +161,7 @@ For example, notice only one of these parts runs their cleanup code:
             print("=> Part 1 cleaned up")
         end
     }
-    
+
     local part2 = New "Part" {
         [OnEvent "Destroyed"] = function()
             print("=> Part 2 cleaned up")
@@ -194,7 +194,7 @@ destroyed, meaning you can avoid serious memory leaks:
             print("=> Part 1 cleaned up")
         end
     }
-    
+
     local part2 = New "Part" {
         [Cleanup] = function()
             print("=> Part 2 cleaned up")

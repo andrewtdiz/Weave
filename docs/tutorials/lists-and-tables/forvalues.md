@@ -6,7 +6,7 @@ objects.
 
 ```Lua
 local numbers = {1, 2, 3, 4, 5}
-local multiplier = Value(2)
+local multiplier = Value.new(2)
 
 local multiplied = ForValues(numbers, function(num)
 	return num * multiplier:get()
@@ -18,7 +18,7 @@ multiplier:set(10)
 print(multiplied:get()) --> {10, 20, 30, 40, 50}
 ```
 
------
+---
 
 ## Usage
 
@@ -26,8 +26,8 @@ To use `ForValues` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local ForValues = Fusion.ForValues
+local Weave = require(ReplicatedStorage.Weave)
+local ForValues = Weave.ForValues
 ```
 
 ### Basic Usage
@@ -60,7 +60,7 @@ The input table can be provided as a state object instead, and the output table
 will update as the input table is changed:
 
 ```Lua
-local numbers = Value({})
+local numbers = Value.new({})
 local doubled = ForValues(numbers, function(num)
 	return num * 2
 end)
@@ -77,7 +77,7 @@ computed:
 
 ```Lua
 local numbers = {1, 2, 3, 4, 5}
-local factor = Value(2)
+local factor = Value.new(2)
 local multiplied = ForValues(numbers, function(num)
 	return num * factor:get()
 end)
@@ -94,7 +94,7 @@ Similar to computeds, if you want to run your own code when values are removed,
 you can pass in a second 'destructor' function:
 
 ```Lua hl_lines="9-13"
-local names = Value({"Jodi", "Amber", "Umair"})
+local names = Value.new({"Jodi", "Amber", "Umair"})
 local textLabels = ForValues(names,
 	-- processor
 	function(name)
@@ -118,7 +118,7 @@ When using a custom destructor, you can send one extra return value to your
 destructor without including it in the output table:
 
 ```Lua hl_lines="11 14"
-local names = Value({"Jodi", "Amber", "Umair"})
+local names = Value.new({"Jodi", "Amber", "Umair"})
 local textLabels = ForValues(names,
 	-- processor
 	function(name)
@@ -140,13 +140,13 @@ local textLabels = ForValues(names,
 names:set({"Amber", "Umair"}) --> Destructor got uppercased: JODI
 ```
 
------
+---
 
 ## Optimisations
 
 !!! help "Optional"
-	You don't have to memorise these optimisations to use `ForValues`, but it
-	can be helpful if you have a performance problem.
+You don't have to memorise these optimisations to use `ForValues`, but it
+can be helpful if you have a performance problem.
 
 Rather than creating a new output table from scratch every time the input table
 is changed, `ForValues` will try and reuse as much as possible to improve
@@ -155,7 +155,7 @@ performance.
 For example, let's say we're measuring the lengths of an array of words:
 
 ```Lua
-local words = Value({"Orange", "Red", "Magenta"})
+local words = Value.new({"Orange", "Red", "Magenta"})
 local lengths = ForValues(words, function(word)
 	return #word
 end)

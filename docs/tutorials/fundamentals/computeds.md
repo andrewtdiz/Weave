@@ -17,7 +17,7 @@ itemPrice:set(15)
 print(finalCoins:get()) --> 10
 ```
 
------
+---
 
 ## Usage
 
@@ -26,7 +26,7 @@ module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
-local Computed = Fusion.Computed
+local Computed = Weave.Computed
 ```
 
 To create a new computed object, call the `Computed` function and pass it a
@@ -64,7 +64,7 @@ number:set(-5)
 print(number:get(), "* 2 =", double:get()) --> -5 * 2 = -10
 ```
 
------
+---
 
 ## When To Use This
 
@@ -99,12 +99,12 @@ itemPrice.Changed:Connect(updateFinalCoins)
 There are a few problems with this code currently:
 
 - It's not immediately clear what's happening at a glance; there's lots of
-boilerplate code obscuring what the *intent* of the code is.
+  boilerplate code obscuring what the _intent_ of the code is.
 - The logic for calculating `finalCoins` is duplicated twice - on lines 4 and 6.
 - You have to manage updating the value yourself connecting to the Changed event. This is an
-easy place for desynchronisation bugs to slip in.
+  easy place for desynchronisation bugs to slip in.
 - Another part of the code base could call `finalCoins:set()` and mess with the
-value.
+  value.
 
 When written with computeds, the above problems are largely solved:
 
@@ -121,7 +121,7 @@ end)
 - The logic is only specified once, in one callback.
 - The computed updates itself when a state object you `:get()` changes value.
 - The callback is the only thing that can change the value - there is no `:set()`
-method.
+  method.
 
 ??? warning "A warning about delays in computed callbacks"
 

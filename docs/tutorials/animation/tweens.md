@@ -4,7 +4,7 @@
 Tweens follow the value of other state objects using a pre-made animation curve.
 This can be used for basic, predictable animations.
 
------
+---
 
 ## Usage
 
@@ -12,15 +12,15 @@ To use `Tween` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local Tween = Fusion.Tween
+local Weave = require(ReplicatedStorage.Weave)
+local Tween = Weave.Tween
 ```
 
 To create a new tween object, call the `Tween` function and pass it a state
 object to move towards:
 
 ```Lua
-local goal = Value(0)
+local goal = Value.new(0)
 local animated = Tween(target)
 ```
 
@@ -36,7 +36,7 @@ shape of the animation curve. It's optional, and it can be a state object if
 desired:
 
 ```Lua
-local goal = Value(0)
+local goal = Value.new(0)
 local style = TweenInfo.new(0.5, Enum.EasingStyle.Quad)
 local animated = Tween(target, style)
 ```
@@ -46,11 +46,11 @@ Vectors, CFrames, Color3s, UDim2s and other number-based types are supported;
 each number inside the type is animated individually.
 
 ```Lua
-local goalPosition = Value(UDim2.new(0.5, 0, 0, 0))
+local goalPosition = Value.new(UDim2.new(0.5, 0, 0, 0))
 local animated = Tween(target, TweenInfo.new(0.5, Enum.EasingStyle.Quad))
 ```
 
------
+---
 
 ## Time
 
@@ -60,7 +60,7 @@ take for the value to animate to the goal, in seconds.
 ![Animation and graph showing varying TweenInfo time.](Time-Dark.png#only-dark)
 ![Animation and graph showing varying TweenInfo time.](Time-Light.png#only-light)
 
------
+---
 
 ## Easing Style
 
@@ -70,7 +70,7 @@ The second parameter of `TweenInfo` is easing style. By setting this to various
 ![Animation and graph showing some easing styles.](Easing-Style-Dark.png#only-dark)
 ![Animation and graph showing some easing styles.](Easing-Style-Light.png#only-light)
 
------
+---
 
 ## Easing Direction
 
@@ -79,12 +79,12 @@ of three values to control how the tween starts and stops:
 
 - `Enum.EasingDirection.Out` makes the tween animate out smoothly.
 - `Enum.EasingDirection.In` makes the tween animate in smoothly.
-- `Enum.EasingDirection.InOut` makes the tween animate in *and* out smoothly.
+- `Enum.EasingDirection.InOut` makes the tween animate in _and_ out smoothly.
 
 ![Animation and graph showing some easing directions.](Easing-Direction-Dark.png#only-dark)
 ![Animation and graph showing some easing directions.](Easing-Direction-Light.png#only-light)
 
------
+---
 
 ## Repeats
 
@@ -97,7 +97,7 @@ is not generally useful for transition animations.
 ![Animation and graph showing various repeat counts.](Repeats-Dark.png#only-dark)
 ![Animation and graph showing various repeat counts.](Repeats-Light.png#only-light)
 
------
+---
 
 ## Reversing
 
@@ -110,20 +110,20 @@ and might not end at the start value either if the animation is interrupted.
 ![Animation and graph toggling reversing on and off.](Reversing-Dark.png#only-dark)
 ![Animation and graph toggling reversing on and off.](Reversing-Light.png#only-light)
 
------
+---
 
 ## Delay
 
 The sixth and final parameter of `TweenInfo` is delay. Increasing this delay
 adds empty space before the beginning of the animation curve.
 
-It's important to note this is *not* the same as a true delay. This option does
+It's important to note this is _not_ the same as a true delay. This option does
 not delay the input signal - it only makes the tween animation longer.
 
 ![Animation and graph showing varying delay values.](Delay-Dark.png#only-dark)
 ![Animation and graph showing varying delay values.](Delay-Light.png#only-light)
 
------
+---
 
 ## Interruption
 

@@ -6,7 +6,7 @@ objects.
 
 ```Lua
 local itemColours = { shoes = "red", socks = "blue" }
-local owner = Value("Elttob")
+local owner = Value.new("Elttob")
 
 local manipulated = ForPairs(itemColours, function(thing, colour)
 	local newKey = colour
@@ -20,7 +20,7 @@ owner:set("Quenty")
 print(manipulated:get()) --> {red = "Quenty's shoes", blue = "Quenty's socks"}
 ```
 
------
+---
 
 ## Usage
 
@@ -28,8 +28,8 @@ To use `ForPairs` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local ForPairs = Fusion.ForPairs
+local Weave = require(ReplicatedStorage.Weave)
+local ForPairs = Weave.ForPairs
 ```
 
 ### Basic Usage
@@ -68,13 +68,13 @@ Similar to `ForValues` and `ForKeys`, you may pass in a 'destructor' function to
 add cleanup behaviour, and send your own metadata to it:
 
 ```Lua
-local watchedInstances = Value({
+local watchedInstances = Value.new({
 	[workspace.Part1] = "One",
 	[workspace.Part2] = "Two",
 	[workspace.Part3] = "Three"
 })
 
-local connectionSet = ForPairs(eventSet, 
+local connectionSet = ForPairs(eventSet,
 	-- processor
 	function(instance, displayName)
 		local metadata = { displayName = displayName, numChanges = 0 }
@@ -99,13 +99,13 @@ watchedInstances:set({
 })
 ```
 
------
+---
 
 ## Optimisations
 
 !!! help "Optional"
-	You don't have to memorise these optimisations to use `ForPairs`, but it
-	can be helpful if you have a performance problem.
+You don't have to memorise these optimisations to use `ForPairs`, but it
+can be helpful if you have a performance problem.
 
 Rather than creating a new output table from scratch every time the input table
 is changed, `ForPairs` will try and reuse as much as possible to improve

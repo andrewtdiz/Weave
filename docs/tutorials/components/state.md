@@ -1,7 +1,7 @@
 Components can hold their own data privately using state objects. This can be
 useful, but you should be careful when adding state.
 
------
+---
 
 ## Creating State Objects
 
@@ -12,7 +12,7 @@ local HOVER_COLOUR = Color3.new(0.5, 0.75, 1)
 local REST_COLOUR = Color3.new(0.25, 0.5, 1)
 
 local function Button(props)
-    local isHovering = Value(false)
+    local isHovering = Value.new(false)
 
     return New "TextButton" {
         BackgroundColor3 = Computed(function()
@@ -36,11 +36,11 @@ Like regular Luau, state objects stay around as long as they're being used. Once
 your component is destroyed and your code no longer uses the objects, they'll be
 cleaned up.
 
------
+---
 
 ## Top-Down Control
 
-Remember that Fusion mainly works with a top-down flow of control. It's a good
+Remember that Weave mainly works with a top-down flow of control. It's a good
 idea to keep that in mind when adding state to components.
 
 When you're making reusable components, it's more flexible if your component can
@@ -53,11 +53,11 @@ object under the hood:
 ![Showing check boxes connected to Value objects.](Check-Boxes-Dark.svg#only-dark)
 ![Showing check boxes connected to Value objects.](Check-Boxes-Light.svg#only-light)
 
-It might *seem* logical to store the state object inside the check box:
+It might _seem_ logical to store the state object inside the check box:
 
 ```Lua hl_lines="2"
 local function CheckBox(props)
-    local isChecked = Value(false)
+    local isChecked = Value.new(false)
 
     return New "ImageButton" {
         -- ... some properties ...
@@ -68,17 +68,17 @@ end
 However, hiding away important state in components causes a few problems:
 
 - to control the appearance of the check box, you're forced to change the
-internal state
+  internal state
 - clicking the check box has hard-coded behaviour, which is bad if you need to
-intercept the click (e.g. to show a confirmation dialogue)
+  intercept the click (e.g. to show a confirmation dialogue)
 - if you already had a state object for that setting, now the check box has a
-duplicate state object representing the same setting
+  duplicate state object representing the same setting
 
 Therefore, it's better for the controlling code to hold the state object, and
 use callbacks to switch the value when the check box is clicked:
 
 ```Lua
-local playMusic = Value(true)
+local playMusic = Value.new(true)
 
 local checkBox = CheckBox {
     Text = "Play music",
@@ -90,13 +90,13 @@ local checkBox = CheckBox {
 ```
 
 The control is always top-down here; the check box's appearance is fully
-controlled by the creator. The creator of the check box *decides* to switch the
-setting when the check box is clicked. 
+controlled by the creator. The creator of the check box _decides_ to switch the
+setting when the check box is clicked.
 
 The check box itself is an inert, visual element; it just shows a graphic and
 reports clicks.
 
------
+---
 
 Setting up the check box this way also allows for more complex behaviour later
 on. Suppose we wanted to group together multiple options under a 'main' check
@@ -110,9 +110,9 @@ instead reflects the combination of multiple states. We can use a `Computed`
 for that:
 
 ```Lua hl_lines="7-18"
-local playMusic = Value(true)
-local playSFX = Value(false)
-local playNarration = Value(true)
+local playMusic = Value.new(true)
+local playSFX = Value.new(false)
+local playNarration = Value.new(true)
 
 local checkBox = CheckBox {
     Text = "Play sounds",
@@ -134,9 +134,9 @@ local checkBox = CheckBox {
 We can then implement the 'check all'/'uncheck all' behaviour inside `OnClick`:
 
 ```Lua hl_lines="7-13"
-local playMusic = Value(true)
-local playSFX = Value(false)
-local playNarration = Value(true)
+local playMusic = Value.new(true)
+local playSFX = Value.new(false)
+local playNarration = Value.new(true)
 
 local checkBox = CheckBox {
     -- ... same properties as before ...
@@ -152,15 +152,15 @@ local checkBox = CheckBox {
 
 By keeping the check box 'stateless', we can make it behave much more flexibly.
 
------
+---
 
 ## Best Practices
 
 Those examples lead us into the golden rule when adding state to components.
 
 !!! tip "Golden Rule"
-    It's better for reusable components to *reflect* program state. They should
-    not usually *contain* program state.
+It's better for reusable components to _reflect_ program state. They should
+not usually _contain_ program state.
 
 State objects are best suited to self-contained use cases, such as implementing
 hover effects, animations or responsive design. As such, you should think about

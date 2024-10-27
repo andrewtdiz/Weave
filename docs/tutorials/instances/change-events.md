@@ -10,7 +10,7 @@ local input = New "TextBox" {
 }
 ```
 
------
+---
 
 ## Usage
 
@@ -18,8 +18,8 @@ To use `OnChange` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local OnChange = Fusion.OnChange
+local Weave = require(ReplicatedStorage.Weave)
+local OnChange = Weave.OnChange
 ```
 
 When you call `OnChange` with a property name, it will return a special key:
@@ -56,7 +56,7 @@ local input = New "TextBox" {
     on the next frame:
 
     ```Lua
-    local text = Value("Hello")
+    local text = Value.new("Hello")
 
     local message = New "Message" {
         Text = text
@@ -75,7 +75,7 @@ local input = New "TextBox" {
     For this case, prefer to use an observer on the state object directly for
     zero latency.
 
------
+---
 
 ## Differences from Roblox API
 

@@ -5,7 +5,7 @@ The input table can be a state object, and the output keys can use state objects
 
 ```Lua
 local data = {Red = "foo", Blue = "bar"}
-local prefix = Value("Key_")
+local prefix = Value.new("Key_")
 
 local renamed = ForKeys(data, function(key)
 	return prefix:get() .. key
@@ -17,7 +17,7 @@ prefix:set("colour")
 print(renamed:get()) --> {colourRed = "foo", colourBlue = "bar"}
 ```
 
------
+---
 
 ## Usage
 
@@ -25,8 +25,8 @@ To use `ForKeys` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local ForKeys = Fusion.ForKeys
+local Weave = require(ReplicatedStorage.Weave)
+local ForKeys = Weave.ForKeys
 ```
 
 ### Basic Usage
@@ -59,7 +59,7 @@ The input table can be provided as a state object instead, and the output table
 will update as the input table is changed:
 
 ```Lua
-local playerSet = Value({})
+local playerSet = Value.new({})
 local userIdSet = ForKeys(playerSet, function(player)
 	return player.UserId
 end)
@@ -76,7 +76,7 @@ computed:
 
 ```Lua
 local playerSet = { [Players.boatbomber] = true, [Players.EgoMoose] = true }
-local prefix = Value("User_")
+local prefix = Value.new("User_")
 local userIdSet = ForKeys(playerSet, function(player)
 	return prefix .. player.UserId
 end)
@@ -93,12 +93,12 @@ Similar to computeds, if you want to run your own code when values are removed,
 you can pass in a second 'destructor' function:
 
 ```Lua hl_lines="15-19"
-local eventSet = Value({
+local eventSet = Value.new({
 	[RunService.RenderStepped] = true,
 	[RunService.Heartbeat] = true
 })
 
-local connectionSet = ForKeys(eventSet, 
+local connectionSet = ForKeys(eventSet,
 	-- processor
 	function(event)
 		local eventName = tostring(event)
@@ -123,12 +123,12 @@ When using a custom destructor, you can send one extra return value to your
 destructor without including it in the output table:
 
 ```Lua hl_lines="13 16"
-local eventSet = Value({
+local eventSet = Value.new({
 	[RunService.RenderStepped] = true,
 	[RunService.Heartbeat] = true
 })
 
-local connectionSet = ForKeys(eventSet, 
+local connectionSet = ForKeys(eventSet,
 	-- processor
 	function(event)
 		local eventName = tostring(event)
@@ -147,13 +147,13 @@ local connectionSet = ForKeys(eventSet,
 eventSet:set({ [RunService.RenderStepped] = true }) --> Disconnecting Signal Heartbeat!
 ```
 
------
+---
 
 ## Optimisations
 
 !!! help "Optional"
-	You don't have to memorise these optimisations to use `ForKeys`, but it
-	can be helpful if you have a performance problem.
+You don't have to memorise these optimisations to use `ForKeys`, but it
+can be helpful if you have a performance problem.
 
 Rather than creating a new output table from scratch every time the input table
 is changed, `ForKeys` will try and reuse as much as possible to improve
@@ -162,7 +162,7 @@ performance.
 For example, let's say we're converting an array to a dictionary:
 
 ```Lua
-local array = Value({"Fusion", "Knit", "Matter"})
+local array = Value.new({"Fusion", "Knit", "Matter"})
 local dict = ForKeys(array, function(index)
 	return "Value" .. index
 end)
@@ -174,7 +174,7 @@ Because `ForKeys` only operates on the keys, changing the values in the array
 doesn't affect the keys. Keys are only added or removed as needed:
 
 ```Lua
-local array = Value({"Fusion", "Knit", "Matter"})
+local array = Value.new({"Fusion", "Knit", "Matter"})
 local dict = ForKeys(array, function(index)
 	return "Value" .. index
 end)

@@ -1,5 +1,5 @@
 The `[Children]` key allows you to add children when hydrating or creating an
-instance. 
+instance.
 
 It accepts instances, arrays of children and state objects containing children.
 
@@ -18,7 +18,7 @@ local folder = New "Folder" {
 }
 ```
 
------
+---
 
 ## Usage
 
@@ -26,8 +26,8 @@ To use `Children` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
-local Fusion = require(ReplicatedStorage.Fusion)
-local Children = Fusion.Children
+local Weave = require(ReplicatedStorage.Weave)
+local Children = Weave.Children
 ```
 
 When using `New` or `Hydrate`, you can use `[Children]` as a key in the property
@@ -92,7 +92,7 @@ local folder = New "Folder" {
 Similarly, state objects containing children (or `nil`) are also allowed:
 
 ```Lua
-local value = Value()
+local value = Value.new()
 
 local folder = New "Folder" {
     [Children] = value
@@ -110,7 +110,7 @@ You may use any combination of these to parent whichever children you need:
 
 ```Lua
 local modelChildren = workspace.Model:GetChildren()
-local includeModel = Value(true)
+local includeModel = Value.new(true)
 
 local folder = New "Folder" {
     -- array of children
