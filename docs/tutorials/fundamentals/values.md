@@ -1,3 +1,5 @@
+A Weave `Value` is an object that stores any Lua value.
+
 ```Lua
 local health = Value.new(100)
 
@@ -6,42 +8,42 @@ health:set(25)
 print(health:get()) --> 25
 ```
 
-Values can hold any Lua value.
+Use `:get()` to receive the current value
 
-Use `:get()` to see the current value
-And change it with `:set()`.
+Use `:set()` to change it
 
 ---
 
 ## Usage
 
-To use `Value` in your code, import it from the Weave module.
+Import `Weave.Value` from the Weave module.
 
 ```Lua linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Value = Weave.Value
 ```
 
-To create a new value, use `Value.new`:
+`Value.new` to instantiate a new object.
 
 ```Lua
-local health = Value.new()
+local ammoAmount = Value.new()
 ```
 
-By default, new `Value` objects store `nil`. If you want the `Value` object to
-start with a different value, you can provide one:
+By default, new `Value` objects store `nil`. 
+
+If you want the `Value` object to start with a different value, you can provide one:
 
 ```Lua
-local health = Value.new(100)
-```
-
-```Lua
-print(health:get()) --> 100
+local ammoAmount = Value.new(50)
 ```
 
 ```Lua
-health:set(25)
-print(health:get()) --> 25
+print(ammoAmount:get()) --> 50
+```
+
+```Lua
+ammoAmount:set(49)
+print(ammoAmount:get()) --> 49
 ```
 
 ---
@@ -51,16 +53,17 @@ print(health:get()) --> 25
 ```Lua
 local part = Instance.new("Part")
 
-part:SetAttribute("count", 0)
+part:SetAttribute("damaged", false)
 
-local count = AttributeValue.new(part, "count")
+local count = AttributeValue.new(part, "damaged")
 
-print(count:get()) -- 0
+print(damaged:get()) -- false
 
-count:set(1)
+damaged:set(true)
 
-print(part:GetAttribute("count")) -- 1
-print(count:get()) -- 1
+print(damaged:get()) -- 1
+task.wait() -- Weave update cycle applies next frame
+print(damaged:GetAttribute("damaged")) -- 1
 ```
 
 ---
