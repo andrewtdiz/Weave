@@ -1,5 +1,5 @@
-Values are objects which store single values. You can read from them with
-`:get()`, and write to them with `:set()`.
+Values are objects which store single values. 
+You can read from them with `:get()`, and write to them with `:set()`.
 
 ```Lua
 local blueScore = ServerValue.new(0)
@@ -102,7 +102,7 @@ variable. This is so we know who to notify when the value changes.
 - We need to run some code when the variable is set to a new value. If we can
 do that, then we can go through the list and notify everyone.
 
-To solve this, Fusion introduces the idea of a 'state object'. These are objects
+To solve this, Weave introduces the idea of a 'state object'. These are objects
 that represent a single value, which you can `:get()` at any time. They also
 keep a list of dependents; when the object's value changes, it can notify
 everyone so they can respond to the change.

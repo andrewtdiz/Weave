@@ -1,54 +1,39 @@
-Weave Values let you detect when the state object changes value via the
-`.Changed` property, which is a `RBXScriptSignal`. You can connect to them
-just like any other Roblox Signal using `:Connect()` syntax.
+`Value` comes with a `RBXScriptSignal` in the `.Changed` property
 
 ```Lua
-local health = Value.new(100)
-
-health.Changed:Connect(function(updatedHealth: number)
-	print(`The new health is: {updatedHealth}`)
+health.Changed:Connect(function()
+	print(`The new health is: {health:get()}`)
 end)
 ```
-
-Since `.Changed` callback also passes in the new state of the `Value`,
-we don't need to say `health:get()`.
 
 ---
 
 ## Usage
 
-Weave Values come with a `.Changed` `RBXEventSignal` that fires when the value changes.
+For some `Value<T>` `.Changed` is called with `(newValue: T) -> void`
 
-To listen to value changes simply use `:Connect()`:
+Or you can just use `health:get()`.
 
 ```Lua
-health.Changed:Connect(function()
-	print("The new value is: ", health:get())
+local health = Value.new(100)
+
+health.Changed:Connect(function(newHealth: number)
+	print(`The new health is: {newHealth}`)
 end)
 ```
 
-When you're done with the handler, it's important to disconnect it. The
-`:onChange()` method returns a function you can call to disconnect your handler:
+And don't forget to disconnect
 
 ```Lua
-local disconnect = health.Changed:Connect(function()
+local connection = health.Changed:Connect(function()
 	print("The new value is: ", health:get())
 end)
 
--- disconnect the above handler after 5 seconds
+-- Disconnect the above handler after 5 seconds
 task.wait(5)
-disconnect()
+connection:Disconnect()
 ```
 
-??? question "Why is disconnecting so important?"
-While an observer has at least one active handler, it will hold the watched
-object in memory forcibly. This is done to make sure that changes aren't
-missed.
-
-    Disconnecting your handlers tells Fusion you don't need to track changes
-    any more, which allows it to clean up the observer and the watched object.
-
----
 
 ## What Counts As A Change?
 

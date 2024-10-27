@@ -59,8 +59,10 @@ nav:
           - Changed: tutorials/fundamentals/changed.md
           - Computed: tutorials/fundamentals/computeds.md
           - Destructors: tutorials/fundamentals/destructors.md
-      - Networking:
-          - ServerValue: tutorials/networking/servervalue.md
+      - Replication:
+          - NetworkValue: tutorials/networking/networkvalue.md
+          - PlayerValue: tutorials/networking/playervalue.md
+          - ProfileValue: tutorials/networking/profilevalue.md
       - Instances:
           - Hydration: tutorials/instances/hydration.md
           - New Instances: tutorials/instances/new-instances.md

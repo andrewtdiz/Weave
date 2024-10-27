@@ -1,5 +1,5 @@
-Destructors are functions that clean up values passed to them. Computed objects
-use them to clean up old values when they're no longer needed.
+Destructors are functions that clean up values passed to them. 
+Computed objects use them to clean up old values when they're no longer needed.
 
 ```Lua
 local function callDestroy(x)
@@ -66,7 +66,7 @@ className:set("TextLabel")
 ```
 
 This is where destructors help out. You can provide a second function, which
-Fusion will call to destroy the values we generate:
+Weave will call to destroy the values we generate:
 
 ```Lua
 local function callDestroy(x)
@@ -100,11 +100,11 @@ Most of the time, you'll want to either:
 1. destroy/disconnect/clean up the values you generate...
 2. ...or leave them alone and do nothing.
 
-Fusion provides default destructors for both of these situations.
+Weave provides default destructors for both of these situations.
 
 ### Cleanup
 
-`Fusion.cleanup` is a function which tries to cleans up whatever you pass to it:
+`Weave.cleanup` is a function which tries to cleans up whatever you pass to it:
 
 - given an instance, it is `:Destroy()`ed
 - given an event connection, it is `:Disconnect()`ed
@@ -117,12 +117,12 @@ You can use this when generating unmanaged values:
 ```Lua
 local instance = Computed.new(function()
     return Instance.new(className:get())
-end, Fusion.cleanup) 
+end, Weave.cleanup) 
 ```
 
 ### Do Nothing
 
-`Fusion.doNothing` is an empty function. It does nothing.
+`Weave.doNothing` is an empty function. It does nothing.
 
 You can use this when passing 'through' unmanaged values that you don't control.
 It makes it clear that your code is supposed to leave the values alone:
@@ -130,5 +130,5 @@ It makes it clear that your code is supposed to leave the values alone:
 ```Lua
 local instance = Computed.new(function()
     return workspace:FindFirstChild(name:get())
-end, Fusion.doNothing)
+end, Weave.doNothing)
 ```

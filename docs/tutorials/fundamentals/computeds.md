@@ -21,7 +21,7 @@ print(finalCoins:get()) --> 8
 
 ## Usage
 
-To use `Computed` in your code, you first need to import it from the Fusion
+To use `Computed` in your code, you first need to import it from the Weave
 module, so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
@@ -45,7 +45,7 @@ get the computed's current value using `:get()`:
 print(hardMaths:get()) --> 2
 ```
 
-By default, a computed only runs its callback once. However, Fusion can detect
+By default, a computed only runs its callback once. However, Weave can detect
 any time you call `:get()` on a state object inside the callback. If any of them
 change value, the callback will be re-run and the value will update:
 

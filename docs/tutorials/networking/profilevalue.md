@@ -1,69 +1,66 @@
-```Lua
-local health = Value.new(100)
+Values are objects which store single values. 
+You can read from them with `:get()`, and write to them with `:set()`.
 
-print(health:get()) --> 100
-health:set(25)
-print(health:get()) --> 25
+```Lua
+-- ProfileStore/ProfileService
+{
+	Cash = 0,
+}
+
+-- Server
+local inventory = ProfileValue.new("Inventory")
+
+local function addCash(player: Player, amount: number)
+	local currentCash = inventory:getFor(player)
+	
+	local newCash = currentCash + amount
+
+	inventory:setFor(player, newCash) --> Updates value on the server AND sets Profile
+end
+
+addCash(5)
+
 ```
 
-Values can hold any Lua value.
-
-Use `:get()` to see the current value
-And change it with `:set()`.
-
----
+-----
 
 ## Usage
 
-To use `Value` in your code, import it from the Weave module.
+To use `ProfileValue` in your code, you first need to import it from the Weave module,
+so that you can refer to it by name:
 
 ```Lua linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Value = Weave.Value
 ```
 
-To create a new value, use `Value.new`:
+To create a new value, call the `Value` function:
 
 ```Lua
-local health = Value.new()
+local health = Value.new() -- this will create and return a new Value object
 ```
 
 By default, new `Value` objects store `nil`. If you want the `Value` object to
 start with a different value, you can provide one:
 
 ```Lua
-local health = Value.new(100)
+local health = Value.new(100) -- the Value will initially store a value of 100
 ```
+
+You can retrieve the currently stored value at any time with `:get()`:
 
 ```Lua
 print(health:get()) --> 100
 ```
+
+You can also set the stored value at any time with `:set()`:
 
 ```Lua
 health:set(25)
 print(health:get()) --> 25
 ```
 
----
-
-## Attribute Values
-
-```Lua
-local part = Instance.new("Part")
-
-part:SetAttribute("count", 0)
-
-local count = AttributeValue.new(part, "count")
-
-print(count:get()) -- 0
-
-count:set(1)
-
-print(part:GetAttribute("count")) -- 1
-print(count:get()) -- 1
-```
-
----
+-----
 
 ## Why Objects?
 
@@ -82,7 +79,7 @@ Your UIs are usually driven by a few internal variables. When those variables
 change, you want your UI to reflect those changes.
 
 Unfortunately, there's no way to listen for those changes in Lua. When you
-change those variables, it's normally _your_ responsibility to figure out what
+change those variables, it's normally *your* responsibility to figure out what
 needs to update, and to send out those updates.
 
 Over time, we've come up with many methods of dealing with this inconvenience.
@@ -113,12 +110,12 @@ get notified when someone sets it to a new value.
 To make this work, we need to fundamentally extend what variables can do. In
 particular, we need two additional features:
 
-- We need to save a list of _dependents_ - other places currently using our
-  variable. This is so we know who to notify when the value changes.
+- We need to save a list of *dependents* - other places currently using our
+variable. This is so we know who to notify when the value changes.
 - We need to run some code when the variable is set to a new value. If we can
-  do that, then we can go through the list and notify everyone.
+do that, then we can go through the list and notify everyone.
 
-To solve this, Weave introduces the idea of a 'state object'. These are objects
+To solve this, Fusion introduces the idea of a 'state object'. These are objects
 that represent a single value, which you can `:get()` at any time. They also
 keep a list of dependents; when the object's value changes, it can notify
 everyone so they can respond to the change.
