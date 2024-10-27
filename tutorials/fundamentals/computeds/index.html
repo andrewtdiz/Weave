@@ -631,6 +631,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -653,7 +657,7 @@
             
   
   <span class="md-ellipsis">
-    Networking
+    Replication
   </span>
   
 
@@ -663,7 +667,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
-            Networking
+            Replication
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -674,11 +678,53 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/servervalue/" class="md-nav__link">
+      <a href="../../networking/networkvalue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    ServerValue
+    NetworkValue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/playervalue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PlayerValue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/profilevalue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProfileValue
   </span>
   
 
@@ -1399,22 +1445,22 @@
 <p>Computeds are state objects that can process values from other state objects.
 You pass in a callback which calculates the final value. Then, you can use
 <code>:get()</code> to retrieve that value at any time.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">numCoins</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-<span class="kd">local</span> <span class="n">itemPrice</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">numCoins</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">itemPrice</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="kd">local</span> <span class="n">finalCoins</span> <span class="o">=</span> <span class="n">Computed</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-    <span class="kr">return</span> <span class="n">numCoins</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="o">-</span> <span class="n">itemPrice</span><span class="p">:</span><span class="n">get</span><span class="p">()</span>
+    <span class="kr">return</span> <span class="n">numCoins</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="o">+</span> <span class="n">itemPrice</span><span class="p">:</span><span class="n">get</span><span class="p">()</span>
 <span class="kr">end</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">finalCoins</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 40</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">finalCoins</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 4</span>
 
-<span class="n">numCoins</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">itemPrice</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">finalCoins</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 10</span>
+<span class="n">numCoins</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">itemPrice</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">finalCoins</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 8</span>
 </code></pre></div>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use <code>Computed</code> in your code, you first need to import it from the Fusion
+<p>To use <code>Computed</code> in your code, you first need to import it from the Weave
 module, so that you can refer to it by name:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span> <span class="n">Weave</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">ReplicatedStorage</span><span class="p">.</span><span class="n">Weave</span><span class="p">)</span>
@@ -1430,7 +1476,7 @@ callback returning a single value:</p>
 get the computed's current value using <code>:get()</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">hardMaths</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 2</span>
 </code></pre></div>
-<p>By default, a computed only runs its callback once. However, Fusion can detect
+<p>By default, a computed only runs its callback once. However, Weave can detect
 any time you call <code>:get()</code> on a state object inside the callback. If any of them
 change value, the callback will be re-run and the value will update:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">number</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>

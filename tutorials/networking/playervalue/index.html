@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://andrewtdiz.github.com/Weave/tutorials/networking/servervalue/">
+        <link rel="canonical" href="https://andrewtdiz.github.com/Weave/tutorials/networking/playervalue/">
       
       
-        <link rel="prev" href="../../fundamentals/destructors/">
+        <link rel="prev" href="../networkvalue/">
       
       
-        <link rel="next" href="../../instances/hydration/">
+        <link rel="next" href="../profilevalue/">
       
       
       <link rel="icon" href="../../../assets/logo-dark.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>ServerValue - Weave</title>
+        <title>PlayerValue - Weave</title>
       
     
     
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ServerValue
+              PlayerValue
             
           </span>
         </div>
@@ -577,6 +577,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -599,7 +603,7 @@
             
   
   <span class="md-ellipsis">
-    Networking
+    Replication
   </span>
   
 
@@ -609,9 +613,30 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
-            Networking
+            Replication
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networkvalue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NetworkValue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -631,7 +656,7 @@
           
   
   <span class="md-ellipsis">
-    ServerValue
+    PlayerValue
   </span>
   
 
@@ -642,7 +667,7 @@
         
   
   <span class="md-ellipsis">
-    ServerValue
+    PlayerValue
   </span>
   
 
@@ -716,6 +741,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profilevalue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProfileValue
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1458,13 +1504,13 @@
   as the main headline.
 -->
 
-  <h1>ServerValue</h1>
+  <h1>PlayerValue</h1>
 
 
 <!-- Markdown content -->
-<p>Values are objects which store single values. You can read from them with
-<code>:get()</code>, and write to them with <code>:set()</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">blueScore</span> <span class="o">=</span> <span class="n">ServerValue</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<p>Values are objects which store single values. 
+You can read from them with <code>:get()</code>, and write to them with <code>:set()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">blueScore</span> <span class="o">=</span> <span class="n">PlayerValue</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">blueScore</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 0</span>
 <span class="n">blueScore</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -1472,7 +1518,7 @@
 </code></pre></div>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use <code>ServerValue</code> in your code, you first need to import it from the Weave module,
+<p>To use <code>PlayerValue</code> in your code, you first need to import it from the Weave module,
 so that you can refer to it by name:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span> <span class="n">Weave</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">ReplicatedStorage</span><span class="p">.</span><span class="n">Weave</span><span class="p">)</span>
@@ -1595,9 +1641,9 @@ exclusive to state objects.</p>
 		
 		  
 		  <a
-			href="../../fundamentals/destructors/"
+			href="../networkvalue/"
 			class="md-footer__link md-footer__link--prev"
-			aria-label="Previous: Destructors"
+			aria-label="Previous: NetworkValue"
 			rel="prev"
 		  >
 			<div class="md-footer__button md-icon">
@@ -1608,7 +1654,7 @@ exclusive to state objects.</p>
 				<span class="md-footer__direction">
 				  Previous
 				</span>
-				Destructors
+				NetworkValue
 			  </div>
 			</div>
 		  </a>
@@ -1618,9 +1664,9 @@ exclusive to state objects.</p>
 		
 		  
 		  <a
-			href="../../instances/hydration/"
+			href="../profilevalue/"
 			class="md-footer__link md-footer__link--next"
-			aria-label="Next: Hydration"
+			aria-label="Next: ProfileValue"
 			rel="next"
 		  >
 			<div class="md-footer__title">
@@ -1628,7 +1674,7 @@ exclusive to state objects.</p>
 				<span class="md-footer__direction">
 				  Next
 				</span>
-				Hydration
+				ProfileValue
 			  </div>
 			</div>
 			<div class="md-footer__button md-icon">

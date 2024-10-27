@@ -269,7 +269,15 @@
          <lastmod>2024-10-27</lastmod>
     </url>
     <url>
-         <loc>https://andrewtdiz.github.com/Weave/tutorials/networking/servervalue/</loc>
+         <loc>https://andrewtdiz.github.com/Weave/tutorials/networking/networkvalue/</loc>
+         <lastmod>2024-10-27</lastmod>
+    </url>
+    <url>
+         <loc>https://andrewtdiz.github.com/Weave/tutorials/networking/playervalue/</loc>
+         <lastmod>2024-10-27</lastmod>
+    </url>
+    <url>
+         <loc>https://andrewtdiz.github.com/Weave/tutorials/networking/profilevalue/</loc>
          <lastmod>2024-10-27</lastmod>
     </url>
 </urlset>

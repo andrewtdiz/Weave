@@ -532,6 +532,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#attribute-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#why-objects" class="md-nav__link">
     <span class="md-ellipsis">
       Why Objects?
@@ -664,6 +673,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -686,7 +699,7 @@
             
   
   <span class="md-ellipsis">
-    Networking
+    Replication
   </span>
   
 
@@ -696,7 +709,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
-            Networking
+            Replication
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -707,11 +720,53 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/servervalue/" class="md-nav__link">
+      <a href="../../networking/networkvalue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    ServerValue
+    NetworkValue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/playervalue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PlayerValue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/profilevalue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProfileValue
   </span>
   
 
@@ -1396,6 +1451,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#attribute-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#why-objects" class="md-nav__link">
     <span class="md-ellipsis">
       Why Objects?
@@ -1462,35 +1526,48 @@
 
 
 <!-- Markdown content -->
-<p>Values are objects which store single values. You can read from them with
-<code>:get()</code>, and write to them with <code>:set()</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">health</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">health</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 100</span>
 <span class="n">health</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">health</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 25</span>
 </code></pre></div>
+<p>Values can hold any Lua value.</p>
+<p>Use <code>:get()</code> to see the current value
+And change it with <code>:set()</code>.</p>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use <code>Value</code> in your code, you first need to import it from the Weave module,
-so that you can refer to it by name:</p>
+<p>To use <code>Value</code> in your code, import it from the Weave module.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span> <span class="n">Weave</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">ReplicatedStorage</span><span class="p">.</span><span class="n">Weave</span><span class="p">)</span>
 <span class="hll"><span class="kd">local</span> <span class="n">Value</span> <span class="o">=</span> <span class="n">Weave</span><span class="p">.</span><span class="n">Value</span>
 </span></code></pre></div></td></tr></table></div>
-<p>To create a new value, call the <code>Value</code> function:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">health</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">()</span> <span class="c1">-- this will create and return a new Value object</span>
+<p>To create a new value, use <code>Value.new</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">health</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
 </code></pre></div>
 <p>By default, new <code>Value</code> objects store <code>nil</code>. If you want the <code>Value</code> object to
 start with a different value, you can provide one:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">health</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1">-- the Value will initially store a value of 100</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">health</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>
-<p>You can retrieve the currently stored value at any time with <code>:get()</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">health</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 100</span>
 </code></pre></div>
-<p>You can also set the stored value at any time with <code>:set()</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">health</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">health</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">--&gt; 25</span>
+</code></pre></div>
+<hr />
+<h2 id="attribute-values">Attribute Values<a class="headerlink" href="#attribute-values" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">part</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Part&quot;</span><span class="p">)</span>
+
+<span class="n">part</span><span class="p">:</span><span class="n">SetAttribute</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="n">AttributeValue</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">-- 0</span>
+
+<span class="n">count</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="p">:</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">))</span> <span class="c1">-- 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">:</span><span class="n">get</span><span class="p">())</span> <span class="c1">-- 1</span>
 </code></pre></div>
 <hr />
 <h2 id="why-objects">Why Objects?<a class="headerlink" href="#why-objects" title="Permanent link">&para;</a></h2>
@@ -1530,9 +1607,9 @@ get notified when someone sets it to a new value.</p>
 particular, we need two additional features:</p>
 <ul>
 <li>We need to save a list of <em>dependents</em> - other places currently using our
-variable. This is so we know who to notify when the value changes.</li>
+  variable. This is so we know who to notify when the value changes.</li>
 <li>We need to run some code when the variable is set to a new value. If we can
-do that, then we can go through the list and notify everyone.</li>
+  do that, then we can go through the list and notify everyone.</li>
 </ul>
 <p>To solve this, Weave introduces the idea of a 'state object'. These are objects
 that represent a single value, which you can <code>:get()</code> at any time. They also
