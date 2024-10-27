@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-you-need-to-know" class="md-skip">
+        <a href="#why-fusion" class="md-skip">
           Skip to content
         </a>
       
@@ -1344,11 +1344,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-you-need-to-know" class="md-nav__link">
+  <a href="#why-fusion" class="md-nav__link">
     <span class="md-ellipsis">
-      What You Need To Know
+      Why Fusion?
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Why Fusion?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-better-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Better Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharing Variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1430,23 +1463,71 @@
 <!-- Markdown content -->
 <p>Welcome to the Weave tutorial section! Here, you'll learn how to build great
 interfaces with Weave, even if you're a complete newcomer to the library.</p>
-<h2 id="what-you-need-to-know">What You Need To Know<a class="headerlink" href="#what-you-need-to-know" title="Permanent link">&para;</a></h2>
-<p>These tutorials assume:</p>
+<h2 id="why-fusion">Why Fusion?<a class="headerlink" href="#why-fusion" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Permanent link">&para;</a></h3>
+<p>Imagine some state in your head. Think about what it looks like, and think about
+the different variables it's showing to you.</p>
+<figure>
+<p><img alt="An example of a game's UI, with some variables labelled and linked to parts of the UI." src="Game-UI-Variables-Light.svg#only-light" />
+<img alt="An example of a game's UI, with some variables labelled and linked to parts of the UI." src="Game-UI-Variables-Dark.svg#only-dark" /></p>
+<figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
+</figure>
+<p>When variables change, you want your game to reflect those changes.</p>
+<p>Unfortunately, there's no way to listen for those changes in Lua. </p>
+<p>You may try something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ammo</span> <span class="o">=</span> <span class="mi">36</span>
+<span class="kd">local</span> <span class="n">isOutOfAmmo</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="kd">local</span> <span class="kr">function</span> <span class="nf">updateHUD</span><span class="p">()</span>
+    <span class="n">PlayerGui</span><span class="p">.</span><span class="n">HUD</span><span class="p">.</span><span class="n">WeaponFrame</span><span class="p">.</span><span class="n">AmmoText</span><span class="p">.</span><span class="n">Text</span> <span class="o">=</span> <span class="n">ammo</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span> <span class="kr">function</span> <span class="nf">updateOutOfAmmoCheck</span><span class="p">()</span>
+    <span class="n">isOutOfAmmo</span> <span class="o">=</span> <span class="n">ammo</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span> <span class="kr">function</span> <span class="nf">setAmmo</span><span class="p">(</span><span class="n">newAmmo</span><span class="p">)</span>
+    <span class="n">ammo</span> <span class="o">=</span> <span class="n">newAmmo</span>
+    <span class="c1">-- you need to send out updates to every piece of code using `ammo` here</span>
+    <span class="n">updateHUD</span><span class="p">()</span>
+    <span class="n">updateOutOfAmmoCheck</span><span class="p">()</span>
+    <span class="n">sendAmmoToServer</span><span class="p">()</span>
+<span class="kr">end</span>
+</code></pre></div>
+<p>But often gets messy.</p>
 <ul>
-<li>You're comfortable with Roblox and the Luau scripting language.<ul>
-<li>These tutorials aren't an introduction to scripting! If you'd like to
-  learn, check out the <a href="https://developer.roblox.com/">Roblox DevHub</a>.</li>
+<li>How do we share these updates across scripts?</li>
+<li>What if there's another piece of code using <code>ammo</code> that we've forgotten to update here?</li>
 </ul>
-</li>
-<li>You're familiar with how UI works on Roblox.<ul>
-<li>You don't have to be a designer - knowing about UI instances, events
-and data types like <code>UDim2</code> and <code>Color3</code> will be good enough.</li>
-</ul>
-</li>
-</ul>
-<p>Of course, based on your existing knowledge, you may find some tutorials easier
-or harder. Weave's built to be easy to learn, but it may still take a bit of
-time to absorb some concepts, so don't be discouraged <img alt="🙂" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f642.svg" title=":slightly_smiling_face:" /></p>
+<h3 id="building-better-variables">Building Better Variables<a class="headerlink" href="#building-better-variables" title="Permanent link">&para;</a></h3>
+<p>What if we could just change value and it updates everywhere <em>automatically</em>, like magic.</p>
+<p>That's exactly what Weave does.</p>
+<p>Store state in a <code>Value</code> change the object's value using <code>:set()</code>. Then, when it changes, 
+it will notify anyone referencing it.</p>
+<p>Hence the motto, <em>set it and forget it</em></p>
+<h3 id="sharing-variables">Sharing Variables<a class="headerlink" href="#sharing-variables" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">Weapons</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ammo</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">36</span><span class="p">),</span>
+    <span class="n">maxAmmo</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">67</span><span class="p">),</span>
+
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">59</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kr">return</span> <span class="n">Weapons</span>
+
+<span class="c1">-- HUD_GUI.lua</span>
+<span class="kd">local</span> <span class="n">Weapons</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">StarterPlayerScripts</span><span class="p">.</span><span class="n">Weapons</span><span class="p">)</span>
+
+<span class="n">Fusion</span><span class="p">.</span><span class="n">Hydrate</span><span class="p">(</span><span class="n">AmmoText</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Text</span> <span class="o">=</span> <span class="n">Weapon</span><span class="p">.</span><span class="n">ammo</span>
+<span class="p">}</span>
+
+<span class="c1">-- AmmoHandler.lua</span>
+<span class="kd">local</span> <span class="n">Weapons</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">StarterPlayerScripts</span><span class="p">.</span><span class="n">Weapons</span><span class="p">)</span>
+
+<span class="kd">local</span> <span class="n">isOutOfAmmo</span> <span class="o">=</span> <span class="n">Fusion</span><span class="p">.</span><span class="n">Computed</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+    <span class="kr">return</span> <span class="n">Weapons</span><span class="p">.</span><span class="n">ammo</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="installing-weave">Installing Weave<a class="headerlink" href="#installing-weave" title="Permanent link">&para;</a></h2>
 <p>Weave is distributed as a single module script. Before starting, you'll need
