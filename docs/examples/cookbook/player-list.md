@@ -1,4 +1,4 @@
-```Lua linenums="1"
+```luau linenums="1"
 -- [Fusion imports omitted for clarity]
 
 type Set<T> = {[T]: true}
@@ -17,7 +17,7 @@ local function PlayerListRow(props: PlayerListRowProps)
 
 		Size = UDim2.new(1, 0, 0, 25),
 		BackgroundTransparency = 1,
-		
+
 		Text = props.Player.DisplayName,
 		TextColor3 = Color3.new(1, 1, 1),
 		Font = Enum.Font.GothamMedium,

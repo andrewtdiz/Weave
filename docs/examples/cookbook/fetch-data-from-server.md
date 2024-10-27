@@ -1,4 +1,4 @@
-```Lua linenums="1"
+```luau linenums="1"
 -- [Fusion imports omitted for clarity]
 
 -- This code assumes that there is a RemoteFunction at this location, which

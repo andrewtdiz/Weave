@@ -18,7 +18,7 @@ the reactive graph.
 Most often used with [state objects](../stateobject), though the reactive graph
 does not require objects to store state.
 
-```Lua
+```luau
 {
 	dependencySet: Set<Dependency>,
     update: (self) -> boolean
@@ -49,7 +49,7 @@ dependencies, this method should return true. Otherwise, to block further
 updates from occuring (for example, because this object did not change value),
 this method should return false.
 
-```Lua
+```luau
 () -> boolean
 ```
 
@@ -57,7 +57,7 @@ this method should return false.
 
 ## Example Usage
 
-```Lua
+```luau
 -- these are examples of objects which are dependents
 local computed: Dependent = Computed(function()
 	return "foo"

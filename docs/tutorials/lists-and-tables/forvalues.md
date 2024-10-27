@@ -4,7 +4,7 @@ another table.
 The input table can be a state object, and the output values can use state
 objects.
 
-```Lua
+```luau
 local numbers = {1, 2, 3, 4, 5}
 local multiplier = Value.new(2)
 
@@ -25,7 +25,7 @@ print(multiplied:get()) --> {10, 20, 30, 40, 50}
 To use `ForValues` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local ForValues = Weave.ForValues
 ```
@@ -35,7 +35,7 @@ local ForValues = Weave.ForValues
 To create a new `ForValues` object, call the constructor with an input table and
 a processor function:
 
-```Lua
+```luau
 local numbers = {1, 2, 3, 4, 5}
 local doubled = ForValues(numbers, function(num)
 	return num * 2
@@ -45,7 +45,7 @@ end)
 This will generate a new table of values, where each value is passed through the
 processor function. You can get the table using the `:get()` method:
 
-```Lua hl_lines="6"
+```luau hl_lines="6"
 local numbers = {1, 2, 3, 4, 5}
 local doubled = ForValues(numbers, function(num)
 	return num * 2
@@ -59,7 +59,7 @@ print(doubled:get()) --> {2, 4, 6, 8, 10}
 The input table can be provided as a state object instead, and the output table
 will update as the input table is changed:
 
-```Lua
+```luau
 local numbers = Value.new({})
 local doubled = ForValues(numbers, function(num)
 	return num * 2
@@ -75,7 +75,7 @@ print(doubled:get()) --> {10, 30, 50}
 Additionally, you can use state objects in your calculations, just like a
 computed:
 
-```Lua
+```luau
 local numbers = {1, 2, 3, 4, 5}
 local factor = Value.new(2)
 local multiplied = ForValues(numbers, function(num)
@@ -93,7 +93,7 @@ print(multiplied:get()) --> {10, 20, 30, 40, 50}
 Similar to computeds, if you want to run your own code when values are removed,
 you can pass in a second 'destructor' function:
 
-```Lua hl_lines="9-13"
+```luau hl_lines="9-13"
 local names = Value.new({"Jodi", "Amber", "Umair"})
 local textLabels = ForValues(names,
 	-- processor
@@ -117,7 +117,7 @@ names:set({"Amber", "Umair"}) --> Destructor got text label: Jodi
 When using a custom destructor, you can send one extra return value to your
 destructor without including it in the output table:
 
-```Lua hl_lines="11 14"
+```luau hl_lines="11 14"
 local names = Value.new({"Jodi", "Amber", "Umair"})
 local textLabels = ForValues(names,
 	-- processor
@@ -154,7 +154,7 @@ performance.
 
 For example, let's say we're measuring the lengths of an array of words:
 
-```Lua
+```luau
 local words = Value.new({"Orange", "Red", "Magenta"})
 local lengths = ForValues(words, function(word)
 	return #word

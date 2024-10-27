@@ -15,7 +15,7 @@
 The standard type signature for UI components. They accept a property table and
 return a [child type](./child.md).
 
-```Lua
+```luau
 (props: {[any]: any}) -> Child
 ```
 
@@ -23,7 +23,7 @@ return a [child type](./child.md).
 
 ## Example Usage
 
-```Lua
+```luau
 -- create a Button component
 local function Button(props)
     return New "TextButton" {

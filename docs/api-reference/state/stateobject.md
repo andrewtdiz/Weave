@@ -15,7 +15,7 @@
 A dependency that provides a single stateful value; the dependency updates when
 the value changes state.
 
-```Lua
+```luau
 Dependency & {
 	type: "State",
 	kind: string,
@@ -45,7 +45,7 @@ Returns the current value stored in the state object.
 If dependencies are being captured (e.g. inside a computed callback), this state
 object will also be added as a dependency.
 
-```Lua
+```luau
 (asDependency: boolean?) -> T
 ```
 
@@ -53,7 +53,7 @@ object will also be added as a dependency.
 
 ## Example Usage
 
-```Lua
+```luau
 -- these are examples of objects which are state objects
 local computed: StateObject = Computed(function()
 	return "foo"

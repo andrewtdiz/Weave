@@ -2,7 +2,7 @@ Fusion provides a `New` function when you're hydrating newly-made instances. It
 creates a new instance, applies some default properties, then hydrates it with
 a property table.
 
-```Lua
+```luau
 local message = Value.new("Hello there!")
 
 local ui = New "TextLabel" {
@@ -27,7 +27,7 @@ print(ui.Text) --> Goodbye friend!
 To use `New` in your code, you first need to import it from the Fusion module,
 so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local New = Weave.New
 ```
@@ -35,7 +35,7 @@ local New = Weave.New
 The `New` function is called in two parts. First, call the function with the
 type of instance, then pass in the property table:
 
-```Lua
+```luau
 local instance = New("Part")({
 	Parent = workspace,
 	Color = Color3.new(1, 0, 0)
@@ -45,7 +45,7 @@ local instance = New("Part")({
 If you're using curly braces `{}` for your properties, and quotes `'' ""` for
 your class type, the extra parentheses `()` are optional:
 
-```Lua
+```luau
 -- This only works when you're using curly braces {} and quotes '' ""!
 local instance = New "Part" {
 	Parent = workspace,

@@ -16,7 +16,7 @@ Given an instance, returns a [component](./component.md) which modifies that
 instance. The property table may specify properties to set on the instance, or
 include [special keys](./specialkey.md) for more advanced operations.
 
-```Lua
+```luau
 (target: Instance) -> Component
 ```
 
@@ -37,7 +37,7 @@ property table, then returns the target instance.
 
 ## Example Usage
 
-```Lua
+```luau
 local myButton: TextButton = Hydrate(PlayerGui.ScreenGui.TextButton) {
 	Position = UDim2.fromScale(.5, .5),
 	AnchorPoint = Vector2.new(.5, .5),
@@ -69,7 +69,7 @@ the instance which should be set.
 String keys are treated as property declarations - values passed in will be set
 upon the instance:
 
-```Lua
+```luau
 local example = Hydrate(workspace.Part) {
 	-- sets the Position property
 	Position = Vector3.new(1, 2, 3)
@@ -80,7 +80,7 @@ Passing a state object to a string key will bind the property value; when the
 value of the object changes, the property will update to match on the next
 resumption step:
 
-```Lua
+```luau
 local myName = State("Bob")
 
 local example = Hydrate(workspace.Part) {

@@ -18,7 +18,7 @@ reactive graph.
 Most often used with [state objects](../stateobject), though the reactive graph
 does not require objects to store state.
 
-```Lua
+```luau
 {
 	dependentSet: Set<Dependent>
 }
@@ -28,7 +28,7 @@ does not require objects to store state.
 
 ## Example Usage
 
-```Lua
+```luau
 -- these are examples of objects which are dependencies
 local value: Dependency = Value(2)
 local computed: Dependency = Computed(function()

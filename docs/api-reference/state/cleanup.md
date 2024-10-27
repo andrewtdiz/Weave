@@ -14,7 +14,7 @@
 
 Attempts to destroy all destructible objects passed to it.
 
-```Lua
+```luau
 (...any) -> ()
 ```
 
@@ -28,7 +28,7 @@ Attempts to destroy all destructible objects passed to it.
 
 ## Example Usage
 
-```Lua
+```luau
 Fusion.cleanup(
 	workspace.Part1,
 	RunService.RenderStepped:Connect(print),

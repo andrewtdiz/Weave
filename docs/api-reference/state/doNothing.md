@@ -15,7 +15,7 @@
 No-op function - does nothing at all, and returns nothing at all. Intended for
 use as a destructor when no destruction is needed.
 
-```Lua
+```luau
 (...any) -> ()
 ```
 
@@ -29,7 +29,7 @@ use as a destructor when no destruction is needed.
 
 ## Example Usage
 
-```Lua
+```luau
 local foo = Computed(function()
 	return workspace.Part
 end, Weave.doNothing)

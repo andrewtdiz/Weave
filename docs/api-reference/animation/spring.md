@@ -17,7 +17,7 @@ Follows the value of another state object, as if linked by a damped spring.
 If the state object is not [animatable](./animatable.md), the spring will
 just snap to the goal value.
 
-```Lua
+```luau
 (
 	goal: StateObject<T>,
 	speed: CanBeState<number>?,
@@ -51,7 +51,7 @@ Returns the current value stored in the state object.
 If dependencies are being captured (e.g. inside a computed callback), this state
 object will also be added as a dependency.
 
-```Lua
+```luau
 (asDependency: boolean?) -> T
 ```
 
@@ -74,7 +74,7 @@ velocity of the spring.
 If the given value doesn't have the same type as the spring's current value,
 the position will snap instantly to the new value.
 
-```Lua
+```luau
 (newPosition: T) -> ()
 ```
 
@@ -96,7 +96,7 @@ on the position of the spring.
 If the given value doesn't have the same type as the spring's current value,
 the velocity will snap instantly to the new value.
 
-```Lua
+```luau
 (newVelocity: T) -> ()
 ```
 
@@ -118,7 +118,7 @@ on the position of the spring.
 If the given value doesn't have the same type as the spring's current value,
 the velocity will snap instantly to the new value.
 
-```Lua
+```luau
 (deltaVelocity: T) -> ()
 ```
 
@@ -130,7 +130,7 @@ the velocity will snap instantly to the new value.
 
 ## Example Usage
 
-```Lua
+```luau
 local position = Value(UDim2.fromOffset(25, 50))
 local smoothPosition = Spring(position, 25, 0.6)
 

@@ -11,7 +11,7 @@ This can be used for basic, predictable animations.
 To use `Tween` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Tween = Weave.Tween
 ```
@@ -19,7 +19,7 @@ local Tween = Weave.Tween
 To create a new tween object, call the `Tween` function and pass it a state
 object to move towards:
 
-```Lua
+```luau
 local goal = Value.new(0)
 local animated = Tween(target)
 ```
@@ -27,7 +27,7 @@ local animated = Tween(target)
 The tween will smoothly follow the 'goal' state object over time. As with other
 state objects, you can `:get()` its value at any time:
 
-```Lua
+```luau
 print(animated:get()) --> 0.26425...
 ```
 
@@ -35,7 +35,7 @@ To configure how the tween moves, you can provide a TweenInfo to change the
 shape of the animation curve. It's optional, and it can be a state object if
 desired:
 
-```Lua
+```luau
 local goal = Value.new(0)
 local style = TweenInfo.new(0.5, Enum.EasingStyle.Quad)
 local animated = Tween(target, style)
@@ -45,7 +45,7 @@ You can use many different kinds of values with tweens, not just numbers.
 Vectors, CFrames, Color3s, UDim2s and other number-based types are supported;
 each number inside the type is animated individually.
 
-```Lua
+```luau
 local goalPosition = Value.new(UDim2.new(0.5, 0, 0, 0))
 local animated = Tween(target, TweenInfo.new(0.5, Enum.EasingStyle.Quad))
 ```

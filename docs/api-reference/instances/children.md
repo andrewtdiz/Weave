@@ -18,7 +18,7 @@ Allows parenting children to an instance, both statically and dynamically.
 
 ## Example Usage
 
-```Lua
+```luau
 local example = New "Folder" {
 	[Children] = New "StringValue" {
 		Value = "I'm parented to the Folder!"
@@ -39,7 +39,7 @@ A 'child' is defined (recursively) as:
 Since this definition is recursive, arrays and state objects can be nested; that
 is, the following code is valid:
 
-```Lua
+```luau
 local example = New "Folder" {
 	[Children] = {
 		{
@@ -57,7 +57,7 @@ This behaviour is especially useful when working with components - the following
 component can return multiple instances to be parented without disrupting the
 code next to it:
 
-```Lua
+```luau
 local function Component(props)
 	return {
 		New "TextLabel" {
@@ -91,7 +91,7 @@ it'll unparent the old children and parent the new children.
 As with bound properties, updates are deferred to the next render step, and
 so parenting won't occur right away.
 
-```Lua
+```luau
 local child1 = New "Folder" {
 	Name = "Child one"
 }

@@ -47,7 +47,7 @@ into parts easily.
 State objects are used to represent changeable or dynamic values in your
 program. You can peek at their value at any time.
 
-```Lua
+```luau
 -- For example, suppose this function returned a state object.
 local currentTimeObj = getCurrentTimeStateObject()
 
@@ -63,7 +63,7 @@ print(currentTimeObj:get()) --> 5.0
 You can write out your logic using Weave's built-in state objects.
 Here's the two basic ones, Value and Computed:
 
-```Lua
+```luau
 -- This creates a state object that you can set manually.
 -- You can change its value using myName:set().
 local myName = Value("Daniel")
@@ -78,7 +78,7 @@ end)
 To watch what a state object does, you can use an Observer.
 For example, you can run some code when an object changes value.
 
-```Lua
+```luau
 -- This observer watches for when the greeting changes.
 local myObserver = Observer(myGreeting)
 
@@ -106,7 +106,7 @@ you can easily integrate with your game scripts.
 Weave provides dedicated functions to create and modify instances. They allow
 you to easily configure your instance in one place.
 
-```Lua
+```luau
 -- This will create a red part in the workspace.
 local myPart = New "Part" {
 	Parent = workspace,
@@ -123,7 +123,7 @@ Hydrate(myPart) {
 They offer powerful features to keep all your instance code close together. For
 example, you can listen for events or add children.
 
-```Lua
+```luau
 -- This will create a rounded button.
 -- When you click it, it’ll greet you.
 local myButton = New "TextButton" {
@@ -140,7 +140,7 @@ local myButton = New "TextButton" {
 You can also plug state objects in directly. The instance updates as the state
 object changes value.
 
-```Lua
+```luau
 -- Creating a state object you can control...
 local message = Value("Hello!")
 
@@ -170,7 +170,7 @@ completely out of the box.
 Weave lets you use tweens or physically based springs to animate any value you
 want - not just instance properties.
 
-```Lua
+```luau
 -- This could be anything you want, as long as it's a state object.
 local health = Value(100)
 
@@ -185,7 +185,7 @@ local springHealth = Spring(health, 30, 0.9)
 Tween and Spring are state objects, just like anything else that changes in
 your program. That means it's easy to process them afterwards.
 
-```Lua
+```luau
 -- You can round the animated health to whole numbers.
 local wholeHealth = Computed(function()
 	return math.round(health:get())
@@ -202,7 +202,7 @@ local myText = New "TextLabel" {
 You can even configure your animations using state objects, too. This makes it
 easy to swap out animations or disable them when needed.
 
-```Lua
+```luau
 -- Define some tweening styles...
 local TWEEN_FAST = TweenInfo.new(0.5, Enum.EasingStyle.Elastic)
 local TWEEN_SLOW = TweenInfo.new(2, Enum.EasingStyle.Sine)

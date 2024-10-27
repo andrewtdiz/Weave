@@ -16,7 +16,7 @@ The standard interface for special keys that can be used in property tables for
 instance processing. Compatible with the [New](./new.md) and
 [Hydrate](./hydrate.md) functions.
 
-```Lua
+```luau
 {
     type: "SpecialKey",
     kind: string,
@@ -45,7 +45,7 @@ instance processing. Compatible with the [New](./new.md) and
 
 ## Example Usage
 
-```Lua
+```luau
 local Example = {}
 Example.type = "SpecialKey"
 Example.kind = "Example"

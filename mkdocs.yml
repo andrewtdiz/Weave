@@ -50,16 +50,25 @@ extra_css:
 extra_javascript:
   - assets/scripts/smooth-scroll.js
 
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
 nav:
   - Home: index.md
-  - Tutorials:
-      - Get Started: tutorials/index.md
+  - Getting Started:
+      - Installation: installation/index.md
+      - Why Weave?: tutorials/index.md
       - State Objects:
           - Value: tutorials/fundamentals/values.md
-          - Changed: tutorials/fundamentals/changed.md
           - Computed: tutorials/fundamentals/computeds.md
           - Destructors: tutorials/fundamentals/destructors.md
-      - Replication:
+      - Networking:
           - NetworkValue: tutorials/networking/networkvalue.md
           - PlayerValue: tutorials/networking/playervalue.md
           - ProfileValue: tutorials/networking/profilevalue.md

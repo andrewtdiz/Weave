@@ -14,7 +14,7 @@
 
 Stores a single value which can be updated at any time.
 
-```Lua
+```luau
 (
 	initialValue: T
 ) -> Value<T>
@@ -41,7 +41,7 @@ Returns the current value stored in the state object.
 If dependencies are being captured (e.g. inside a computed callback), this state
 object will also be added as a dependency.
 
-```Lua
+```luau
 (asDependency: boolean?) -> T
 ```
 
@@ -65,7 +65,7 @@ alteration is done.
 If the new value is the same as the old value, other state objects won't be
 updated.
 
-```Lua
+```luau
 (newValue: T) -> ()
 ```
 
@@ -97,7 +97,7 @@ change.
 
 ## Example Usage
 
-```Lua
+```luau
 local numCoins = Value(50) -- start off with 50 coins
 print(numCoins:get()) --> 50
 

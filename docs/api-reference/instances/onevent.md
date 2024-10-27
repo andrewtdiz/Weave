@@ -16,7 +16,7 @@ Given an event name, returns a [special key](./specialkey.md) which connects to
 events of that name. It should be used with a handler callback, which may accept
 arguments from the event.
 
-```Lua
+```luau
 (eventName: string) -> SpecialKey
 ```
 
@@ -38,7 +38,7 @@ with the event's arguments after every firing.
 
 ## Example Usage
 
-```Lua
+```luau
 New "TextButton" {
 	[OnEvent "Activated"] = function(...)
 		print("The button was clicked! Arguments:", ...)

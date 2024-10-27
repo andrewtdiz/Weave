@@ -2,7 +2,7 @@
 instance. Those keys let you connect functions to property changed events on the
 instance.
 
-```Lua
+```luau
 local input = New "TextBox" {
     [OnChange "Text"] = function(newText)
         print("You typed:", newText)
@@ -17,21 +17,21 @@ local input = New "TextBox" {
 To use `OnChange` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local OnChange = Weave.OnChange
 ```
 
 When you call `OnChange` with a property name, it will return a special key:
 
-```Lua
+```luau
 local key = OnEvent("Activated")
 ```
 
 When used in a property table, you can pass in a handler and it will be run when
 that property changes. The new value of the property is passed in:
 
-```Lua
+```luau
 local input = New "TextBox" {
     [OnChange("Text")] = function(newText)
         print("You typed:", newText)
@@ -42,7 +42,7 @@ local input = New "TextBox" {
 If you're using quotes `'' ""` for the event name, the extra parentheses `()`
 are optional:
 
-```Lua
+```luau
 local input = New "TextBox" {
     [OnChange "Text"] = function(newText)
         print("You typed:", newText)
@@ -55,7 +55,7 @@ local input = New "TextBox" {
     When passing a state object as a property, changes will only affect the property
     on the next frame:
 
-    ```Lua
+    ```luau
     local text = Value.new("Hello")
 
     local message = New "Message" {

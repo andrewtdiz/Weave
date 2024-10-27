@@ -14,7 +14,7 @@
 
 Processes a table from another state object by transforming its values only.
 
-```Lua
+```luau
 (
 	input: CanBeState<{[K]: VI}>,
 	valueProcessor: (VI, M) -> (VO, M),
@@ -48,7 +48,7 @@ Returns the current value stored in the state object.
 If dependencies are being captured (e.g. inside a computed callback), this state
 object will also be added as a dependency.
 
-```Lua
+```luau
 (asDependency: boolean?) -> {[K]: VO}
 ```
 
@@ -56,7 +56,7 @@ object will also be added as a dependency.
 
 ## Example Usage
 
-```Lua
+```luau
 local data = Value({
 	one = 1,
 	two = 2,
@@ -80,7 +80,7 @@ ForValues objects automatically detect dependencies used inside their callback
 each time their callback runs. This means, when you use a function like `:get()`
 on a state object, it will register that state object as a dependency:
 
-```Lua
+```luau
 local multiplier = Value(2)
 local data = Value({1, 2, 3, 4, 5})
 

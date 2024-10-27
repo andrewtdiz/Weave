@@ -3,7 +3,7 @@ another table.
 
 The input table can be a state object, and the output keys can use state objects.
 
-```Lua
+```luau
 local data = {Red = "foo", Blue = "bar"}
 local prefix = Value.new("Key_")
 
@@ -24,7 +24,7 @@ print(renamed:get()) --> {colourRed = "foo", colourBlue = "bar"}
 To use `ForKeys` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local ForKeys = Weave.ForKeys
 ```
@@ -34,7 +34,7 @@ local ForKeys = Weave.ForKeys
 To create a new `ForKeys` object, call the constructor with an input table and
 a processor function:
 
-```Lua
+```luau
 local data = {red = "foo", blue = "bar"}
 local renamed = ForKeys(data, function(key)
 	return string.upper(key)
@@ -44,7 +44,7 @@ end)
 This will generate a new table, where each key is replaced using the processor
 function. You can get the table using the `:get()` method:
 
-```Lua hl_lines="6"
+```luau hl_lines="6"
 local data = {red = "foo", blue = "bar"}
 local renamed = ForKeys(data, function(key)
 	return string.upper(key)
@@ -58,7 +58,7 @@ print(renamed:get()) --> {RED = "foo", BLUE = "bar"}
 The input table can be provided as a state object instead, and the output table
 will update as the input table is changed:
 
-```Lua
+```luau
 local playerSet = Value.new({})
 local userIdSet = ForKeys(playerSet, function(player)
 	return player.UserId
@@ -74,7 +74,7 @@ print(userIdSet:get()) --> {[33655127] = true, [2155311] = true}
 Additionally, you can use state objects in your calculations, just like a
 computed:
 
-```Lua
+```luau
 local playerSet = { [Players.boatbomber] = true, [Players.EgoMoose] = true }
 local prefix = Value.new("User_")
 local userIdSet = ForKeys(playerSet, function(player)
@@ -92,7 +92,7 @@ print(userIdSet:get()) --> {player33655127 = true, player2155311 = true}
 Similar to computeds, if you want to run your own code when values are removed,
 you can pass in a second 'destructor' function:
 
-```Lua hl_lines="15-19"
+```luau hl_lines="15-19"
 local eventSet = Value.new({
 	[RunService.RenderStepped] = true,
 	[RunService.Heartbeat] = true
@@ -122,7 +122,7 @@ eventSet:set({ [RunService.RenderStepped] = true }) --> Disconnecting the event!
 When using a custom destructor, you can send one extra return value to your
 destructor without including it in the output table:
 
-```Lua hl_lines="13 16"
+```luau hl_lines="13 16"
 local eventSet = Value.new({
 	[RunService.RenderStepped] = true,
 	[RunService.Heartbeat] = true
@@ -161,7 +161,7 @@ performance.
 
 For example, let's say we're converting an array to a dictionary:
 
-```Lua
+```luau
 local array = Value.new({"Fusion", "Knit", "Matter"})
 local dict = ForKeys(array, function(index)
 	return "Value" .. index
@@ -173,7 +173,7 @@ print(dict:get()) --> {Value1 = "Fusion", Value2 = "Knit", Value3 = "Matter"}
 Because `ForKeys` only operates on the keys, changing the values in the array
 doesn't affect the keys. Keys are only added or removed as needed:
 
-```Lua
+```luau
 local array = Value.new({"Fusion", "Knit", "Matter"})
 local dict = ForKeys(array, function(index)
 	return "Value" .. index

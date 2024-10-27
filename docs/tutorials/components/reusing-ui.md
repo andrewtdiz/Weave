@@ -6,7 +6,7 @@ These next few pages won't introduce new features of Fusion, but instead will
 focus on techniques for making your UI more modular, portable and easy to
 maintain.
 
------
+---
 
 ## Components
 
@@ -20,7 +20,7 @@ functions to organise your UI code, too.
 For example, consider this function, which generates a button based on some
 `props` the user passes in:
 
-```Lua
+```luau
 local function Button(props)
     return New "TextButton" {
         BackgroundColor3 = Color3.new(0, 0.25, 1),
@@ -40,7 +40,7 @@ end
 
 You can call this function later to generate as many buttons as you need:
 
-```Lua
+```luau
 -- this is just a regular Lua function call!
 local helloBtn = Button {
     ButtonText = "Hello",
@@ -57,7 +57,7 @@ components are functions which return a child.
 In the above example, `Button` is a component, because it's a function that
 returns a TextButton.
 
------
+---
 
 ## Modules
 
@@ -73,7 +73,7 @@ Here's an example of how you could split up some components into modules:
 
 === "Main script"
 
-    ```Lua linenums="1"
+    ```luau linenums="1"
     local PopUp = require(script.Parent.PopUp)
 
     local ui = New "ScreenGui" {
@@ -88,14 +88,14 @@ Here's an example of how you could split up some components into modules:
 
 === "PopUp.lua"
 
-    ```Lua linenums="1"
+    ```luau linenums="1"
     local Message = require(script.Parent.Message)
     local Button = require(script.Parent.Button)
 
     local function PopUp(props)
         return New "Frame" {
             -- ...some properties...
-            
+
             [Children] = {
                 Message {
                     Text = props.Message
@@ -112,7 +112,7 @@ Here's an example of how you could split up some components into modules:
 
 === "Message.lua"
 
-    ```Lua linenums="1"
+    ```luau linenums="1"
     local function Message(props)
         return New "TextLabel" {
             AutomaticSize = "XY",
@@ -129,7 +129,7 @@ Here's an example of how you could split up some components into modules:
 
 === "Button.lua"
 
-    ```Lua linenums="1"
+    ```luau linenums="1"
     local function Button(props)
         return New "TextButton" {
             BackgroundColor3 = Color3.new(0.25, 0.5, 1),

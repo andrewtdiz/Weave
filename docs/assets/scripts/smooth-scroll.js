@@ -21,3 +21,58 @@ document.body.addEventListener("click", e => {
         }
     }
 })
+function applyPrintClass(el) {
+    console.log(el);
+    if (el.textContent.trim() === "print") {
+      el.classList.add("print-text");
+    }
+  }
+  
+document.querySelectorAll("span").forEach(applyPrintClass);
+  
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "SPAN" && node.classList.includes("")) {
+            applyPrintClass(node);
+        }
+
+        node.querySelectorAll && node.querySelectorAll("span.nf").forEach(applyPrintClass);
+        });
+    });
+});
+  
+observer.observe(document.body, {
+childList: true,
+subtree: true
+});
+
+
+function applyNvClassIfAfterDotP(el) {
+    const previousSibling = el.previousElementSibling;
+    if (
+      previousSibling &&
+      previousSibling.matches("span.p") &&
+      previousSibling.textContent.trim() === "."
+    ) {
+      el.classList.add("nv-after-dot-p");
+    }
+}
+  
+document.querySelectorAll("span.nv").forEach(applyNvClassIfAfterDotP);
+
+const observer2 = new MutationObserver((mutations) => {
+mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+    if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "SPAN") {
+        applyNvClassIfAfterDotP(node);
+    }
+    node.querySelectorAll && node.querySelectorAll("span.nv").forEach(applyNvClassIfAfterDotP);
+    });
+});
+});
+
+observer2.observe(document.body, {
+childList: true,  // Watch for added or removed child elements
+subtree: true     // Watch for changes in all child nodes, not just direct children
+});

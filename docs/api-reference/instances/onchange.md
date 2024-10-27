@@ -16,7 +16,7 @@ Given a property name, returns a [special key](./specialkey.md) which connects
 to that property's change events. It should be used with a handler callback,
 which may accept the new value of the property.
 
-```Lua
+```luau
 (propertyName: string) -> SpecialKey
 ```
 
@@ -38,7 +38,7 @@ The handler is run with the property's value after every change.
 
 ## Example Usage
 
-```Lua
+```luau
 New "TextBox" {
     [OnChange "Text"] = function(newText)
         print("You typed:", newText)

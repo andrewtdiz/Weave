@@ -1,4 +1,4 @@
-```Lua linenums="1"
+```luau linenums="1"
 local RunService = game:GetService("RunService")
 -- [Fusion imports omitted for clarity]
 

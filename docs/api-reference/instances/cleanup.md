@@ -19,7 +19,7 @@ passing the items to `Fusion.cleanup`.
 
 ## Example Usage
 
-```Lua
+```luau
 local example1 = New "Folder" {
 	[Cleanup] = function()
 		print("I'm in danger!")

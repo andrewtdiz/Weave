@@ -1,8 +1,8 @@
 :root {
-	--weavedoc-grey-0: hsl(240, 5%, 1%);
+	--weavedoc-grey-0: hwb(240 1% 99%);
 	--weavedoc-grey-1: hsl(240, 5%, 3%);
-	--weavedoc-grey-2: hsl(240, 5%, 7%);
-	--weavedoc-grey-3: hsl(240, 5%, 15%);
+	--weavedoc-grey-2: rgb(42, 42, 42);
+	--weavedoc-grey-3: rgb(42, 42, 42);
 	--weavedoc-grey-4: hsl(240, 5%, 25%);
 	--weavedoc-grey-5: hsl(240, 5%, 40%);
 	--weavedoc-grey-6: hsl(240, 5%, 60%);

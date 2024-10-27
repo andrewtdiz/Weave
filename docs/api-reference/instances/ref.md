@@ -19,7 +19,7 @@ be used with a [value](../state/value.md).
 
 ## Example Usage
 
-```Lua
+```luau
 local myRef = Value()
 
 New "Part" {

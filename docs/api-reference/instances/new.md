@@ -17,7 +17,7 @@ instances of that class. The property table may specify properties to set on the
 instance, or include [special keys](./specialkey.md) for more advanced
 operations.
 
-```Lua
+```luau
 (className: string) -> Component
 ```
 
@@ -38,7 +38,7 @@ populates it using the property table, and returns it.
 
 ## Example Usage
 
-```Lua
+```luau
 local myButton: TextButton = New "TextButton" {
 	Parent = Players.LocalPlayer.PlayerGui,
 
@@ -72,7 +72,7 @@ the instance which should be set.
 String keys are treated as property declarations - values passed in will be set
 upon the instance:
 
-```Lua
+```luau
 local example = New "Part" {
 	-- sets the Position property
 	Position = Vector3.new(1, 2, 3)
@@ -83,7 +83,7 @@ Passing a state object to a string key will bind the property value; when the
 value of the object changes, the property will update to match on the next
 resumption step:
 
-```Lua
+```luau
 local myName = State("Bob")
 
 local example = New "Part" {

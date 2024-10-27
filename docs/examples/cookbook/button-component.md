@@ -1,4 +1,4 @@
-```Lua linenums="1"
+```luau linenums="1"
 -- [Weave imports omitted for clarity]
 
 -- This is a relatively complete example of a button component.

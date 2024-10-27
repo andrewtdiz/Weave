@@ -14,7 +14,7 @@
 
 Calculates a single value based on the returned values from other state objects.
 
-```Lua
+```luau
 (
 	processor: () -> (T, M),
 	destructor: ((T, M) -> ())?
@@ -46,7 +46,7 @@ Returns the current value stored in the state object.
 If dependencies are being captured (e.g. inside a computed callback), this state
 object will also be added as a dependency.
 
-```Lua
+```luau
 (asDependency: boolean?) -> T
 ```
 
@@ -54,7 +54,7 @@ object will also be added as a dependency.
 
 ## Example Usage
 
-```Lua
+```luau
 local numCoins = State(50)
 
 local doubleCoins = Computed(function()
@@ -75,7 +75,7 @@ Computed objects automatically detect dependencies used inside their callback
 each time their callback runs. This means, when you use a function like `:get()`
 on a state object, it will register that state object as a dependency:
 
-```Lua
+```luau
 local numCoins = Value(50)
 
 local doubleCoins = Computed(function()
@@ -95,7 +95,7 @@ unnecessary updates:
 
 === "Lua"
 
-````Lua
+````luau
 local stateA = Value(5)
 local stateB = Value(5)
 local selector = Value("A")
@@ -143,7 +143,7 @@ Weave can detect when you use these objects and listen for changes.
 
     Weave *can't* automatically detect changes when you use 'normal' variables:
 
-    ```Lua
+    ```luau
     local theVariable = "Hello"
     local badValue = Computed(function()
     	-- don't do this! use state objects or computed objects in here
@@ -159,7 +159,7 @@ Weave can detect when you use these objects and listen for changes.
     By using a state object here, Weave can correctly update the computed
     object, because it knows you used the state object:
 
-    ```Lua
+    ```luau
     local theVariable = Value("Hello")
     local goodValue = Computed(function()
     	-- this is much better - Weave can detect you used this state object!

@@ -1,4 +1,4 @@
-```Lua linenums="1"
+```luau linenums="1"
 local GuiService = game:GetService("GuiService")
 local HttpService = game:GetService("HttpService")
 local UserInputService = game:GetService("UserInputService")

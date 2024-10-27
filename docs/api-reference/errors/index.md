@@ -42,7 +42,7 @@ because it's locked by Roblox to prevent edits.
 This usually occurs with the [New](../instances/new) or
 [Hydrate](../instances/hydrate) functions:
 
-```Lua
+```luau
 local folder = New "Folder" {
 	DataCost = 12345,
 	ThisPropertyDoesntExist = "Example"
@@ -75,7 +75,7 @@ property you specify doesn't exist on the instance.
 This usually occurs with the [New](../instances/new) or
 [Hydrate](../instances/hydrate) functions:
 
-```Lua
+```luau
 local textBox = New "TextBox" {
 	[OnChange "ThisPropertyDoesntExist"] = function()
 		...
@@ -104,7 +104,7 @@ event you specify doesn't exist on the instance.
 This usually occurs with the [New](../instances/new) or
 [Hydrate](../instances/hydrate) functions:
 
-```Lua
+```luau
 local button = New "TextButton" {
 	[OnEvent "ThisEventDoesntExist"] = function()
 		...
@@ -132,7 +132,7 @@ instance you specify doesn't exist in Roblox.
 
 This usually occurs with the [New](../instances/new) function:
 
-```Lua
+```luau
 local instance = New "ThisClassTypeIsInvalid" {
 	...
 }
@@ -156,7 +156,7 @@ Computed callback error: attempt to index a nil value
 This message means the callback of a [computed object](../state/computed)
 encountered an error.
 
-```Lua
+```luau
 local example = Computed(function()
 	local badMath = 2 + "fish"
 end)
@@ -183,7 +183,7 @@ those values using a destructor.
 
 [Learn more by visiting this discussion on GitHub.](https://github.com/Elttob/Fusion/discussions/183)
 
-```Lua
+```luau
 local badComputed = Computed(function()
 	return New "Folder" { ... }
 end, nil)
@@ -210,7 +210,7 @@ those values using a destructor.
 
 [Learn more by visiting this discussion on GitHub.](https://github.com/Elttob/Fusion/discussions/183)
 
-```Lua
+```luau
 local badForKeys = ForKeys(array, function(key)
 	return New "Folder" { ... }
 end, nil)
@@ -242,7 +242,7 @@ those values using a destructor.
 
 [Learn more by visiting this discussion on GitHub.](https://github.com/Elttob/Fusion/discussions/183)
 
-```Lua
+```luau
 local badForPairs = ForPairs(array, function(key, value)
 	return key, New "Folder" { ... }
 end, nil)
@@ -274,7 +274,7 @@ those values using a destructor.
 
 [Learn more by visiting this discussion on GitHub.](https://github.com/Elttob/Fusion/discussions/183)
 
-```Lua
+```luau
 local badForValues = ForValues(array, function(value)
 	return New "Folder" { ... }
 end, nil)
@@ -303,7 +303,7 @@ ForKeys destructor error: attempt to index a nil value
 This message means the destructor passed to a [ForKeys object](../state/forkeys)
 encountered an error.
 
-```Lua
+```luau
 local function destructor(x)
 	local badMath = 2 + "fish"
 end
@@ -329,7 +329,7 @@ ForKeys should only write to output key 'Charlie' once when processing key chang
 This message means you returned the same value twice for two different keys in
 a [ForKeys object](../state/forkeys).
 
-```Lua
+```luau
 local data = {
 	Alice = true,
 	Bob = true
@@ -359,7 +359,7 @@ ForKeys callback error: attempt to index a nil value
 This message means the callback of a [ForKeys object](../state/forkeys)
 encountered an error.
 
-```Lua
+```luau
 local example = ForKeys(array, function(key)
 	local badMath = 2 + "fish"
 end)
@@ -383,7 +383,7 @@ ForPairs destructor error: attempt to index a nil value
 This message means the destructor passed to a [ForPairs object](../state/forpairs)
 encountered an error.
 
-```Lua
+```luau
 local function destructor(x, y)
 	local badMath = 2 + "fish"
 end
@@ -409,7 +409,7 @@ ForPairs should only write to output key 'Charlie' once when processing key chan
 This message means you returned the same value twice for two different keys in
 a [ForPairs object](../state/forpairs).
 
-```Lua
+```luau
 local data = {
 	Alice = true,
 	Bob = true
@@ -439,7 +439,7 @@ ForPairs callback error: attempt to index a nil value
 This message means the callback of a [ForPairs object](../state/forpairs)
 encountered an error.
 
-```Lua
+```luau
 local example = ForPairs(array, function(key, value)
 	local badMath = 2 + "fish"
 end)
@@ -463,7 +463,7 @@ ForValues destructor error: attempt to index a nil value
 This message means the destructor passed to a [ForValues object](../state/forvalues)
 encountered an error.
 
-```Lua
+```luau
 local function destructor(x)
 	local badMath = 2 + "fish"
 end
@@ -489,7 +489,7 @@ ForValues callback error: attempt to index a nil value
 This message means the callback of a [ForValues object](../state/forvalues)
 encountered an error.
 
-```Lua
+```luau
 local example = ForValues(array, function(value)
 	local badMath = 2 + "fish"
 end)
@@ -514,7 +514,7 @@ This message means you tried to use [OnChange](../instances/onchange) on an
 instance's property, but instead of passing a function callback, you passed
 something else.
 
-```Lua
+```luau
 local input = New "TextBox" {
 	[OnChange "Text"] = "lemons"
 }
@@ -539,7 +539,7 @@ This message means you tried to use [OnEvent](../instances/onevent) on an
 instance's event, but instead of passing a function callback, you passed
 something else.
 
-```Lua
+```luau
 local button = New "TextButton" {
 	[OnEvent "Activated"] = "limes"
 }
@@ -566,7 +566,7 @@ the wrong type of value.
 This usually occurs with the [New](../instances/new) or
 [Hydrate](../instances/hydrate) functions:
 
-```Lua
+```luau
 local ui = New "Frame" {
 	Size = Computed(function()
         return Color3.new(1, 0, 0)
@@ -592,7 +592,7 @@ Instance refs must be Value objects.
 This message means you tried to use [Ref](../instances/ref), but you didn't also
 give it a [value object](../state/value) to store the instance inside of.
 
-```Lua
+```luau
 local thing = New "Part" {
 	[Ref] = 2
 }
@@ -617,7 +617,7 @@ This message means you tried to use [Out](../instances/out), but you didn't also
 give it a [value object](../state/value) to store the property's value inside
 of.
 
-```Lua
+```luau
 local thing = New "Part" {
 	[Out "Color"] = true
 }
@@ -642,7 +642,7 @@ This message means you tried to read a property of an instance using
 [Out](../instances/out), but the property can't be read. This could be because
 the property doesn't exist, or because it's locked by Roblox to prevent reading.
 
-```Lua
+```luau
 local value = Value()
 
 local thing = New "Part" {
@@ -668,7 +668,7 @@ The damping ratio for a spring must be >= 0. (damping was -0.50)
 This message means you gave a damping ratio to a [spring object](../animation/spring)
 which is less than 0:
 
-```Lua
+```luau
 local speed = 10
 local damping = -12345
 local spring = Spring(state, speed, damping)
@@ -695,7 +695,7 @@ The speed of a spring must be >= 0. (speed was -2.00)
 This message means you gave a speed to a [spring object](../animation/spring)
 which is less than 0:
 
-```Lua
+```luau
 local speed = -12345
 local spring = Spring(state, speed)
 ```
@@ -721,7 +721,7 @@ The damping ratio for a spring must be a number. (got a boolean)
 This message means you gave a damping ratio to a [spring object](../animation/spring)
 which isn't a number.
 
-```Lua
+```luau
 local speed = 10
 local damping = true
 local spring = Spring(state, speed, damping)
@@ -745,7 +745,7 @@ The speed of a spring must be a number. (got a boolean)
 This message means you gave a speed to a [spring object](../animation/spring)
 which isn't a number.
 
-```Lua
+```luau
 local speed = true
 local spring = Spring(state, speed)
 ```
@@ -768,7 +768,7 @@ The tween info of a tween must be a TweenInfo. (got a boolean)
 This message shows if you try to provide a tween info to a [tween](../animation/tween)
 which isn't a TweenInfo:
 
-```Lua
+```luau
 local tweenInfo = true
 local tween = Tween(state, tweenInfo)
 ```
@@ -798,7 +798,7 @@ save it into a variable before returning it.
 
 [Learn more by visiting this discussion on GitHub.](https://github.com/Elttob/Fusion/discussions/189)
 
-```Lua
+```luau
 local badComputed = Computed(function()
 	return 1, 2, "foo", true
 end, nil)
@@ -825,7 +825,7 @@ match the types previously being used on the spring.
 This message means you passed a value to one of those methods, but it wasn't the
 same type as the type of the spring.
 
-```Lua
+```luau
 local colour = State(Color3.new(1, 0, 0))
 local colourSpring = Spring(colour)
 
@@ -851,7 +851,7 @@ This message means you tried to access something that doesn't exist. This
 specifically occurs with a few 'locked' tables in Fusion, such as the table
 returned by the module directly.
 
-```Lua
+```luau
 local Foo = Fusion.thisDoesNotExist
 ```
 
@@ -898,7 +898,7 @@ This message means you tried to pass something to [Children](../instances/childr
 which isn't a valid [child](../instances/child.md). This usually means that you
 passed something that isn't an instance, array or [state object](../state/stateobject.md).
 
-```Lua
+```luau
 local instance = New "Folder" {
 	[Children] = {
 		1, 2, 3, 4, 5,
@@ -937,7 +937,7 @@ Commonly, this means you accidentally specified children directly inside of
 the property table, rather than using the dedicated [Children](../instances/children.md)
 special key.
 
-```Lua
+```luau
 local folder = New "Folder" {
 	[Vector3.new()] = "Example",
 
@@ -968,7 +968,7 @@ Within this interface, keys can select when they run using the `stage` field.
 If an unexpected value is passed as the stage, then this error will be thrown
 when attempting to use the key.
 
-```Lua
+```luau
 local Example = {
 	type = "SpecialKey",
 	kind = "Example",

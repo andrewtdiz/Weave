@@ -22,7 +22,7 @@ specially designed for working with arrays and tables. These are known as the
 To start, let's try making a player list using the basic state objects from
 before. Let's define a changeable list of player names and some basic UI:
 
-```Lua linenums="1"
+```luau linenums="1"
 local playerNames = Value.new({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
 
 local textLabels = {} -- TODO: implement this
@@ -50,7 +50,7 @@ local ui = New "ScreenGui" {
 
 Now, let's make a `Computed` which generates that list of text labels for us:
 
-```Lua linenums="1" hl_lines="3-13"
+```luau linenums="1" hl_lines="3-13"
 local playerNames = Value.new({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
 
 local textLabels = Computed(function()
@@ -84,7 +84,7 @@ This is alright, but there are a few problems:
 To address this shortcoming, the `For` objects provide a cleaner way to do the
 same thing, except with less boilerplate and leaving unchanged values alone:
 
-```Lua linenums="1" hl_lines="3-9"
+```luau linenums="1" hl_lines="3-9"
 local playerNames = Value.new({"Elttob", "boatbomber", "thisfall", "AxisAngles"})
 
 local textLabels = ForValues(playerNames, function()

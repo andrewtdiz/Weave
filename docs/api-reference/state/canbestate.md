@@ -17,7 +17,7 @@ A value which may either be a [state object](../stateobject) or a constant.
 Provided as a convenient shorthand for indicating that constant-ness is not
 important.
 
-```Lua
+```luau
 StateObject<T> | T
 ```
 
@@ -25,7 +25,7 @@ StateObject<T> | T
 
 ## Example Usage
 
-```Lua
+```luau
 local function printItem(item: CanBeState<string>)
     if typeof(item) == "string" then
         -- constant

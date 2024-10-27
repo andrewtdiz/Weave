@@ -1,4 +1,4 @@
-```Lua linenums="1"
+```luau linenums="1"
 -- [Fusion imports omitted for clarity]
 
 -- Defining some theme colours. Something to note; I'm intentionally putting the

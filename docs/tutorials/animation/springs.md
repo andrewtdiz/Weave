@@ -12,7 +12,7 @@ movement naturally without abrupt changes in direction.
 To use `Spring` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Spring = Weave.Spring
 ```
@@ -20,7 +20,7 @@ local Spring = Weave.Spring
 To create a new spring object, call the `Spring` function and pass it a state
 object to move towards:
 
-```Lua
+```luau
 local goal = Value.new(0)
 local animated = Spring(target)
 ```
@@ -28,14 +28,14 @@ local animated = Spring(target)
 The spring will smoothly follow the 'goal' state object over time. As with other
 state objects, you can `:get()` its value at any time:
 
-```Lua
+```luau
 print(animated:get()) --> 0.26425...
 ```
 
 To configure how the spring moves, you can provide a speed and damping ratio to
 use. Both are optional, and both can be state objects if desired:
 
-```Lua
+```luau
 local goal = Value.new(0)
 local speed = 25
 local damping = Value.new(0.5)
@@ -46,7 +46,7 @@ You can use many different kinds of values with springs, not just numbers.
 Vectors, CFrames, Color3s, UDim2s and other number-based types are supported;
 each number inside the type is animated individually.
 
-```Lua
+```luau
 local goalPosition = Value.new(UDim2.new(0.5, 0, 0, 0))
 local animated = Spring(target, 25, 0.5)
 ```

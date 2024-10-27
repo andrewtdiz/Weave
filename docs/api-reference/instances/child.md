@@ -17,7 +17,7 @@ The most simple kind of child is a single instance, though arrays can be used
 to parent multiple instances at once and state objects can be used to make the
 children dynamic.
 
-```Lua
+```luau
 Instance | {[any]: Child} | StateObject<Child>
 ```
 
@@ -25,7 +25,7 @@ Instance | {[any]: Child} | StateObject<Child>
 
 ## Example Usage
 
-```Lua
+```luau
 -- all of the following fit the definition of Child
 
 local child1: Child = New "Folder" {}

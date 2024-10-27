@@ -4,7 +4,7 @@ It can process pairs of keys and values at the same time.
 The input table can be a state object, and the output values can use state
 objects.
 
-```Lua
+```luau
 local itemColours = { shoes = "red", socks = "blue" }
 local owner = Value.new("Elttob")
 
@@ -27,7 +27,7 @@ print(manipulated:get()) --> {red = "Quenty's shoes", blue = "Quenty's socks"}
 To use `ForPairs` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local ForPairs = Weave.ForPairs
 ```
@@ -37,7 +37,7 @@ local ForPairs = Weave.ForPairs
 To create a new `ForPairs` object, call the constructor with an input table and
 a processor function:
 
-```Lua
+```luau
 local itemColours = { shoes = "red", socks = "blue" }
 local swapped = ForPairs(data, function(key, value)
 	return value, key
@@ -47,7 +47,7 @@ end)
 This will generate a new table, where each key-value pair is replaced using the
 processor function. You can get the table using the `:get()` method:
 
-```Lua hl_lines="6"
+```luau hl_lines="6"
 local itemColours = { shoes = "red", socks = "blue" }
 local swapped = ForPairs(data, function(key, value)
 	return value, key
@@ -67,7 +67,7 @@ calculations. [See the ForValues page for examples.](./forvalues.md#state-object
 Similar to `ForValues` and `ForKeys`, you may pass in a 'destructor' function to
 add cleanup behaviour, and send your own metadata to it:
 
-```Lua
+```luau
 local watchedInstances = Value.new({
 	[workspace.Part1] = "One",
 	[workspace.Part2] = "Two",

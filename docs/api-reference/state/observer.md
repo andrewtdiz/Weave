@@ -14,7 +14,7 @@
 
 Observes various updates and events on a given dependency.
 
-```Lua
+```luau
 (
 	observe: Dependency
 ) -> Observer
@@ -40,7 +40,7 @@ Connects the given callback as a change handler, and returns a function which
 will disconnect the callback. The callback will run whenever the observed
 dependency is updated.
 
-```Lua
+```luau
 (callback: () -> ()) -> (() -> ())
 ```
 
@@ -61,7 +61,7 @@ you're done using them.
 
 ## Example Usage
 
-```Lua
+```luau
 local numCoins = Value(50)
 
 local coinObserver = Observer(numCoins)

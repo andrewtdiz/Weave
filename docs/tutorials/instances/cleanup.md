@@ -2,7 +2,7 @@ The `[Cleanup]` key allows you to add cleanup code to an instance you're
 hydrating or creating. You can also pass in instances or event connections to
 destroy.
 
-```Lua
+```luau
 local connection = RunService.Heartbeat:Connect(function()
     print("Blah blah...")
 end)
@@ -12,7 +12,7 @@ local part = New "Part" {
 }
 ```
 
-```Lua
+```luau
 local box = New "SelectionBox" {
     Parent = PlayerGui
 }
@@ -22,7 +22,7 @@ local part = New "Part" {
 }
 ```
 
-```Lua
+```luau
 local part = New "Part" {
     [Cleanup] = {
         function()
@@ -41,7 +41,7 @@ local part = New "Part" {
 To use `Cleanup` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Cleanup = Weave.Cleanup
 ```
@@ -49,7 +49,7 @@ local Cleanup = Weave.Cleanup
 When using `New` or `Hydrate`, you can use `[Cleanup]` as a key in the property
 table. Any function you pass in will be run when the instance is destroyed:
 
-```Lua
+```luau
 local folder = New "Folder" {
     [Cleanup] = function()
         print("This folder was destroyed")
@@ -59,7 +59,7 @@ local folder = New "Folder" {
 
 Arrays are supported - their contents will be cleaned up in order:
 
-```Lua
+```luau
 local folder = New "Folder" {
     [Cleanup] = {
         function()
@@ -77,7 +77,7 @@ local folder = New "Folder" {
 
 You may also nest arrays up to any depth - sub-arrays are also run in order:
 
-```Lua
+```luau
 local folder = New "Folder" {
     [Cleanup] = {
         function()
@@ -101,7 +101,7 @@ local folder = New "Folder" {
 For convenience, `Cleanup` allows you to pass some types of value in directly.
 Passing in an instance will destroy it:
 
-```Lua
+```luau
 local box = New "SelectionBox" {
     Parent = PlayerGui
 }
@@ -114,7 +114,7 @@ local part = New "Part" {
 
 Passing in an event connection will disconnect it:
 
-```Lua
+```luau
 local connection = RunService.Heartbeat:Connect(function()
     print("Blah blah...")
 end)
@@ -128,7 +128,7 @@ local part = New "Part" {
 Finally, passing in anything with a `:destroy()` or `:Destroy()` method will
 have that method called:
 
-```Lua
+```luau
 -- you might receive an object like this from a third party library
 local object = {}
 function object:destroy()
@@ -155,7 +155,7 @@ For example, notice only one of these parts runs their cleanup code:
 
 === "Script code"
 
-    ```Lua linenums="1"
+    ```luau linenums="1"
     local part1 = New "Part" {
         [OnEvent "Destroyed"] = function()
             print("=> Part 1 cleaned up")
@@ -188,7 +188,7 @@ destroyed, meaning you can avoid serious memory leaks:
 
 === "Script code"
 
-    ```Lua linenums="1"
+    ```luau linenums="1"
     local part1 = New "Part" {
         [Cleanup] = function()
             print("=> Part 1 cleaned up")

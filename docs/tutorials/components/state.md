@@ -7,7 +7,7 @@ useful, but you should be careful when adding state.
 
 Inside a component, state objects can be created and used the same way as usual:
 
-```Lua hl_lines="5 8-10 13 17"
+```luau hl_lines="5 8-10 13 17"
 local HOVER_COLOUR = Color3.new(0.5, 0.75, 1)
 local REST_COLOUR = Color3.new(0.25, 0.5, 1)
 
@@ -55,7 +55,7 @@ object under the hood:
 
 It might _seem_ logical to store the state object inside the check box:
 
-```Lua hl_lines="2"
+```luau hl_lines="2"
 local function CheckBox(props)
     local isChecked = Value.new(false)
 
@@ -77,7 +77,7 @@ However, hiding away important state in components causes a few problems:
 Therefore, it's better for the controlling code to hold the state object, and
 use callbacks to switch the value when the check box is clicked:
 
-```Lua
+```luau
 local playMusic = Value.new(true)
 
 local checkBox = CheckBox {
@@ -109,7 +109,7 @@ The appearance of that check box would not be controlled by a single state, but
 instead reflects the combination of multiple states. We can use a `Computed`
 for that:
 
-```Lua hl_lines="7-18"
+```luau hl_lines="7-18"
 local playMusic = Value.new(true)
 local playSFX = Value.new(false)
 local playNarration = Value.new(true)
@@ -133,7 +133,7 @@ local checkBox = CheckBox {
 
 We can then implement the 'check all'/'uncheck all' behaviour inside `OnClick`:
 
-```Lua hl_lines="7-13"
+```luau hl_lines="7-13"
 local playMusic = Value.new(true)
 local playSFX = Value.new(false)
 local playNarration = Value.new(true)

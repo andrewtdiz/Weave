@@ -1,4 +1,4 @@
-```Lua linenums="1"
+```luau linenums="1"
 -- [Weave imports omitted for clarity]
 
 -- Oftentimes we calculate values for a single purpose, such as the position of

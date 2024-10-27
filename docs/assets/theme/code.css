@@ -68,6 +68,57 @@
 }
 
 code:not(pre code, .highlight) {
-	background-color: var(--weavedoc-bg-2) !important;
+	background-color: rgb(27, 27, 27) !important;
 	color: inherit !important;
 }
+
+code {
+	background: rgb(32, 32, 32) !important;
+}
+
+.highlight .nv-after-dot-p {
+	color: rgb(97, 161, 241) !important;
+}
+
+.highlight .sb {
+	color: rgb(173, 241, 149);
+}
+  
+.highlight .nv {
+	color: rgb(204, 204, 204);
+}
+
+.highlight .nc {
+	color: rgb(253, 251, 172);
+}
+
+.highlight .nf {
+	color: rgb(253, 251, 172);
+}
+
+.highlight .kd {
+	color: rgb(248, 109, 124);
+}
+
+.highlight .kr {
+	color: rgb(248, 109, 124);
+}
+
+.highlight .kc {
+	color: rgb(255, 198, 0);
+}
+
+.highlight .s2 {
+	color: rgb(173, 241, 149);
+}
+
+.highlight .mf {
+	color: rgb(255, 198, 0);
+}
+
+.highlight .print-text {
+	color: rgb(132, 214, 247);
+}
+
+
+

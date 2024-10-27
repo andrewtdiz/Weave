@@ -7,14 +7,14 @@ top-down control, and is the primary flow of control in Fusion.
 However, sometimes components need to talk back to their controlling code, for
 example to report when button clicks occur.
 
------
+---
 
 ## In Luau
 
 Callbacks are functions which you pass into other functions. They're part of
 normal Luau code.
 
-```Lua
+```luau
 workspace.ChildAdded:Connect(function()
     -- this function is a callback!
 end)
@@ -23,7 +23,7 @@ end)
 They're useful because they allow the function to 'call back' into your code,
 so your code can do something in response:
 
-```Lua
+```luau
 local function printMessage()
     print("Hello, world!")
 end
@@ -40,7 +40,7 @@ In this example, the `fiveTimes` function calls a callback five times:
 
 === "Script code"
 
-    ```Lua
+    ```luau
     local function fiveTimes(callback)
         for x=1, 5 do
             callback(x)
@@ -62,14 +62,14 @@ In this example, the `fiveTimes` function calls a callback five times:
     The number is 5
     ```
 
------
+---
 
 ## In Fusion
 
 Components can use callbacks the same way. Consider this button component; when
 the button is clicked, the button needs to run some external code:
 
-```Lua
+```luau
 local function Button(props)
     return New "TextButton" {
         BackgroundColor3 = Color3.new(0.25, 0.5, 1),
@@ -86,7 +86,7 @@ end
 
 It can ask the controlling code to provide a callback in `props`, called OnClick:
 
-```Lua hl_lines="3-5"
+```luau hl_lines="3-5"
 local button = Button {
     Text = "Hello, world!",
     OnClick = function()
@@ -98,7 +98,7 @@ local button = Button {
 Assuming that callback is passed in, the callback can be passed directly into
 `[OnEvent]`, because `[OnEvent]` accepts functions:
 
-```Lua hl_lines="10"
+```luau hl_lines="10"
 local function Button(props)
     return New "TextButton" {
         BackgroundColor3 = Color3.new(0.25, 0.5, 1),
@@ -116,7 +116,7 @@ end
 Alternatively, we can call `props.OnClick` manually, which is useful if you want
 to do your own processing first:
 
-```Lua hl_lines="10-15"
+```luau hl_lines="10-15"
 local function Button(props)
     return New "TextButton" {
         BackgroundColor3 = Color3.new(0.25, 0.5, 1),

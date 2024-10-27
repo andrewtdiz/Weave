@@ -18,7 +18,7 @@ animatable.
 
 Any data type present in this type can be animated by Weave.
 
-```Lua
+```luau
 number | CFrame | Color3 | ColorSequenceKeypoint | DateTime | NumberRange |
 NumberSequenceKeypoint | PhysicalProperties | Ray | Rect | Region3 |
 Region3int16 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3 | Vector3int16
@@ -28,7 +28,7 @@ Region3int16 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3 | Vector3int16
 
 ## Example Usage
 
-```Lua
+```luau
 local DEFAULT_TWEEN = TweenInfo.new(0.25, Enum.EasingStyle.Quint)
 
 local function withDefaultTween(target: StateObject<Animatable>)

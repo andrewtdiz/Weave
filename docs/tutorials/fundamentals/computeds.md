@@ -1,27 +1,30 @@
 `Computed` values can be used to calculate new values.
 
-Pass in a function that does the calculation. 
+Pass in a function that does the calculation.
 
 Then, `:get()` the updated value.
 
-```Lua
-local jumpPower = Value.new(7)
-local boost = Value.new(3)
+```luau
+local jumpPower = Value.new(1)
+local boost = Value.new(2)
 
 local totalJumpPower = Computed.new(function()
     return jumpPower:get() + boost:get()
 end)
 
-print(totalHealth:get()) --> 10
+print(totalHealth:get()) --> 3
 ```
 
 The `Computed` value updates when _either_ dependency changes.
 
-```Lua
-jumpPower:set(8)
-boost:set(4)
+```luau
+jumpPower:set(5)
 
-print(totalJumpPower:get()) --> 12
+print(totalJumpPower:get()) --> 7
+
+boost:set(3)
+
+print(totalJumpPower:get()) --> 8
 ```
 
 ---
@@ -30,14 +33,14 @@ print(totalJumpPower:get()) --> 12
 
 Import `Weave.Computed` from the Weave module.
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Computed = Weave.Computed
 ```
 
 `Computed.new` to instantiate a new object.
 
-```Lua
+```luau
 local number = Value.new(2)
 local double = Computed.new(function()
     return number:get() * 2
@@ -46,7 +49,7 @@ end)
 
 You can get the computed's current value using `:get()`:
 
-```Lua
+```luau
 print(double:get()) --> 4
 ```
 
@@ -54,19 +57,19 @@ print(double:get()) --> 4
 
 Computed function will be re-run and the value will update:
 
-```Lua
+```luau
 number:set(10)
 print(double:get()) --> 20
 ```
 
-```Lua
+```luau
 number:set(-5)
 print(double:get()) -->  -10
 ```
 
 Putting it all together:
 
-```Lua
+```luau
 local number = Value.new(2)
 local double = Computed.new(function()
     return number:get() * 2
@@ -87,7 +90,7 @@ print(double:get()) -->  -10
 
 `Computed` values make it easier to calculate new state from existing state.
 
-Derived values show up a lot in games. 
+Derived values show up a lot in games.
 
 For example, you might want to insert a death counter into a string.
 
@@ -101,17 +104,17 @@ While you can do this with values and changed listeners alone, it could get mess
 ??? Don't use task.delay() in computed callbacks"
 
     One small caveat of computeds is that you must return the value immediately.
-    
-    
+
+
     If you need to send a request to the server or perform a long-running
     calculation, you shouldn't use computeds.
 
-    The reason for this is consistency between variables. 
+    The reason for this is consistency between variables.
 
     If a delay is introduced, then inconsistencies and nonsense values could
     quickly appear:
 
-    ```Lua hl_lines="3 17"
+    ```luau hl_lines="3 17"
     local numCoins = Value.new(50)
     local isEnoughCoins = Computed.new(function()
         task.wait(5) -- Don't do this! This is just for the example
@@ -136,7 +139,7 @@ While you can do this with values and changed listeners alone, it could get mess
     If you have to introduce a delay, for example when invoking a
     RemoteFunction, consider using values and connecting to the Changed event.
 
-    ```Lua hl_lines="3-10 13-14 24-26"
+    ```luau hl_lines="3-10 13-14 24-26"
     local numCoins = Value.new(50)
 
     local isEnoughCoins = Value.new(nil)

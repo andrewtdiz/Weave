@@ -13,7 +13,7 @@ Fusion provides a `Hydrate` function for hydrating an instance using a table
 of properties. If you pass in Fusion objects, changes will be applied on the
 next frame:
 
-```Lua
+```luau
 local showUI = Value.new(false)
 
 local ui = Hydrate(StarterGui.Template:Clone()) {
@@ -36,7 +36,7 @@ print(ui.Enabled) --> true
 To use `Hydrate` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Hydrate = Weave.Hydrate
 ```
@@ -44,7 +44,7 @@ local Hydrate = Weave.Hydrate
 The `Hydrate` function is called in two parts. First, call the function with the
 instance you want to hydrate, then pass in the property table:
 
-```Lua
+```luau
 local instance = workspace.Part
 
 Hydrate(instance)({
@@ -55,7 +55,7 @@ Hydrate(instance)({
 If you're using curly braces `{}` to pass your properties in, the extra
 parentheses `()` are optional:
 
-```Lua
+```luau
 local instance = workspace.Part
 
 -- This only works when you're using curly braces {}!
@@ -66,7 +66,7 @@ Hydrate(instance) {
 
 `Hydrate` returns the instance you give it, so you can use it in declarations:
 
-```Lua
+```luau
 local instance = Hydrate(workspace.Part) {
 	Color = Color3.new(1, 0, 0)
 }
@@ -76,7 +76,7 @@ If you pass in constant values for properties, they'll be applied to the
 instance directly. However, if you pass in a Fusion object (like `Value`), then
 changes will be applied on the next frame:
 
-```Lua
+```luau
 local message = Value.new("Loading...")
 
 Hydrate(PlayerGui.LoadingText) {

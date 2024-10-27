@@ -3,7 +3,7 @@ instance.
 
 It accepts instances, arrays of children and state objects containing children.
 
-```Lua
+```luau
 local folder = New "Folder" {
     [Children] = {
         New "Part" {
@@ -25,7 +25,7 @@ local folder = New "Folder" {
 To use `Children` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```Lua linenums="1" hl_lines="2"
+```luau linenums="1" hl_lines="2"
 local Weave = require(ReplicatedStorage.Weave)
 local Children = Weave.Children
 ```
@@ -33,7 +33,7 @@ local Children = Weave.Children
 When using `New` or `Hydrate`, you can use `[Children]` as a key in the property
 table. Any instance you pass in will be parented:
 
-```Lua
+```luau
 local folder = New "Folder" {
     -- The part will be moved inside of the folder
     [Children] = workspace.Part
@@ -42,7 +42,7 @@ local folder = New "Folder" {
 
 Since `New` and `Hydrate` both return their instances, you can nest them:
 
-```Lua
+```luau
 -- Makes a Folder, containing a part called Gregory
 local folder = New "Folder" {
     [Children] = New "Part" {
@@ -54,7 +54,7 @@ local folder = New "Folder" {
 
 If you need to parent multiple children, arrays of children are accepted:
 
-```Lua
+```luau
 -- Makes a Folder, containing parts called Gregory and Sammy
 local folder = New "Folder" {
     [Children] = {
@@ -72,7 +72,7 @@ local folder = New "Folder" {
 
 Arrays can be nested to any depth; all children will still be parented:
 
-```Lua
+```luau
 local folder = New "Folder" {
     [Children] = {
         {
@@ -91,7 +91,7 @@ local folder = New "Folder" {
 
 Similarly, state objects containing children (or `nil`) are also allowed:
 
-```Lua
+```luau
 local value = Value.new()
 
 local folder = New "Folder" {
@@ -108,7 +108,7 @@ value:set(
 
 You may use any combination of these to parent whichever children you need:
 
-```Lua
+```luau
 local modelChildren = workspace.Model:GetChildren()
 local includeModel = Value.new(true)
 

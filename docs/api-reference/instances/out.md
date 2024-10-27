@@ -15,7 +15,7 @@
 Given a property name, returns a [special key](./specialkey.md) which outputs
 the value of properties with that name. It should be used with a [value](../state/value.md).
 
-```Lua
+```luau
 (propertyName: string) -> SpecialKey
 ```
 
@@ -37,7 +37,7 @@ listens for further changes and updates the value object accordingly.
 
 ## Example Usage
 
-```Lua
+```luau
 local userText = Value()
 
 New "TextBox" {
