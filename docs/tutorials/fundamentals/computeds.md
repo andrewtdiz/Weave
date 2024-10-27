@@ -3,18 +3,18 @@ You pass in a callback which calculates the final value. Then, you can use
 `:get()` to retrieve that value at any time.
 
 ```Lua
-local numCoins = Value.new(50)
-local itemPrice = Value.new(10)
+local numCoins = Value.new(2)
+local itemPrice = Value.new(2)
 
 local finalCoins = Computed.new(function()
-    return numCoins:get() - itemPrice:get()
+    return numCoins:get() + itemPrice:get()
 end)
 
-print(finalCoins:get()) --> 40
+print(finalCoins:get()) --> 4
 
-numCoins:set(25)
-itemPrice:set(15)
-print(finalCoins:get()) --> 10
+numCoins:set(3)
+itemPrice:set(5)
+print(finalCoins:get()) --> 8
 ```
 
 ---
