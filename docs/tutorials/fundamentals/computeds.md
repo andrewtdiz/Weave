@@ -33,7 +33,7 @@ print(totalJumpPower:get()) --> 8
 
 Import `Weave.Computed` from the Weave module.
 
-```luau linenums="1" hl_lines="2"
+```luau linenums="1"
 local Weave = require(ReplicatedStorage.Weave)
 local Computed = Weave.Computed
 ```

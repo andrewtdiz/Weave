@@ -18,7 +18,7 @@ Use `:set()` to change it
 
 Import `Weave.Value` from the Weave module.
 
-```luau linenums="1" hl_lines="2"
+```luau linenums="1"
 local Weave = require(ReplicatedStorage.Weave)
 local Value = Weave.Value
 ```
