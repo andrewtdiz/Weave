@@ -501,57 +501,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#installing-weave" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing Weave
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing Weave">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#if-you-edit-scripts-in-roblox-studio" class="md-nav__link">
-    <span class="md-ellipsis">
-      If you edit scripts in Roblox Studio...
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#if-you-edit-scripts-externally-advanced" class="md-nav__link">
-    <span class="md-ellipsis">
-      If you edit scripts externally... (advanced)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-a-test-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting Up A Test Script
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-get-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      Where To Get Help
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1560,57 +1509,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#installing-weave" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing Weave
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing Weave">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#if-you-edit-scripts-in-roblox-studio" class="md-nav__link">
-    <span class="md-ellipsis">
-      If you edit scripts in Roblox Studio...
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#if-you-edit-scripts-externally-advanced" class="md-nav__link">
-    <span class="md-ellipsis">
-      If you edit scripts externally... (advanced)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-a-test-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting Up A Test Script
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-get-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      Where To Get Help
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1689,69 +1587,6 @@
 <p>Store state in a <code>Value</code> change the object's value using <code>:set()</code>.</p>
 <p>Then, when it changes, it will update everything that references it.</p>
 <p>Hence the Weave motto, <em>set it and forget it</em></p>
-<hr />
-<h2 id="installing-weave">Installing Weave<a class="headerlink" href="#installing-weave" title="Permanent link">&para;</a></h2>
-<p>Weave is distributed as a single module script. Before starting, you'll need
-to add this module script to your game. Here's how:</p>
-<h3 id="if-you-edit-scripts-in-roblox-studio">If you edit scripts in Roblox Studio...<a class="headerlink" href="#if-you-edit-scripts-in-roblox-studio" title="Permanent link">&para;</a></h3>
-<p>Click the 'Assets' dropdown to view the downloadable files:</p>
-<p>Now, click on the <code>Weave.rbxm</code> file to download it. This contains the module as
-a Roblox model:</p>
-<p><img alt="The Assets dropdown opened to reveal downloads, with Weave.rbxm highlighted." src="index/Github-Releases-Guide-2-Light.png#only-light" />
-<img alt="The Assets dropdown opened to reveal downloads, with Weave.rbxm highlighted." src="index/Github-Releases-Guide-2-Dark.png#only-dark" /></p>
-<p>Head into Roblox Studio to import the model; if you're just following the
-tutorials, an empty baseplate will do.</p>
-<p>Right-click on <code>ReplicatedStorage</code>, and select 'Insert from File':</p>
-<p><img alt="ReplicatedStorage is right-clicked, showing a context menu of items. Insert from File is highlighted." src="index/Github-Releases-Guide-3-Light.png#only-light" />
-<img alt="ReplicatedStorage is right-clicked, showing a context menu of items. Insert from File is highlighted." src="index/Github-Releases-Guide-3-Dark.png#only-dark" /></p>
-<p>Select the <code>Weave.rbxm</code> file you just downloaded. You should see the module
-script appear in <code>ReplicatedStorage</code> - you're ready to go!</p>
-<h3 id="if-you-edit-scripts-externally-advanced">If you edit scripts externally... (advanced)<a class="headerlink" href="#if-you-edit-scripts-externally-advanced" title="Permanent link">&para;</a></h3>
-<p>If you use an external editor to write scripts, and synchronise them into Roblox
-using a plugin, you can use these alternate steps instead:</p>
-<p>??? example "Steps (click to expand)" 1. Head over to Weave's 'Releases' page. 2. Under 'Assets', download <code>Source code (zip)</code>. Inside is a copy
-of the Weave GitHub repository. 3. Inside the zip, copy the <code>src</code> folder - it may be inside another folder. 4. Paste <code>src</code> into your local project, preferably in your <code>shared</code> folder
-if you have one. 5. Rename the folder from <code>src</code> to <code>Weave</code>.</p>
-<div class="highlight"><pre><span></span><code>Once everything is set up, you should see Weave appear in Studio when you
-next synchronise your project.
-</code></pre></div>
-<hr />
-<h2 id="setting-up-a-test-script">Setting Up A Test Script<a class="headerlink" href="#setting-up-a-test-script" title="Permanent link">&para;</a></h2>
-<p>Now that you've installed Weave, you can set up a local script for testing.
-Here's how:</p>
-<ol>
-<li>Create a <code>LocalScript</code> in <code>StarterGui</code> or <code>StarterPlayerScripts</code>.</li>
-<li>Remove the default code, and paste the following code in:</li>
-</ol>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ReplicatedStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nc">GetService</span><span class="p">(</span><span class="s2">&quot;ReplicatedStorage&quot;</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<ol>
-<li>Press 'Play' - if there are no errors, everything was set up correctly!</li>
-</ol>
-<details class="fail">
-<summary>My script didn't work! (click to expand)</summary>
-</details>
-<p><code>Weave is not a valid member of ReplicatedStorage "ReplicatedStorage"</code></p>
-<div class="highlight"><pre><span></span><code>If you&#39;re seeing this error, then your script can&#39;t find Weave.
-
-This code assumes you&#39;ve installed Weave into `ReplicatedStorage`. If
-you&#39;ve installed Weave elsewhere, you&#39;ll need to tweak the `require()` on
-line 2 to point to the correct location.
-
-If line 2 looks like it points to the correct location, refer back to
-[the previous section](#installing-Weave) and double-check you&#39;ve set
-everything up properly. Make sure you have a `ModuleScript` inside
-`ReplicatedStorage` called &quot;Weave&quot;.
-</code></pre></div>
-<hr />
-<h2 id="where-to-get-help">Where To Get Help<a class="headerlink" href="#where-to-get-help" title="Permanent link">&para;</a></h2>
-<p>Weave is built to be easy to use, and we want these tutorials to be as useful
-and comprehensive as possible. However, maybe you're stuck on a cursed issue
-and really need some help; or perhaps you're looking to get a better overall
-understanding of Weave!</p>
-<p>Whatever you're looking for, here are some resources for you to get help:</p>
 
 <!-- Source file information -->
 
