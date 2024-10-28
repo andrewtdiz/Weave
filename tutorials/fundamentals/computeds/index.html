@@ -1587,15 +1587,15 @@
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <p>You can get the computed's current value using <code>:get()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nf">print</span><span class="p">(</span><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 4</span>
+<div class="highlight"><pre><span></span><code><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 4</span>
 </code></pre></div>
 <p><code>Computed</code> values are recalculated when any of its dependencies change.</p>
 <p>Computed function will be re-run and the value will update:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 20</span>
+<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 20</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt;  -10</span>
+<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt;  -10</span>
 </code></pre></div>
 <p>Putting it all together:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
@@ -1603,13 +1603,13 @@
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">number</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
 <span class="kr">end</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 4</span>
+<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 4</span>
 
 <span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 20</span>
+<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 20</span>
 
 <span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt;  -10</span>
+<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt;  -10</span>
 </code></pre></div>
 <hr />
 <h2 id="when-to-use-this">When To Use This<a class="headerlink" href="#when-to-use-this" title="Permanent link">&para;</a></h2>
