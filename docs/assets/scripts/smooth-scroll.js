@@ -26,6 +26,9 @@ function applyPrintClass(el) {
     if (el.textContent.trim() === "print") {
       el.classList.add("print-text");
     }
+    if (el.textContent.trim() === "task" || el.textContent.trim() == "wait") {
+        el.classList.add("print-text");
+      }
   }
   
 document.querySelectorAll("span").forEach(applyPrintClass);
@@ -33,11 +36,11 @@ document.querySelectorAll("span").forEach(applyPrintClass);
 const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "SPAN" && node.classList.includes("")) {
+        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "SPAN") {
             applyPrintClass(node);
         }
 
-        node.querySelectorAll && node.querySelectorAll("span.nf").forEach(applyPrintClass);
+        node.querySelectorAll && node.querySelectorAll("span").forEach(applyPrintClass);
         });
     });
 });

@@ -4,6 +4,7 @@ instance.
 It accepts instances, arrays of children and state objects containing children.
 
 ```luau
+local Children = Weave.Children
 local folder = New "Folder" {
     [Children] = {
         New "Part" {
@@ -25,7 +26,7 @@ local folder = New "Folder" {
 To use `Children` in your code, you first need to import it from the Fusion
 module, so that you can refer to it by name:
 
-```luau linenums="1" hl_lines="2"
+```luau linenums="1"
 local Weave = require(ReplicatedStorage.Weave)
 local Children = Weave.Children
 ```

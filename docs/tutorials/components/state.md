@@ -55,7 +55,7 @@ object under the hood:
 
 It might _seem_ logical to store the state object inside the check box:
 
-```luau hl_lines="2"
+```luau
 local function CheckBox(props)
     local isChecked = Value.new(false)
 

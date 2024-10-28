@@ -27,7 +27,7 @@ print(ui.Text) --> Goodbye friend!
 To use `New` in your code, you first need to import it from the Fusion module,
 so that you can refer to it by name:
 
-```luau linenums="1" hl_lines="2"
+```luau linenums="1"
 local Weave = require(ReplicatedStorage.Weave)
 local New = Weave.New
 ```
