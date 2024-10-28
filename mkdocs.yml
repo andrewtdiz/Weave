@@ -30,6 +30,7 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.instant
+    - navigation.expand
     - navigation.indexes
     - search.suggest
     - search.highlight
