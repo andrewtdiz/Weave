@@ -26,7 +26,7 @@ function applyPrintClass(el) {
     if (el.textContent.trim() === "print") {
       el.classList.add("print-text");
     }
-    if (el.textContent.trim() === "task" || el.textContent.trim() == "wait") {
+    if (el.textContent.trim() === "task" || el.textContent.trim() == "wait" || el.textContent.trim() == "require") {
         el.classList.add("print-text");
       }
   }
