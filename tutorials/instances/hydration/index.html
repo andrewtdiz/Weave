@@ -1543,8 +1543,8 @@ and hiding buttons.</p>
 <img alt="A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements." src="Hydration-Basic-Light.svg#only-light" /></p>
 <figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
 </figure>
-<p>Fusion provides a <code>Hydrate</code> function for hydrating an instance using a table
-of properties. If you pass in Fusion objects, changes will be applied on the
+<p>Hydrate provides a <code>Hydrate</code> function for hydrating an instance using a table
+of properties. If you pass in Hydrate objects, changes will be applied on the
 next frame:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">36</span><span class="p">)</span>
 </code></pre></div>
@@ -1559,7 +1559,7 @@ next frame:</p>
 </code></pre></div>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use <code>Hydrate</code> in your code, you first need to import it from the Fusion
+<p>To use <code>Hydrate</code> in your code, you first need to import it from the Hydrate
 module, so that you can refer to it by name:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
@@ -1588,7 +1588,7 @@ parentheses <code>()</code> are optional:</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>If you pass in constant values for properties, they'll be applied to the
-instance directly. However, if you pass in a Fusion object (like <code>Value</code>), then
+instance directly. However, if you pass in a Hydrate object (like <code>Value</code>), then
 changes will be applied on the next frame:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Loading...&quot;</span><span class="p">)</span>
 
