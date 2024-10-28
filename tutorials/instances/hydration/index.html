@@ -1546,19 +1546,16 @@ and hiding buttons.</p>
 <p>Fusion provides a <code>Hydrate</code> function for hydrating an instance using a table
 of properties. If you pass in Fusion objects, changes will be applied on the
 next frame:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">showUI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-
-<span class="kd">local</span><span class="w"> </span><span class="nv">ui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Hydrate</span><span class="p">(</span><span class="nv">StarterGui</span><span class="p">.</span><span class="nv">Template</span><span class="p">:</span><span class="nc">Clone</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MainGui&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">showUI</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">36</span><span class="p">)</span>
+</code></pre></div>
+<p>Then, we can pass this Value right into any <code>Instance</code></p>
+<div class="highlight"><pre><span></span><code><span class="nf">Hydrate</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span>
 <span class="p">}</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nv">ui</span><span class="p">.</span><span class="nv">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; MainGui</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">ui</span><span class="p">.</span><span class="nv">Enabled</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; false</span>
-
-<span class="nv">showUI</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-<span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">()</span><span class="w"> </span><span class="c1">-- important: changes are applied on the next frame!</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">ui</span><span class="p">.</span><span class="nv">Enabled</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; true</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">Hydrate</span><span class="p">(</span><span class="nv">Gun</span><span class="p">.</span><span class="nv">SurfaceGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span>
+<span class="p">}</span>
 </code></pre></div>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
@@ -1572,9 +1569,9 @@ module, so that you can refer to it by name:</p>
 instance you want to hydrate, then pass in the property table:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span>
 
-<span class="nf">Hydrate</span><span class="p">(</span><span class="nv">instance</span><span class="p">)({</span>
+<span class="nf">Hydrate</span><span class="p">(</span><span class="nv">instance</span><span class="p">){</span>
 <span class="w">    </span><span class="nv">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
-<span class="p">})</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>If you're using curly braces <code>{}</code> to pass your properties in, the extra
 parentheses <code>()</code> are optional:</p>

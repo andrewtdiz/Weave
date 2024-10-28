@@ -1591,9 +1591,11 @@
 <p>A Weave <code>Value</code> is an object that stores any Lua value.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 100</span>
+<span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 100</span>
+
 <span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 25</span>
+
+<span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 25</span>
 </code></pre></div>
 <p>Use <code>:get()</code> to receive the current value</p>
 <p>Use <code>:set()</code> to change it</p>
@@ -1604,15 +1606,8 @@
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Value</span>
 </code></pre></div></td></tr></table></div>
-<p><code>Value.new</code> to instantiate a new object.</p>
-<p>You can store any valid Lua variable type including:</p>
-<ul>
-<li><code>string</code></li>
-<li><code>number</code></li>
-<li><code>boolean</code></li>
-<li><code>table</code></li>
-<li><code>Instance</code></li>
-</ul>
+<p><code>Value.new</code> to make a new object.</p>
+<p>You can store any valid Luau variable like so:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
 
 <span class="kd">local</span><span class="w"> </span><span class="nv">ammoAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">50</span><span class="p">)</span>
