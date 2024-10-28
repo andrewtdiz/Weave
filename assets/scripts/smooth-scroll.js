@@ -26,7 +26,22 @@ function applyPrintClass(el) {
     if (el.textContent.trim() === "print") {
       el.classList.add("light-blue");
     }
-    if (el.textContent.trim() === "task" || el.textContent.trim() == "wait" || el.textContent.trim() == "require") {
+    const nextElementSibling = el.nextElementSibling;
+    if (
+      nextElementSibling &&
+      nextElementSibling.matches("span.p") &&
+      nextElementSibling.textContent.trim() === "." &&
+      el.textContent.trim() === "BrickColor"
+    ) {
+        el.classList.add("light-blue");
+        
+        const nextNext = nextElementSibling.nextElementSibling
+
+        if (nextNext) {
+            nextNext.classList.add("light-blue");
+        }
+    }
+    if (el.textContent.trim() === "task" || el.textContent.trim() === "Enum" || el.textContent.trim() == "wait" || el.textContent.trim() == "require" || el.textContent.trim() == "workspace") {
         el.classList.add("light-blue");
       }
   }
