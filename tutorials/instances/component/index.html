@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://andrewtdiz.github.com/Weave/tutorials/instances/hydration/">
+        <link rel="canonical" href="https://andrewtdiz.github.com/Weave/tutorials/instances/component/">
       
       
         <link rel="prev" href="../../networking/profilevalue/">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Hydration - Weave</title>
+        <title>Component - Weave</title>
       
     
     
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hydration
+              Component
             
           </span>
         </div>
@@ -737,7 +737,7 @@
             
   
   <span class="md-ellipsis">
-    Instances
+    Components
   </span>
   
 
@@ -747,7 +747,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
-            Instances
+            Components
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -769,7 +769,7 @@
           
   
   <span class="md-ellipsis">
-    Hydration
+    Component
   </span>
   
 
@@ -780,7 +780,7 @@
         
   
   <span class="md-ellipsis">
-    Hydration
+    Component
   </span>
   
 
@@ -1530,12 +1530,12 @@
   as the main headline.
 -->
 
-  <h1>Hydration</h1>
+  <h1>Component</h1>
 
 
 <!-- Markdown content -->
-<p>The process of connecting your scripts to a pre-made UI template is known as
-<em>hydration</em>. This is where logic in your scripts translate into UI effects, for
+<p>The process of connecting your scripts to a pre-made UI template is known as a
+<em>component</em>. This is where logic in your scripts translate into UI effects, for
 example setting a message inside a TextLabel, moving menus around, or showing
 and hiding buttons.</p>
 <figure>
@@ -1543,56 +1543,54 @@ and hiding buttons.</p>
 <img alt="A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements." src="Hydration-Basic-Light.svg#only-light" /></p>
 <figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
 </figure>
-<p>Hydrate provides a <code>Hydrate</code> function for hydrating an instance using a table
-of properties. If you pass in Hydrate objects, changes will be applied on the
+<p>Component provides a <code>Component</code> function for hydrating an instance using a table
+of properties. If you pass in Component objects, changes will be applied on the
 next frame:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">36</span><span class="p">)</span>
 </code></pre></div>
 <p>Then, we can pass this Value right into any <code>Instance</code></p>
-<div class="highlight"><pre><span></span><code><span class="nf">Hydrate</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nv">Component</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nf">Hydrate</span><span class="p">(</span><span class="nv">Gun</span><span class="p">.</span><span class="nv">SurfaceGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nv">Component</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">Gun</span><span class="p">.</span><span class="nv">SurfaceGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use <code>Hydrate</code> in your code, you first need to import it from the Hydrate
+<p>To use <code>Component</code> in your code, you first need to import it from the Component
 module, so that you can refer to it by name:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">Hydrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Hydrate</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">Component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Component</span>
 </code></pre></div></td></tr></table></div>
-<p>The <code>Hydrate</code> function is called in two parts. First, call the function with the
-instance you want to hydrate, then pass in the property table:</p>
+<p>The <code>Component</code> function is called in two parts. First, call the function with the
+instance you want to Component, then pass in the property table:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span>
 
-<span class="nf">Hydrate</span><span class="p">(</span><span class="nv">instance</span><span class="p">){</span>
+<span class="nv">Component</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">instance</span><span class="p">){</span>
 <span class="w">    </span><span class="nv">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>If you're using curly braces <code>{}</code> to pass your properties in, the extra
 parentheses <code>()</code> are optional:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span>
-
-<span class="c1">-- This only works when you&#39;re using curly braces {}!</span>
-<span class="nf">Hydrate</span><span class="p">(</span><span class="nv">instance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="c1">-- This only works when you&#39;re using curly braces {}!</span>
+<span class="nv">Component</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>Hydrate</code> returns the instance you give it, so you can use it in declarations:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Hydrate</span><span class="p">(</span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p><code>Component</code> returns the instance you give it, so you can use it in declarations:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Component</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>If you pass in constant values for properties, they'll be applied to the
-instance directly. However, if you pass in a Hydrate object (like <code>Value</code>), then
+instance directly. However, if you pass in a Component object (like <code>Value</code>), then
 changes will be applied on the next frame:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Loading...&quot;</span><span class="p">)</span>
 
-<span class="nf">Hydrate</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">LoadingText</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="nv">Component</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">LoadingText</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">message</span>
 <span class="p">}</span>
 
