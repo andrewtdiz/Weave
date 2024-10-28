@@ -1620,72 +1620,82 @@
 <p><img alt="Diagram showing how the message depends on the death counter." src="Derived-Value-Dark.svg#only-dark" />
 <img alt="Diagram showing how the message depends on the death counter." src="Derived-Value-Light.svg#only-light" /></p>
 <p>While you can do this with values and changed listeners alone, it could get messy.</p>
-<p>??? Don't use task.delay() in computed callbacks"</p>
-<div class="highlight"><pre><span></span><code>One small caveat of computeds is that you must return the value immediately.
-
-
+<details class="warning">
+<summary>A warning about delays in computed callbacks</summary>
+<p>One small caveat of computeds is that you must return the value immediately.
 If you need to send a request to the server or perform a long-running
-calculation, you shouldn&#39;t use computeds.
+calculation, you shouldn't use computeds.</p>
+<p>The reason for this is consistency between variables. When all computeds run</p>
+<p>immediately (i.e. without yielding), all of your variables will behave
+consistently:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">numCoins</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">isEnoughCoins</span> <span class="o">=</span> <span class="n">Computed</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+    <span class="kr">return</span> <span class="n">numCoins</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">25</span>
+<span class="kr">end</span><span class="p">)</span>
 
-The reason for this is consistency between variables.
+<span class="kd">local</span> <span class="n">message</span> <span class="o">=</span> <span class="n">Computed</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+    <span class="kr">if</span> <span class="n">isEnoughCoins</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="kr">then</span>
+        <span class="kr">return</span> <span class="n">numCoins</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="o">..</span> <span class="s2">&quot; is enough coins.&quot;</span>
+    <span class="kr">else</span>
+        <span class="kr">return</span> <span class="n">numCoins</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="o">..</span> <span class="s2">&quot; is NOT enough coins.&quot;</span>
+    <span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
 
-If a delay is introduced, then inconsistencies and nonsense values could
-quickly appear:
-
-```luau hl_lines=&quot;3 17&quot;
-local numCoins = Value.new(50)
-local isEnoughCoins = Computed.new(function()
-    task.wait(5) -- Don&#39;t do this! This is just for the example
-    return numCoins:get() &gt; 25
-end)
-
-local message = Computed.new(function()
-    if isEnoughCoins:get() then
-        return `{numCoins:get()} is enough coins.`
-    else
-        return `{numCoins:get()} is NOT enough coins.`
-    end
-end)
-
-print(message:get()) --&gt; 50 is enough coins.
-numCoins:set(2)
-print(message:get()) --&gt; 2 is enough coins.
-```
-
-For this reason, yielding in computed callbacks is disallowed.
-
-If you have to introduce a delay, for example when invoking a
-RemoteFunction, consider using values and connecting to the Changed event.
-
-```luau hl_lines=&quot;3-10 13-14 24-26&quot;
-local numCoins = Value.new(50)
-
-local isEnoughCoins = Value.new(nil)
-local function updateIsEnoughCoins()
-    isEnoughCoins:set(nil) -- indicate that we&#39;re calculating the value
-    task.wait(5) -- this is now ok
-    isEnoughCoins:set(numCoins:get() &gt; 25)
-end
-task.spawn(updateIsEnoughCoins)
-numCoins.Changed:Connect(updateIsEnoughCoins)
-
-local message = Computed.new(function()
-    if isEnoughCoins:get() == nil then
-        return &quot;Loading...&quot;
-    elseif isEnoughCoins:get() then
-        return numCoins:get() .. &quot; is enough coins.&quot;
-    else
-        return numCoins:get() .. &quot; is NOT enough coins.&quot;
-    end
-end)
-
-print(message:get()) --&gt; 50 is enough coins.
-numCoins:set(2)
-print(message:get()) --&gt; Loading...
-task.wait(5)
-print(message:get()) --&gt; 2 is NOT enough coins.
-```
+<span class="n">message</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="c1">--&gt; 50 is enough coins.</span>
+<span class="n">numCoins</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">message</span><span class="p">:</span><span class="n">get</span><span class="p">()</span> <span class="c1">--&gt; 2 is NOT enough coins.</span>
 </code></pre></div>
+<p>If a delay is introduced, then inconsistencies and nonsense values could
+quickly appear:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">numCoins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">50</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">isEnoughCoins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Don&#39;t do this! This is just for the example</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">numCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">25</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">isEnoughCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="sb">`</span><span class="p">{</span><span class="nv">numCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()}</span><span class="sb"> is enough coins.`</span>
+<span class="w">    </span><span class="kr">else</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="sb">`</span><span class="p">{</span><span class="nv">numCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()}</span><span class="sb"> is NOT enough coins.`</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 50 is enough coins.</span>
+<span class="nv">numCoins</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 2 is enough coins.</span>
+</code></pre></div>
+<p>For this reason, yielding in computed callbacks is disallowed.</p>
+<p>If you have to introduce a delay, for example when invoking a
+RemoteFunction, consider using values and connecting to the Changed event.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">numCoins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">50</span><span class="p">)</span>
+
+<span class="hll"><span class="kd">local</span><span class="w"> </span><span class="nv">isEnoughCoins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+</span><span class="hll"><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">updateIsEnoughCoins</span><span class="p">()</span>
+</span><span class="hll"><span class="w">    </span><span class="nv">isEnoughCoins</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">-- indicate that we&#39;re calculating the value</span>
+</span><span class="hll"><span class="w">    </span><span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="c1">-- this is now ok</span>
+</span><span class="hll"><span class="w">    </span><span class="nv">isEnoughCoins</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="nv">numCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">25</span><span class="p">)</span>
+</span><span class="hll"><span class="kr">end</span>
+</span><span class="hll"><span class="nv">task</span><span class="p">.</span><span class="nf">spawn</span><span class="p">(</span><span class="nv">updateIsEnoughCoins</span><span class="p">)</span>
+</span><span class="hll"><span class="nv">numCoins</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="nv">updateIsEnoughCoins</span><span class="p">)</span>
+</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="hll"><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">isEnoughCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="kr">then</span>
+</span><span class="hll"><span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="s2">&quot;Loading...&quot;</span>
+</span><span class="w">    </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">isEnoughCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="nv">numCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot; is enough coins.&quot;</span>
+<span class="w">    </span><span class="kr">else</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="nv">numCoins</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot; is NOT enough coins.&quot;</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 50 is enough coins.</span>
+<span class="nv">numCoins</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<span class="hll"><span class="nf">print</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; Loading...</span>
+</span><span class="hll"><span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+</span><span class="hll"><span class="nf">print</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 2 is NOT enough coins.</span>
+</span></code></pre></div>
+</details>
 
 <!-- Source file information -->
 
