@@ -1713,12 +1713,12 @@ Setting thing twice...
 <span class="kd">local</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">AttributeValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">part</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;damaged&quot;</span><span class="p">)</span>
 
 <span class="nf">print</span><span class="p">(</span><span class="nv">damaged</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">-- false</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nv">damaged</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 
-<span class="nv">damaged</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nv">damaged</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">-- 1</span>
+<span class="nv">damaged</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">-- true</span>
 <span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">()</span><span class="w"> </span><span class="c1">-- Weave update cycle applies next frame</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">damaged</span><span class="p">:</span><span class="nc">GetAttribute</span><span class="p">(</span><span class="s2">&quot;damaged&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">-- 1</span>
+<span class="nf">print</span><span class="p">(</span><span class="nv">damaged</span><span class="p">:</span><span class="nc">GetAttribute</span><span class="p">(</span><span class="s2">&quot;damaged&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">-- true</span>
 </code></pre></div>
 
 <!-- Source file information -->
