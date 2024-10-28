@@ -24,10 +24,10 @@ document.body.addEventListener("click", e => {
 function applyPrintClass(el) {
     console.log(el);
     if (el.textContent.trim() === "print") {
-      el.classList.add("print-text");
+      el.classList.add("light-blue");
     }
     if (el.textContent.trim() === "task" || el.textContent.trim() == "wait" || el.textContent.trim() == "require") {
-        el.classList.add("print-text");
+        el.classList.add("light-blue");
       }
   }
   
