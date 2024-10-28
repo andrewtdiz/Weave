@@ -1505,13 +1505,13 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
 
 <span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 100</span>
-
-<span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
+</code></pre></div>
+<p>Use <code>:get()</code> to read the value</p>
+<p>Use <code>:set()</code> to change it</p>
+<div class="highlight"><pre><span></span><code><span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
 
 <span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 25</span>
 </code></pre></div>
-<p>Use <code>:get()</code> to receive the current value</p>
-<p>Use <code>:set()</code> to change it</p>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Import <code>Weave.Value</code> from the Weave module.</p>
@@ -1560,7 +1560,8 @@
 <span class="nv">health</span><span class="p">:</span><span class="nc">Destroy</span><span class="p">()</span>
 </code></pre></div>
 <p>Values that depends on this <code>Value</code> will no longer update.</p>
-<p>For advanced users, yes this will work with <code>Trove</code> and <code>Maid</code></p>
+<p>And <code>.Changed</code> will no longer fire.</p>
+<p>For advanced users: Yes, this will work with <code>Trove</code> and <code>Maid</code></p>
 
 <!-- Source file information -->
 
@@ -1663,7 +1664,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>

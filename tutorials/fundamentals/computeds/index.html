@@ -590,6 +590,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      .Changed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      :Destroy()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#when-to-use-this" class="md-nav__link">
     <span class="md-ellipsis">
       When To Use This
@@ -1450,6 +1468,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      .Changed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      :Destroy()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#when-to-use-this" class="md-nav__link">
     <span class="md-ellipsis">
       When To Use This
@@ -1485,24 +1521,18 @@
 <!-- Markdown content -->
 <p><code>Computed</code> values can be used to calculate new values.</p>
 <p>Pass in a function that does the calculation.</p>
-<p>Then, <code>:get()</code> the updated value.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">jumpPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">boost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
 
-<span class="kd">local</span><span class="w"> </span><span class="nv">totalJumpPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">jumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">boost</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">number</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
 <span class="kr">end</span><span class="p">)</span>
 
-<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 3</span>
+<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 4</span>
 </code></pre></div>
-<p>The <code>Computed</code> value updates when <em>either</em> dependency changes.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">jumpPower</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+<p><code>Computed</code> values update automatically:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
 
-<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 7</span>
-
-<span class="nv">boost</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
-
-<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 8</span>
+<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 10</span>
 </code></pre></div>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
@@ -1512,45 +1542,67 @@
 <span class="kd">local</span><span class="w"> </span><span class="nv">Computed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Computed</span>
 </code></pre></div></td></tr></table></div>
 <p><code>Computed.new</code> to make a new object.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">number</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">jumpPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">boost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">totalJumpPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">jumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">boost</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <p>You can get the computed's current value using <code>:get()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 4</span>
+<div class="highlight"><pre><span></span><code><span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 3</span>
 </code></pre></div>
-<p><code>Computed</code> values are recalculated when any of its dependencies change.</p>
-<p>Computed function will be re-run and the value will update:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
-<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 20</span>
+<p>The <code>Computed</code> function runs again when any of its dependencies change</p>
+<div class="highlight"><pre><span></span><code><span class="nv">jumpPower</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+
+<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 7</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">)</span>
-<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt;  -10</span>
+<div class="highlight"><pre><span></span><code><span class="nv">boost</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+
+<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 8</span>
 </code></pre></div>
 <p>Putting it all together:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">jumpPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">boost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">totalJumpPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">jumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">boost</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span>
+<span class="kr">end</span><span class="p">)</span>
+
+
+<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 3</span>
+
+<span class="nv">jumpPower</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 7</span>
+
+<span class="nv">boost</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+<span class="nv">totalJumpPower</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 8</span>
+</code></pre></div>
+<h2 id="changed"><code>.Changed</code><a class="headerlink" href="#changed" title="Permanent link">&para;</a></h2>
+<p>Just like <code>Value</code>, when <code>Computed</code> changes <code>.Changed</code> is fired.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">number</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
 <span class="kr">end</span><span class="p">)</span>
 
-<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 4</span>
-
-<span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
-<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 20</span>
-
-<span class="nv">number</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">)</span>
-<span class="nv">double</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt;  -10</span>
+<span class="nv">double</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="nv">onDoubleChanged</span><span class="p">)</span>
 </code></pre></div>
+<p>Note: You can also use <code>:get()</code> to get the updated value.</p>
+<h2 id="destroy"><code>:Destroy()</code><a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h2>
+<p>Call <code>:Destroy()</code> just like any Roblox <code>Instance</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">number</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="nv">double</span><span class="p">:</span><span class="nc">Destroy</span><span class="p">()</span>
+</code></pre></div>
+<p>Values that depends on this <code>Computed</code> will no longer update.</p>
 <hr />
 <h2 id="when-to-use-this">When To Use This<a class="headerlink" href="#when-to-use-this" title="Permanent link">&para;</a></h2>
 <p><code>Computed</code> values make it easier to calculate new state from existing state.</p>
-<p>Derived values show up a lot in games.</p>
-<p>For example, you might want to insert a death counter into a string.</p>
-<p>Therefore, the contents of the string are derived from the death counter:</p>
 <p><img alt="Diagram showing how the message depends on the death counter." src="Derived-Value-Dark.svg#only-dark" />
 <img alt="Diagram showing how the message depends on the death counter." src="Derived-Value-Light.svg#only-light" /></p>
-<p>While you can do this with values and changed listeners alone, it could get messy.</p>
+<p>Derived values show up a lot in games.</p>
+<p>For example, you might want to insert a number into a string to display in the UI.</p>
 <details class="warning">
 <summary>A warning about delays in computed callbacks</summary>
 <p>One small caveat of computeds is that you must return the value immediately.
@@ -1729,7 +1781,7 @@ RemoteFunction, consider using values and connecting to the Changed event.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
