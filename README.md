@@ -1,3 +1,5 @@
+<img align="left" src="./gh-assets/logo.svg" alt="Fusion"><img align="left" src="./gh-assets/logo.svg" alt="Fusion"><a href="https://andrewtdiz.github.io/Weave/"><img align="right" src="./gh-assets/logo.svg" alt="Docs"></a><a href="https://github.com/andrewtdiz/Weave/releases/latest"><img align="right" src="./gh-assets/link-download.svg" alt="Download"></a><img src="./gh-assets/clearfloat.svg">
+
 Weave is a modern state libarary, built specifically for [Roblox](https://developer.roblox.com/) and [Luau](https://luau-lang.org/).
 
 Plug in live data with simple, flexible, truly reactive state management.<br>
