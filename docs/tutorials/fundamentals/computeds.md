@@ -2,29 +2,22 @@
 
 Pass in a function that does the calculation.
 
-Then, `:get()` the updated value.
-
 ```luau
-local jumpPower = Value.new(1)
-local boost = Value.new(2)
+local number = Value.new(2)
 
-local totalJumpPower = Computed.new(function()
-    return jumpPower:get() + boost:get()
+local double = Computed.new(function()
+    return number:get() * 2
 end)
 
-print(totalHealth:get()) --> 3
+double:get() --> 4
 ```
 
-The `Computed` value updates when _either_ dependency changes.
+`Computed` values update automatically:
 
 ```luau
-jumpPower:set(5)
+number:set(5)
 
-print(totalJumpPower:get()) --> 7
-
-boost:set(3)
-
-print(totalJumpPower:get()) --> 8
+totalJumpPower:get() --> 10
 ```
 
 ---
@@ -38,51 +31,83 @@ local Weave = require(ReplicatedStorage.Weave)
 local Computed = Weave.Computed
 ```
 
-`Computed.new` to instantiate a new object.
+`Computed.new` to make a new object.
 
 ```luau
-local number = Value.new(2)
-local double = Computed.new(function()
-    return number:get() * 2
+local jumpPower = Value.new(1)
+local boost = Value.new(2)
+
+local totalJumpPower = Computed.new(function()
+    return jumpPower:get() + boost:get()
 end)
 ```
 
 You can get the computed's current value using `:get()`:
 
 ```luau
-print(double:get()) --> 4
+totalJumpPower:get() --> 3
 ```
 
-`Computed` values are recalculated when any of its dependencies change.
-
-Computed function will be re-run and the value will update:
+The `Computed` function runs again when any of its dependencies change
 
 ```luau
-number:set(10)
-print(double:get()) --> 20
+jumpPower:set(5)
+
+totalJumpPower:get() --> 7
 ```
 
 ```luau
-number:set(-5)
-print(double:get()) -->  -10
+boost:set(3)
+
+totalJumpPower:get() --> 8
 ```
 
 Putting it all together:
 
 ```luau
-local number = Value.new(2)
+local jumpPower = Value.new(1)
+local boost = Value.new(2)
+
+local totalJumpPower = Computed.new(function()
+    return jumpPower:get() + boost:get()
+end)
+
+
+totalJumpPower:get() --> 3
+
+jumpPower:set(5)
+totalJumpPower:get() --> 7
+
+boost:set(3)
+totalJumpPower:get() --> 8
+```
+## `.Changed`
+
+Just like `Value`, when `Computed` changes `.Changed` is fired.
+
+```luau
 local double = Computed.new(function()
     return number:get() * 2
 end)
 
-print(double:get()) --> 4
-
-number:set(10)
-print(double:get()) --> 20
-
-number:set(-5)
-print(double:get()) -->  -10
+double.Changed:Connect(onDoubleChanged)
 ```
+
+Note: You can also use `:get()` to get the updated value.
+
+## `:Destroy()`
+
+Call `:Destroy()` just like any Roblox `Instance`
+
+```luau
+local double = Computed.new(function()
+    return number:get() * 2
+end)
+
+double:Destroy()
+```
+
+Values that depends on this `Computed` will no longer update.
 
 ---
 
@@ -90,31 +115,48 @@ print(double:get()) -->  -10
 
 `Computed` values make it easier to calculate new state from existing state.
 
-Derived values show up a lot in games.
-
-For example, you might want to insert a death counter into a string.
-
-Therefore, the contents of the string are derived from the death counter:
 
 ![Diagram showing how the message depends on the death counter.](Derived-Value-Dark.svg#only-dark)
 ![Diagram showing how the message depends on the death counter.](Derived-Value-Light.svg#only-light)
 
-While you can do this with values and changed listeners alone, it could get messy.
+Derived values show up a lot in games.
 
-??? Don't use task.delay() in computed callbacks"
+For example, you might want to insert a number into a string to display in the UI.
+
+??? warning "A warning about delays in computed callbacks"
 
     One small caveat of computeds is that you must return the value immediately.
-
-
     If you need to send a request to the server or perform a long-running
     calculation, you shouldn't use computeds.
 
-    The reason for this is consistency between variables.
+    The reason for this is consistency between variables. When all computeds run
+
+    immediately (i.e. without yielding), all of your variables will behave
+    consistently:
+
+    ```Lua
+    local numCoins = Value.new(50)
+    local isEnoughCoins = Computed.new(function()
+        return numCoins:get() > 25
+    end)
+
+    local message = Computed.new(function()
+        if isEnoughCoins:get() then
+            return numCoins:get() .. " is enough coins."
+        else
+            return numCoins:get() .. " is NOT enough coins."
+        end
+    end)
+
+    message:get() --> 50 is enough coins.
+    numCoins:set(2)
+    message:get() --> 2 is NOT enough coins.
+    ```
 
     If a delay is introduced, then inconsistencies and nonsense values could
     quickly appear:
 
-    ```luau hl_lines="3 17"
+    ```luau
     local numCoins = Value.new(50)
     local isEnoughCoins = Computed.new(function()
         task.wait(5) -- Don't do this! This is just for the example

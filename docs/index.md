@@ -114,7 +114,7 @@ local myPart = New "Part" {
 }
 
 -- This adds on some extras after.
-Hydrate(myPart) {
+Attach(myPart) {
 	Material = "Wood",
 	Transparency = 0.5
 }

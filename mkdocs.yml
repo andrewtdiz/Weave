@@ -27,6 +27,7 @@ theme:
     text: Inter
     code: JetBrains Mono
   features:
+    - content.code.copy
     - navigation.tabs
     - navigation.top
     - navigation.instant
@@ -62,20 +63,18 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Weave:
-      - Installation: installation/index.md
       - Why Weave?: tutorials/index.md
+      - Installation: installation/index.md
       - State Objects:
           - Value: tutorials/fundamentals/values.md
           - Computed: tutorials/fundamentals/computeds.md
-          - Destructors: tutorials/fundamentals/destructors.md
+      - Instances:
+          - Attach: tutorials/instances/attach.md
       - Networking:
           - NetworkValue: tutorials/networking/networkvalue.md
           - PlayerValue: tutorials/networking/playervalue.md
           - ProfileValue: tutorials/networking/profilevalue.md
-      - Instances:
-          - Hydration: tutorials/instances/hydration.md
-          - New Instances: tutorials/instances/new-instances.md
-          - Children: tutorials/instances/parenting.md
+      
   - UI:
     - Lists & Tables:
         - The For Objects: tutorials/lists-and-tables/the-for-objects.md
@@ -83,11 +82,11 @@ nav:
         - ForKeys: tutorials/lists-and-tables/forkeys.md
         - ForPairs: tutorials/lists-and-tables/forpairs.md
     - Instances:
-        - Events: tutorials/instances/events.md
-        - Change Events: tutorials/instances/change-events.md
-        - Outputs: tutorials/instances/outputs.md
+        - Children: tutorials/instances/parenting.md
         - Cleanup: tutorials/instances/cleanup.md
-        - References: tutorials/instances/references.md
+        - Destructors: tutorials/fundamentals/destructors.md
+        - Attribute Value: tutorials/instances/attributevalue.md
+        - New Instances: tutorials/instances/new-instances.md
     - Components:
         - Reusing UI: tutorials/components/reusing-ui.md
         - Children: tutorials/components/children.md

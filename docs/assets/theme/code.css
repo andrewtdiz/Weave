@@ -57,6 +57,7 @@
 
 .highlight .md-clipboard {
 	color: transparent;
+	transition-duration: 100ms !important;
 }
 
 .highlight:hover .md-clipboard {
@@ -116,7 +117,7 @@ code {
 	color: rgb(255, 198, 0);
 }
 
-.highlight .print-text {
+.highlight .light-blue {
 	color: rgb(132, 214, 247);
 }
 

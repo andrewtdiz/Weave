@@ -1,16 +1,20 @@
-A Weave `Value` is an object that stores any Lua value.
+A Weave `Value` is an object that stores any Luau value.
 
 ```luau
 local health = Value.new(100)
 
-print(health:get()) --> 100
-health:set(25)
-print(health:get()) --> 25
+health:get() --> 100
 ```
 
-Use `:get()` to receive the current value
+Use `:get()` to read the value
 
 Use `:set()` to change it
+
+```luau
+health:set(25)
+
+health:get() --> 25
+```
 
 ---
 
@@ -23,15 +27,7 @@ local Weave = require(ReplicatedStorage.Weave)
 local Value = Weave.Value
 ```
 
-`Value.new` to instantiate a new object.
-
-You can store any valid Lua variable type including:
-
-- `string`
-- `number`
-- `boolean`
-- `table`
-- `Instance`
+Use `Value.new` to store any valid Luau variable:
 
 ```luau
 local name = Value.new("Bob")
@@ -42,132 +38,57 @@ local sprinting = Value.new(false)
 
 local inventory = Value.new({ "apple", "pear" })
 
-local targetPart = Value.new(Instance.new("BasePart"))
-```
-
-`Value` comes with a `RBXScriptSignal` in the `.Changed` property
-
-```luau
-health.Changed:Connect(function()
-	print(`The new health is: {health:get()}`)
-end)
+local targetPart = Value.new(Instance.new("Part"))
 ```
 
 ---
 
 ## `.Changed`
 
-When a `Value` changes, `.Changed` is fired with a `newValue` as the argument.
-
-Or you can just use `health:get()`.
+When a `Value` changes, `.Changed` is fired.
 
 ```luau
 local health = Value.new(100)
 
+health.Changed:Connect(onHealthUpdated)
+```
+
+`.Changed` passes the `newValue` as the argument.
+
+```luau
 health.Changed:Connect(function(newHealth: number)
 	print(`The new health is: {newHealth}`)
 end)
 ```
 
-And don't forget to disconnect
+`.Changed` returns a connection you can `:Disconnect()` from
 
 ```luau
 local connection = health.Changed:Connect(function()
 	print(`The new health is: {health:get()}`)
 end)
 
--- Disconnect the above handler after 5 seconds
 task.wait(5)
+
+-- Disconnect the above handler after 5 seconds
 connection:Disconnect()
 ```
 
-## What Counts As A Change?
+Note: You can also use `:get()` to get the updated value.
 
-You might notice that not all calls to `Value:set()` will cause your observer to
-run:
+## `:Destroy()`
 
-=== "Script code"
-
-    ```luau
-    local thing = Value.new("Hello")
-
-    thing.Changed:Connect(function()
-    	print("=> Thing changed to", thing:get())
-    end)
-
-    print("Setting thing once...")
-    thing:set("World")
-    print("Setting thing twice...")
-    thing:set("World")
-    print("Setting thing thrice...")
-    thing:set("World")
-    ```
-
-=== "Output"
-
-    ```
-    Setting thing once...
-    => Thing changed to World
-    Setting thing twice...
-    Setting thing thrice...
-    ```
-
-When you set the value, if it's the same as the existing value, an update won't
-be sent out.
-
-This means Changed events won't re-run when you set the value multiple times in a row.
-
-![A diagram showing how value objects only send updates if the new value and previous value aren't equal.](Value-Equality-Dark.svg#only-dark)
-![A diagram showing how value objects only send updates if the new value and previous value aren't equal.](Value-Equality-Light.svg#only-light)
-
-In most cases, this leads to improved performance because your code runs less
-often.
-
-To override this behaviour, `Value:set()` accepts a second argument that can force an update:
-
-=== "Script code"
-
-    ```luau hl_lines="11-12"
-    local thing = Value.new("Hello")
-
-    thing.Changed:Connect(function()
-    	print("=> Thing changed to", thing:get())
-    end)
-
-    print("Setting thing once...")
-    thing:set("World")
-    print("Setting thing twice...")
-    thing:set("World")
-    print("Setting thing thrice (update forced)...")
-    thing:set("World", true)
-    ```
-
-=== "Output"
-
-    ``` hl_lines="4-5"
-    Setting thing once...
-    => Thing changed to World
-    Setting thing twice...
-    Setting thing thrice (update forced)...
-    => Thing changed to World
-    ```
-
----
-
-## Attribute Values
+Call `:Destroy()` just like any Roblox `Instance`
 
 ```luau
-local part = Instance.new("Part")
+local health = Value.new(100)
 
-part:SetAttribute("damaged", false)
-
-local count = AttributeValue.new(part, "damaged")
-
-print(damaged:get()) -- false
-
-damaged:set(true)
-
-print(damaged:get()) -- 1
-task.wait() -- Weave update cycle applies next frame
-print(damaged:GetAttribute("damaged")) -- 1
+health:Destroy()
 ```
+
+Values that depends on this `Value` will no longer update.
+
+And `.Changed` will no longer fire.
+
+
+For advanced users: Yes, this will work with `Trove` and `Maid`
