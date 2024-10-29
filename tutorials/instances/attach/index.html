@@ -1537,6 +1537,11 @@
 
 <!-- Markdown content -->
 <p>Weave provides an <code>Attach</code> function for updating <em>any</em> <code>Instance</code> property.</p>
+<p>Import the <code>Attach</code> module from Weave:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">Attach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Attach</span>
+</code></pre></div></td></tr></table></div>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ammo</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1573,11 +1578,6 @@
 <p>Still don't believe it? Run the code in <a href="https://luau.org/demo?share=H4sIAAAAAAAACsvJT07MUUgrzUsuyczPUyjOz011g3I0EovSNbkUFBQUCooy80pAXL2Q1IoSHQUQyzk%2FJ7%2FIWJMrNS%2BFiwtFW7UCSJWCrYJScH5uKpijpKMAUa9gq5BgqKMAQgkKtZqoOhWqFcDWYWg3UtIBSyDMMNBRAKEErlouLi4AkZUuRMQAAAA%3D" target="_blank">luau.org/AttachDemo</a></p>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Import the <code>Attach</code> module from Weave:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">Attach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Attach</span>
-</code></pre></div></td></tr></table></div>
 <p>The Attach function is called in two parts.</p>
 <p>Call <code>Attach</code> with the <code>Instance</code> you want to update</p>
 <div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">Frame</span><span class="p">)</span><span class="w"> </span><span class="c1">-- TODO: Add Properties</span>
