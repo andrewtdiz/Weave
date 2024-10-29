@@ -1467,7 +1467,7 @@
 <figcaption>Screenshot: Pet Simulator 99</figcaption>
 
 <p>When variables change, you want your game to reflect those changes.</p>
-<p>Unfortunately, there's no way to listen for those changes in Lua.</p>
+<p>Unfortunately, there's no way to listen for those changes in Luau.</p>
 <p>You may try something like this:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Hatch10Eggs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
@@ -1480,7 +1480,7 @@
 <span class="w">    </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Hatch10Eggs</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">10</span>
 <span class="kr">end</span>
 
-<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">setAmmo</span><span class="p">(</span><span class="nv">newEggCount</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">setEggCount</span><span class="p">(</span><span class="nv">newEggCount</span><span class="p">)</span>
 <span class="w">    </span><span class="nv">Hatch10Eggs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newEggCount</span>
 <span class="w">    </span><span class="c1">-- you need to send out updates to every piece of code using `eggCount` here</span>
 <span class="w">    </span><span class="nf">updateQuestUI</span><span class="p">()</span>
