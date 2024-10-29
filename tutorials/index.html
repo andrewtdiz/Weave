@@ -1444,30 +1444,29 @@
 
 <!-- Markdown content -->
 <p>Imagine the state of your game as individual pieces of data.</p>
-<p><img alt="An example of a game's UI, with some variables labelled and linked to parts of the UI." src="assets/Game-UI-Variables-Light.svg#only-light" />
-<img alt="An example of a game's UI, with some variables labelled and linked to parts of the UI." src="assets/Game-UI-Variables-Dark.svg#only-dark" /></p>
-<figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
+<p><img alt="An example of a game's UI, with some variables labelled and linked to parts of the UI." src="assets/Game-UI-Variables-Dark.png" /></p>
+<figcaption>Screenshot: Pet Simulator 99</figcaption>
 
 <p>When variables change, you want your game to reflect those changes.</p>
 <p>Unfortunately, there's no way to listen for those changes in Lua.</p>
 <p>You may try something like this:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">36</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">isOutOfAmmo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Hatch10Eggs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 
-<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">updateHUD</span><span class="p">()</span>
-<span class="w">    </span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">HUD</span><span class="p">.</span><span class="nv">WeaponFrame</span><span class="p">.</span><span class="nv">AmmoText</span><span class="p">.</span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span>
+<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">updateQuestUI</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Quests</span><span class="p">.</span><span class="nv">FirstQuest</span><span class="p">.</span><span class="nv">CountText</span><span class="p">.</span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Hatch10Eggs</span>
 <span class="kr">end</span>
 
-<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">updateOutOfAmmoCheck</span><span class="p">()</span>
-<span class="w">    </span><span class="nv">isOutOfAmmo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span>
+<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">updateQuestComplete</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Hatch10Eggs</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">10</span>
 <span class="kr">end</span>
 
-<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">setAmmo</span><span class="p">(</span><span class="nv">newAmmo</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newAmmo</span>
-<span class="w">    </span><span class="c1">-- you need to send out updates to every piece of code using `ammo` here</span>
-<span class="w">    </span><span class="nf">updateHUD</span><span class="p">()</span>
-<span class="w">    </span><span class="nf">updateOutOfAmmoCheck</span><span class="p">()</span>
-<span class="w">    </span><span class="nf">sendAmmoToServer</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">setAmmo</span><span class="p">(</span><span class="nv">newEggCount</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">Hatch10Eggs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newEggCount</span>
+<span class="w">    </span><span class="c1">-- you need to send out updates to every piece of code using `eggCount` here</span>
+<span class="w">    </span><span class="nf">updateQuestUI</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">updateQuestComplete</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">updateEggCountToServer</span><span class="p">()</span>
 <span class="kr">end</span>
 </code></pre></div>
 <p>But often gets messy.</p>
@@ -1478,19 +1477,19 @@
 <h3 id="building-better-variables">Building Better Variables<a class="headerlink" href="#building-better-variables" title="Permanent link">&para;</a></h3>
 <p>What if we could just change value and it updates everywhere <em>automatically</em>, like magic.</p>
 <p>That's exactly what Weave does.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">GunData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">36</span><span class="p">),</span>
-<span class="w">    </span><span class="nv">maxAmmo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">67</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">QuestData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Hatch10Eggs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">),</span>
+<span class="w">    </span><span class="nv">Hatch15Eggs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">),</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Update a UI TextLabel</span>
-<span class="nf">Attach</span><span class="p">(</span><span class="nv">AmmoText</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weapon</span><span class="p">.</span><span class="nv">ammo</span>
+<span class="nf">Attach</span><span class="p">(</span><span class="nv">CountText</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">QuestData</span><span class="p">.</span><span class="nv">Hatch10Eggs</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Update an out of ammo variable</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">isOutOfAmmo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nf">Computed</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">Weapons</span><span class="p">.</span><span class="nv">ammo</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Update a quest complete boolean</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nf">Computed</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">QuestData</span><span class="p">.</span><span class="nv">Hatch10Eggs</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">10</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <p>Store state in a <code>Value</code> change the object's value using <code>:set()</code>.</p>
