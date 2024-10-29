@@ -1,4 +1,4 @@
-Weave provides an `Attach` function for updating _any_ Instance property.
+Weave provides an `Attach` function for updating _any_ `Instance` property.
 
 ```lua
 local ammo = Value.new(36)
@@ -20,7 +20,6 @@ Attach(Gun.SurfaceGui.TextLabel) {
 
 Any Weave `Value` or `Computed` will update the Instance _automatically_.
 
-
 <figure markdown>
 ![A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements.](Hydration-Basic-Dark.svg#only-dark)
 ![A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements.](Hydration-Basic-Light.svg#only-light)
@@ -31,7 +30,7 @@ Any Weave `Value` or `Computed` will update the Instance _automatically_.
 
 ## Explained
 
-`Attach` may look weird, but it is __valid Luau__
+`Attach` may look weird, but it is **valid Luau**
 
 ```luau
 local function someFunction(arg)
@@ -41,10 +40,10 @@ end
 someFunction({ Text = "Some Text", Color3 = Color3.new(1, 1, 1) })
 ```
 
-Is the _exact same_ as 
+Is the _exact same_ as
 
 ```luau
-someFunction { 
+someFunction {
 	Text = "Some Text",
 	Color3 = Color3.new(1, 1, 1)
 }
@@ -63,7 +62,6 @@ local Weave = require(ReplicatedStorage.Weave)
 local Attach = Weave.Attach
 ```
 
-
 The Attach function is called in two parts.
 
 Call `Attach` with the `Instance` you want to update
@@ -80,7 +78,7 @@ Attach(Frame) {
 }
 ```
 
-`Attach` works on **any** Roblox Instance type and **any** Property
+`Attach` works on **any** Roblox 1Instance1 type and **any** Property
 
 ```luau
 Attach(workspace.Part) {
@@ -98,7 +96,6 @@ Attach(workspace.CurrentCamera) {
 
 Constant values are applied to the instance directly.
 
-
 ```luau
 local message = Value.new("Loading...")
 
@@ -110,6 +107,7 @@ print(PlayerGui.Message.Text) --> Loading...
 ```
 
 Updates to `Value` and `Computed` values will be applied on the next frame:
+
 ```luau
 message:set("All done!")
 

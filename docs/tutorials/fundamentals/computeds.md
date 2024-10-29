@@ -1,23 +1,26 @@
+![Diagram showing how the message depends on the death counter.](Derived-Value-Dark.svg#only-dark)
+![Diagram showing how the message depends on the death counter.](Derived-Value-Light.svg#only-light)
+
 `Computed` values can be used to calculate new values.
 
 Pass in a function that does the calculation.
 
 ```luau
-local number = Value.new(2)
+local userName = Value.new("Preston")
 
-local double = Computed.new(function()
-    return number:get() * 2
+local welcomeMessage = Computed.new(function()
+    return `Welcome, {userName:get()}!`
 end)
 
-double:get() --> 4
+welcomeMessage:get() --> "Welcome, Preston!"
 ```
 
 `Computed` values update automatically:
 
 ```luau
-number:set(5)
+userName:set("Jandel")
 
-totalJumpPower:get() --> 10
+welcomeMessage:get() --> "Welcome, Jandel!"
 ```
 
 ---
@@ -34,53 +37,53 @@ local Computed = Weave.Computed
 `Computed.new` to make a new object.
 
 ```luau
-local jumpPower = Value.new(1)
-local boost = Value.new(2)
+local greeting = Value.new("Welcome")
+local userName = Value.new("Preston")
 
-local totalJumpPower = Computed.new(function()
-    return jumpPower:get() + boost:get()
+local combinedMessage = Computed.new(function()
+    return `{greeting}, {userName}!`
 end)
 ```
 
 You can get the computed's current value using `:get()`:
 
 ```luau
-totalJumpPower:get() --> 3
+combinedMessage:get() --> "Welcome, Preston!"
 ```
 
 The `Computed` function runs again when any of its dependencies change
 
 ```luau
-jumpPower:set(5)
+greeting:set("Hello")
 
-totalJumpPower:get() --> 7
+combinedMessage:get() --> "Hello, Preston!"
 ```
 
 ```luau
-boost:set(3)
+userName:set("Jandel")
 
-totalJumpPower:get() --> 8
+combinedMessage:get() --> "Hello, Jandel!"
 ```
 
 Putting it all together:
 
 ```luau
-local jumpPower = Value.new(1)
-local boost = Value.new(2)
+local greeting = Value.new("Welcome")
+local userName = Value.new("Preston")
 
-local totalJumpPower = Computed.new(function()
-    return jumpPower:get() + boost:get()
+local combinedMessage = Computed.new(function()
+    return `{greeting}, {userName}!`
 end)
 
+combinedMessage:get() --> "Welcome, Preston!"
 
-totalJumpPower:get() --> 3
+greeting:set("Hello")
+combinedMessage:get() --> "Hello, Preston!"
 
-jumpPower:set(5)
-totalJumpPower:get() --> 7
-
-boost:set(3)
-totalJumpPower:get() --> 8
+userName:set("Jandel")
+combinedMessage:get() --> "Hello, Jandel!"
 ```
+
 ## `.Changed`
 
 Just like `Value`, when `Computed` changes `.Changed` is fired.
@@ -114,10 +117,6 @@ Values that depends on this `Computed` will no longer update.
 ## When To Use This
 
 `Computed` values make it easier to calculate new state from existing state.
-
-
-![Diagram showing how the message depends on the death counter.](Derived-Value-Dark.svg#only-dark)
-![Diagram showing how the message depends on the death counter.](Derived-Value-Light.svg#only-light)
 
 Derived values show up a lot in games.
 
