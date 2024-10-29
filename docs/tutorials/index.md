@@ -6,7 +6,7 @@ Imagine the state of your game as individual pieces of data.
 
 When variables change, you want your game to reflect those changes.
 
-Unfortunately, there's no way to listen for those changes in Lua.
+Unfortunately, there's no way to listen for those changes in Luau.
 
 You may try something like this:
 
@@ -22,7 +22,7 @@ local function updateQuestComplete()
 	isQuestComplete = Hatch10Eggs >= 10
 end
 
-local function setAmmo(newEggCount)
+local function setEggCount(newEggCount)
 	Hatch10Eggs = newEggCount
 	-- you need to send out updates to every piece of code using `eggCount` here
 	updateQuestUI()
@@ -34,7 +34,7 @@ end
 But often gets messy.
 
 - How do we share these updates across scripts?
-- What if there's another piece of code using `ammo` that we've forgotten to update here?
+- What if there's another piece of code using `Hatch10Eggs` that we've forgotten to update here?
 
 ### Building Better Variables
 
@@ -58,8 +58,8 @@ Attach(CountText) {
 
 ```luau
 -- Update a quest complete boolean
-local isQuestComplete = Weave.Computed(function()
-	return QuestData.Hatch10Eggs:get() > 10
+local isQuestComplete = Computed.new(function()
+	return QuestData.Hatch10Eggs:get() >= 10
 end)
 ```
 

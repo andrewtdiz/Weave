@@ -1,25 +1,3 @@
-A Weave `Value` is an object that stores any Luau value.
-
-```luau
-local health = Value.new(100)
-
-health:get() --> 100
-```
-
-Use `:get()` to read the value
-
-Use `:set()` to change it
-
-```luau
-health:set(25)
-
-health:get() --> 25
-```
-
----
-
-## Usage
-
 Import `Weave.Value` from the Weave module.
 
 ```luau linenums="1"
@@ -27,7 +5,35 @@ local Weave = require(ReplicatedStorage.Weave)
 local Value = Weave.Value
 ```
 
-Use `Value.new` to store any valid Luau variable:
+A Weave `Value` is an object that stores a Luau value.
+
+```luau
+local health = Value.new(100)
+
+health:get() --> 100
+
+health:set(99)
+```
+
+---
+
+## Usage
+
+Use `:get()` to read the value
+
+Use `:set()` to change it
+
+```luau
+local health = Value.new(100)
+
+health:get() --> 100
+
+health:set(25)
+
+health:get() --> 25
+```
+
+`Value` can store any Luau value:
 
 ```luau
 local name = Value.new("Bob")
@@ -68,13 +74,12 @@ local connection = health.Changed:Connect(function()
 	print(`The new health is: {health:get()}`)
 end)
 
-task.wait(5)
+-- do some stuff
 
--- Disconnect the above handler after 5 seconds
 connection:Disconnect()
 ```
 
-Note: You can also use `:get()` to get the updated value.
+Note: You can also use `:get()` inside of `.Changed`.
 
 ## `:Destroy()`
 
@@ -89,6 +94,5 @@ health:Destroy()
 Values that depends on this `Value` will no longer update.
 
 And `.Changed` will no longer fire.
-
 
 For advanced users: Yes, this will work with `Trove` and `Maid`

@@ -41,7 +41,7 @@ local greeting = Value.new("Welcome")
 local userName = Value.new("Preston")
 
 local combinedMessage = Computed.new(function()
-    return `{greeting}, {userName}!`
+    return `{greeting:get()}, {userName:get()}!`
 end)
 ```
 

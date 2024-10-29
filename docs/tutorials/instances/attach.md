@@ -78,7 +78,7 @@ Attach(Frame) {
 }
 ```
 
-`Attach` works on **any** Roblox 1Instance1 type and **any** Property
+`Attach` works on **any** Roblox `Instance` type and **any** Property
 
 ```luau
 Attach(workspace.Part) {
