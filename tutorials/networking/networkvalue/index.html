@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usage" class="md-skip">
+        <a href="#server" class="md-skip">
           Skip to content
         </a>
       
@@ -731,46 +731,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#server" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      Server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-objects" class="md-nav__link">
+  <a href="#client" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Objects?
+      Client
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why Objects?">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Usage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#replicatedstorage" class="md-nav__link">
     <span class="md-ellipsis">
-      The Problem
+      ReplicatedStorage
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#building-better-variables" class="md-nav__link">
+  <a href="#server_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Building Better Variables
+      Server
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sharing-variables" class="md-nav__link">
+  <a href="#client_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Sharing Variables
+      Client
     </span>
   </a>
   
@@ -1474,46 +1483,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#server" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      Server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-objects" class="md-nav__link">
+  <a href="#client" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Objects?
+      Client
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why Objects?">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Usage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#replicatedstorage" class="md-nav__link">
     <span class="md-ellipsis">
-      The Problem
+      ReplicatedStorage
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#building-better-variables" class="md-nav__link">
+  <a href="#server_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Building Better Variables
+      Server
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sharing-variables" class="md-nav__link">
+  <a href="#client_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Sharing Variables
+      Client
     </span>
   </a>
   
@@ -1549,106 +1567,36 @@
 
 
 <!-- Markdown content -->
-<p>Values are objects which store single values.
-You can read from them with <code>:get()</code>, and write to them with <code>:set()</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">blueScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ServerValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
+<p>A Weave <code>NetworkValue</code> is an object that stores any Weave <code>Value</code> and makes it available to all clients.</p>
+<p>You can read from them with <code>:get()</code>, and write to them ONLY on the SERVER with <code>:set()</code>.</p>
+<h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">blueScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;BlueScore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 
 <span class="nf">print</span><span class="p">(</span><span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 0</span>
 <span class="nv">blueScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
-<hr />
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use <code>ServerValue</code> in your code, you first need to import it from the Weave module,
-so that you can refer to it by name:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Value</span>
-</code></pre></div></td></tr></table></div>
-<p>To create a new value, call the <code>Value</code> function:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="c1">-- this will create and return a new Value object</span>
+<h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">blueScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;BlueScore&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
-<p>By default, new <code>Value</code> objects store <code>nil</code>. If you want the <code>Value</code> object to
-start with a different value, you can provide one:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="c1">-- the Value will initially store a value of 100</span>
+<h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
+<p>The recommended way to use <code>NetworkValue</code> is to create a module script in ReplicatedStorage that exports a <code>NetworkValue</code> object. This way you can require the <code>NetworkValue</code> object from any script on the client or server. On the client this would return a Weave <code>Value</code> object, on the server it would return a <code>NetworkValue</code> object that can update all clients Weave <code>Value</code> objects.</p>
+<h3 id="replicatedstorage">ReplicatedStorage<a class="headerlink" href="#replicatedstorage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">NetworkValue</span>
+<span class="kr">return</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;RedScore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 </code></pre></div>
-<p>You can retrieve the currently stored value at any time with <code>:get()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nf">print</span><span class="p">(</span><span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 100</span>
+<h3 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RedScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 0</span>
+<span class="nv">RedScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
-<p>You can also set the stored value at any time with <code>:set()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 25</span>
+<h3 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RedScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
-<hr />
-<h2 id="why-objects">Why Objects?<a class="headerlink" href="#why-objects" title="Permanent link">&para;</a></h2>
-<h3 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Permanent link">&para;</a></h3>
-<p>Imagine some UI in your head. Think about what it looks like, and think about
-the different variables it's showing to you.</p>
-<figure>
-<p><img alt="An example of a game's UI, with some variables labelled and linked to parts of the UI." src="Game-UI-Variables-Light.svg#only-light" />
-<img alt="An example of a game's UI, with some variables labelled and linked to parts of the UI." src="Game-UI-Variables-Dark.svg#only-dark" /></p>
-<figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
-</figure>
-<p>Your UIs are usually driven by a few internal variables. When those variables
-change, you want your UI to reflect those changes.</p>
-<p>Unfortunately, there's no way to listen for those changes in Lua. When you
-change those variables, it's normally <em>your</em> responsibility to figure out what
-needs to update, and to send out those updates.</p>
-<p>Over time, we've come up with many methods of dealing with this inconvenience.
-Perhaps the simplest are 'setter functions', like these:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span>
-
-<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">setAmmo</span><span class="p">(</span><span class="nv">newAmmo</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newAmmo</span>
-<span class="w">    </span><span class="c1">-- you need to send out updates to every piece of code using `ammo` here</span>
-<span class="w">    </span><span class="nf">updateHUD</span><span class="p">()</span>
-<span class="w">    </span><span class="nf">updateGunModel</span><span class="p">()</span>
-<span class="w">    </span><span class="nf">sendAmmoToServer</span><span class="p">()</span>
-<span class="kr">end</span>
-</code></pre></div>
-<p>But this is clunky and unreliable; what if there's another piece of code using
-<code>ammo</code> that we've forgotten to update here? How can you guarantee we've covered
-everything? Moreover, why is the code setting the <code>ammo</code> even concerned with who
-uses it?</p>
-<h3 id="building-better-variables">Building Better Variables<a class="headerlink" href="#building-better-variables" title="Permanent link">&para;</a></h3>
-<p>In an ideal world, anyone using <code>ammo</code> should be able to listen for changes, and
-get notified when someone sets it to a new value.</p>
-<p>To make this work, we need to fundamentally extend what variables can do. In
-particular, we need two additional features:</p>
-<ul>
-<li>We need to save a list of <em>dependents</em> - other places currently using our
-  variable. This is so we know who to notify when the value changes.</li>
-<li>We need to run some code when the variable is set to a new value. If we can
-  do that, then we can go through the list and notify everyone.</li>
-</ul>
-<p>To solve this, Weave introduces the idea of a 'state object'. These are objects
-that represent a single value, which you can <code>:get()</code> at any time. They also
-keep a list of dependents; when the object's value changes, it can notify
-everyone so they can respond to the change.</p>
-<p><code>Value</code> is one such state object. It's specifically designed to act like a
-variable, so it has an extra <code>:set()</code> method. Using that method, you can change
-the object's value manually. If you set it to a different value than before,
-it'll notify anyone using the object.</p>
-<p>This means you can use <code>Value</code> objects like variables, with the added benefit of
-being able to listen to changes like we wanted!</p>
-<h3 id="sharing-variables">Sharing Variables<a class="headerlink" href="#sharing-variables" title="Permanent link">&para;</a></h3>
-<p>There is another benefit to using objects too; you can easily share your objects
-directly with other code. Every usage of that object will refer to the
-same underlying value:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Tycoon.Cash is a `Value` object</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">Tycoon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Cash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="kr">return</span><span class="w"> </span><span class="nv">Tycoon</span>
-
-
-<span class="c1">-- Some other script</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">Tycoon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Tycoon</span><span class="p">)</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nv">Tycoon</span><span class="p">.</span><span class="nv">Cash</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">-- 0</span>
-</code></pre></div>
-<p>This is something that normal variables can't do by default, and is a benefit
-exclusive to state objects.</p>
 
 <!-- Source file information -->
 
