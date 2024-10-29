@@ -124,6 +124,20 @@
     aria-label="header.title"
   >
 
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="Weave"
+      class="md-header__button md-logo"
+      aria-label="Weave"
+      data-md-component="logo"
+    >
+      <!-- Logo -->
+
+  <img src="../../../assets/logo.svg" alt="logo" />
+
+    </a>
+
     <!-- Button to open drawer -->
     <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.75 5.5h11.5a.75.75 0 0 1 0 1.5H8.75a.75.75 0 0 1 0-1.5m0 6h11.5a.75.75 0 0 1 0 1.5H8.75a.75.75 0 0 1 0-1.5m0 6h11.5a.75.75 0 0 1 0 1.5H8.75a.75.75 0 0 1 0-1.5M5 12a1 1 0 1 1-2 0 1 1 0 0 1 2 0M4 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2m0 12a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg>
@@ -335,7 +349,7 @@
     <a href="../../.." title="Weave" class="md-nav__button md-logo" aria-label="Weave" data-md-component="logo">
       <!-- Logo -->
 
-
+  <img src="../../../assets/logo.svg" alt="logo" />
 
     </a>
     Weave
@@ -392,8 +406,6 @@
       
         
           
-        
-      
         
       
         
@@ -640,10 +652,16 @@
                 
   
   
+    
   
   
+  
     
     
+      
+        
+      
+        
       
         
       
@@ -655,13 +673,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
@@ -675,7 +691,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             Networking
@@ -723,60 +739,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Saving Data
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_6">
-            <span class="md-nav__icon md-icon"></span>
-            Saving Data
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1662,15 +1624,9 @@
 <!-- Markdown content -->
 <p>A Weave <code>PlayerProfileValue</code>:</p>
 <ul>
-<li>
-<p>Stores the value for a <em>specific</em> player</p>
-</li>
-<li>
-<p>Updates the player's value in <code>ProfileService</code></p>
-</li>
-<li>
-<p>Broadcasts updates to one player</p>
-</li>
+<li>Stores the value for a <em>specific</em> player</li>
+<li>Updates the player's value in <code>ProfileService</code></li>
+<li>Broadcasts updates to one player</li>
 </ul>
 <p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
@@ -1682,14 +1638,15 @@
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerGems&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Gems&quot;</span><span class="p">)</span>
 
-<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">updateGems</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">           </span><span class="c1">--&gt; 0</span>
-<span class="w">    </span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">           </span><span class="c1">--&gt; 100</span>
+<span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">PlayerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">         </span><span class="c1">--&gt; 1</span>
+<span class="w">    </span><span class="nv">PlayerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">PlayerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">         </span><span class="c1">--&gt; 2</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerGems&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerGems&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Gems&quot;</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">localPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">.</span><span class="nv">LocalPlayer</span>
 
 <span class="nv">playerGems</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">                </span><span class="c1">--&gt; 100</span>
 </code></pre></div>
@@ -1704,18 +1661,17 @@
 <span class="kr">return</span><span class="w"> </span><span class="nv">PlayerProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerGems&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Gems&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">PlayerProfileValues</span><span class="p">.</span><span class="nv">PlayerGems</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">PlayerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">PlayerProfileValues</span><span class="p">.</span><span class="nv">PlayerLevels</span><span class="p">)</span>
 
 <span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">           </span><span class="c1">--&gt; 1</span>
-<span class="w">    </span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">           </span><span class="c1">--&gt; 2</span>
+<span class="w">    </span><span class="nv">PlayerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">         </span><span class="c1">--&gt; 1</span>
+<span class="w">    </span><span class="nv">PlayerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">PlayerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">         </span><span class="c1">--&gt; 2</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">PlayerProfileValues</span><span class="p">.</span><span class="nv">PlayerGems</span><span class="p">)</span>
-
-<span class="nv">playerGems</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">                    </span><span class="c1">--&gt; 2</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">PlayerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">PlayerProfileValues</span><span class="p">.</span><span class="nv">PlayerLevels</span><span class="p">)</span>
+<span class="nv">PlayerLevels</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">                  </span><span class="c1">--&gt; 2</span>
 </code></pre></div>
 
 <!-- Source file information -->
