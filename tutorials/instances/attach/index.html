@@ -1536,7 +1536,7 @@
 
 
 <!-- Markdown content -->
-<p>Weave provides an <code>Attach</code> function for updating <em>any</em> Instance property.</p>
+<p>Weave provides an <code>Attach</code> function for updating <em>any</em> <code>Instance</code> property.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ammo</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1564,8 +1564,8 @@
 
 <span class="nf">someFunction</span><span class="p">({</span><span class="w"> </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Some Text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">Color3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">})</span>
 </code></pre></div>
-<p>Is the <em>exact same</em> as </p>
-<div class="highlight"><pre><span></span><code><span class="nf">someFunction</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<p>Is the <em>exact same</em> as</p>
+<div class="highlight"><pre><span></span><code><span class="nf">someFunction</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Some Text&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nv">Color3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
 <span class="p">}</span>
@@ -1609,13 +1609,13 @@
 
 <span class="nf">print</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; Loading...</span>
 </code></pre></div>
-<p>Updates to <code>Value</code> and <code>Computed</code> values will be applied on the next frame:
+<p>Updates to <code>Value</code> and <code>Computed</code> values will be applied on the next frame:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">message</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="s2">&quot;All done!&quot;</span><span class="p">)</span>
 
 <span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">()</span><span class="w"> </span><span class="c1">-- important: changes are applied on the next frame!</span>
 
 <span class="nf">print</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; All done!</span>
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="instance-reuse">Instance Reuse<a class="headerlink" href="#instance-reuse" title="Permanent link">&para;</a></h3>
 <p><code>Attach</code> returns the Instance you provide, so you can re-use it:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">messageLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Attach</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
