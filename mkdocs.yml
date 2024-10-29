@@ -74,6 +74,7 @@ nav:
           - NetworkValue: tutorials/networking/networkvalue.md
           - PlayerValue: tutorials/networking/playervalue.md
           - ProfileValue: tutorials/networking/profilevalue.md
+          - ProfilePlayerValue: tutorials/networking/profileplayervalue.md
       
   - UI:
     - Lists & Tables:

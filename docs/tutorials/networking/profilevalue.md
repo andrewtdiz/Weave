@@ -1,152 +1,65 @@
-Values are objects which store single values.
-You can read from them with `:get()`, and write to them with `:set()`.
+A Weave `ProfileValue` is an object which stores a Weave `Value` for each player, replicates all players' values to all clients and synchronizes a specific player's value with the ProfileService.
 
+From the server you can read a player's value with `:getFor(player: Player)`, and write to them with `:setFor(player: Player)`.
+
+On the client you can read from all player's values with `:get()` or the specific player's value with `:get()[player]`.
+
+###  ProfileService
 ```luau
--- ProfileStore/ProfileService
-{
-	Cash = 0,
+return {
+	Level = 1,
 }
-
--- Server
-local inventory = ProfileValue.new("Inventory")
-
-local function addCash(player: Player, amount: number)
-	local currentCash = inventory:getFor(player)
-
-	local newCash = currentCash + amount
-
-	inventory:setFor(player, newCash) --> Updates value on the server AND sets Profile
-end
-
-addCash(5)
-
 ```
 
----
+###  Server
+```luau
+local playerLevels = ProfileValue.new("PlayerLevels", "Level")
+local player = Players:GetPlayers()[1]
 
-## Usage
+print(playerLevels:getFor(player)) 		--> 1
+playerLevels:setFor(player, 2)
+print(playerLevels:getFor(player)) 		--> 2
+```
 
-To use `ProfileValue` in your code, you first need to import it from the Weave module,
-so that you can refer to it by name:
+###  Client
+```luau
+local playerLevels = ProfileValue.new("PlayerLevels", "Level")
+local localPlayer = Players.LocalPlayer
 
-```luau linenums="1"
+print(playerLevels:get()) 				--> { [localPlayer] = 2 }
+print(playerLevels:get()[localPlayer]) 	--> 2
+```
+
+When the player leaves the experience their value is automatically cleared from the `ProfileValue` object.
+
+When the player joins the experience their value is automatically loaded from the ProfileService into the `ProfileValue` object.
+
+## Recommended Usage
+
+The recommended way to use `ProfileValue` is to create a module script in ReplicatedStorage that exports a `ProfileValue` object. This way you can require the `ProfileValue` object from any script on the client or server. On the client this would return a Weave `Value` object, on the server it would return a `ProfileValue` object that can update all clients Weave `Value` objects.
+
+### ReplicatedStorage
+```luau 
 local Weave = require(ReplicatedStorage.Weave)
-local Value = Weave.Value
+local ProfileValue = Weave.ProfileValue
+return ProfileValue.new("PlayerLevels", "Level")
 ```
 
-To create a new value, call the `Value` function:
-
+### Server
 ```luau
-local health = Value.new() -- this will create and return a new Value object
+local PlayerLevels = require(ReplicatedStorage.ProfileValues.PlayerLevels)
+local player = Players:GetPlayers()[1]
+
+print(PlayerLevels:getFor(player))		--> 1
+PlayerLevels:setFor(player, 2)
+print(PlayerLevels:getFor(player)) 		--> 2
 ```
 
-By default, new `Value` objects store `nil`. If you want the `Value` object to
-start with a different value, you can provide one:
-
+### Client
 ```luau
-local health = Value.new(100) -- the Value will initially store a value of 100
+local PlayerLevels = require(ReplicatedStorage.ProfileValues.PlayerLevels)
+local localPlayer = Players.LocalPlayer
+
+print(PlayerLevels:get()) 				--> { [localPlayer] = 2 }
+print(PlayerLevels:get()[localPlayer]) 	--> 2
 ```
-
-You can retrieve the currently stored value at any time with `:get()`:
-
-```luau
-print(health:get()) --> 100
-```
-
-You can also set the stored value at any time with `:set()`:
-
-```luau
-health:set(25)
-print(health:get()) --> 25
-```
-
----
-
-## Why Objects?
-
-### The Problem
-
-Imagine some UI in your head. Think about what it looks like, and think about
-the different variables it's showing to you.
-
-<figure markdown>
-![An example of a game's UI, with some variables labelled and linked to parts of the UI.](Game-UI-Variables-Light.svg#only-light)
-![An example of a game's UI, with some variables labelled and linked to parts of the UI.](Game-UI-Variables-Dark.svg#only-dark)
-<figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
-</figure>
-
-Your UIs are usually driven by a few internal variables. When those variables
-change, you want your UI to reflect those changes.
-
-Unfortunately, there's no way to listen for those changes in Lua. When you
-change those variables, it's normally _your_ responsibility to figure out what
-needs to update, and to send out those updates.
-
-Over time, we've come up with many methods of dealing with this inconvenience.
-Perhaps the simplest are 'setter functions', like these:
-
-```luau
-local ammo = 100
-
-local function setAmmo(newAmmo)
-	ammo = newAmmo
-	-- you need to send out updates to every piece of code using `ammo` here
-	updateHUD()
-	updateGunModel()
-	sendAmmoToServer()
-end
-```
-
-But this is clunky and unreliable; what if there's another piece of code using
-`ammo` that we've forgotten to update here? How can you guarantee we've covered
-everything? Moreover, why is the code setting the `ammo` even concerned with who
-uses it?
-
-### Building Better Variables
-
-In an ideal world, anyone using `ammo` should be able to listen for changes, and
-get notified when someone sets it to a new value.
-
-To make this work, we need to fundamentally extend what variables can do. In
-particular, we need two additional features:
-
-- We need to save a list of _dependents_ - other places currently using our
-  variable. This is so we know who to notify when the value changes.
-- We need to run some code when the variable is set to a new value. If we can
-  do that, then we can go through the list and notify everyone.
-
-To solve this, Fusion introduces the idea of a 'state object'. These are objects
-that represent a single value, which you can `:get()` at any time. They also
-keep a list of dependents; when the object's value changes, it can notify
-everyone so they can respond to the change.
-
-`Value` is one such state object. It's specifically designed to act like a
-variable, so it has an extra `:set()` method. Using that method, you can change
-the object's value manually. If you set it to a different value than before,
-it'll notify anyone using the object.
-
-This means you can use `Value` objects like variables, with the added benefit of
-being able to listen to changes like we wanted!
-
-### Sharing Variables
-
-There is another benefit to using objects too; you can easily share your objects
-directly with other code. Every usage of that object will refer to the
-same underlying value:
-
-```luau
--- Tycoon.Cash is a `Value` object
-local Tycoon = {
-	Cash = Value.new(0)
-}
-return Tycoon
-
-
--- Some other script
-local Tycoon = require(ReplicatedStorage.Tycoon)
-
-print(Tycoon.Cash:get()) -- 0
-```
-
-This is something that normal variables can't do by default, and is a benefit
-exclusive to state objects.
