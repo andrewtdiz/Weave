@@ -1590,7 +1590,7 @@
 <span class="kd">local</span><span class="w"> </span><span class="nv">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Preston&quot;</span><span class="p">)</span>
 
 <span class="kd">local</span><span class="w"> </span><span class="nv">combinedMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="sb">`</span><span class="p">{</span><span class="nv">greeting</span><span class="p">}</span><span class="sb">, </span><span class="p">{</span><span class="nv">userName</span><span class="p">}</span><span class="sb">!`</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="sb">`</span><span class="p">{</span><span class="nv">greeting</span><span class="p">:</span><span class="nc">get</span><span class="p">()}</span><span class="sb">, </span><span class="p">{</span><span class="nv">userName</span><span class="p">:</span><span class="nc">get</span><span class="p">()}</span><span class="sb">!`</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <p>You can get the computed's current value using <code>:get()</code>:</p>
