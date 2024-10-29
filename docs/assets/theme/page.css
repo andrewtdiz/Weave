@@ -136,14 +136,6 @@ body {
 	margin-right: 0rem;
 }
 
-.md-header__title[data-md-state=active] .md-header__topic {
-    transform: translateY(0.5rem);
-}
-
-.md-header__title .md-header__topic+.md-header__topic {
-    transform: translateY(-0.5rem);
-}
-
 .md-search-result__meta {
 	background-color: var(--weavedoc-bg-1);
 }
