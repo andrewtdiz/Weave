@@ -22,7 +22,6 @@ document.body.addEventListener("click", e => {
     }
 })
 function applyPrintClass(el) {
-    console.log(el);
     if (el.textContent.trim() === "print") {
       el.classList.add("light-blue");
     }
