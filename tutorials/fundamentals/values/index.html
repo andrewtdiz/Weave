@@ -1543,25 +1543,31 @@
 
 
 <!-- Markdown content -->
-<p>A Weave <code>Value</code> is an object that stores any Luau value.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
-
-<span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 100</span>
-</code></pre></div>
-<p>Use <code>:get()</code> to read the value</p>
-<p>Use <code>:set()</code> to change it</p>
-<div class="highlight"><pre><span></span><code><span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
-
-<span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 25</span>
-</code></pre></div>
-<hr />
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Import <code>Weave.Value</code> from the Weave module.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Value</span>
 </code></pre></div></td></tr></table></div>
-<p>Use <code>Value.new</code> to store any valid Luau variable:</p>
+<p>A Weave <code>Value</code> is an object that stores any Luau value.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
+
+<span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 100</span>
+
+<span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">99</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Use <code>:get()</code> to read the value</p>
+<p>Use <code>:set()</code> to change it</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
+
+<span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 100</span>
+
+<span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
+
+<span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 25</span>
+</code></pre></div>
+<p><code>Value</code> can store any Luau value:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
 
 <span class="kd">local</span><span class="w"> </span><span class="nv">ammoAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">50</span><span class="p">)</span>
@@ -1589,9 +1595,8 @@
 <span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="sb">`The new health is: </span><span class="p">{</span><span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()}</span><span class="sb">`</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
 
-<span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+<span class="c1">-- do some stuff</span>
 
-<span class="c1">-- Disconnect the above handler after 5 seconds</span>
 <span class="nv">connection</span><span class="p">:</span><span class="nc">Disconnect</span><span class="p">()</span>
 </code></pre></div>
 <p>Note: You can also use <code>:get()</code> to get the updated value.</p>
