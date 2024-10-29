@@ -1596,33 +1596,36 @@
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">blueScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;BlueScore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 0</span>
+<span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 0</span>
 <span class="nv">blueScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
+<span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">blueScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;BlueScore&quot;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
+<span class="nv">blueScore</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nv">blueScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span><span class="w"> </span><span class="c1">--&gt; ERROR - Cannot set NetworkValue from the Client.</span>
+<span class="nv">blueScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; ERROR - Cannot set NetworkValue from the Client.</span>
 </code></pre></div>
 <h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
-<p>The recommended way to use <code>NetworkValue</code> is to create a module script in ReplicatedStorage that exports a <code>NetworkValue</code> object. This way you can require the <code>NetworkValue</code> object from any script on the client or server. On the client this would return a Weave <code>Value</code> object, on the server it would return a <code>NetworkValue</code> object that can update all clients Weave <code>Value</code> objects.</p>
+<p>Create a <code>NetworkValue</code> in <code>ReplicatedStorage</code>, so you can access it on <code>Server</code> and <code>Client</code>.</p>
 <h3 id="replicatedstorage">ReplicatedStorage<a class="headerlink" href="#replicatedstorage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">NetworkValue</span>
+
 <span class="kr">return</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;RedScore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RedScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 0</span>
+
 <span class="nv">RedScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
+<p>On the server this returns a <code>NetworkValue</code> object that you can <code>:set()</code>.</p>
 <h3 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RedScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
+
+<span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
+<p>On the client this returns a Weave <code>Value</code> object.</p>
 
 <!-- Source file information -->
 
