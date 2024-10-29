@@ -73,6 +73,7 @@ nav:
       - Networking:
           - NetworkValue: tutorials/networking/networkvalue.md
           - PlayerValue: tutorials/networking/playervalue.md
+      - Storing Data:
           - ProfileValue: tutorials/networking/profilevalue.md
           - ProfilePlayerValue: tutorials/networking/profileplayervalue.md
       

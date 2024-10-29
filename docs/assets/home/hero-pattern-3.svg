@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 384" width="1920" height="384">
+	<title>REF-01-svg</title>
+	<defs>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(70.3,-747.5,2343.399,220.389,928.18,740.8)">
+			<stop offset="0" stop-color="#1b75bc"/>
+			<stop offset="1" stop-color="#f49ac1"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+	</style>
+	<path fill-rule="evenodd" class="s0" d="m128 448.5h-128v-128h128v-64h128v64h128v128h-128v-64h-128zm256-192h-128v-128h128v-0.5h128v64.5h128v-64h128v63.2h128v64h128v128h-128v64.3h-128v-128h128v-0.3h-128v-63.2h-128v192h-128v-192.5h-128zm771.5-0.8v-128h128v63.5h128v-63.2h128v-64h128v-64h128v191.2h128v128h-128v65.3h-128v-64h-128v63.5h-128v63.2h-128v-191.5zm640 0.3h-128v0.5h128zm0 191.2h128v-128h-128z"/>
+</svg>

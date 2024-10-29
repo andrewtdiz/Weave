@@ -157,7 +157,11 @@ body {
 }
 
 .md-copyright::after {
-	content: "∙ Theme by Elttob";
+	content: "∙ Theme by AndrewD";
+}
+
+li[class="md-nav__item"] {
+	color: rgb(197, 197, 197) !important;
 }
 
 @media screen and (max-width: 76.1875em) {

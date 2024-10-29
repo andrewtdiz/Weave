@@ -12,11 +12,11 @@
 	--md-primary-fg-color--light:        var(--weavedoc-accent-light);
 	--md-primary-fg-color--dark:         var(--weavedoc-accent-dark);
 
-	--md-accent-fg-color:                var(--weavedoc-accent-hover);
+	--md-accent-fg-color:                rgba(232, 234, 241, 0.962);
 	--md-accent-fg-color--transparent:   var(--weavedoc-accent-hover-a10);
 
 	--md-typeset-color:                var(--md-default-fg-color);
-	--md-typeset-a-color:              var(--md-primary-fg-color);
+	--md-typeset-a-color:              #93baff;
 	--md-typeset-mark-color:           var(--weavedoc-orange-alpha50);
 	--md-typeset-del-color:            hsla(6, 90%, 60%, 0.15);
 	--md-typeset-ins-color:            hsla(150, 90%, 44%, 0.15);

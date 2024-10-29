@@ -27,7 +27,7 @@ blueScore:set(0) --> ERROR - Cannot set NetworkValue from the Client.
 
 Create a `NetworkValue` in `ReplicatedStorage`, so you can access it on `Server` and `Client`.
 
-### ReplicatedStorage
+#### ReplicatedStorage
 
 ```luau
 local Weave = require(ReplicatedStorage.Weave)
@@ -36,7 +36,9 @@ local NetworkValue = Weave.NetworkValue
 return NetworkValue.new("RedScore", 0)
 ```
 
-### Server
+#### Server
+
+On the Server, this returns a `NetworkValue` object that you can `:set()`.
 
 ```luau
 local RedScore = require(ReplicatedStorage.NetworkValues.RedScore)
@@ -45,14 +47,12 @@ RedScore:set(1)
 
 ```
 
-On the Server, this returns a `NetworkValue` object that you can `:set()`.
+#### Client
 
-### Client
+On the Client this returns a Weave `Value` object.
 
 ```luau
 local RedScore = require(ReplicatedStorage.NetworkValues.RedScore)
 
 RedScore:get() --> 1
 ```
-
-On the Client this returns a Weave `Value` object.
