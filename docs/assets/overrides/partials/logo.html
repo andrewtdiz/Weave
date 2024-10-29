@@ -1,5 +1,7 @@
 <!-- Logo -->
 {% if config.theme.logo %}
-
-{% else %} {% set icon = config.theme.icon.logo or "material/library" %} {%
-include ".icons/" ~ icon ~ ".svg" %} {% endif %}
+  <img src="{{ config.theme.logo | url }}.svg" alt="logo" />
+{% else %}
+  {% set icon = config.theme.icon.logo or "material/library" %}
+  {% include ".icons/" ~ icon ~ ".svg" %}
+{% endif %}
