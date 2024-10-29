@@ -1590,23 +1590,22 @@
 
 
 <!-- Markdown content -->
-<p>A Weave <code>PlayerValue</code> is an object that stores any Weave <code>Value</code> for a specific player.</p>
-<p>From the server you read them with <code>:getFor(player: Player)</code>, and write to them with <code>:setFor(player: Player)</code>.</p>
+<p>A Weave <code>PlayerValue</code> stores a value and updates for a specific player.</p>
+<p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
+<p>ONLY <code>:get()</code> on the Client.</p>
 <p>From the client can read from them with <code>:get()</code>.</p>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerCash&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">player1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">:</span><span class="nc">GetPlayers</span><span class="p">()[</span><span class="mf">1</span><span class="p">]</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">player2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">:</span><span class="nc">GetPlayers</span><span class="p">()[</span><span class="mf">2</span><span class="p">]</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">))</span><span class="w"> </span><span class="c1">--&gt; 0</span>
-<span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">))</span><span class="w"> </span><span class="c1">--&gt; 1</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player2</span><span class="p">))</span><span class="w"> </span><span class="c1">--&gt; 0</span>
+<span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerCash&quot;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 0</span>
+<span class="nv">playerCash</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">     </span><span class="c1">--&gt; 0</span>
 </code></pre></div>
 <h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
 <p>The recommended way to use <code>PlayerValue</code> is to create a module script in ReplicatedStorage that exports a <code>PlayerValue</code> object. This way you can require the <code>PlayerValue</code> object from any script on the client or server. On the client this would return a Weave <code>Value</code> object, on the server it would return a <code>PlayerValue</code> object that can update all clients Weave <code>Value</code> objects.</p>
@@ -1617,14 +1616,16 @@
 </code></pre></div>
 <h3 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">PlayerValues</span><span class="p">.</span><span class="nv">PlayerCash</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">player1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">:</span><span class="nc">GetPlayers</span><span class="p">()[</span><span class="mf">1</span><span class="p">]</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">))</span><span class="w"> </span><span class="c1">--&gt; 0</span>
-<span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">))</span><span class="w"> </span><span class="c1">--&gt; 1</span>
+
+<span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">PlayerValues</span><span class="p">.</span><span class="nv">PlayerCash</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w"> </span><span class="c1">--&gt; 1</span>
+<span class="nv">playerCash</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">        </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
 
 <!-- Source file information -->

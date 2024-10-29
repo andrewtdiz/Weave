@@ -1608,9 +1608,14 @@
 
 
 <!-- Markdown content -->
-<p>A Weave <code>PlayerProfileValue</code> is an object which stores a Weave <code>PlayerValue</code> and synchronizes the player's value with the ProfileService.</p>
-<p>From the server you read them with <code>:getFor(player: Player)</code>, and write to them with <code>:setFor(player: Player)</code>.</p>
-<p>From the client can read from them with <code>:get()</code>.</p>
+<p>A Weave <code>PlayerProfileValue</code>:</p>
+<ul>
+<li>Stores the value for a <em>specific</em> player</li>
+<li>Updates the player's value in <code>ProfileService</code></li>
+<li>Broadcasts updates to one player</li>
+</ul>
+<p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
+<p>ONLY <code>:get()</code> on the Client.</p>
 <h3 id="profileservice">ProfileService<a class="headerlink" href="#profileservice" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Gems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
@@ -1620,15 +1625,15 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerGems&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Gems&quot;</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">:</span><span class="nc">GetPlayers</span><span class="p">()[</span><span class="mf">1</span><span class="p">]</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">))</span><span class="w">        </span><span class="c1">--&gt; 0</span>
+<span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">           </span><span class="c1">--&gt; 0</span>
 <span class="nv">playerGems</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">))</span><span class="w">        </span><span class="c1">--&gt; 100</span>
+<span class="nv">playerGems</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">           </span><span class="c1">--&gt; 100</span>
 </code></pre></div>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerGems&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Gems&quot;</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">localPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">.</span><span class="nv">LocalPlayer</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nv">playerGems</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w">                 </span><span class="c1">--&gt; 100</span>
+<span class="nv">playerGems</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span><span class="w">               </span><span class="c1">--&gt; 100</span>
 </code></pre></div>
 <p>When the player leaves the experience their value is automatically cleared from the <code>PlayerProfileValue</code> object.</p>
 <p>When the player joins the experience their value is automatically loaded from the ProfileService into the <code>PlayerProfileValue</code> object.</p>

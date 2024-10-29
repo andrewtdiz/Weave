@@ -1590,7 +1590,7 @@
 
 
 <!-- Markdown content -->
-<p>A Weave <code>NetworkValue</code> stores a value that is updated to all clients.</p>
+<p>A Weave <code>NetworkValue</code> stores a value and updates to all clients.</p>
 <p><code>:get()</code> and <code>:set()</code> its value from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
@@ -1619,13 +1619,13 @@
 
 <span class="nv">RedScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
 </code></pre></div>
-<p>On the server this returns a <code>NetworkValue</code> object that you can <code>:set()</code>.</p>
+<p>On the Server, this returns a <code>NetworkValue</code> object that you can <code>:set()</code>.</p>
 <h3 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RedScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
 
 <span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
-<p>On the client this returns a Weave <code>Value</code> object.</p>
+<p>On the Client this returns a Weave <code>Value</code> object.</p>
 
 <!-- Source file information -->
 
