@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#explained" class="md-skip">
+        <a href="#usage" class="md-skip">
           Skip to content
         </a>
       
@@ -621,15 +621,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explained
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
@@ -1498,15 +1489,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explained
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -1577,22 +1559,29 @@
 <figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
 </figure>
 <hr />
-<h2 id="explained">Explained<a class="headerlink" href="#explained" title="Permanent link">&para;</a></h2>
-<p><code>Attach</code> may look weird, but it is <strong>valid Luau</strong></p>
+<!-- ## Explained
+
+`Attach` may look weird, but it is **valid Luau**
+
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">someFunction</span><span class="p">(</span><span class="nv">arg</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">-- do stuff</span>
 <span class="kr">end</span>
 
 <span class="nf">someFunction</span><span class="p">({</span><span class="w"> </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Some Text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">Color3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">})</span>
 </code></pre></div>
-<p>Is the <em>exact same</em> as</p>
+
+Is the _exact same_ as
+
 <div class="highlight"><pre><span></span><code><span class="nf">someFunction</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Some Text&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nv">Color3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Still don't believe it? Run the code in <a href="https://luau.org/demo?share=H4sIAAAAAAAACsvJT07MUUgrzUsuyczPUyjOz011g3I0EovSNbkUFBQUCooy80pAXL2Q1IoSHQUQyzk%2FJ7%2FIWJMrNS%2BFiwtFW7UCSJWCrYJScH5uKpijpKMAUa9gq5BgqKMAQgkKtZqoOhWqFcDWYWg3UtIBSyDMMNBRAKEErlouLi4AkZUuRMQAAAA%3D" target="_blank">luau.org/AttachDemo</a></p>
-<hr />
+
+Still don't believe it? Run the code in <a href="https://luau.org/demo?share=H4sIAAAAAAAACsvJT07MUUgrzUsuyczPUyjOz011g3I0EovSNbkUFBQUCooy80pAXL2Q1IoSHQUQyzk%2FJ7%2FIWJMrNS%2BFiwtFW7UCSJWCrYJScH5uKpijpKMAUa9gq5BgqKMAQgkKtZqoOhWqFcDWYWg3UtIBSyDMMNBRAKEErlouLi4AkZUuRMQAAAA%3D" target="_blank">luau.org/AttachDemo</a>
+
+--- -->
+
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Import the <code>Attach</code> module from Weave:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
