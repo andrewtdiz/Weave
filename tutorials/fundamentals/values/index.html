@@ -546,15 +546,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#destroy" class="md-nav__link">
-    <span class="md-ellipsis">
-      :Destroy()
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1509,15 +1500,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#destroy" class="md-nav__link">
-    <span class="md-ellipsis">
-      :Destroy()
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1585,30 +1567,35 @@
 
 <span class="nv">health</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="nv">onHealthUpdated</span><span class="p">)</span>
 </code></pre></div>
-<p><code>.Changed</code> passes the <code>newValue</code> as the argument.</p>
+<p>Get the updated value:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">health</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">newHealth</span><span class="p">:</span><span class="w"> </span><span class="nc">number</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="sb">`The new health is: </span><span class="p">{</span><span class="nv">newHealth</span><span class="p">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="s2">&quot;The new health is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">newHealth</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
-<p><code>.Changed</code> returns a connection you can <code>:Disconnect()</code> from</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">health</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="sb">`The new health is: </span><span class="p">{</span><span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()}</span><span class="sb">`</span><span class="p">)</span>
+<p><code>:Disconnect()</code> when you're done listening to changes</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">health</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">newHealth</span><span class="p">:</span><span class="w"> </span><span class="nc">number</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="s2">&quot;The new health is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">newHealth</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
 
 <span class="c1">-- do some stuff</span>
 
 <span class="nv">connection</span><span class="p">:</span><span class="nc">Disconnect</span><span class="p">()</span>
 </code></pre></div>
-<p>Note: You can also use <code>:get()</code> inside of <code>.Changed</code>.</p>
-<h2 id="destroy"><code>:Destroy()</code><a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h2>
-<p>Call <code>:Destroy()</code> just like any Roblox <code>Instance</code></p>
+<!--
+## `:Destroy()`
+
+Call `:Destroy()` just like any Roblox `Instance`
+
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
 
 <span class="nv">health</span><span class="p">:</span><span class="nc">Destroy</span><span class="p">()</span>
 </code></pre></div>
-<p>Values that depends on this <code>Value</code> will no longer update.</p>
-<p>And <code>.Changed</code> will no longer fire.</p>
-<p>For advanced users: Yes, this will work with <code>Trove</code> and <code>Maid</code></p>
+
+Values that depends on this `Value` will no longer update.
+
+And `.Changed` will no longer fire.
+
+For advanced users: Yes, this will work with `Trove` and `Maid` -->
 
 <!-- Source file information -->
 

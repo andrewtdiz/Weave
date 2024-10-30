@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#explained" class="md-skip">
+        <a href="#usage" class="md-skip">
           Skip to content
         </a>
       
@@ -623,15 +623,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explained
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -652,6 +643,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explained
+    </span>
+  </a>
   
 </li>
       
@@ -1498,15 +1498,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explained
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -1527,6 +1518,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explained
+    </span>
+  </a>
   
 </li>
       
@@ -1560,20 +1560,63 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">BackgroundColor3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span>
-<span class="hll"><span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span><span class="p">,</span>
-</span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
+<p>✨ <code>Attach</code> updates <code>Value</code> or <code>Computed</code> properties <em>automatically</em> ✨</p>
 <div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">Gun</span><span class="p">.</span><span class="nv">SurfaceGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">BackgroundColor3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span>
-<span class="hll"><span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span><span class="p">,</span>
-</span><span class="p">}</span>
+<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nv">ammo</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">30</span><span class="p">)</span>
+
+<span class="c1">-- TextLabel.Text is now 30</span>
 </code></pre></div>
-<p>Any Weave <code>Value</code> or <code>Computed</code> will update the Instance <em>automatically</em>.</p>
 <figure>
 <p><img alt="A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements." src="Hydration-Basic-Dark.svg#only-dark" />
 <img alt="A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements." src="Hydration-Basic-Light.svg#only-light" /></p>
 <figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
 </figure>
+<hr />
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Import the <code>Attach</code> module from Weave:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">Attach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Attach</span>
+</code></pre></div></td></tr></table></div>
+<p>To use <code>Attach</code>:</p>
+<ul>
+<li>Call <code>Attach</code> with the <code>Instance</code> you want to update</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">Frame</span><span class="p">)</span><span class="w"> </span><span class="c1">-- TODO: Add Properties</span>
+</code></pre></div>
+<ul>
+<li>Define a table of properties:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">Frame</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">UDim2</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">),</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>Attach</code> works on <em>any</em> <code>Instance</code> type and <em>any</em> Property</p>
+<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">BrickColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">BrickColor</span><span class="p">.</span><span class="nf">Red</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">Frame</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="nf">Attach</span><span class="p">(</span><span class="nv">workspace</span><span class="p">.</span><span class="nv">CurrentCamera</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">CameraType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Enum</span><span class="p">.</span><span class="nv">CameraType</span><span class="p">.</span><span class="nv">Scriptable</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="instance-reuse">Instance Reuse<a class="headerlink" href="#instance-reuse" title="Permanent link">&para;</a></h3>
+<p><code>Attach</code> returns the <code>Instance</code> back, so you can re-use it:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">textLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Attach</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Loading...&quot;</span>
+<span class="p">}</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nv">textLabel</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; Loading...</span>
+</code></pre></div>
 <hr />
 <h2 id="explained">Explained<a class="headerlink" href="#explained" title="Permanent link">&para;</a></h2>
 <p><code>Attach</code> may look weird, but it is <strong>valid Luau</strong></p>
@@ -1590,59 +1633,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Still don't believe it? Run the code in <a href="https://luau.org/demo?share=H4sIAAAAAAAACsvJT07MUUgrzUsuyczPUyjOz011g3I0EovSNbkUFBQUCooy80pAXL2Q1IoSHQUQyzk%2FJ7%2FIWJMrNS%2BFiwtFW7UCSJWCrYJScH5uKpijpKMAUa9gq5BgqKMAQgkKtZqoOhWqFcDWYWg3UtIBSyDMMNBRAKEErlouLi4AkZUuRMQAAAA%3D" target="_blank">luau.org/AttachDemo</a></p>
-<hr />
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Import the <code>Attach</code> module from Weave:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">Attach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Attach</span>
-</code></pre></div></td></tr></table></div>
-<p>The Attach function is called in two parts.</p>
-<p>Call <code>Attach</code> with the <code>Instance</code> you want to update</p>
-<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">Frame</span><span class="p">)</span><span class="w"> </span><span class="c1">-- TODO: Add Properties</span>
-</code></pre></div>
-<p>Then, define a table of properties:</p>
-<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">Frame</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">UDim2</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">),</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>Attach</code> works on <strong>any</strong> Roblox <code>Instance</code> type and <strong>any</strong> Property</p>
-<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">workspace</span><span class="p">.</span><span class="nv">Part</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">BrickColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">BrickColor</span><span class="p">.</span><span class="nf">Red</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">Frame</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<span class="p">}</span>
-
-<span class="nf">Attach</span><span class="p">(</span><span class="nv">workspace</span><span class="p">.</span><span class="nv">CurrentCamera</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">CameraType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Enum</span><span class="p">.</span><span class="nv">CameraType</span><span class="p">.</span><span class="nv">Scriptable</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Constant values are applied to the instance directly.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Loading...&quot;</span><span class="p">)</span>
-
-<span class="nf">Attach</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">message</span>
-<span class="p">}</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; Loading...</span>
-</code></pre></div>
-<p>Updates to <code>Value</code> and <code>Computed</code> values will be applied on the next frame:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">message</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="s2">&quot;All done!&quot;</span><span class="p">)</span>
-
-<span class="nv">task</span><span class="p">.</span><span class="nf">wait</span><span class="p">()</span><span class="w"> </span><span class="c1">-- important: changes are applied on the next frame!</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; All done!</span>
-</code></pre></div>
-<h3 id="instance-reuse">Instance Reuse<a class="headerlink" href="#instance-reuse" title="Permanent link">&para;</a></h3>
-<p><code>Attach</code> returns the Instance you provide, so you can re-use it:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">messageLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Attach</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">message</span>
-<span class="p">}</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nv">messageLabel</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; Loading...</span>
-</code></pre></div>
 
 <!-- Source file information -->
 
