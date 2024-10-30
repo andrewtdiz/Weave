@@ -1627,10 +1627,12 @@
 
 
 <!-- Markdown content -->
-<p>A Weave <code>ProfileValue</code>:
-- Stores the value for a <em>specific</em> player
-- Updates the player's value in <code>ProfileService</code>
-- Broadcasts updates to a ALL players</p>
+<p>A Weave <code>ProfileValue</code>:</p>
+<ul>
+<li>Stores the value for a <em>specific</em> player</li>
+<li>Updates the player's value in <code>ProfileService</code></li>
+<li>Broadcasts updates to a ALL players</li>
+</ul>
 <p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
 <h3 id="profileservice">ProfileService<a class="headerlink" href="#profileservice" title="Permanent link">&para;</a></h3>
@@ -1640,11 +1642,13 @@
 </code></pre></div>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerLevels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">:</span><span class="nc">GetPlayers</span><span class="p">()[</span><span class="mf">1</span><span class="p">]</span>
 
-<span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">         </span><span class="c1">--&gt; 1</span>
-<span class="nv">playerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
-<span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">         </span><span class="c1">--&gt; 2</span>
+
+<span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
+<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerLevels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
