@@ -568,15 +568,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#destroy" class="md-nav__link">
-    <span class="md-ellipsis">
-      :Destroy()
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#when-to-use-this" class="md-nav__link">
     <span class="md-ellipsis">
       When To Use This
@@ -1519,15 +1510,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#destroy" class="md-nav__link">
-    <span class="md-ellipsis">
-      :Destroy()
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#when-to-use-this" class="md-nav__link">
     <span class="md-ellipsis">
       When To Use This
@@ -1562,7 +1544,7 @@
 
 <!-- Markdown content -->
 <p><code>Computed</code> values are used to calculate new values.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Preston&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Preston&quot;</span><span class="p">)</span>
 
 <span class="kd">local</span><span class="w"> </span><span class="nv">welcomeMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="sb">`Welcome, </span><span class="p">{</span><span class="nv">userName</span><span class="p">:</span><span class="nc">get</span><span class="p">()}</span><span class="sb">!`</span>
@@ -1570,7 +1552,7 @@
 
 <span class="nv">welcomeMessage</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; &quot;Welcome, Preston!&quot;</span>
 </code></pre></div>
-✨ <code>Computed</code> values update <em>automatically</em> ✨</p>
+<p>✨ <code>Computed</code> values update <em>automatically</em> ✨</p>
 <div class="highlight"><pre><span></span><code><span class="nv">userName</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="s2">&quot;Jandel&quot;</span><span class="p">)</span>
 
 <span class="nv">welcomeMessage</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; &quot;Welcome, Jandel!&quot;</span>
@@ -1629,15 +1611,6 @@
 <span class="nv">double</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="nv">onDoubleChanged</span><span class="p">)</span>
 </code></pre></div>
 <p>Note: You can also use <code>:get()</code> to get the updated value.</p>
-<h2 id="destroy"><code>:Destroy()</code><a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h2>
-<p>Call <code>:Destroy()</code> just like any Roblox <code>Instance</code></p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">number</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
-<span class="kr">end</span><span class="p">)</span>
-
-<span class="nv">double</span><span class="p">:</span><span class="nc">Destroy</span><span class="p">()</span>
-</code></pre></div>
-<p>Values that depends on this <code>Computed</code> will no longer update.</p>
 <hr />
 <h2 id="when-to-use-this">When To Use This<a class="headerlink" href="#when-to-use-this" title="Permanent link">&para;</a></h2>
 <p><code>Computed</code> values make it easier to calculate new state from existing state.</p>
