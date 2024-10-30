@@ -1643,7 +1643,6 @@
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerLevels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
 
-
 <span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
 <span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
 <span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
@@ -1660,10 +1659,11 @@
 <p>When the player leaves the experience their value is automatically cleared from the <code>ProfileValue</code> object.</p>
 <p>When the player joins the experience their value is automatically loaded from the ProfileService into the <code>ProfileValue</code> object.</p>
 <h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
-<p>The recommended way to use <code>ProfileValue</code> is to create a module script in ReplicatedStorage that exports a <code>ProfileValue</code> object. This way you can require the <code>ProfileValue</code> object from any script on the client or server. On the client this would return a Weave <code>Value</code> object, on the server it would return a <code>ProfileValue</code> object that can update all clients Weave <code>Value</code> objects.</p>
+<p>Create a <code>ProfileValue</code> in <code>ReplicatedStorage</code>, so you can access it on <code>Server</code> and <code>Client</code>.</p>
 <h3 id="replicatedstorage">ReplicatedStorage<a class="headerlink" href="#replicatedstorage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">ProfileValue</span>
+
 <span class="kr">return</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerLevels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h3>
