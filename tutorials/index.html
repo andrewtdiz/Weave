@@ -1503,6 +1503,10 @@
 <p>What if we could just change value and it updates everywhere <em>automatically</em>, like magic ✨</p>
 <p>That's exactly what Weave does.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">eggCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">eggCount</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">10</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Update a UI TextLabel</span>
 <span class="nf">Attach</span><span class="p">(</span><span class="nv">CountText</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1510,10 +1514,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Update the quest complete boolean</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">eggCount</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">10</span>
-<span class="kr">end</span><span class="p">)</span>
-
 <span class="nf">Attach</span><span class="p">(</span><span class="nv">Checkmark</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">isQuestComplete</span>
 <span class="p">}</span>
