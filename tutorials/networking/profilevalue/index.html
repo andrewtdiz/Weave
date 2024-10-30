@@ -1630,8 +1630,8 @@
 <p>A Weave <code>ProfileValue</code>:</p>
 <ul>
 <li>Stores the value for a <em>specific</em> player</li>
-<li>Updates the player's value in <code>ProfileService</code></li>
-<li>Broadcasts updates to a ALL players</li>
+<li>Sync's the value to the player's <code>ProfileService</code></li>
+<li>Sends the updated value to ALL players</li>
 </ul>
 <p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
