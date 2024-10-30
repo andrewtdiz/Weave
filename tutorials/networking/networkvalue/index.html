@@ -1636,15 +1636,19 @@
 </code></pre></div>
 <h4 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h4>
 <p>On the Server, this returns a <code>NetworkValue</code> object that you can <code>:set()</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RedScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">redScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
 
-<span class="nv">RedScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="nv">redScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h4>
 <p>On the Client this returns a Weave <code>Value</code> object.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RedScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
+<p>The <code>NetworkValue</code> updates <em>automatically</em> on each client.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">redScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
 
-<span class="nv">RedScore</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 1</span>
+
+<span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">redScore</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <!-- Source file information -->
