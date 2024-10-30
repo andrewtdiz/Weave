@@ -1556,14 +1556,14 @@
 
 <!-- Markdown content -->
 <p>Weave provides an <code>Attach</code> function for updating <em>any</em> <code>Instance</code> property.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ammo</span> <span class="o">=</span> <span class="n">Value</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span>
-</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">BackgroundColor3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>✨ <code>Value</code> and <code>Computed</code> properties update <em>automatically</em> ✨</p>
-<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">Gun</span><span class="p">.</span><span class="nv">SurfaceGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">36</span><span class="p">)</span>
+
+<span class="nf">Attach</span><span class="p">(</span><span class="nv">Gun</span><span class="p">.</span><span class="nv">SurfaceGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span><span class="p">,</span>
 <span class="p">}</span>
 

@@ -1635,20 +1635,26 @@
 <span class="kr">return</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;RedScore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h4>
-<p>On the Server, this returns a <code>NetworkValue</code> object that you can <code>:set()</code>.</p>
+<p>On the Server, we can <code>:get()</code> and <code>:set()</code> the <code>NetworkValue</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">redScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
 
 <span class="nv">redScore</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+
+<span class="nv">redScore</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">-- 1</span>
 </code></pre></div>
 <h4 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h4>
-<p>On the Client this returns a Weave <code>Value</code> object.</p>
-<p>The <code>NetworkValue</code> updates <em>automatically</em> on each client.</p>
+<p>On the Client, <code>NetworkValue</code> is just a Weave <code>Value</code>.</p>
+<p>When <code>:set()</code> on the server, the <code>Value</code> is updated on the client.</p>
+<p>We can use it like any other <code>Value</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">redScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">NetworkValues</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">)</span>
 
-
-<span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">RedScore</span><span class="p">.</span><span class="nv">Text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">ScoreDisplay</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">redScore</span>
 <span class="p">}</span>
+
+<span class="nv">redScore</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="s2">&quot;RedScore updated by the server: &quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">redScore</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 
 <!-- Source file information -->

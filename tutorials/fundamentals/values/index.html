@@ -1540,12 +1540,12 @@
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Use <code>:get()</code> to read the value</p>
-<p>Use <code>:set()</code> to change it</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
 
 <span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 100</span>
-
-<span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
+</code></pre></div>
+<p>Use <code>:set()</code> to change it</p>
+<div class="highlight"><pre><span></span><code><span class="nv">health</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">25</span><span class="p">)</span>
 
 <span class="nv">health</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; 25</span>
 </code></pre></div>
@@ -1567,7 +1567,7 @@
 
 <span class="nv">health</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="nv">onHealthUpdated</span><span class="p">)</span>
 </code></pre></div>
-<p>Get the updated value:</p>
+<p>See the updated value:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">health</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">newHealth</span><span class="p">:</span><span class="w"> </span><span class="nc">number</span><span class="p">)</span>
 <span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="s2">&quot;The new health is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">newHealth</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
