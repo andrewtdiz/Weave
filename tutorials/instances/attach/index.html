@@ -1622,7 +1622,7 @@ Still don't believe it? Run the code in <a href="https://luau.org/demo?share=H4s
 </code></pre></div>
 <h3 id="instance-reuse">Instance Reuse<a class="headerlink" href="#instance-reuse" title="Permanent link">&para;</a></h3>
 <p><code>Attach</code> returns the <code>Instance</code> back to you:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">textLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Attach</span><span class="p">(</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">Message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">textLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Loading...&quot;</span>
 <span class="p">}</span>
 
