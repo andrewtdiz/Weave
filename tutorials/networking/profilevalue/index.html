@@ -1656,13 +1656,13 @@
 <span class="nv">playerLevels</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">                  </span><span class="c1">--&gt; { [localPlayer] = 2 }</span>
 <span class="nv">playerLevels</span><span class="p">:</span><span class="nc">get</span><span class="p">()[</span><span class="nv">localPlayer</span><span class="p">]</span><span class="w">     </span><span class="c1">--&gt; 2</span>
 </code></pre></div>
-<p>When the player leaves the experience their value is automatically cleared from the <code>ProfileValue</code> object.</p>
-<p>When the player joins the experience their value is automatically loaded from the ProfileService into the <code>ProfileValue</code> object.</p>
+<p>When the player joins the experience their value is set automatically from <code>ProfileService</code>.</p>
 <h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
 <p>Create a <code>ProfileValue</code> in <code>ReplicatedStorage</code>, so you can access it on <code>Server</code> and <code>Client</code>.</p>
 <p>On the server it returns a <code>ProfileValue</code>.</p>
 <p>On the client this returns a Weave <code>Value</code>.</p>
 <h3 id="replicatedstorage">ReplicatedStorage<a class="headerlink" href="#replicatedstorage" title="Permanent link">&para;</a></h3>
+<p><code>ReplicatedStorage/Weave/PlayerLevels.luau</code></p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">ProfileValue</span>
 
