@@ -1643,7 +1643,7 @@
 <p>When the player joins the experience their value is loaded automatically from <code>ProfileService</code> .</p>
 <p>✨ <code>ProfileValue</code> updates <code>ProfileService</code> <em>automatically</em> ✨</p>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerLevels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
 
 <span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
 <span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
@@ -1653,7 +1653,7 @@
 </code></pre></div>
 <p>✨ <code>ProfileValue</code> updates to ALL clients <em>automatically</em> ✨</p>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerLevels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">localPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">.</span><span class="nv">LocalPlayer</span>
 
 <span class="nv">playerLevels</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">                  </span><span class="c1">--&gt; { [localPlayer] = 2 }</span>
@@ -1668,7 +1668,7 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">ProfileValue</span>
 
-<span class="kr">return</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerLevels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
+<span class="kr">return</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="server_1">Server<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">PlayerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">ProfileValues</span><span class="p">.</span><span class="nv">PlayerLevels</span><span class="p">)</span>
