@@ -1624,7 +1624,7 @@
 </code></pre></div>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerCash&quot;</span><span class="p">)</span>
-<span class="nv">playerCash</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">     </span><span class="c1">--&gt; 0</span>
+<span class="nv">playerCash</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">     </span><span class="c1">--&gt; 1</span>
 </code></pre></div>
 <h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
 <p>The recommended way to use <code>PlayerValue</code> is to create a module script in ReplicatedStorage that exports a <code>PlayerValue</code> object. This way you can require the <code>PlayerValue</code> object from any script on the client or server. On the client this would return a Weave <code>Value</code> object, on the server it would return a <code>PlayerValue</code> object that can update all clients Weave <code>Value</code> objects.</p>
