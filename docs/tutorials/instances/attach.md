@@ -4,21 +4,23 @@ Weave provides an `Attach` function for updating _any_ `Instance` property.
 local ammo = Value.new(36)
 ```
 
-```luau hl_lines="3"
+```luau
 Attach(ScreenGui.GunInfo.TextLabel) {
 	BackgroundColor3 = Color3.new(0, 0, 1),
-	Text = ammo,
 }
 ```
 
-```luau hl_lines="3"
+✨ `Value` and `Computed` properties update _automatically_ ✨
+
+```luau
 Attach(Gun.SurfaceGui.TextLabel) {
-	BackgroundColor3 = Color3.new(1, 1, 1),
 	Text = ammo,
 }
-```
 
-Any Weave `Value` or `Computed` will update the Instance _automatically_.
+ammo:set(30)
+
+-- TextLabel.Text is now 30
+```
 
 <figure markdown>
 ![A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements.](Hydration-Basic-Dark.svg#only-dark)
@@ -62,15 +64,15 @@ local Weave = require(ReplicatedStorage.Weave)
 local Attach = Weave.Attach
 ```
 
-The Attach function is called in two parts.
+To use `Attach`:
 
-Call `Attach` with the `Instance` you want to update
+- Call `Attach` with the `Instance` you want to update
 
 ```luau
 Attach(Frame) -- TODO: Add Properties
 ```
 
-Then, define a table of properties:
+- Define a table of properties:
 
 ```luau
 Attach(Frame) {
@@ -78,52 +80,36 @@ Attach(Frame) {
 }
 ```
 
-`Attach` works on **any** Roblox `Instance` type and **any** Property
+`Attach` works on _any_ `Instance` type and _any_ Property
 
 ```luau
+local brickColor = Value.new(BrickColor.Red())
+
 Attach(workspace.Part) {
-	BrickColor = BrickColor.Red()
+	BrickColor = brickColor
 }
+
+local visible = Value.new(true)
 
 Attach(ScreenGui.Frame) {
-	Visible = false
+	Visible = visible
 }
+
+local cameraType = Value.new(Enum.CameraType.Scriptable)
 
 Attach(workspace.CurrentCamera) {
-	CameraType = Enum.CameraType.Scriptable
+	CameraType = cameraType
 }
-```
-
-Constant values are applied to the instance directly.
-
-```luau
-local message = Value.new("Loading...")
-
-Attach(PlayerGui.Message) {
-	Text = message
-}
-
-print(PlayerGui.Message.Text) --> Loading...
-```
-
-Updates to `Value` and `Computed` values will be applied on the next frame:
-
-```luau
-message:set("All done!")
-
-task.wait() -- important: changes are applied on the next frame!
-
-print(PlayerGui.Message.Text) --> All done!
 ```
 
 ### Instance Reuse
 
-`Attach` returns the Instance you provide, so you can re-use it:
+`Attach` returns the `Instance` back to you:
 
 ```luau
-local messageLabel = Attach(PlayerGui.Message) {
-	Text = message
+local textLabel = Attach(PlayerGui.Message) {
+	Text = "Loading..."
 }
 
-print(messageLabel.Text) --> Loading...
+print(textLabel.Text) --> Loading...
 ```

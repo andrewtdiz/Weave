@@ -1,7 +1,8 @@
 A Weave `ProfileValue`:
-- Stores the value for a *specific* player
-- Updates the player's value in `ProfileService`
-- Broadcasts updates to a ALL players
+
+- Stores the value for a _specific_ player
+- Sync's the value to the player's `ProfileService`
+- Sends the updated value to ALL players
 
 `:getFor(player)` and `:setFor(player, newValue)` from the Server.
 
@@ -15,16 +16,23 @@ return {
 }
 ```
 
+When the player joins the experience their value is loaded automatically from `ProfileService` .
+
+✨ `ProfileValue` updates `ProfileService` _automatically_ ✨
+
 ### Server
 
 ```luau
 local playerLevels = ProfileValue.new("PlayerLevels", "Level")
-local player = Players:GetPlayers()[1]
 
-playerLevels:getFor(player) 		--> 1
-playerLevels:setFor(player, 2)
-playerLevels:getFor(player) 		--> 2
+Players.PlayerAdded:Connect(function(player: Player)
+    playerLevels:getFor(player1)   --> 1
+    playerLevels:setFor(player1, 2)
+    playerLevels:getFor(player1)   --> 2
+end)
 ```
+
+✨ `ProfileValue` updates to ALL clients _automatically_ ✨
 
 ### Client
 
@@ -36,19 +44,22 @@ playerLevels:get()					--> { [localPlayer] = 2 }
 playerLevels:get()[localPlayer] 	--> 2
 ```
 
-When the player leaves the experience their value is automatically cleared from the `ProfileValue` object.
-
-When the player joins the experience their value is automatically loaded from the ProfileService into the `ProfileValue` object.
-
 ## Recommended Usage
 
-The recommended way to use `ProfileValue` is to create a module script in ReplicatedStorage that exports a `ProfileValue` object. This way you can require the `ProfileValue` object from any script on the client or server. On the client this would return a Weave `Value` object, on the server it would return a `ProfileValue` object that can update all clients Weave `Value` objects.
+Create a `ProfileValue` in `ReplicatedStorage`, so you can access it on `Server` and `Client`.
+
+On the Server it returns a `ProfileValue`.
+
+On the Client it returns a Weave `Value`.
 
 ### ReplicatedStorage
+
+`ReplicatedStorage/Weave/PlayerLevels.luau`
 
 ```luau
 local Weave = require(ReplicatedStorage.Weave)
 local ProfileValue = Weave.ProfileValue
+
 return ProfileValue.new("PlayerLevels", "Level")
 ```
 

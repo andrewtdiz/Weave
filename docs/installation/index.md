@@ -8,7 +8,7 @@ Right-click on `ReplicatedStorage`, and select 'Insert from File...':
 
 ![ReplicatedStorage is right-clicked, showing a context menu of items. Insert from File is highlighted.](index/Github-Releases-Guide-3-Dark.png)
 
-Select the `Weave.rbxm` file you just downloaded.
+Insert the `Weave.rbxm` file.
 
 You should see the module script appear in `ReplicatedStorage` - you're ready to go!
 

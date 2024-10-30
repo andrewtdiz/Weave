@@ -1,8 +1,8 @@
 A Weave `PlayerProfileValue`:
 
-- Stores the value for a _specific_ player
-- Updates the player's value in `ProfileService`
-- Broadcasts updates to one player
+- Stores a value for a _specific_ player
+- Sync's the value to `ProfileService`
+- Updates the value to ONE player
 
 `:getFor(player)` and `:setFor(player, newValue)` from the Server.
 
@@ -16,6 +16,8 @@ return {
 }
 ```
 
+✨ `PlayerProfileValue` updates `ProfileService` _automatically_ ✨
+
 ### Server
 
 ```luau
@@ -28,6 +30,8 @@ Players.PlayerAdded:Connect(function(player: Player)
 end)
 ```
 
+✨ `PlayerProfileValue` updates the client _automatically_ ✨
+
 ### Client
 
 ```luau
@@ -37,13 +41,15 @@ local localPlayer = Players.LocalPlayer
 playerGems:get() 				--> 100
 ```
 
-When the player leaves the experience their value is automatically cleared from the `PlayerProfileValue` object.
-
-When the player joins the experience their value is automatically loaded from the ProfileService into the `PlayerProfileValue` object.
+When the player joins the experience their value is loaded automatically from `ProfileService`
 
 ## Recommended Usage
 
-The recommended way to use `PlayerProfileValue` is to create a module script in ReplicatedStorage that exports a `PlayerProfileValue` object. This way you can require the `PlayerProfileValue` object from any script on the client or server. On the client this would return a Weave `Value` object, on the server it would return a `PlayerProfileValue` object that can update all clients Weave `Value` objects.
+Create a `PlayerProfileValue` in `ReplicatedStorage`, so you can access it on `Server` and `Client`.
+
+On the server it returns a `PlayerProfileValue`.
+
+On the client this returns a Weave `Value`.
 
 ### ReplicatedStorage
 

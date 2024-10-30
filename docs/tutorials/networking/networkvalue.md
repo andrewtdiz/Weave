@@ -14,6 +14,8 @@ blueScore:set(1)
 blueScore:get() --> 1
 ```
 
+✨ `NetworkValue` updates to ALL clients _automatically_ ✨
+
 ### Client
 
 ```luau
@@ -41,9 +43,9 @@ return NetworkValue.new("RedScore", 0)
 On the Server, this returns a `NetworkValue` object that you can `:set()`.
 
 ```luau
-local RedScore = require(ReplicatedStorage.NetworkValues.RedScore)
+local redScore = require(ReplicatedStorage.NetworkValues.RedScore)
 
-RedScore:set(1)
+redScore:set(1)
 
 ```
 
@@ -51,8 +53,13 @@ RedScore:set(1)
 
 On the Client this returns a Weave `Value` object.
 
-```luau
-local RedScore = require(ReplicatedStorage.NetworkValues.RedScore)
+The `NetworkValue` updates _automatically_ on each client.
 
-RedScore:get() --> 1
+```luau
+local redScore = require(ReplicatedStorage.NetworkValues.RedScore)
+
+
+Attach(ScreenGui.RedScore.Text) {
+    Text = redScore
+}
 ```

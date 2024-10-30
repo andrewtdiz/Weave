@@ -1,9 +1,4 @@
-![Diagram showing how the message depends on the death counter.](Derived-Value-Dark.svg#only-dark)
-![Diagram showing how the message depends on the death counter.](Derived-Value-Light.svg#only-light)
-
-`Computed` values can be used to calculate new values.
-
-Pass in a function that does the calculation.
+`Computed` values are used to calculate new values.
 
 ```luau
 local userName = Value.new("Preston")
@@ -15,13 +10,16 @@ end)
 welcomeMessage:get() --> "Welcome, Preston!"
 ```
 
-`Computed` values update automatically:
+✨ `Computed` values update _automatically_ ✨
 
 ```luau
 userName:set("Jandel")
 
 welcomeMessage:get() --> "Welcome, Jandel!"
 ```
+
+![Diagram showing how the message depends on the death counter.](Derived-Value-Dark.svg#only-dark)
+![Diagram showing how the message depends on the death counter.](Derived-Value-Light.svg#only-light)
 
 ---
 
@@ -97,20 +95,6 @@ double.Changed:Connect(onDoubleChanged)
 ```
 
 Note: You can also use `:get()` to get the updated value.
-
-## `:Destroy()`
-
-Call `:Destroy()` just like any Roblox `Instance`
-
-```luau
-local double = Computed.new(function()
-    return number:get() * 2
-end)
-
-double:Destroy()
-```
-
-Values that depends on this `Computed` will no longer update.
 
 ---
 

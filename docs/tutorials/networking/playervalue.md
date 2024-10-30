@@ -18,11 +18,13 @@ Players.PlayerAdded:Connect(function(player: Player)
 end)
 ```
 
+✨ `PlayerValue` updates to the client _automatically_ ✨
+
 ### Client
 
 ```luau
 local playerCash = PlayerValue.new("PlayerCash")
-playerCash:get()     --> 0
+playerCash:get()     --> 1
 ```
 
 ## Recommended Usage

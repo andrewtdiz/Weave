@@ -44,7 +44,7 @@ local sprinting = Value.new(false)
 
 local inventory = Value.new({ "apple", "pear" })
 
-local targetPart = Value.new(Instance.new("Part"))
+local basePlate = Value.new(workspace.Baseplate)
 ```
 
 ---
@@ -59,19 +59,19 @@ local health = Value.new(100)
 health.Changed:Connect(onHealthUpdated)
 ```
 
-`.Changed` passes the `newValue` as the argument.
+Get the updated value:
 
 ```luau
 health.Changed:Connect(function(newHealth: number)
-	print(`The new health is: {newHealth}`)
+	print("The new health is: ", newHealth)
 end)
 ```
 
-`.Changed` returns a connection you can `:Disconnect()` from
+`:Disconnect()` when you're done listening to changes
 
 ```luau
-local connection = health.Changed:Connect(function()
-	print(`The new health is: {health:get()}`)
+local connection = health.Changed:Connect(function(newHealth: number)
+	print("The new health is: ", newHealth)
 end)
 
 -- do some stuff
@@ -79,8 +79,7 @@ end)
 connection:Disconnect()
 ```
 
-Note: You can also use `:get()` inside of `.Changed`.
-
+<!--
 ## `:Destroy()`
 
 Call `:Destroy()` just like any Roblox `Instance`
@@ -95,4 +94,4 @@ Values that depends on this `Value` will no longer update.
 
 And `.Changed` will no longer fire.
 
-For advanced users: Yes, this will work with `Trove` and `Maid`
+For advanced users: Yes, this will work with `Trove` and `Maid` -->
