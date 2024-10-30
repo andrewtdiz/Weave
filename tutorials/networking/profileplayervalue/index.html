@@ -1658,7 +1658,9 @@
 <p>When the player leaves the experience their value is automatically cleared from the <code>PlayerProfileValue</code> object.</p>
 <p>When the player joins the experience their value is automatically loaded from the ProfileService into the <code>PlayerProfileValue</code> object.</p>
 <h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
-<p>The recommended way to use <code>PlayerProfileValue</code> is to create a module script in ReplicatedStorage that exports a <code>PlayerProfileValue</code> object. This way you can require the <code>PlayerProfileValue</code> object from any script on the client or server. On the client this would return a Weave <code>Value</code> object, on the server it would return a <code>PlayerProfileValue</code> object that can update all clients Weave <code>Value</code> objects.</p>
+<p>Create a <code>PlayerProfileValue</code> in <code>ReplicatedStorage</code>, so you can access it on <code>Server</code> and <code>Client</code>.</p>
+<p>On the server it returns a <code>PlayerProfileValue</code>.</p>
+<p>On the client this returns a Weave <code>Value</code>.</p>
 <h3 id="replicatedstorage">ReplicatedStorage<a class="headerlink" href="#replicatedstorage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">PlayerProfileValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">PlayerProfileValue</span>
