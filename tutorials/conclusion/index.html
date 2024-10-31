@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-better-variables" class="md-skip">
+        <a href="#server" class="md-skip">
           Skip to content
         </a>
       
@@ -2017,9 +2017,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building-better-variables" class="md-nav__link">
+  <a href="#server" class="md-nav__link">
     <span class="md-ellipsis">
-      Building Better Variables
+      Server:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
     </span>
   </a>
   
@@ -2050,27 +2059,28 @@
 
 
 <!-- Markdown content -->
-<h3 id="building-better-variables">Building Better Variables<a class="headerlink" href="#building-better-variables" title="Permanent link">&para;</a></h3>
-<p>What if we could just change value and it updates everywhere <em>automatically</em>, like magic ✨</p>
-<p>That's exactly what Weave does.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">eggCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
+<p>As we've seen, Weave updates your game state like magic ✨</p>
+<h3 id="server">Server:<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">eggCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;EggCount&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">eggCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;EggCount&quot;</span><span class="p">)</span>
 
 <span class="kd">local</span><span class="w"> </span><span class="nv">isQuestComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">eggCount</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">10</span>
 <span class="kr">end</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Update a UI TextLabel</span>
+
+<span class="c1">-- Update a UI TextLabel</span>
 <span class="nf">Attach</span><span class="p">(</span><span class="nv">CountText</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">eggCount</span>
 <span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Update the quest complete boolean</span>
+<span class="c1">-- Update the quest complete boolean</span>
 <span class="nf">Attach</span><span class="p">(</span><span class="nv">Checkmark</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">isQuestComplete</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This is a more concise way of updating variables.</p>
-<p>Set the value and Weave updates wherever the value is used.</p>
+<p>Hopefully it is clear how this is a more concise way of updating values.</p>
+<p>Set the value and Weave does all the work.</p>
 <p>Hence the Weave motto, <em>set it and forget it</em></p>
 
 <!-- Source file information -->
