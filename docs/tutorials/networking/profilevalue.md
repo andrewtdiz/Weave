@@ -23,7 +23,7 @@ When the player joins the experience their value is loaded automatically from `P
 ### Server
 
 ```luau
-local playerLevels = ProfileValue.new("PlayerLevels", "Level")
+local playerLevels = ProfileValue.new("Level")
 
 Players.PlayerAdded:Connect(function(player: Player)
     playerLevels:getFor(player1)   --> 1
@@ -37,7 +37,7 @@ end)
 ### Client
 
 ```luau
-local playerLevels = ProfileValue.new("PlayerLevels", "Level")
+local playerLevels = ProfileValue.new("Level")
 local localPlayer = Players.LocalPlayer
 
 playerLevels:get()					--> { [localPlayer] = 2 }
@@ -60,18 +60,19 @@ On the Client it returns a Weave `Value`.
 local Weave = require(ReplicatedStorage.Weave)
 local ProfileValue = Weave.ProfileValue
 
-return ProfileValue.new("PlayerLevels", "Level")
+return ProfileValue.new("Level")
 ```
 
 ### Server
 
 ```luau
 local PlayerLevels = require(ReplicatedStorage.ProfileValues.PlayerLevels)
-local player = Players:GetPlayers()[1]
 
-PlayerLevels:getFor(player)		--> 1
-PlayerLevels:setFor(player, 2)
-PlayerLevels:getFor(player)		--> 2
+Players.PlayerAdded:Connect(function(player: Player)
+	PlayerLevels:getFor(player)		--> 1
+	PlayerLevels:setFor(player, 2)
+	PlayerLevels:getFor(player)		--> 2
+end)
 ```
 
 ### Client

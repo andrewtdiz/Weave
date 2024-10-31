@@ -5,7 +5,7 @@ local Weave = require(ReplicatedStorage.Weave)
 local Value = Weave.Value
 ```
 
-A Weave `Value` is an object that stores a Luau value.
+A Weave `Value` is an object that stores any value.
 
 ```luau
 local health = Value.new(100)
@@ -21,13 +21,15 @@ health:set(99)
 
 Use `:get()` to read the value
 
-Use `:set()` to change it
-
 ```luau
 local health = Value.new(100)
 
 health:get() --> 100
+```
 
+Use `:set()` to change it
+
+```luau
 health:set(25)
 
 health:get() --> 25
@@ -59,7 +61,7 @@ local health = Value.new(100)
 health.Changed:Connect(onHealthUpdated)
 ```
 
-Get the updated value:
+See the updated value:
 
 ```luau
 health.Changed:Connect(function(newHealth: number)

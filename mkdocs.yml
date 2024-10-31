@@ -64,7 +64,8 @@ nav:
   - Home: index.md
   - Weave:
       - Why Weave?: tutorials/index.md
-      - Installation: installation/index.md
+      - Installation: tutorials/installation/index.md
+      - Getting Started: tutorials/started/index.md
       - State Objects:
           - Value: tutorials/fundamentals/values.md
           - Computed: tutorials/fundamentals/computeds.md
@@ -76,7 +77,14 @@ nav:
       - Storing Data:
           - ProfileValue: tutorials/networking/profilevalue.md
           - ProfilePlayerValue: tutorials/networking/profileplayervalue.md
-      
+      - Summary:
+          - Conclusion: tutorials/conclusion/index.md
+  - API:
+    - Instances:
+        - Attribute Value: tutorials/instances/attributevalue.md
+        - New Instances: tutorials/instances/new-instances.md
+    - Components:
+        - Reusing UI: tutorials/components/reusing-ui.md  
   - UI:
     - Lists & Tables:
         - The For Objects: tutorials/lists-and-tables/the-for-objects.md
@@ -97,6 +105,12 @@ nav:
     - Animation:
         - Tweens: tutorials/animation/tweens.md
         - Springs: tutorials/animation/springs.md
+  - Advanced:
+    - Instances:
+        - Attribute Value: tutorials/instances/attributevalue.md
+        - New Instances: tutorials/instances/new-instances.md
+    - Components:
+        - Reusing UI: tutorials/components/reusing-ui.md
   # - Examples:
   #     - Home: examples/index.md
   #     - Cookbook:

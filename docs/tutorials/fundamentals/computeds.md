@@ -4,7 +4,7 @@
 local userName = Value.new("Preston")
 
 local welcomeMessage = Computed.new(function()
-    return `Welcome, {userName:get()}!`
+    return "Welcome, " .. userName:get() .. "!"
 end)
 
 welcomeMessage:get() --> "Welcome, Preston!"
@@ -25,61 +25,54 @@ welcomeMessage:get() --> "Welcome, Jandel!"
 
 ## Usage
 
-Import `Weave.Computed` from the Weave module.
-
-```luau linenums="1"
-local Weave = require(ReplicatedStorage.Weave)
-local Computed = Weave.Computed
-```
-
-`Computed.new` to make a new object.
+`Computed.new` to make a new `Computed` value.
 
 ```luau
-local greeting = Value.new("Welcome")
-local userName = Value.new("Preston")
+local quantity = Value.new(1)
+local cost = Value.new(2)
 
-local combinedMessage = Computed.new(function()
-    return `{greeting:get()}, {userName:get()}!`
+local totalPrice = Computed.new(function()
+    return cost:get() * quantity:get()
 end)
 ```
 
 You can get the computed's current value using `:get()`:
 
 ```luau
-combinedMessage:get() --> "Welcome, Preston!"
+totalPrice:get() --> 2
 ```
 
 The `Computed` function runs again when any of its dependencies change
 
 ```luau
-greeting:set("Hello")
+quantity:set(2)
 
-combinedMessage:get() --> "Hello, Preston!"
+totalPrice:get() --> 4
 ```
 
 ```luau
-userName:set("Jandel")
+cost:set(10)
 
-combinedMessage:get() --> "Hello, Jandel!"
+totalPrice:get() --> 20
 ```
 
 Putting it all together:
 
 ```luau
-local greeting = Value.new("Welcome")
-local userName = Value.new("Preston")
+local quantity = Value.new(1)
+local cost = Value.new(2)
 
-local combinedMessage = Computed.new(function()
-    return `{greeting}, {userName}!`
+local totalPrice = Computed.new(function()
+    return cost:get() * quantity:get()
 end)
 
-combinedMessage:get() --> "Welcome, Preston!"
+totalPrice:get() --> 2
 
-greeting:set("Hello")
-combinedMessage:get() --> "Hello, Preston!"
+quantity:set(2)
+totalPrice:get() --> 4
 
-userName:set("Jandel")
-combinedMessage:get() --> "Hello, Jandel!"
+cost:set(10)
+totalPrice:get() --> 20
 ```
 
 ## `.Changed`

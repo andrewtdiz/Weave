@@ -21,7 +21,7 @@ return {
 ### Server
 
 ```luau
-local playerGems = PlayerProfileValue.new("PlayerGems", "Gems")
+local playerGems = PlayerProfileValue.new("Gems")
 
 Players.PlayerAdded:Connect(function(player: Player)
 	PlayerLevels:getFor(player)			--> 1
@@ -35,7 +35,7 @@ end)
 ### Client
 
 ```luau
-local playerGems = PlayerProfileValue.new("PlayerGems", "Gems")
+local playerGems = PlayerProfileValue.new("Gems")
 local localPlayer = Players.LocalPlayer
 
 playerGems:get() 				--> 100
@@ -57,24 +57,31 @@ On the client this returns a Weave `Value`.
 local Weave = require(ReplicatedStorage.Weave)
 local PlayerProfileValue = Weave.PlayerProfileValue
 
-return PlayerProfileValue.new("PlayerGems", "Gems")
+return PlayerProfileValue.new("Gems")
 ```
 
 ### Server
 
 ```luau
-local PlayerLevels = require(ReplicatedStorage.PlayerProfileValues.PlayerLevels)
+local PlayerLevel = require(ReplicatedStorage.PlayerProfileValues.PlayerLevel)
 
 Players.PlayerAdded:Connect(function(player: Player)
-	PlayerLevels:getFor(player)			--> 1
-	PlayerLevels:setFor(player, 2)
-	PlayerLevels:getFor(player)	 		--> 2
+	PlayerLevel:getFor(player)			--> 1
+	PlayerLevel:setFor(player, 2)
+	PlayerLevel:getFor(player)	 		--> 2
 end)
 ```
 
 ### Client
 
 ```luau
-local PlayerLevels = require(ReplicatedStorage.PlayerProfileValues.PlayerLevels)
-PlayerLevels:get()	 				--> 2
+local playerLevel = require(ReplicatedStorage.PlayerProfileValues.PlayerLevels)
+
+Attach(ScreenGui.LevelDisplay.TextLabel) {
+    Text = playerLevel
+}
+
+redScore.Changed:Connect(function()
+    print("PlayerLevel updated by the server: " .. playerLevel)
+end)
 ```

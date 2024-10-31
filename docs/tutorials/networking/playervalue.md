@@ -29,17 +29,20 @@ playerCash:get()     --> 1
 
 ## Recommended Usage
 
-The recommended way to use `PlayerValue` is to create a module script in ReplicatedStorage that exports a `PlayerValue` object. This way you can require the `PlayerValue` object from any script on the client or server. On the client this would return a Weave `Value` object, on the server it would return a `PlayerValue` object that can update all clients Weave `Value` objects.
+Create a `PlayerValue` in `ReplicatedStorage`, so you can access it on `Server` and `Client`.
 
 ### ReplicatedStorage
 
 ```luau
 local Weave = require(ReplicatedStorage.Weave)
 local PlayerValue = Weave.PlayerValue
-local playerCash = PlayerValue.new("PlayerCash", 0)
+
+return PlayerValue.new("PlayerCash", 0)
 ```
 
 ### Server
+
+On the Server, we can `:get()` and `:set()` the `PlayerValue`.
 
 ```luau
 local playerCash = require(ReplicatedStorage.PlayerValues.PlayerCash)
@@ -53,7 +56,20 @@ end)
 
 ### Client
 
+On the Client, `PlayerValue` is just a Weave `Value`.
+
+When `:set()` on the server, the `Value` is updated on the client.
+
+We can use it like any other `Value`:
+
 ```luau
 local playerCash = require(ReplicatedStorage.PlayerValues.PlayerCash)
-playerCash:get()        --> 1
+
+Attach(ScreenGui.CashDisplay.TextLabel) {
+    Text = playerCash
+}
+
+playerCash.Changed:Connect(function()
+    print("PlayerCash updated by the server: " .. playerCash)
+end)
 ```

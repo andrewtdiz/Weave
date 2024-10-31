@@ -1,9 +1,5 @@
 Weave provides an `Attach` function for updating _any_ `Instance` property.
 
-```lua
-local ammo = Value.new(36)
-```
-
 ```luau
 Attach(ScreenGui.GunInfo.TextLabel) {
 	BackgroundColor3 = Color3.new(0, 0, 1),
@@ -13,6 +9,8 @@ Attach(ScreenGui.GunInfo.TextLabel) {
 ✨ `Value` and `Computed` properties update _automatically_ ✨
 
 ```luau
+local ammo = Value.new(36)
+
 Attach(Gun.SurfaceGui.TextLabel) {
 	Text = ammo,
 }
@@ -30,7 +28,7 @@ ammo:set(30)
 
 ---
 
-## Explained
+<!-- ## Explained
 
 `Attach` may look weird, but it is **valid Luau**
 
@@ -53,7 +51,7 @@ someFunction {
 
 Still don't believe it? Run the code in <a href="https://luau.org/demo?share=H4sIAAAAAAAACsvJT07MUUgrzUsuyczPUyjOz011g3I0EovSNbkUFBQUCooy80pAXL2Q1IoSHQUQyzk%2FJ7%2FIWJMrNS%2BFiwtFW7UCSJWCrYJScH5uKpijpKMAUa9gq5BgqKMAQgkKtZqoOhWqFcDWYWg3UtIBSyDMMNBRAKEErlouLi4AkZUuRMQAAAA%3D" target="_blank">luau.org/AttachDemo</a>
 
----
+--- -->
 
 ## Usage
 
@@ -107,7 +105,7 @@ Attach(workspace.CurrentCamera) {
 `Attach` returns the `Instance` back to you:
 
 ```luau
-local textLabel = Attach(PlayerGui.Message) {
+local textLabel = Attach(ScreenGui.TextLabel) {
 	Text = "Loading..."
 }
 

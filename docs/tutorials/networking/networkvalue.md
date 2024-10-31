@@ -40,26 +40,32 @@ return NetworkValue.new("RedScore", 0)
 
 #### Server
 
-On the Server, this returns a `NetworkValue` object that you can `:set()`.
+On the Server, we can `:get()` and `:set()` the `NetworkValue`.
 
 ```luau
 local redScore = require(ReplicatedStorage.NetworkValues.RedScore)
 
 redScore:set(1)
 
+redScore:get() -- 1
 ```
 
 #### Client
 
-On the Client this returns a Weave `Value` object.
+On the Client, `NetworkValue` is just a Weave `Value`.
 
-The `NetworkValue` updates _automatically_ on each client.
+When `:set()` on the server, the `Value` is updated on the client.
+
+We can use it like any other `Value`:
 
 ```luau
 local redScore = require(ReplicatedStorage.NetworkValues.RedScore)
 
-
-Attach(ScreenGui.RedScore.Text) {
+Attach(ScreenGui.ScoreDisplay.TextLabel) {
     Text = redScore
 }
+
+redScore.Changed:Connect(function()
+    print("RedScore updated by the server: " .. redScore)
+end)
 ```
