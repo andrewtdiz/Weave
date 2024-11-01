@@ -79,12 +79,12 @@ nav:
           - ProfilePlayerValue: tutorials/networking/profileplayervalue.md
       - Summary:
           - Conclusion: tutorials/conclusion/index.md
-  - API:
-    - Instances:
-        - Attribute Value: tutorials/instances/attributevalue.md
-        - New Instances: tutorials/instances/new-instances.md
-    - Components:
-        - Reusing UI: tutorials/components/reusing-ui.md  
+  # - API:
+  #   - Instances:
+  #       - Attribute Value: tutorials/instances/attributevalue.md
+  #       - New Instances: tutorials/instances/new-instances.md
+  #   - Components:
+  #       - Reusing UI: tutorials/components/reusing-ui.md  
   - UI:
     - Lists & Tables:
         - The For Objects: tutorials/lists-and-tables/the-for-objects.md
@@ -95,8 +95,6 @@ nav:
         - Children: tutorials/instances/parenting.md
         - Cleanup: tutorials/instances/cleanup.md
         - Destructors: tutorials/fundamentals/destructors.md
-        - Attribute Value: tutorials/instances/attributevalue.md
-        - New Instances: tutorials/instances/new-instances.md
     - Components:
         - Reusing UI: tutorials/components/reusing-ui.md
         - Children: tutorials/components/children.md

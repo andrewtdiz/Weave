@@ -1,29 +1,34 @@
 Weave provides an `Attach` function for updating _any_ `Instance` property.
 
 ```luau
-Attach(ScreenGui.GunInfo.TextLabel) {
-	BackgroundColor3 = Color3.new(0, 0, 1),
+Attach(ScreenGui.CoinDisplay.TextLabel) {
+	BackgroundColor3 = Color3.new(1, 1, 1),
+	BackgroundTransparency = 0,
 }
 ```
 
 ✨ `Value` and `Computed` properties update _automatically_ ✨
 
 ```luau
-local ammo = Value.new(36)
+local coins = Value.new(1100000)
 
-Attach(Gun.SurfaceGui.TextLabel) {
-	Text = ammo,
+local coinDisplay = Computed.new(function()
+    return styleNumber(coins:get())
+end)
+
+
+Attach(ScreenGui.CoinDisplay.TextLabel) {
+	Text = coinDisplay,
 }
 
-ammo:set(30)
+coins:set(756000)
 
--- TextLabel.Text is now 30
+-- TextLabel.Text is now "75.6k"
 ```
 
-<figure markdown>
-![A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements.](Hydration-Basic-Dark.svg#only-dark)
-![A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements.](Hydration-Basic-Light.svg#only-light)
-<figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
+<figure markdown="span">
+  ![Image title](Attach.png)
+  <figcaption>Source: Pet Simulator 99. <code>Attach</code> updates <code>Instance</code> properties automatically</figcaption>
 </figure>
 
 ---

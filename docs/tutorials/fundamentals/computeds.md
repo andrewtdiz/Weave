@@ -1,25 +1,27 @@
 `Computed` values are used to calculate new values.
 
 ```luau
-local userName = Value.new("Preston")
+local health = Value.new(100)
 
-local welcomeMessage = Computed.new(function()
-    return "Welcome, " .. userName:get() .. "!"
+local healthDisplay = Computed.new(function()
+    return "Current Health: " .. health:get()
 end)
 
-welcomeMessage:get() --> "Welcome, Preston!"
+healthDisplay:get() --> "Current Health: 100"
 ```
 
 ✨ `Computed` values update _automatically_ ✨
 
 ```luau
-userName:set("Jandel")
+health:set(99)
 
-welcomeMessage:get() --> "Welcome, Jandel!"
+healthDisplay:get() --> "Current Health: 99"
 ```
 
-![Diagram showing how the message depends on the death counter.](Derived-Value-Dark.svg#only-dark)
-![Diagram showing how the message depends on the death counter.](Derived-Value-Light.svg#only-light)
+<figure markdown="span">
+  ![Image title](Computed.png){ width="300" }
+  <figcaption>Computed values update automatically</figcaption>
+</figure>
 
 ---
 
