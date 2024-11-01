@@ -1829,25 +1829,30 @@
 
 <!-- Markdown content -->
 <p>Weave provides an <code>Attach</code> function for updating <em>any</em> <code>Instance</code> property.</p>
-<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">GunInfo</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">BackgroundColor3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><code><span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">CoinDisplay</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">BackgroundColor3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Color3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span>
+<span class="w">    </span><span class="nv">BackgroundTransparency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>✨ <code>Value</code> and <code>Computed</code> properties update <em>automatically</em> ✨</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ammo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">36</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">coins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">1100000</span><span class="p">)</span>
 
-<span class="nf">Attach</span><span class="p">(</span><span class="nv">Gun</span><span class="p">.</span><span class="nv">SurfaceGui</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ammo</span><span class="p">,</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">coinDisplay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Computed</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nf">styleNumber</span><span class="p">(</span><span class="nv">coins</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span>
+<span class="kr">end</span><span class="p">)</span>
+
+
+<span class="nf">Attach</span><span class="p">(</span><span class="nv">ScreenGui</span><span class="p">.</span><span class="nv">CoinDisplay</span><span class="p">.</span><span class="nv">TextLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">coinDisplay</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nv">ammo</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">30</span><span class="p">)</span>
+<span class="nv">coins</span><span class="p">:</span><span class="nc">set</span><span class="p">(</span><span class="mf">756000</span><span class="p">)</span>
 
-<span class="c1">-- TextLabel.Text is now 30</span>
+<span class="c1">-- TextLabel.Text is now &quot;75.6k&quot;</span>
 </code></pre></div>
 <figure>
-<p><img alt="A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements." src="Hydration-Basic-Dark.svg#only-dark" />
-<img alt="A diagram showing hydration - an 'ammo' variable is sent from the script and placed inside various UI and game elements." src="Hydration-Basic-Light.svg#only-light" /></p>
-<figcaption>Screenshot: GameUIDatabase (Halo Infinite)</figcaption>
+  <img alt="Image title" src="Attach.png" />
+  <figcaption>Source: Pet Simulator 99. <code>Attach</code> updates <code>Instance</code> properties automatically</figcaption>
 </figure>
 <hr />
 <!-- ## Explained
