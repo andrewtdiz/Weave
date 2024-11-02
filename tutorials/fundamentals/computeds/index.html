@@ -1834,6 +1834,11 @@
 
 
 <!-- Markdown content -->
+<p>Import <code>Weave.Computed</code> from the Weave module.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">Computed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">Computed</span>
+</code></pre></div></td></tr></table></div>
 <p><code>Computed</code> values are used to calculate new values.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Value</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
 
@@ -1849,8 +1854,8 @@
 <span class="nv">healthDisplay</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w"> </span><span class="c1">--&gt; &quot;Current Health: 99&quot;</span>
 </code></pre></div>
 <figure>
-  <img alt="Image title" src="Computed.png" width="300" />
-  <figcaption>Computed values update automatically</figcaption>
+  <img alt="Image title" src="Computed.png" />
+  <figcaption><code>Computed</code> values update automatically</figcaption>
 </figure>
 <hr />
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
