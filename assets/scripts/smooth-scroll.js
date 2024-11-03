@@ -26,11 +26,12 @@ function applyPrintClass(el) {
       el.classList.add("light-blue");
     }
     const nextElementSibling = el.nextElementSibling;
+    const isBaseType = el.textContent.trim() === "Color3" || el.textContent.trim() === "Vector3" || el.textContent.trim() === "Vector2" || el.textContent.trim() === "UDim2"  || el.textContent.trim() === "CFrame" || el.textContent.trim() === "BrickColor" 
     if (
       nextElementSibling &&
       nextElementSibling.matches("span.p") &&
       nextElementSibling.textContent.trim() === "." &&
-      el.textContent.trim() === "BrickColor"
+      isBaseType
     ) {
         el.classList.add("light-blue");
         
@@ -39,8 +40,15 @@ function applyPrintClass(el) {
         if (nextNext) {
             nextNext.classList.add("light-blue");
         }
+        if (isBaseType) {
+            nextNext.classList.add("light-blue")
+        }
     }
-    if (el.textContent.trim() === "task" || el.textContent.trim() === "Enum" || el.textContent.trim() == "wait" || el.textContent.trim() == "require" || el.textContent.trim() == "workspace") {
+    
+    
+    if (el.textContent.trim() === "task" 
+    || isBaseType
+    || el.textContent.trim() === "Enum" || el.textContent.trim() == "wait" || el.textContent.trim() == "require" || el.textContent.trim() == "workspace") {
         el.classList.add("light-blue");
       }
   }
