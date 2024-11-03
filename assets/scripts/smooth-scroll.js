@@ -101,3 +101,45 @@ observer2.observe(document.body, {
 childList: true,  // Watch for added or removed child elements
 subtree: true     // Watch for changes in all child nodes, not just direct children
 });
+
+
+
+function applyNMethodClass(el) {
+    const previousSibling = el.previousElementSibling;
+    const trimmed = el.textContent.trim()
+    const isMethod = trimmed === "NewClassToken" || 
+        trimmed === "NewReplica" || 
+        trimmed === "ReplicaOfClassCreated" ||
+        trimmed === "ListenToChange" ||
+        trimmed === "RequestData"
+    console.log(el)
+    if (
+      previousSibling &&
+      previousSibling.matches("span.p") &&
+      isMethod
+    ) {
+      el.classList.add("method");
+    }
+}
+  
+document.querySelectorAll("span.nv").forEach(applyNvClassIfAfterDotP);
+
+const observer3 = new MutationObserver((mutations) => {
+mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+    if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "SPAN") {
+        applyNvClassIfAfterDotP(node);
+    }
+    setTimeout(() => {
+        node.querySelectorAll && node.querySelectorAll("span.n").forEach(applyNMethodClass);
+    }, 100)
+    });
+});
+});
+
+document.querySelectorAll("span.n").forEach(applyNMethodClass);
+
+observer3.observe(document.body, {
+childList: true,  // Watch for added or removed child elements
+subtree: true     // Watch for changes in all child nodes, not just direct children
+});
