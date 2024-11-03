@@ -1635,6 +1635,11 @@
 
 
 <!-- Markdown content -->
+<p>Import <code>Weave.NetworkValue</code> from the Weave module.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">NetworkValue</span>
+</code></pre></div></td></tr></table></div>
 <p>A Weave <code>NetworkValue</code> stores a value and updates to ALL clients.</p>
 <p><code>:get()</code> and <code>:set()</code> its value from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
