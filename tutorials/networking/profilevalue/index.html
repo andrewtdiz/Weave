@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#profileservice" class="md-skip">
+        <a href="#profilestore" class="md-skip">
           Skip to content
         </a>
       
@@ -821,9 +821,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#profileservice" class="md-nav__link">
+  <a href="#profilestore" class="md-nav__link">
     <span class="md-ellipsis">
-      ProfileService
+      ProfileStore
     </span>
   </a>
   
@@ -833,6 +833,15 @@
   <a href="#server" class="md-nav__link">
     <span class="md-ellipsis">
       Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profilestore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProfileStore
     </span>
   </a>
   
@@ -1341,8 +1350,6 @@
       
         
       
-        
-      
     
     
       
@@ -1388,27 +1395,6 @@
   
   <span class="md-ellipsis">
     Attribute Value
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../instances/new-instances/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    New Instances
   </span>
   
 
@@ -1531,9 +1517,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#profileservice" class="md-nav__link">
+  <a href="#profilestore" class="md-nav__link">
     <span class="md-ellipsis">
-      ProfileService
+      ProfileStore
     </span>
   </a>
   
@@ -1543,6 +1529,15 @@
   <a href="#server" class="md-nav__link">
     <span class="md-ellipsis">
       Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profilestore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProfileStore
     </span>
   </a>
   
@@ -1632,26 +1627,33 @@
 <p>A Weave <code>ProfileValue</code>:</p>
 <ul>
 <li>Stores the value for a <em>specific</em> player</li>
-<li>Sync's the value to the player's <code>ProfileService</code></li>
+<li>Sync's the value to the player's <code>ProfileStore</code></li>
 <li>Sends the updated value to ALL players</li>
 </ul>
 <p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
-<h3 id="profileservice">ProfileService<a class="headerlink" href="#profileservice" title="Permanent link">&para;</a></h3>
+<h3 id="profilestore">ProfileStore<a class="headerlink" href="#profilestore" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>When the player joins the experience their value is loaded automatically from <code>ProfileService</code> .</p>
-<p>✨ <code>ProfileValue</code> updates <code>ProfileService</code> <em>automatically</em> ✨</p>
+<p>When the player joins the experience their value is loaded automatically from <code>ProfileStore</code> .</p>
+<p>✨ <code>ProfileValue</code> updates <code>ProfileStore</code> <em>automatically</em> ✨</p>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerLevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Level&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">matchId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;matchId&quot;</span><span class="p">)</span>
 
 <span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
 <span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
 <span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
 <span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 2</span>
 <span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
+<p>✨ <code>ProfileValue</code> updates <code>ProfileStore</code> <em>automatically</em> ✨</p>
+<h3 id="profilestore_1">ProfileStore<a class="headerlink" href="#profilestore_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">--Player1 ProfileStore</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nv">Level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>✨ <code>ProfileValue</code> updates to ALL clients <em>automatically</em> ✨</p>
 <h3 id="client">Client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h3>

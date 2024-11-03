@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://andrewtdiz.github.com/Weave/tutorials/components/reusing-ui/">
       
       
-        <link rel="prev" href="../../instances/new-instances/">
+        <link rel="prev" href="../../instances/attributevalue/">
       
       
       
@@ -1236,8 +1236,6 @@
       
         
       
-        
-      
     
     
       
@@ -1283,27 +1281,6 @@
   
   <span class="md-ellipsis">
     Attribute Value
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../instances/new-instances/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    New Instances
   </span>
   
 
@@ -1525,12 +1502,12 @@
 <p>Up until this point, you have been creating and parenting instances directly
 without much organisation or code reuse. However, those two factors will become
 increasingly important as you start building more game-ready UIs.</p>
-<p>These next few pages won't introduce new features of Fusion, but instead will
+<p>These next few pages won't introduce new features of Weave, but instead will
 focus on techniques for making your UI more modular, portable and easy to
 maintain.</p>
 <hr />
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
-<p>One of the greatest advantages of libraries like Fusion is that UI and code are
+<p>One of the greatest advantages of libraries like Weave is that UI and code are
 the same thing. Any tool you can use on one, you can use on the other.</p>
 <p>To reduce repetition in your codebases, you'll often use functions to run small
 reusable blocks of code, sometimes with parameters you can change. You can use
@@ -1562,7 +1539,7 @@ functions to organise your UI code, too.</p>
 
 <span class="nv">helloBtn</span><span class="p">.</span><span class="nv">Parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Players</span><span class="p">.</span><span class="nv">LocalPlayer</span><span class="p">.</span><span class="nv">PlayerGui</span><span class="p">.</span><span class="nv">ScreenGui</span>
 </code></pre></div>
-<p>This is the primary way UI is reused in Fusion. These kinds of functions are
+<p>This is the primary way UI is reused in Weave. These kinds of functions are
 common enough that they have a special name: <strong>components</strong>. Specifically,
 components are functions which return a child.</p>
 <p>In the above example, <code>Button</code> is a component, because it's a function that
@@ -1733,9 +1710,9 @@ long script.</p>
 		
 		  
 		  <a
-			href="../../instances/new-instances/"
+			href="../../instances/attributevalue/"
 			class="md-footer__link md-footer__link--prev"
-			aria-label="Previous: New Instances"
+			aria-label="Previous: Attribute Value"
 			rel="prev"
 		  >
 			<div class="md-footer__button md-icon">
@@ -1746,7 +1723,7 @@ long script.</p>
 				<span class="md-footer__direction">
 				  Previous
 				</span>
-				New Instances
+				Attribute Value
 			  </div>
 			</div>
 		  </a>
