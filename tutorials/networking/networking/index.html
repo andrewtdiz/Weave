@@ -1607,10 +1607,10 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ReplicaController</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">game</span><span class="p">.</span><span class="n">ReplicatedStorage</span><span class="p">.</span><span class="n">ReplicaController</span><span class="p">)</span>
 
 <span class="n">ReplicaController</span><span class="p">.</span><span class="n">ReplicaOfClassCreated</span><span class="p">(</span><span class="s2">&quot;TestReplica&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">replica</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TestReplica received! Value:&quot;</span><span class="p">,</span> <span class="n">replica</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+    <span class="c1">-- TestReplica Received</span>
 
     <span class="n">replica</span><span class="p">:</span><span class="n">ListenToChange</span><span class="p">({</span><span class="s2">&quot;Value&quot;</span><span class="p">},</span> <span class="kr">function</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value changed:&quot;</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span>
+        <span class="c1">-- TestReplica Changed</span>
     <span class="kr">end</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
 
@@ -1628,10 +1628,10 @@
 
 <span class="kd">local</span><span class="w"> </span><span class="nv">TestValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;TestValue&quot;</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s2">&quot;TestValue received! Value:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">TestValue</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span>
+<span class="c1">-- TestValue Received</span>
 
 <span class="nv">TestValue</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">newValue</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="s2">&quot;Value changed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">newValue</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- TestValue Changed</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 
