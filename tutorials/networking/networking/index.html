@@ -766,6 +766,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#advanced-comparison-to-replicaservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced: Comparison to ReplicaService
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced: Comparison to ReplicaService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replicaservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weave
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1479,6 +1512,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#advanced-comparison-to-replicaservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced: Comparison to ReplicaService
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced: Comparison to ReplicaService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replicaservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weave
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1525,6 +1591,49 @@
   <img alt="Image title" src="NetworkingTable.png" />
   <figcaption>Weave can update state from the Server to one or many Clients</figcaption>
 </figure>
+<h2 id="advanced-comparison-to-replicaservice">Advanced: Comparison to ReplicaService<a class="headerlink" href="#advanced-comparison-to-replicaservice" title="Permanent link">&para;</a></h2>
+<h3 id="replicaservice">ReplicaService<a class="headerlink" href="#replicaservice" title="Permanent link">&para;</a></h3>
+<p>From the <a href="https://madstudioroblox.github.io/ReplicaService/tutorial/basic_usage/">Basic Usage</a> page:</p>
+<p>Server</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ReplicaService</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">game</span><span class="p">.</span><span class="n">ServerScriptService</span><span class="p">.</span><span class="n">ReplicaService</span><span class="p">)</span>
+
+<span class="kd">local</span> <span class="n">test_replica</span> <span class="o">=</span> <span class="n">ReplicaService</span><span class="p">.</span><span class="n">NewReplica</span><span class="p">({</span>
+    <span class="n">ClassToken</span> <span class="o">=</span> <span class="n">ReplicaService</span><span class="p">.</span><span class="n">NewClassToken</span><span class="p">(</span><span class="s2">&quot;TestReplica&quot;</span><span class="p">),</span>
+    <span class="n">Data</span> <span class="o">=</span> <span class="p">{</span><span class="n">Value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="n">Replication</span> <span class="o">=</span> <span class="s2">&quot;All&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>Client</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ReplicaController</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">game</span><span class="p">.</span><span class="n">ReplicatedStorage</span><span class="p">.</span><span class="n">ReplicaController</span><span class="p">)</span>
+
+<span class="n">ReplicaController</span><span class="p">.</span><span class="n">ReplicaOfClassCreated</span><span class="p">(</span><span class="s2">&quot;TestReplica&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">replica</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TestReplica received! Value:&quot;</span><span class="p">,</span> <span class="n">replica</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+
+    <span class="n">replica</span><span class="p">:</span><span class="n">ListenToChange</span><span class="p">({</span><span class="s2">&quot;Value&quot;</span><span class="p">},</span> <span class="kr">function</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value changed:&quot;</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span>
+    <span class="kr">end</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="n">ReplicaController</span><span class="p">.</span><span class="n">RequestData</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="weave">Weave<a class="headerlink" href="#weave" title="Permanent link">&para;</a></h3>
+<p>The equivalent in Weave would be</p>
+<p>Server</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">).</span><span class="nv">NetworkValue</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">TestValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;TestValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
+</code></pre></div>
+<p>Client</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">).</span><span class="nv">NetworkValue</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">TestValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;TestValue&quot;</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s2">&quot;TestValue received! Value:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">TestValue</span><span class="p">:</span><span class="nc">get</span><span class="p">())</span>
+
+<span class="nv">TestValue</span><span class="p">.</span><span class="nv">Changed</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">newValue</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="s2">&quot;Value changed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">newValue</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
 
 <!-- Source file information -->
 
