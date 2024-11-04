@@ -1589,12 +1589,12 @@
 <span class="kd">local</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">NetworkValue</span>
 </code></pre></div></td></tr></table></div>
 <p>A Weave <code>NetworkValue</code> stores a value and updates to ALL clients.</p>
+<p><code>:get()</code> and <code>:set()</code> its value from the Server.</p>
+<p>ONLY <code>:get()</code> on the Client.</p>
 <figure>
   <img alt="Image title" src="NetworkValue.png" />
   <figcaption><code>NetworkValue</code> updates to ALL clients</figcaption>
 </figure>
-<p><code>:get()</code> and <code>:set()</code> its value from the Server.</p>
-<p>ONLY <code>:get()</code> on the Client.</p>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">blueScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">NetworkValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;BlueScore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 

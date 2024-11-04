@@ -1592,6 +1592,10 @@
 <p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
 <p>From the client can read from them with <code>:get()</code>.</p>
+<figure>
+  <img alt="Image title" src="PlayerValue.png" />
+  <figcaption><code>PlayerValue</code> updates to a client</figcaption>
+</figure>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerCash&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 

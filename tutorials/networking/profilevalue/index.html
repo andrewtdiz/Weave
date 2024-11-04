@@ -1624,7 +1624,7 @@
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">Weave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">Weave</span><span class="p">)</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Weave</span><span class="p">.</span><span class="nv">ProfileValue</span>
 </code></pre></div></td></tr></table></div>
-<p>A Weave <code>ProfileValue</code>:</p>
+<p>A Weave <code>ProfileValue</code></p>
 <ul>
 <li>Stores the value for a <em>specific</em> player</li>
 <li>Sync's the value to the player's <code>ProfileStore</code></li>
@@ -1632,6 +1632,10 @@
 </ul>
 <p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
 <p>ONLY <code>:get()</code> on the Client.</p>
+<figure>
+  <img alt="Image title" src="ProfileValue.png" />
+  <figcaption><code>ProfileValue</code> updates to a client AND the ProfileStore</figcaption>
+</figure>
 <h3 id="profilestore">ProfileStore<a class="headerlink" href="#profilestore" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
