@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#profileservice" class="md-skip">
+        <a href="#profilestore" class="md-skip">
           Skip to content
         </a>
       
@@ -842,9 +842,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#profileservice" class="md-nav__link">
+  <a href="#profilestore" class="md-nav__link">
     <span class="md-ellipsis">
-      ProfileService
+      ProfileStore
     </span>
   </a>
   
@@ -1508,9 +1508,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#profileservice" class="md-nav__link">
+  <a href="#profilestore" class="md-nav__link">
     <span class="md-ellipsis">
-      ProfileService
+      ProfileStore
     </span>
   </a>
   
@@ -1609,7 +1609,7 @@
 <p>A Weave <code>ProfilePlayerValue</code>:</p>
 <ul>
 <li>Stores a value for a <em>specific</em> player</li>
-<li>Sync's the value to <code>ProfileService</code></li>
+<li>Sync's the value to <code>ProfileStore</code></li>
 <li>Updates the value to ONE player</li>
 </ul>
 <p><code>:getFor(player)</code> and <code>:setFor(player, newValue)</code> from the Server.</p>
@@ -1618,12 +1618,12 @@
   <img alt="Image title" src="ProfilePlayerValue.png" />
   <figcaption><code>ProfilePlayerValue</code> updates to all clients AND the ProfileStore</figcaption>
 </figure>
-<h3 id="profileservice">ProfileService<a class="headerlink" href="#profileservice" title="Permanent link">&para;</a></h3>
+<h3 id="profilestore">ProfileStore<a class="headerlink" href="#profilestore" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nv">Gems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>✨ <code>ProfilePlayerValue</code> updates <code>ProfileService</code> <em>automatically</em> ✨</p>
+<p>✨ <code>ProfilePlayerValue</code> updates <code>ProfileStore</code> <em>automatically</em> ✨</p>
 <h3 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfilePlayerValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;Gems&quot;</span><span class="p">)</span>
 
@@ -1640,7 +1640,7 @@
 
 <span class="nv">playerGems</span><span class="p">:</span><span class="nc">get</span><span class="p">()</span><span class="w">                </span><span class="c1">--&gt; 100</span>
 </code></pre></div>
-<p>When the player joins the experience their value is loaded automatically from <code>ProfileService</code></p>
+<p>When the player joins the experience their value is loaded automatically from <code>ProfileStore</code></p>
 <h2 id="recommended-usage">Recommended Usage<a class="headerlink" href="#recommended-usage" title="Permanent link">&para;</a></h2>
 <p>Create a <code>ProfilePlayerValue</code> in <code>ReplicatedStorage</code>, so you can access it on <code>Server</code> and <code>Client</code>.</p>
 <p>On the server it returns a <code>ProfilePlayerValue</code>.</p>
