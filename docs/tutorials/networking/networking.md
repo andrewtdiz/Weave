@@ -1,6 +1,6 @@
 We've seen how Weave can be used to update things ✨ automatically ✨
 
-Now what if we could automatically update values from Server to Client?
+Now what if we could update values from Server to Client *automatically*?
 
 <figure markdown="span">
   ![Image title](WeaveNetworking.png)

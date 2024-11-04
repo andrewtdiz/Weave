@@ -65,25 +65,6 @@ cost:set(10)
 totalPrice:get() --> 20
 ```
 
-Putting it all together:
-
-```luau
-local quantity = Value.new(1)
-local cost = Value.new(2)
-
-local totalPrice = Computed.new(function()
-    return cost:get() * quantity:get()
-end)
-
-totalPrice:get() --> 2
-
-quantity:set(2)
-totalPrice:get() --> 4
-
-cost:set(10)
-totalPrice:get() --> 20
-```
-
 ## `.Changed`
 
 Just like `Value`, when `Computed` changes `.Changed` is fired.

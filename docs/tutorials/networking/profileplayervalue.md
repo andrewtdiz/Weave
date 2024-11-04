@@ -8,7 +8,7 @@ local ProfilePlayerValue = Weave.ProfilePlayerValue
 A Weave `ProfilePlayerValue`:
 
 - Stores a value for a _specific_ player
-- Sync's the value to `ProfileService`
+- Sync's the value to `ProfileStore`
 - Updates the value to ONE player
 
 `:getFor(player)` and `:setFor(player, newValue)` from the Server.
@@ -21,7 +21,7 @@ ONLY `:get()` on the Client.
 </figure>
 
 
-### ProfileService
+### ProfileStore
 
 ```luau
 return {
@@ -29,7 +29,7 @@ return {
 }
 ```
 
-✨ `ProfilePlayerValue` updates `ProfileService` _automatically_ ✨
+✨ `ProfilePlayerValue` updates `ProfileStore` _automatically_ ✨
 
 ### Server
 
@@ -54,7 +54,7 @@ local localPlayer = Players.LocalPlayer
 playerGems:get() 				--> 100
 ```
 
-When the player joins the experience their value is loaded automatically from `ProfileService`
+When the player joins the experience their value is loaded automatically from `ProfileStore`
 
 ## Recommended Usage
 
