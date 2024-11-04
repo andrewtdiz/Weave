@@ -1,14 +1,26 @@
-A Weave `ProfileValue`:
+Import `Weave.ProfileValue` from the Weave module.
+
+```luau linenums="1"
+local Weave = require(ReplicatedStorage.Weave)
+local ProfileValue = Weave.ProfileValue
+```
+
+A Weave `ProfileValue`
 
 - Stores the value for a _specific_ player
-- Sync's the value to the player's `ProfileService`
+- Sync's the value to the player's `ProfileStore`
 - Sends the updated value to ALL players
 
 `:getFor(player)` and `:setFor(player, newValue)` from the Server.
 
 ONLY `:get()` on the Client.
 
-### ProfileService
+<figure markdown="span">
+  ![Image title](ProfileValue.png)
+  <figcaption><code>ProfileValue</code> updates to a client AND the ProfileStore</figcaption>
+</figure>
+
+### ProfileStore
 
 ```luau
 return {
@@ -16,20 +28,31 @@ return {
 }
 ```
 
-When the player joins the experience their value is loaded automatically from `ProfileService` .
+When the player joins the experience their value is loaded automatically from `ProfileStore` .
 
-✨ `ProfileValue` updates `ProfileService` _automatically_ ✨
+✨ `ProfileValue` updates `ProfileStore` _automatically_ ✨
 
 ### Server
 
 ```luau
-local playerLevels = ProfileValue.new("Level")
+local matchId = ProfileValue.new("matchId")
 
 Players.PlayerAdded:Connect(function(player: Player)
     playerLevels:getFor(player1)   --> 1
     playerLevels:setFor(player1, 2)
     playerLevels:getFor(player1)   --> 2
 end)
+```
+
+✨ `ProfileValue` updates `ProfileStore` _automatically_ ✨
+
+### ProfileStore
+
+```luau
+--Player1 ProfileStore
+{
+	Level = 2,
+}
 ```
 
 ✨ `ProfileValue` updates to ALL clients _automatically_ ✨

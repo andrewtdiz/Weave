@@ -1,5 +1,6 @@
-Destructors are functions that clean up values passed to them.
-Computed objects use them to clean up old values when they're no longer needed.
+Destructors are functions that clean up values.
+
+`Computed` uses them to clean up `Instances`.
 
 ```luau
 local function callDestroy(x)
@@ -9,6 +10,24 @@ end
 local brick = Computed.new(function()
     return Instance.new("Part")
 end, callDestroy)
+```
+
+As do the `For` functions:
+
+```luau hl_lines="9"
+local names = Value.new({"Jodi", "Amber", "Umair"})
+
+local textLabels = ForValues(
+    names,
+	function(name)
+		return New "TextLabel" {
+			Text = name
+		}
+	end,
+	callDestroy
+)
+
+names:set({"Amber", "Umair"}) --> "Jodi" TextLabel will be destroyed
 ```
 
 ---

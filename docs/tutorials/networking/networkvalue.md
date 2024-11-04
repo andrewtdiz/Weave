@@ -1,8 +1,20 @@
+Import `Weave.NetworkValue` from the Weave module.
+
+```luau linenums="1"
+local Weave = require(ReplicatedStorage.Weave)
+local NetworkValue = Weave.NetworkValue
+```
+
 A Weave `NetworkValue` stores a value and updates to ALL clients.
 
 `:get()` and `:set()` its value from the Server.
 
 ONLY `:get()` on the Client.
+
+<figure markdown="span">
+  ![Image title](NetworkValue.png)
+  <figcaption><code>NetworkValue</code> updates to ALL clients</figcaption>
+</figure>
 
 ### Server
 

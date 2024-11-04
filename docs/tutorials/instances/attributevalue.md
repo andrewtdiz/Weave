@@ -2,9 +2,9 @@
 We can listen to changes to the attribute with `AttributeValue`
 
 ```luau
-local count = AttributeValue.new(part, "damaged")
+local hitCount = AttributeValue.new(part, "HitCount")
 
-print(damaged:get()) -- false
+print(hitCount:get()) -- false
 
 ```
 
@@ -14,19 +14,19 @@ Calling `:set()` on the `AttributeValue`
 
 
 ```luau
-damaged:set(true)
+hitCount:set(0)
 
-damaged:get() -- true
+hitCount:get() -- 0
 
 task.wait() -- Weave update cycle applies next frame
 
-print(damaged:GetAttribute("damaged")) -- true
+print(damaged:GetAttribute("HitCount")) -- 0
 ```
 
 Calling `SetAttribute()` on the `Instance`
 
 ```luau
-part:SetAttribute("damaged", false)
+part:SetAttribute("HitCount", 1)
 
-print(damaged:get()) -- false
+print(hitCount:get()) -- 1
 ```

@@ -2,7 +2,7 @@ Up until this point, you have been creating and parenting instances directly
 without much organisation or code reuse. However, those two factors will become
 increasingly important as you start building more game-ready UIs.
 
-These next few pages won't introduce new features of Fusion, but instead will
+These next few pages won't introduce new features of Weave, but instead will
 focus on techniques for making your UI more modular, portable and easy to
 maintain.
 
@@ -10,7 +10,7 @@ maintain.
 
 ## Components
 
-One of the greatest advantages of libraries like Fusion is that UI and code are
+One of the greatest advantages of libraries like Weave is that UI and code are
 the same thing. Any tool you can use on one, you can use on the other.
 
 To reduce repetition in your codebases, you'll often use functions to run small
@@ -50,7 +50,7 @@ local helloBtn = Button {
 helloBtn.Parent = Players.LocalPlayer.PlayerGui.ScreenGui
 ```
 
-This is the primary way UI is reused in Fusion. These kinds of functions are
+This is the primary way UI is reused in Weave. These kinds of functions are
 common enough that they have a special name: **components**. Specifically,
 components are functions which return a child.
 

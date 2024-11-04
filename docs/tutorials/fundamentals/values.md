@@ -35,7 +35,7 @@ health:set(25)
 health:get() --> 25
 ```
 
-`Value` can store any Luau value:
+`Value` can store any Luau type:
 
 ```luau
 local name = Value.new("Bob")

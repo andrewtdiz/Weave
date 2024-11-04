@@ -26,11 +26,12 @@ function applyPrintClass(el) {
       el.classList.add("light-blue");
     }
     const nextElementSibling = el.nextElementSibling;
+    const isBaseType = el.textContent.trim() === "Color3" || el.textContent.trim() === "Vector3" || el.textContent.trim() === "Vector2" || el.textContent.trim() === "UDim2"  || el.textContent.trim() === "CFrame" || el.textContent.trim() === "BrickColor" 
     if (
       nextElementSibling &&
       nextElementSibling.matches("span.p") &&
       nextElementSibling.textContent.trim() === "." &&
-      el.textContent.trim() === "BrickColor"
+      isBaseType
     ) {
         el.classList.add("light-blue");
         
@@ -39,8 +40,15 @@ function applyPrintClass(el) {
         if (nextNext) {
             nextNext.classList.add("light-blue");
         }
+        if (isBaseType) {
+            nextNext.classList.add("light-blue")
+        }
     }
-    if (el.textContent.trim() === "task" || el.textContent.trim() === "Enum" || el.textContent.trim() == "wait" || el.textContent.trim() == "require" || el.textContent.trim() == "workspace") {
+    
+    
+    if (el.textContent.trim() === "task" 
+    || isBaseType
+    || el.textContent.trim() === "Enum" || el.textContent.trim() == "wait" || el.textContent.trim() == "require" || el.textContent.trim() == "workspace") {
         el.classList.add("light-blue");
       }
   }
@@ -90,6 +98,48 @@ mutations.forEach((mutation) => {
 });
 
 observer2.observe(document.body, {
+childList: true,  // Watch for added or removed child elements
+subtree: true     // Watch for changes in all child nodes, not just direct children
+});
+
+
+
+function applyNMethodClass(el) {
+    const previousSibling = el.previousElementSibling;
+    const trimmed = el.textContent.trim()
+    const isMethod = trimmed === "NewClassToken" || 
+        trimmed === "NewReplica" || 
+        trimmed === "ReplicaOfClassCreated" ||
+        trimmed === "ListenToChange" ||
+        trimmed === "RequestData"
+    console.log(el)
+    if (
+      previousSibling &&
+      previousSibling.matches("span.p") &&
+      isMethod
+    ) {
+      el.classList.add("method");
+    }
+}
+  
+document.querySelectorAll("span.nv").forEach(applyNvClassIfAfterDotP);
+
+const observer3 = new MutationObserver((mutations) => {
+mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+    if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "SPAN") {
+        applyNvClassIfAfterDotP(node);
+    }
+    setTimeout(() => {
+        node.querySelectorAll && node.querySelectorAll("span.n").forEach(applyNMethodClass);
+    }, 100)
+    });
+});
+});
+
+document.querySelectorAll("span.n").forEach(applyNMethodClass);
+
+observer3.observe(document.body, {
 childList: true,  // Watch for added or removed child elements
 subtree: true     // Watch for changes in all child nodes, not just direct children
 });

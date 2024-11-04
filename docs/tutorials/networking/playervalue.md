@@ -1,3 +1,10 @@
+Import `Weave.PlayerValue` from the Weave module.
+
+```luau linenums="1"
+local Weave = require(ReplicatedStorage.Weave)
+local PlayerValue = Weave.PlayerValue
+```
+
 A Weave `PlayerValue` stores a value and updates for a specific player.
 
 `:getFor(player)` and `:setFor(player, newValue)` from the Server.
@@ -5,6 +12,11 @@ A Weave `PlayerValue` stores a value and updates for a specific player.
 ONLY `:get()` on the Client.
 
 From the client can read from them with `:get()`.
+
+<figure markdown="span">
+  ![Image title](PlayerValue.png)
+  <figcaption><code>PlayerValue</code> updates to a client</figcaption>
+</figure>
 
 ### Server
 

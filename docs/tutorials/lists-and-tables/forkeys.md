@@ -1,188 +1,93 @@
-`ForKeys` is a state object that creates a new table by processing keys from
-another table.
-
-The input table can be a state object, and the output keys can use state objects.
-
-```luau
-local data = {Red = "foo", Blue = "bar"}
-local prefix = Value.new("Key_")
-
-local renamed = ForKeys(data, function(key)
-	return prefix:get() .. key
-end)
-
-print(renamed:get()) --> {Key_Red = "foo", Key_Blue = "bar"}
-
-prefix:set("colour")
-print(renamed:get()) --> {colourRed = "foo", colourBlue = "bar"}
-```
-
----
-
-## Usage
-
-To use `ForKeys` in your code, you first need to import it from the Fusion
-module, so that you can refer to it by name:
+Import `Weave.ForKeys` from the Weave module.
 
 ```luau linenums="1"
 local Weave = require(ReplicatedStorage.Weave)
 local ForKeys = Weave.ForKeys
 ```
 
-### Basic Usage
-
-To create a new `ForKeys` object, call the constructor with an input table and
-a processor function:
+`ForKeys` transforms each key from a table into an `Instance`
 
 ```luau
-local data = {red = "foo", blue = "bar"}
-local renamed = ForKeys(data, function(key)
-	return string.upper(key)
+local data = Value.new({Red = "foo", Blue = "bar"})
+local screenGui = PlayerGui.ScreenGui
+
+ForKeys(names, function(name)
+	return Attach(TextLabel:Clone()) {
+		Text = name,
+		Parent = screenGui
+	}
 end)
-```
-
-This will generate a new table, where each key is replaced using the processor
-function. You can get the table using the `:get()` method:
-
-```luau hl_lines="6"
-local data = {red = "foo", blue = "bar"}
-local renamed = ForKeys(data, function(key)
-	return string.upper(key)
-end)
-
-print(renamed:get()) --> {RED = "foo", BLUE = "bar"}
-```
-
-### State Objects
-
-The input table can be provided as a state object instead, and the output table
-will update as the input table is changed:
-
-```luau
-local playerSet = Value.new({})
-local userIdSet = ForKeys(playerSet, function(player)
-	return player.UserId
-end)
-
-playerSet:set({ [Players.Elttob] = true })
-print(userIdSet:get()) --> {[1670764] = true}
-
-playerSet:set({ [Players.boatbomber] = true, [Players.EgoMoose] = true })
-print(userIdSet:get()) --> {[33655127] = true, [2155311] = true}
-```
-
-Additionally, you can use state objects in your calculations, just like a
-computed:
-
-```luau
-local playerSet = { [Players.boatbomber] = true, [Players.EgoMoose] = true }
-local prefix = Value.new("User_")
-local userIdSet = ForKeys(playerSet, function(player)
-	return prefix .. player.UserId
-end)
-
-print(userIdSet:get()) --> {User_33655127 = true, User_2155311 = true}
-
-prefix:set("player")
-print(userIdSet:get()) --> {player33655127 = true, player2155311 = true}
-```
-
-### Cleanup Behaviour
-
-Similar to computeds, if you want to run your own code when values are removed,
-you can pass in a second 'destructor' function:
-
-```luau hl_lines="15-19"
-local eventSet = Value.new({
-	[RunService.RenderStepped] = true,
-	[RunService.Heartbeat] = true
-})
-
-local connectionSet = ForKeys(eventSet,
-	-- processor
-	function(event)
-		local eventName = tostring(event)
-		local connection = event:Connect(function(...)
-			print(eventName, "fired with arguments:", ...)
-		end)
-		return connection
-	end,
-	-- destructor
-	function(connection)
-		print("Disconnecting the event!")
-		connection:Disconnect() -- don't forget we're overriding the default cleanup
-	end
-)
-
--- remove Heartbeat from the event set
--- this will run the destructor with the Heartbeat connection
-eventSet:set({ [RunService.RenderStepped] = true }) --> Disconnecting the event!
-```
-
-When using a custom destructor, you can send one extra return value to your
-destructor without including it in the output table:
-
-```luau hl_lines="13 16"
-local eventSet = Value.new({
-	[RunService.RenderStepped] = true,
-	[RunService.Heartbeat] = true
-})
-
-local connectionSet = ForKeys(eventSet,
-	-- processor
-	function(event)
-		local eventName = tostring(event)
-		local connection = event:Connect(function(...)
-			print(eventName, "fired with arguments:", ...)
-		end)
-		return connection, eventName
-	end,
-	-- destructor
-	function(connection, eventName)
-		print("Disconnecting " .. eventName .. "!")
-		connection:Disconnect()
-	end
-)
-
-eventSet:set({ [RunService.RenderStepped] = true }) --> Disconnecting Signal Heartbeat!
 ```
 
 ---
 
-## Optimisations
+## Usage
+
+`ForKeys` functions takes
+
+1. A Weave `Computed` or `Value` *table*.
+
+2. A function that returns an `Instance`
+
+```luau
+local playerNames = Value.new({Red = "foo", Blue = "bar"})
+
+ForKeys(playerNames, someFunction)
+```
+
+Where `someFunction`:
+
+- Receives a value from the table
+
+- Returns an `Instance`
+
+```luau
+ForKeys(playerNames, function(name)
+    local textLabel = TextLabel:Clone()
+
+    return Attach(textLabel) {
+        Text = playerName,
+        Parent = ScreenGui
+    }
+end)
+```
+
+---
+
+## Advanced: Optimisations
 
 !!! help "Optional"
 You don't have to memorise these optimisations to use `ForKeys`, but it
 can be helpful if you have a performance problem.
 
+`ForKeys` will try and reuse as much as possible to improve performance.
+
 Rather than creating a new output table from scratch every time the input table
-is changed, `ForKeys` will try and reuse as much as possible to improve
-performance.
+is changed.
 
 For example, let's say we're converting an array to a dictionary:
 
 ```luau
-local array = Value.new({"Fusion", "Knit", "Matter"})
-local dict = ForKeys(array, function(index)
-	return "Value" .. index
+local array = Value.new({ Nevermore = true, Knit = false, Matter = false})
+ForKeys(array, function(index)
+	return "Framework: " .. index
 end)
 
-print(dict:get()) --> {Value1 = "Fusion", Value2 = "Knit", Value3 = "Matter"}
+print(dict:get()) --> { "Framework: Nevermore", "Framework: Knit", "Framework: Matter"}
 ```
 
-Because `ForKeys` only operates on the keys, changing the values in the array
-doesn't affect the keys. Keys are only added or removed as needed:
+Keys are only added or removed as needed:
 
 ```luau
-local array = Value.new({"Fusion", "Knit", "Matter"})
-local dict = ForKeys(array, function(index)
-	return "Value" .. index
+local array = Value.new({ Nevermore = true, Knit = false, Matter = false})
+ForKeys(array, function(index)
+	return "Framework: " .. index
 end)
 
-print(dict:get()) --> {Value1 = "Fusion", Value2 = "Knit", Value3 = "Matter"}
+print(dict:get()) --> { "Framework: Nevermore", "Framework: Knit", "Framework: Matter"}
 
-array:set({"Roact", "Rodux"})
-print(dict:get()) --> {Value1 = "Roact", Value2 = "Rodux"}
+array:set({ Roact = true })
+print(dict:get()) --> { "Framework: Roact" }
 ```
 
 `ForKeys` takes advantage of this - when a value changes, it's copied into the

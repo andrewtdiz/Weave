@@ -1,3 +1,10 @@
+Import `Weave.Computed` from the Weave module.
+
+```luau linenums="1"
+local Weave = require(ReplicatedStorage.Weave)
+local Computed = Weave.Computed
+```
+
 `Computed` values are used to calculate new values.
 
 ```luau
@@ -19,8 +26,8 @@ healthDisplay:get() --> "Current Health: 99"
 ```
 
 <figure markdown="span">
-  ![Image title](Computed.png){ width="300" }
-  <figcaption>Computed values update automatically</figcaption>
+  ![Image title](Computed.png)
+  <figcaption><code>Computed</code> values update automatically</figcaption>
 </figure>
 
 ---

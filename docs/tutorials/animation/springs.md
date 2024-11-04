@@ -1,115 +1,144 @@
-![Animation and graph showing basic spring response.](Step-Basic-Dark.png#only-dark)
-![Animation and graph showing basic spring response.](Step-Basic-Light.png#only-light)
-
-Springs follow the value of other state objects using a physical spring
-simulation. This can be used for 'springy' effects, or for smoothing out
-movement naturally without abrupt changes in direction.
-
----
-
-## Usage
-
-To use `Spring` in your code, you first need to import it from the Fusion
-module, so that you can refer to it by name:
+Import `Weave.Tween` from the Weave module.
 
 ```luau linenums="1"
 local Weave = require(ReplicatedStorage.Weave)
 local Spring = Weave.Spring
 ```
 
-To create a new spring object, call the `Spring` function and pass it a state
-object to move towards:
+`Spring` values Spring any Weave `Value` or `Computed`
+
+```luau
+local value = Value.new(0)
+local speed = 25
+local damping = 0.5
+
+local springValue = Spring(target, speed, damping)
+```
+
+✨ `Spring` values update _automatically_ ✨
+
+```luau
+value:set(5)
+
+task.wait(0.5)
+
+springValue:get() -- 1.86
+```
+
+Springs use a physical spring simulation.
+
+<figure markdown="span">
+  ![Image title](Step-Basic-Dark.png)
+  <figcaption>A Spring animation curve.</figcaption>
+</figure>
+
+---
+
+## Usage
+
+Call the `Spring` function with a Weave value to move towards:
 
 ```luau
 local goal = Value.new(0)
 local animated = Spring(target)
 ```
 
-The spring will smoothly follow the 'goal' state object over time. As with other
-state objects, you can `:get()` its value at any time:
+`:get()` its value at any time.
 
 ```luau
 print(animated:get()) --> 0.26425...
 ```
 
-To configure how the spring moves, you can provide a speed and damping ratio to
-use. Both are optional, and both can be state objects if desired:
+Provide `speed` and `damping` values to define how the spring moves.
 
 ```luau
-local goal = Value.new(0)
+local target = Value.new(0)
 local speed = 25
-local damping = Value.new(0.5)
-local animated = Spring(target, speed, damping)
+local damping = 0.5
+
+local springValue = Spring(target, speed, damping)
 ```
 
-You can use many different kinds of values with springs, not just numbers.
-Vectors, CFrames, Color3s, UDim2s and other number-based types are supported;
-each number inside the type is animated individually.
+`Spring` can transition any number-based Luau type:
 
 ```luau
-local goalPosition = Value.new(UDim2.new(0.5, 0, 0, 0))
-local animated = Spring(target, 25, 0.5)
+local partPosition = Value.new(Vector3.new())
+
+local mousePosition = Value.new(Vector2.new())
+
+local partColor = Value.new(Color3.new(0, 0, 0))
+
+local framePosition = Value.new(UDim2.new(0.5, 0, 0, 0))
+
+local modelPosition = Value.new(CFrame.new())
+
+local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad)
+
+local speed = 25
+local damping = 0.5
+
+local partTween  = Spring(partPosition, speed, damping)
+local mouseTween = Spring(mousePosition, speed, damping)
+local colorTween  = Spring(partPosition, speed, damping)
+local frameTween = Spring(framePosition, speed, damping)
+local modelTween = Spring(modelPosition, speed, damping)
 ```
 
 ---
 
-## Damping Ratio
+### Speed
 
-The damping ratio (a.k.a damping) of the spring changes the friction in the
-physics simulation. Lower values allow the spring to move freely and oscillate
-up and down, while higher values restrict movement.
+The `speed` defines how fast the spring to moves.
 
-### Zero damping
-
-![Animation and graph showing zero damping.](Damping-Zero-Dark.png#only-dark)
-![Animation and graph showing zero damping.](Damping-Zero-Light.png#only-light)
-
-Zero damping means no friction is applied, so the spring will oscillate forever
-without losing energy. This is generally not useful.
-
-### Underdamping
-
-![Animation and graph showing underdamping.](Damping-Under-Dark.png#only-dark)
-![Animation and graph showing underdamping.](Damping-Under-Light.png#only-light)
-
-A damping between 0 and 1 means some friction is applied. The spring will still
-oscillate, but it will lose energy and eventually settle at the goal.
-
-### Critical damping
-
-![Animation and graph showing critical damping.](Damping-Critical-Dark.png#only-dark)
-![Animation and graph showing critical damping.](Damping-Critical-Light.png#only-light)
-
-A damping of exactly 1 means just enough friction is applied to stop the spring
-from oscillating. It reaches its goal as quickly as possible without going past.
-
-This is also commonly known as critical damping.
-
-### Overdamping
-
-![Animation and graph showing overdamping.](Damping-Over-Dark.png#only-dark)
-![Animation and graph showing overdamping.](Damping-Over-Light.png#only-light)
-
-A damping above 1 applies excessive friction to the spring. The spring behaves
-like it's moving through honey, glue or some other viscous fluid.
-
-Overdamping reduces the effect of velocity changes, and makes movement more
-rigid.
-
----
-
-## Speed
-
-The speed of the spring scales how much time it takes for the spring to move.
-Doubling the speed makes it move twice as fast; halving the speed makes it move
-twice as slow.
+Doubling the `speed` makes it move twice as fast.
 
 ![Animation and graph showing speed changes.](Speed-Dark.png#only-dark)
 ![Animation and graph showing speed changes.](Speed-Light.png#only-light)
 
+
+### Damping
+
+The `damping` defines the friction of the spring.
+
+This defines how quickly or smoothly it reaches a stop.
+
+![Animation and graph showing zero damping.](Damping-Zero-Dark.png#only-dark)
+![Animation and graph showing zero damping.](Damping-Zero-Light.png#only-light)
+
+
 ---
 
-## Interruption
+## Advanced: Spring Mechanics
+
+### Zero damping
+
+Zero Damping means no friction, so the spring moves up and down forever.
+
+![Animation and graph showing zero damping.](Damping-Zero-Dark.png#only-dark)
+![Animation and graph showing zero damping.](Damping-Zero-Light.png#only-light)
+
+### Underdamping
+
+Underdamping applies some friction, so the spring slows down and eventually stops.
+
+![Animation and graph showing underdamping.](Damping-Under-Dark.png#only-dark)
+![Animation and graph showing underdamping.](Damping-Under-Light.png#only-light)
+
+### Critical damping
+
+Critical Damping is just the right amount of friction to stop quickly without extra movement.
+
+![Animation and graph showing critical damping.](Damping-Critical-Dark.png#only-dark)
+![Animation and graph showing critical damping.](Damping-Critical-Light.png#only-light)
+
+### Overdamping
+
+Overdamping adds lots of friction, making the spring move slowly, like it’s in honey.
+
+![Animation and graph showing overdamping.](Damping-Over-Dark.png#only-dark)
+![Animation and graph showing overdamping.](Damping-Over-Light.png#only-light)
+
+### Interruption
 
 Springs do not share the same interruption problems as tweens. When the goal
 changes, springs are guaranteed to preserve both position and velocity, reducing

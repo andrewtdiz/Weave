@@ -1,4 +1,11 @@
-Weave provides an `Attach` function for updating _any_ `Instance` property.
+Import the `Attach` module from Weave:
+
+```luau linenums="1"
+local Weave = require(ReplicatedStorage.Weave)
+local Attach = Weave.Attach
+```
+
+Weave provides an `Attach` function for updating _any_ `Instance`.
 
 ```luau
 Attach(ScreenGui.CoinDisplay.TextLabel) {
@@ -15,7 +22,6 @@ local coins = Value.new(1100000)
 local coinDisplay = Computed.new(function()
     return styleNumber(coins:get())
 end)
-
 
 Attach(ScreenGui.CoinDisplay.TextLabel) {
 	Text = coinDisplay,
@@ -59,13 +65,6 @@ Still don't believe it? Run the code in <a href="https://luau.org/demo?share=H4s
 --- -->
 
 ## Usage
-
-Import the `Attach` module from Weave:
-
-```luau linenums="1"
-local Weave = require(ReplicatedStorage.Weave)
-local Attach = Weave.Attach
-```
 
 To use `Attach`:
 

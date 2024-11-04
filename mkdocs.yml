@@ -72,9 +72,9 @@ nav:
       - Instances:
           - Attach: tutorials/instances/attach.md
       - Networking:
+          - Networking: tutorials/networking/networking.md
           - NetworkValue: tutorials/networking/networkvalue.md
           - PlayerValue: tutorials/networking/playervalue.md
-      - Storing Data:
           - ProfileValue: tutorials/networking/profilevalue.md
           - ProfilePlayerValue: tutorials/networking/profileplayervalue.md
       - Summary:
@@ -91,22 +91,17 @@ nav:
         - ForValues: tutorials/lists-and-tables/forvalues.md
         - ForKeys: tutorials/lists-and-tables/forkeys.md
         - ForPairs: tutorials/lists-and-tables/forpairs.md
-    - Instances:
-        - Children: tutorials/instances/parenting.md
-        - Cleanup: tutorials/instances/cleanup.md
-        - Destructors: tutorials/fundamentals/destructors.md
-    - Components:
-        - Reusing UI: tutorials/components/reusing-ui.md
-        - Children: tutorials/components/children.md
-        - Callbacks: tutorials/components/callbacks.md
-        - State: tutorials/components/state.md
+    # - Instances:
+    #     - Children: tutorials/instances/parenting.md
+    #     - Cleanup: tutorials/instances/cleanup.md
+    #     - Destructors: tutorials/fundamentals/destructors.md
     - Animation:
         - Tweens: tutorials/animation/tweens.md
         - Springs: tutorials/animation/springs.md
   - Advanced:
     - Instances:
         - Attribute Value: tutorials/instances/attributevalue.md
-        - New Instances: tutorials/instances/new-instances.md
+        # - New Instances: tutorials/instances/new-instances.md
     - Components:
         - Reusing UI: tutorials/components/reusing-ui.md
   # - Examples:

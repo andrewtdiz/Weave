@@ -1,107 +1,64 @@
-`ForPairs` combines the functions of `ForValues` and `ForKeys` into one object.
-It can process pairs of keys and values at the same time.
-
-The input table can be a state object, and the output values can use state
-objects.
-
-```luau
-local itemColours = { shoes = "red", socks = "blue" }
-local owner = Value.new("Elttob")
-
-local manipulated = ForPairs(itemColours, function(thing, colour)
-	local newKey = colour
-	local newValue = owner:get() .. "'s " .. thing
-	return newKey, newValue
-end)
-
-print(manipulated:get()) --> {red = "Elttob's shoes", blue = "Elttob's socks"}
-
-owner:set("Quenty")
-print(manipulated:get()) --> {red = "Quenty's shoes", blue = "Quenty's socks"}
-```
-
----
-
-## Usage
-
-To use `ForPairs` in your code, you first need to import it from the Fusion
-module, so that you can refer to it by name:
+Import `Weave.ForPairs` from the Weave module.
 
 ```luau linenums="1"
 local Weave = require(ReplicatedStorage.Weave)
 local ForPairs = Weave.ForPairs
 ```
 
-### Basic Usage
-
-To create a new `ForPairs` object, call the constructor with an input table and
-a processor function:
+`ForPairs` transforms each key _and values_ from a table into an `Instance`
 
 ```luau
-local itemColours = { shoes = "red", socks = "blue" }
-local swapped = ForPairs(data, function(key, value)
-	return value, key
-end)
-```
+local itemColors = Value.new({ shoes = Color3.new(0, 0, 0), socks = Color3.new(1, 1, 1) })
 
-This will generate a new table, where each key-value pair is replaced using the
-processor function. You can get the table using the `:get()` method:
-
-```luau hl_lines="6"
-local itemColours = { shoes = "red", socks = "blue" }
-local swapped = ForPairs(data, function(key, value)
-	return value, key
+ForPairs(itemColors, function(thing, color)
+	return thing, Attach(TextLabel:Clone()) {
+		Text = thing,
+		BackgroundColor3 = color,
+		Parent = screenGui
+	}
 end)
 
-print(swapped:get()) --> {red = "shoes", blue = "socks"}
-```
-
-### State Objects
-
-As with `ForKeys` and `ForValues`, the input table can be provided as a state
-object, and the processor function can use other state objects in its
-calculations. [See the ForValues page for examples.](./forvalues.md#state-objects)
-
-### Cleanup Behaviour
-
-Similar to `ForValues` and `ForKeys`, you may pass in a 'destructor' function to
-add cleanup behaviour, and send your own metadata to it:
-
-```luau
-local watchedInstances = Value.new({
-	[workspace.Part1] = "One",
-	[workspace.Part2] = "Two",
-	[workspace.Part3] = "Three"
-})
-
-local connectionSet = ForPairs(eventSet,
-	-- processor
-	function(instance, displayName)
-		local metadata = { displayName = displayName, numChanges = 0 }
-		local connection = instance.Changed:Connect(function()
-			print("Instance", displayName, "was changed!")
-			metadata.numChanges += 1
-		end)
-		return instance, connection, metadata
-	end,
-	-- destructor
-	function(instance, connection, metadata)
-		print("Removing", metadata.displayName, "after", metadata.numChanges, "changes")
-		connection:Disconnect() -- don't forget we're overriding the default cleanup
-	end
-)
-
--- remove Part3 from the input table
--- this will run the destructor with Part3, its Changed event, and its metadata
-watchedInstances:set({
-	[workspace.Part1] = "One",
-	[workspace.Part2] = "Two"
-})
+owner:set({ shirt = Color3.new(1, 0, 0) })
 ```
 
 ---
 
-## Optimisations
+## Usage
+
+`ForPairs` functions takes
+
+1. A Weave `Computed` or `Value` _table_.
+
+2. A function that returns an `Instance`
+
+```luau
+local itemColors = Value.new({ shoes = Color3.new(0, 0, 0), socks = Color3.new(1, 1, 1) })
+
+ForPairs(itemColors, makeItemFrame)
+```
+
+Where `someFunction`:
+
+- Receives a value from the table
+
+- Returns an `any, Instance`
+
+The `any` is a unique identifier for the `Instance` (usually the key)
+
+```luau
+ForPairs(playerNames, function(thing, name)
+    local textLabel = TextLabel:Clone()
+
+    return thing, Attach(textLabel) {
+        Text = playerName,
+        Parent = ScreenGui
+    }
+end)
+```
+
+---
+
+## Advanced: Optimizations
 
 !!! help "Optional"
 You don't have to memorise these optimisations to use `ForPairs`, but it
@@ -129,4 +86,4 @@ matter, [ForValues can move values between keys.](./forvalues.md#optimisations)
 
 Alternatively, if you're working with a set of objects stored in keys, and don't
 need the values in the table,
-[ForKeys will ignore the values for optimal performance.](./forkeys.md#optimisations)
+[ForPairs will ignore the values for optimal performance.](./ForPairs.md#optimisations)

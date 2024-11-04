@@ -1,4 +1,11 @@
-A Weave `PlayerProfileValue`:
+Import `Weave.ProfilePlayerValue` from the Weave module.
+
+```luau linenums="1"
+local Weave = require(ReplicatedStorage.Weave)
+local ProfilePlayerValue = Weave.ProfilePlayerValue
+```
+
+A Weave `ProfilePlayerValue`:
 
 - Stores a value for a _specific_ player
 - Sync's the value to `ProfileService`
@@ -8,6 +15,12 @@ A Weave `PlayerProfileValue`:
 
 ONLY `:get()` on the Client.
 
+<figure markdown="span">
+  ![Image title](ProfilePlayerValue.png)
+  <figcaption><code>ProfilePlayerValue</code> updates to all clients AND the ProfileStore</figcaption>
+</figure>
+
+
 ### ProfileService
 
 ```luau
@@ -16,12 +29,12 @@ return {
 }
 ```
 
-✨ `PlayerProfileValue` updates `ProfileService` _automatically_ ✨
+✨ `ProfilePlayerValue` updates `ProfileService` _automatically_ ✨
 
 ### Server
 
 ```luau
-local playerGems = PlayerProfileValue.new("Gems")
+local playerGems = ProfilePlayerValue.new("Gems")
 
 Players.PlayerAdded:Connect(function(player: Player)
 	PlayerLevels:getFor(player)			--> 1
@@ -30,12 +43,12 @@ Players.PlayerAdded:Connect(function(player: Player)
 end)
 ```
 
-✨ `PlayerProfileValue` updates the client _automatically_ ✨
+✨ `ProfilePlayerValue` updates the client _automatically_ ✨
 
 ### Client
 
 ```luau
-local playerGems = PlayerProfileValue.new("Gems")
+local playerGems = ProfilePlayerValue.new("Gems")
 local localPlayer = Players.LocalPlayer
 
 playerGems:get() 				--> 100
@@ -45,9 +58,9 @@ When the player joins the experience their value is loaded automatically from `P
 
 ## Recommended Usage
 
-Create a `PlayerProfileValue` in `ReplicatedStorage`, so you can access it on `Server` and `Client`.
+Create a `ProfilePlayerValue` in `ReplicatedStorage`, so you can access it on `Server` and `Client`.
 
-On the server it returns a `PlayerProfileValue`.
+On the server it returns a `ProfilePlayerValue`.
 
 On the client this returns a Weave `Value`.
 
@@ -55,15 +68,15 @@ On the client this returns a Weave `Value`.
 
 ```luau
 local Weave = require(ReplicatedStorage.Weave)
-local PlayerProfileValue = Weave.PlayerProfileValue
+local ProfilePlayerValue = Weave.ProfilePlayerValue
 
-return PlayerProfileValue.new("Gems")
+return ProfilePlayerValue.new("Gems")
 ```
 
 ### Server
 
 ```luau
-local PlayerLevel = require(ReplicatedStorage.PlayerProfileValues.PlayerLevel)
+local PlayerLevel = require(ReplicatedStorage.ProfilePlayerValues.PlayerLevel)
 
 Players.PlayerAdded:Connect(function(player: Player)
 	PlayerLevel:getFor(player)			--> 1
@@ -75,7 +88,7 @@ end)
 ### Client
 
 ```luau
-local playerLevel = require(ReplicatedStorage.PlayerProfileValues.PlayerLevels)
+local playerLevel = require(ReplicatedStorage.ProfilePlayerValues.PlayerLevels)
 
 Attach(ScreenGui.LevelDisplay.TextLabel) {
     Text = playerLevel
