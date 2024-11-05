@@ -1647,9 +1647,9 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">matchId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ProfileValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;matchId&quot;</span><span class="p">)</span>
 
 <span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
-<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 2</span>
+<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
+<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerLevels</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 2</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <p>✨ <code>ProfileValue</code> updates <code>ProfileStore</code> <em>automatically</em> ✨</p>

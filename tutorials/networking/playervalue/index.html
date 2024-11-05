@@ -1600,9 +1600,9 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PlayerValue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;PlayerCash&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
 
 <span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
-<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <p>✨ <code>PlayerValue</code> updates to the client <em>automatically</em> ✨</p>
@@ -1623,9 +1623,9 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerCash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">PlayerValues</span><span class="p">.</span><span class="nv">PlayerCash</span><span class="p">)</span>
 
 <span class="nv">Players</span><span class="p">.</span><span class="nv">PlayerAdded</span><span class="p">:</span><span class="nc">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">:</span><span class="w"> </span><span class="nc">Player</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
-<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player1</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 0</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">setFor</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">playerCash</span><span class="p">:</span><span class="nc">getFor</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span><span class="w">   </span><span class="c1">--&gt; 1</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="client_1">Client<a class="headerlink" href="#client_1" title="Permanent link">&para;</a></h3>
