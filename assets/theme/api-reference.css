@@ -5,14 +5,14 @@
 	margin: 0 !important;
 	flex-wrap: wrap;
 }
-
+/* 
 header {
 	background: #1f1f1f !important;
 }
 
 nav.md-tabs {
 	background: #1f1f1f !important;
-}
+} */
 
 .weavedoc-api-header .headerlink {
 	display: none;
