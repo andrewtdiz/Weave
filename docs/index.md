@@ -20,8 +20,7 @@ Define state and how the data should flow, then let Weave do the rest.
 So simple, you can <em>set it and forget it.</em>
 </p>
 <nav>
-<a href="./tutorials">Get started</a>
-<a href="https://github.com/andrewtdiz/Weave/releases" target="_blank">Download Weave</a>
+  <a href="./tutorials">Get started</a>
 </nav>
 </section>
 </section>

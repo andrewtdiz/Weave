@@ -35,12 +35,12 @@ When the player joins the experience their value is loaded automatically from `P
 ### Server
 
 ```luau
-local matchId = ProfileValue.new("matchId")
+local level = ProfileValue.new("Level")
 
-Players.PlayerAdded:Connect(function(player: Player)
-    playerLevels:getFor(player1)   --> 1
-    playerLevels:setFor(player1, 2)
-    playerLevels:getFor(player1)   --> 2
+function setLevel(player: Player, level: number)
+    playerLevels:getFor(player)   --> 1
+    playerLevels:setFor(player, level)
+    playerLevels:getFor(player)   --> 2
 end)
 ```
 
@@ -91,9 +91,9 @@ return ProfileValue.new("Level")
 ```luau
 local PlayerLevels = require(ReplicatedStorage.ProfileValues.PlayerLevels)
 
-Players.PlayerAdded:Connect(function(player: Player)
+function setLevel(player: Player, level: number)
 	PlayerLevels:getFor(player)		--> 1
-	PlayerLevels:setFor(player, 2)
+	PlayerLevels:setFor(player, level)
 	PlayerLevels:getFor(player)		--> 2
 end)
 ```

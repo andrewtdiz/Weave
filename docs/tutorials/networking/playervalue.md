@@ -23,10 +23,10 @@ From the client can read from them with `:get()`.
 ```luau
 local playerCash = PlayerValue.new("PlayerCash", 0)
 
-Players.PlayerAdded:Connect(function(player: Player)
-    playerCash:getFor(player1)   --> 0
-    playerCash:setFor(player1, 1)
-    playerCash:getFor(player1)   --> 1
+function updateCash(player: Player, cash: number)
+    playerCash:getFor(player)   --> 0
+    playerCash:setFor(player, cash)
+    playerCash:getFor(player)   --> 1
 end)
 ```
 
@@ -59,10 +59,10 @@ On the Server, we can `:get()` and `:set()` the `PlayerValue`.
 ```luau
 local playerCash = require(ReplicatedStorage.PlayerValues.PlayerCash)
 
-Players.PlayerAdded:Connect(function(player: Player)
-    playerCash:getFor(player1)   --> 0
-    playerCash:setFor(player1, 1)
-    playerCash:getFor(player1)   --> 1
+function updateCash(player: Player, cash: number)
+    playerCash:getFor(player)   --> 0
+    playerCash:setFor(player, cash)
+    playerCash:getFor(player)   --> 1
 end)
 ```
 
