@@ -6,8 +6,8 @@ local CLASS_METATABLE = { __index = WeavePlayerValue }
 local WEAK_KEYS_METATABLE = { __mode = "k" }
 local Fusion = require(script.Parent.Fusion)
 local WeaveUtils = require(script.Parent.WeaveUtils)
+local Types = require(script.Parent.Fusion.Types)
 
-local Types = Fusion.Types
 local Value = Fusion.Value
 
 function WeavePlayerValue:getFor(player: Player)

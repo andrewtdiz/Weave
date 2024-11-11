@@ -8,7 +8,6 @@ local Fusion = require(script.Parent.Fusion)
 local WeaveUtils = require(script.Parent.WeaveUtils)
 
 local Types = require(script.Parent.Fusion.Types)
-type State = Fusion.State
 
 local FusionValue = Fusion.Value
 
@@ -93,7 +92,7 @@ function PlayerValue:_SetUpValue()
 	end
 end
 
-function PlayerValue.new<T>(valueName: string, initialValue: T?): State<T>
+function PlayerValue.new<T>(valueName: string, initialValue: T?): Types.State<T>
 	local parentInstance = nil
 	if initialValue == nil then
 		initialValue = {}

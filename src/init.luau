@@ -3,8 +3,7 @@ local RunService = game:GetService("RunService")
 local Fusion = script:WaitForChild("Fusion")
 
 local Types = require(script.Fusion.Types)
-
-type CanBeState = Types.CanBeState
+local PubTypes = require(script.Fusion.PubTypes)
 
 local Weave = {
 	NetworkValue = require(script.NetworkValue),
@@ -49,7 +48,9 @@ type Weave = {
 	ProfilePlayerValue: { new: <T>(profileServiceKey: string) -> WPubTypes.ProfilePlayerValue<T> },
 
 	ZapPlayerValue: { new: <T>(eventName: string, zapEventName: string, initialValue: any) -> ZapPlayerValue<T> },
-	ProfileZapValue: { new: <T>(valueName: string, zapEventName: string, profileServiceKey: string) -> PlayerValue<T> },
+	ProfileZapValue: {
+		new: <T>(valueName: string, zapEventName: string, profileServiceKey: string) -> WPubTypes.PlayerValue<T>,
+	},
 
 	RemoteEvent: (Weave: Weave, name: string) -> RemoteEvent | nil,
 	RemoteFunction: (Weave: Weave, name: string) -> RemoteFunction | nil,
@@ -76,23 +77,23 @@ type Weave = {
 		new: <T>(instance: Instance, attributeName: string, initialValue: T?) -> WPubTypes.AttributeValue<T>,
 	},
 	ForPairs: <KI, VI, KO, VO, M>(
-		inputTable: CanBeState<{ [KI]: VI }>,
+		inputTable: PubTypes.CanBeState<{ [KI]: VI }>,
 		processor: (KI, VI) -> (KO, VO, M?),
 		destructor: (KO, VO, M?) -> ()?
 	) -> PubTypes.ForPairs<KO, VO>,
 	ForKeys: <KI, KO, M>(
-		inputTable: CanBeState<{ [KI]: any }>,
+		inputTable: PubTypes.CanBeState<{ [KI]: any }>,
 		processor: (KI) -> (KO, M?),
 		destructor: (KO, M?) -> ()?
 	) -> PubTypes.ForKeys<KO, any>,
 	ForValues: <VI, VO, M>(
-		inputTable: CanBeState<{ [any]: VI }>,
+		inputTable: PubTypes.CanBeState<{ [any]: VI }>,
 		processor: (VI) -> (VO, M?),
 		destructor: (VO, M?) -> ()?
 	) -> PubTypes.ForValues<any, VO>,
 
-	Tween: <T>(goalState: StateObject<T>, tweenInfo: TweenInfo?) -> PubTypes.Tween<T>,
-	Spring: <T>(goalState: StateObject<T>, speed: number?, damping: number?) -> PubTypes.Spring<T>,
+	Tween: <T>(goalState: PubTypes.StateObject<T>, tweenInfo: TweenInfo?) -> PubTypes.Tween<T>,
+	Spring: <T>(goalState: PubTypes.StateObject<T>, speed: number?, damping: number?) -> PubTypes.Spring<T>,
 
 	cleanup: (...any) -> (),
 	doNothing: (...any) -> (),

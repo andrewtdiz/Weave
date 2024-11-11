@@ -4,12 +4,10 @@ local Players = game:GetService("Players")
 
 local CLASS_METATABLE = { __index = ProfileServiceValue }
 local WEAK_KEYS_METATABLE = { __mode = "k" }
-local Fusion = require(script.Parent.Fusion)
 local WeaveUtils = require(script.Parent.WeaveUtils)
 local ZapPlayerValue = require(script.Parent.ZapPlayerValue)
 
 local Types = require(script.Parent.Fusion.Types)
-type State = Fusion.State
 
 function ProfileServiceValue:getFor(player: Player)
 	if RunService:IsClient() then
@@ -58,7 +56,7 @@ function ProfileServiceValue:_PlayerRemoving(player: Player)
 	end)
 end
 
-local function ProfileServiceValue<T>(valueName: string, zapEventName: string, profileServiceKey: string): State<T>
+local function ProfileServiceValue<T>(valueName: string, zapEventName: string, profileServiceKey: string): Types.State<T>
 	if RunService:IsClient() then
 		return ZapPlayerValue(`profileServiceValue_{valueName}`, zapEventName)
 	end

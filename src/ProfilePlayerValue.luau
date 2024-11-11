@@ -9,7 +9,6 @@ local WeaveUtils = require(script.Parent.WeaveUtils)
 local PlayerValue = require(script.Parent.PlayerValue)
 
 local Types = require(script.Parent.Fusion.Types)
-type State = Fusion.State
 
 function ProfilePlayerValue:getFor(player: Player)
 	if RunService:IsClient() then
@@ -58,7 +57,7 @@ function ProfilePlayerValue:_PlayerRemoving(player: Player)
 	end)
 end
 
-function ProfilePlayerValue.new<T>(profileServiceKey: string): State<T>
+function ProfilePlayerValue.new<T>(profileServiceKey: string): Types.State<T>
 	if RunService:IsClient() then
 		return PlayerValue.new(`ProfilePlayerValue_{profileServiceKey}`)
 	end

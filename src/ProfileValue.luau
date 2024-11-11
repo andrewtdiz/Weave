@@ -4,12 +4,10 @@ local Players = game:GetService("Players")
 
 local CLASS_METATABLE = { __index = ProfileValue }
 local WEAK_KEYS_METATABLE = { __mode = "k" }
-local Fusion = require(script.Parent.Fusion)
 local WeaveUtils = require(script.Parent.WeaveUtils)
 local NetworkValue = require(script.Parent.NetworkValue)
 
 local Types = require(script.Parent.Fusion.Types)
-type State = Fusion.State
 
 function ProfileValue:getFor(player: Player)
 	if RunService:IsClient() then
@@ -66,7 +64,7 @@ function ProfileValue:_PlayerRemoving(player: Player)
 	self._playerObject:set(fusionValue)
 end
 
-function ProfileValue.new<T>(profileServiceKey: string): State<T>
+function ProfileValue.new<T>(profileServiceKey: string): Types.State<T>
 	if RunService:IsClient() then
 		return NetworkValue.new(`ProfileValue_{profileServiceKey}`)
 	end
