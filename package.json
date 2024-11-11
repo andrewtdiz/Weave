@@ -1,58 +1,56 @@
 {
-    "name": "@rbxts/weave",
-    "version": "0.2.0",
-	"description": "TypeScript support for Weave",
-	"main": "src/init.lua",
-	"typings": "src/index.d.ts",
-    
-	"keywords": [
-		"roblox",
-		"typescript",
-		"weave",
-        "fusion"
-	],
-    "license": "MIT",
-	"contributors": [
-		{
-			"name": "andrewtdiz",
-			"url": "https://github.com/andrewtdiz"
-		},
-        {
-			"name": "creebin4",
-			"url": "https://github.com/creebin4"
-		},
-        {
-			"name": "fordnguns",
-			"url": "https://github.com/fordnguns"
-		}
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/andrewtdiz/Weave"
-	},
-    
-	"bugs": "https://github.com/andrewtdiz/Weave/issues",
-	"author": "andrewtdiz",
-	"devDependencies": {
-		"@rbxts/compiler-types": "^1.2.3-types.0",
-		"@rbxts/types": "^1.0.519",
-		"@typescript-eslint/eslint-plugin": "^4.29.2",
-		"@typescript-eslint/parser": "^4.29.2",
-		"eslint": "^7.32.0",
-		"eslint-config-prettier": "^6.15.0",
-		"eslint-plugin-prettier": "^3.4.0",
-		"eslint-plugin-roblox-ts": "^0.0.8",
-		"eslint-plugin-simple-import-sort": "^7.0.0",
-		"prettier": "^2.3.1",
-		"typescript": "^4.3.4"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"directories": {
-		"lib": "src"
-	},
-	"files": [
-		"src"
-	]
+  "name": "@rbxts/weave",
+  "version": "0.2.0",
+  "description": "TypeScript support for Weave",
+  "main": "src/init.luau",
+  "typings": "src/index.d.ts",
+  "keywords": [
+    "roblox",
+    "typescript",
+    "weave",
+    "fusion"
+  ],
+  "license": "MIT",
+  "contributors": [
+    "andrewtdiz (https://github.com/andrewtdiz)",
+    "creebin4 (https://github.com/creebin4)",
+    "fordnguns (https://github.com/fordnguns)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewtdiz/Weave.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewtdiz/Weave/issues"
+  },
+  "author": "andrewtdiz",
+  "devDependencies": {
+    "@rbxts/compiler-types": "^1.2.3-types.0",
+    "@rbxts/types": "^1.0.519",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-roblox-ts": "^0.0.8",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.3.1",
+    "typescript": "^4.3.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "files": [
+    "src"
+  ],
+  "homepage": "https://github.com/andrewtdiz/Weave#readme",
+  "scripts": {
+    "eslint": "eslint \"src/**/*.ts\" --max-warnings 0",
+    "eslint-fix": "eslint \"src/**/*.ts\" --fix",
+    "test": "npm run test-build && npm run test-run",
+    "test-build": "rojo build test-runner.project.json -o test.rbxl"
+  }
 }
