@@ -58,6 +58,7 @@ type Weave = {
 	Clean: () -> (),
 	
 	New: (className: string) -> ((propertyTable: PubTypes.PropertyTable) -> Instance),
+	Component: { new: (target: Instance) -> ((propertyTable: PubTypes.PropertyTable) -> Instance) },
 	Ref: PubTypes.SpecialKey,
 	Cleanup: PubTypes.SpecialKey,
 	Children: PubTypes.SpecialKey,

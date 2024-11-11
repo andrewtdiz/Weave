@@ -14,3 +14,18 @@ Visit the Weave documentation to learn more <img valign="middle" src="./gh-asset
 ## Contributing
 
 Please read [our contribution policies](/CONTRIBUTING.md) before opening an issue or pull request.
+
+---
+
+## Building
+To build the file from scratch, use:
+
+```bash
+rojo build -o "Weave.rbxm"
+```
+
+Next, open `Weave.rbxm` in Roblox Studio and start the Rojo server:
+
+```bash
+rojo serve
+```
