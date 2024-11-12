@@ -13,7 +13,7 @@ import {
   ProfilePlayerValue,
 } from "../PubTypes";
 
-interface Weave {
+interface WeaveServer {
   Value: typeof Value;
   Computed: typeof Computed;
 
@@ -45,6 +45,6 @@ interface Weave {
   ProfilePlayerValue: typeof ProfilePlayerValue;
 }
 
-declare const WeaveServer: Weave;
+declare const WeaveServer: WeaveServer;
 
 export = WeaveServer;
