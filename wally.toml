@@ -1,11 +1,14 @@
 [package]
 name = "andrewtdiz/weave"
-description = "A modern reactive UI library, built specifically for Roblox and Luau"
+description = "Weave is a state management and networking library for insanely fast Roblox development."
 license = "MIT"
-authors = ["Elttob"]
+authors = ["andrewtdiz"]
 version = "0.1.1-beta"
 
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
+
+exclude = ["**"]
+include = ["src", "src/*", "default.project.json", "wally.lock", "wally.toml"]
 
 [dependencies]

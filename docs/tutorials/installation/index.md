@@ -19,3 +19,7 @@ You should see the module script appear in `ReplicatedStorage` - you're ready to
 Coming Soon
 
 ---
+
+## @rbxts (advanced)
+
+[Install with npm](https://www.npmjs.com/package/@rbxts/weave)
