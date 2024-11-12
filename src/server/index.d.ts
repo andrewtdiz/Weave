@@ -9,42 +9,34 @@ import {
   PlayerValue,
   ProfileValue,
   RemoteEvent,
+  RemoteFunction,
+  Handle,
+  Connect,
   UnreliableRemoteEvent,
   ProfilePlayerValue,
 } from "../PubTypes";
 
-interface WeaveServer {
-  Value: typeof Value;
-  Computed: typeof Computed;
-
-  Spring: typeof Spring;
-  Tween: typeof Tween;
-  ForKeys: typeof ForKeys;
-  ForValues: typeof ForValues;
-  ForPairs: typeof ForPairs;
-
-  Children: typeof Children;
-  Cleanup: typeof Cleanup;
-  OnChange: typeof OnChange;
-  OnEvent: typeof OnEvent;
-  Out: typeof Out;
-  Ref: typeof Ref;
-
-  RemoteEvent: RemoteEvent;
-  UnreliableRemoteEvent: UnreliableRemoteEvent;
-
-  Hydrate: typeof Hydrate;
-  New: typeof New;
-
-  cleanup: typeof cleanup;
-  doNothing: typeof doNothing;
-
-  NetworkValue: typeof NetworkValue;
-  PlayerValue: typeof PlayerValue;
-  ProfileValue: typeof ProfileValue;
-  ProfilePlayerValue: typeof ProfilePlayerValue;
+declare namespace WeaveServer {
+  // State
+  export { Computed, ForKeys, ForPairs, ForValues, Value };
+  // Animation
+  export { Spring, Tween };
+  // Default SpecialKeys
+  export { Children, Cleanup, OnChange, OnEvent, Out, Ref };
+  // Instances
+  export { Hydrate, New };
+  // Destructors
+  export { cleanup, doNothing };
+  // networking events
+  export {
+    RemoteEvent,
+    UnreliableRemoteEvent,
+    RemoteFunction,
+    Handle,
+    Connect,
+  };
+  // networking variables
+  export { NetworkValue, PlayerValue, ProfileValue, ProfilePlayerValue };
 }
-
-declare const WeaveServer: WeaveServer;
 
 export = WeaveServer;

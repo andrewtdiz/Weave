@@ -1,49 +1,9 @@
-import { Computed, ForKeys, ForPairs, ForValues, Value } from "./Fusion";
-import { Spring, Tween } from "./Fusion";
-import { Children, Cleanup, OnChange, OnEvent, Out, Ref } from "./Fusion";
-import { Hydrate, New } from "./Fusion";
-import { cleanup, doNothing } from "./Fusion";
-import {
-  NetworkValue,
-  PlayerValue,
-  ProfileValue,
-  RemoteEvent,
-  UnreliableRemoteEvent,
-  ProfilePlayerValue,
-} from "./PubTypes";
+import WeaveClient from "./client";
+import WeaveServer from "./server";
 
-interface Weave {
-  Value: typeof Value;
-  Computed: typeof Computed;
-
-  Spring: typeof Spring;
-  Tween: typeof Tween;
-  ForKeys: typeof ForKeys;
-  ForValues: typeof ForValues;
-  ForPairs: typeof ForPairs;
-
-  Children: typeof Children;
-  Cleanup: typeof Cleanup;
-  OnChange: typeof OnChange;
-  OnEvent: typeof OnEvent;
-  Out: typeof Out;
-  Ref: typeof Ref;
-
-  RemoteEvent: RemoteEvent;
-  UnreliableRemoteEvent: UnreliableRemoteEvent;
-
-  Hydrate: typeof Hydrate;
-  New: typeof New;
-
-  cleanup: typeof cleanup;
-  doNothing: typeof doNothing;
-
-  NetworkValue: typeof NetworkValue;
-  PlayerValue: typeof PlayerValue;
-  ProfileValue: typeof ProfileValue;
-  ProfilePlayerValue: typeof ProfilePlayerValue;
+declare namespace Weave {
+  export { WeaveClient as client };
+  export { WeaveServer as server };
 }
-
-declare const Weave: Weave;
 
 export = Weave;
