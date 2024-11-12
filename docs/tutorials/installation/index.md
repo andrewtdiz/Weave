@@ -16,9 +16,7 @@ You should see the module script appear in `ReplicatedStorage` - you're ready to
 
 ## Wally (advanced)
 
-Coming Soon
-
----
+[Install with Wally](https://wally.run/package/andrewtdiz/weave)
 
 ## @rbxts (advanced)
 
