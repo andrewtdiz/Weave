@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "TypeScript support for Weave",
   "main": "src/init.lua",
-  "typings": "src/index.d.ts",
+  "types": "src/index.d.ts",
   "keywords": [
     "roblox",
     "typescript",
