@@ -17,3 +17,5 @@ roblox.toml
 node_modules/
 
 .env
+
+*.tgz
