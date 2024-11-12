@@ -39,7 +39,7 @@ theme:
     repo: octicons/mark-github-16
 
 extra_css:
-  - assets/theme/fusiondoc.css
+  - assets/theme/weavedoc.css
   - assets/theme/colours.css
   - assets/theme/code.css
   - assets/theme/paragraph.css
@@ -151,10 +151,6 @@ nav:
   #         - Animatable: api-reference/animation/animatable.md
   #         - Tween: api-reference/animation/tween.md
   #         - Spring: api-reference/animation/spring.md
-  # - Extras:
-  #     - Home: extras/index.md
-  #     - Backgrounds: extras/backgrounds.md
-  #     - Brand Guidelines: extras/brand-guidelines.md
 
 markdown_extensions:
   - admonition
