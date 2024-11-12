@@ -8,6 +8,8 @@ import {
   NetworkValue,
   PlayerValue,
   ProfileValue,
+  RemoteEvent,
+  UnreliableRemoteEvent,
   ProfilePlayerValue,
 } from "./PubTypes";
 
@@ -17,6 +19,7 @@ declare namespace Weave {
   export { Children, Cleanup, OnChange, OnEvent, Out, Ref };
   export { Hydrate, New };
   export { cleanup, doNothing };
+  export { RemoteEvent, UnreliableRemoteEvent };
   export const version: Version;
 
   export { NetworkValue, PlayerValue, ProfileValue, ProfilePlayerValue };

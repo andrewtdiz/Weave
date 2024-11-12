@@ -8,6 +8,8 @@ import {
   NetworkValue,
   PlayerValue,
   ProfileValue,
+  RemoteEvent,
+  UnreliableRemoteEvent,
   ProfilePlayerValue,
 } from "../PubTypes";
 
@@ -27,6 +29,9 @@ interface Weave {
   OnEvent: typeof OnEvent;
   Out: typeof Out;
   Ref: typeof Ref;
+
+  RemoteEvent: RemoteEvent;
+  UnreliableRemoteEvent: UnreliableRemoteEvent;
 
   Hydrate: typeof Hydrate;
   New: typeof New;

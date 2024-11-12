@@ -3,7 +3,7 @@ import { Spring, Tween } from "../Fusion";
 import { Children, Cleanup, OnChange, OnEvent, Out, Ref } from "../Fusion";
 import { Hydrate, New } from "../Fusion";
 import { cleanup, doNothing } from "../Fusion";
-import { ReadOnlyValue } from "../PubTypes";
+import { ReadOnlyValue, RemoteEvent, UnreliableRemoteEvent } from "../PubTypes";
 
 type FunctionToConstructor<T extends (...args: any[]) => any> = {
   new (...args: Parameters<T>): ReturnType<T>;
@@ -29,6 +29,9 @@ interface Weave {
   OnEvent: typeof OnEvent;
   Out: typeof Out;
   Ref: typeof Ref;
+
+  RemoteEvent: RemoteEvent;
+  UnreliableRemoteEvent: UnreliableRemoteEvent;
 
   Hydrate: typeof Hydrate;
   New: typeof New;
