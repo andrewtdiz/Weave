@@ -13,7 +13,7 @@ type ClientValue = FunctionToConstructor<<T>(name: string) => ReadOnlyValue<T>>;
 
 type WeaveClientValue = Promise<ClientValue>;
 
-interface WeaveClient {
+interface Weave {
   Value: typeof Value;
   Computed: typeof Computed;
 
@@ -45,6 +45,6 @@ interface WeaveClient {
   ProfilePlayerValue: WeaveClientValue;
 }
 
-declare const WeaveClient: WeaveClient;
+declare const WeaveClient: Weave;
 
 export = WeaveClient;

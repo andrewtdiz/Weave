@@ -1,4 +1,3 @@
-import WeaveClient from "./client";
 import { Computed, ForKeys, ForPairs, ForValues, Value } from "./Fusion";
 import { Spring, Tween } from "./Fusion";
 import { Children, Cleanup, OnChange, OnEvent, Out, Ref } from "./Fusion";
@@ -12,7 +11,6 @@ import {
   UnreliableRemoteEvent,
   ProfilePlayerValue,
 } from "./PubTypes";
-import WeaveServer from "./server";
 
 interface Weave {
   Value: typeof Value;
@@ -48,4 +46,4 @@ interface Weave {
 
 declare const Weave: Weave;
 
-export { Weave, WeaveClient, WeaveServer };
+export = Weave;
