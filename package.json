@@ -13,6 +13,8 @@
   "scripts": {
     "eslint": "eslint \"src/**/*.ts\" --max-warnings 0",
     "eslint-fix": "eslint \"src/**/*.ts\" --fix",
+    "serve-docs": "mkdocs serve",
+    "docs": "mkdocs gh-deploy --force",
     "test": "npm run test-build && npm run test-run",
     "test-build": "rojo build test-runner.project.json -o test.rbxl"
   },
