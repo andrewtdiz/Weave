@@ -10,20 +10,33 @@
     "weave",
     "fusion"
   ],
+  "scripts": {
+    "eslint": "eslint \"src/**/*.ts\" --max-warnings 0",
+    "eslint-fix": "eslint \"src/**/*.ts\" --fix",
+    "test": "npm run test-build && npm run test-run",
+    "test-build": "rojo build test-runner.project.json -o test.rbxl"
+  },
   "license": "MIT",
   "contributors": [
-    "andrewtdiz (https://github.com/andrewtdiz)",
-    "creebin4 (https://github.com/creebin4)",
-    "fordnguns (https://github.com/fordnguns)"
+    {
+			"name": "andrewtdiz",
+			"url": "https://github.com/andrewtdiz"
+		}
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewtdiz/Weave.git"
+    "url": "https://github.com/andrewtdiz/Weave.git"
   },
-  "bugs": {
-    "url": "https://github.com/andrewtdiz/Weave/issues"
-  },
+  "bugs": "https://github.com/andrewtdiz/Weave/issues",
   "author": "andrewtdiz",
+  "publishConfig": {
+    "access": "public"
+  },
+	"directories": {
+		"lib": "src"
+	},
+  "files": ["src"],
+  "homepage": "https://andrewtdiz.github.io/Weave/",
   "devDependencies": {
     "@rbxts/compiler-types": "^1.2.3-types.0",
     "@rbxts/types": "^1.0.519",
@@ -36,21 +49,5 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.3.1",
     "typescript": "^4.3.4"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "directories": {
-    "doc": "docs"
-  },
-  "files": [
-    "src"
-  ],
-  "homepage": "https://andrewtdiz.github.io/Weave/",
-  "scripts": {
-    "eslint": "eslint \"src/**/*.ts\" --max-warnings 0",
-    "eslint-fix": "eslint \"src/**/*.ts\" --fix",
-    "test": "npm run test-build && npm run test-run",
-    "test-build": "rojo build test-runner.project.json -o test.rbxl"
   }
 }
