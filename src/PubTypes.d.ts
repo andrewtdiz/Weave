@@ -7,26 +7,32 @@ export { ProfileValue } from "./ProfileValue";
 
 export type StateObject<T> = Value<T>;
 
-export declare type ReadOnlyValue<T> = Omit<Value<T>, 'set'>;
-
 export type WeaveValue<T> = StateObject<T>;
 
-export type RemoteEvent = (name: string) => RemoteEvent | undefined;
-export type RemoteFunction = (name: string) => RemoteFunction | undefined;
-export type UnreliableRemoteEvent = (
+export declare function WeaveRemoteEvent(name: string): RemoteEvent | undefined;
+
+export declare function WeaveRemoteFunction(
   name: string
-) => UnreliableRemoteEvent | undefined;
-export type Connect<T> = (
+): RemoteFunction | undefined;
+
+export declare function WeaveUnreliableRemoteEvent(
+  name: string
+): UnreliableRemoteEvent | undefined;
+
+export declare function ConnectUnreliable<T>(
   name: string,
   handler: (args: T) => void
-) => RBXScriptConnection;
-export type ConnectUnreliable<T> = (
-  name: string,
-  handler: (args: T) => void
-) => RBXScriptConnection;
-export type Handle<T> = (
+): RBXScriptConnection;
+
+export declare function Handle<T>(
   name: string,
   handler: (player: Player, rest: T) => T
-) => RBXScriptConnection;
-export type Invoke<T> = (name: string, args: T) => void;
-export type Clean = () => void;
+): RBXScriptConnection;
+
+export declare function Connect<T>(
+  name: string,
+  handler: (args: T) => void
+): RBXScriptConnection;
+
+export declare function Invoke<T>(name: string, args: T): void;
+export declare function Clean(): void;

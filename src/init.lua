@@ -118,7 +118,7 @@ https://github.com/Sleitnick/RbxUtil/tree/main/modules/net
 	local remoteEvent = Weave:RemoteEvent("PointsChanged")
 	```
 ]=]
-function Weave:RemoteEvent(name: string)
+function Weave.RemoteEvent(name: string)
 	return WeaveUtils.RemoteEvent(name)
 end
 
@@ -137,7 +137,7 @@ end
 	local unreliableRemoteEvent = Weave:UnreliableRemoteEvent("PositionChanged")
 	```
 ]=]
-function Weave:UnreliableRemoteEvent(name: string)
+function Weave.UnreliableRemoteEvent(name: string)
 	local unreliableRemoteEvent
 	name = `UnreliableRemoteEvents/{name}`
 	if RunService:IsServer() then
@@ -169,7 +169,7 @@ end
 	Weave:Connect("SomeEvent", function(player, ...) end)
 	```
 ]=]
-function Weave:Connect(name: string, handler: (...any) -> ()): RBXScriptConnection
+function Weave.Connect(name: string, handler: (...any) -> ()): RBXScriptConnection
 	return WeaveUtils.Connect(name, handler)
 end
 
@@ -186,11 +186,11 @@ end
 	Weave:ConnectUnreliable("SomeEvent", function(player, ...) end)
 	```
 ]=]
-function Weave:ConnectUnreliable(name: string, handler: (...any) -> ()): RBXScriptConnection
+function Weave.ConnectUnreliable(name: string, handler: (...any) -> ()): RBXScriptConnection
 	if RunService:IsServer() then
-		return self:UnreliableRemoteEvent(name).OnServerEvent:Connect(handler)
+		return Weave.UnreliableRemoteEvent(name).OnServerEvent:Connect(handler)
 	else
-		return self:UnreliableRemoteEvent(name).OnClientEvent:Connect(handler)
+		return Weave.UnreliableRemoteEvent(name).OnClientEvent:Connect(handler)
 	end
 end
 
@@ -209,7 +209,7 @@ end
 	local remoteFunction = Weave:RemoteFunction("GetPoints")
 	```
 ]=]
-function Weave:RemoteFunction(name: string): RemoteFunction
+function Weave.RemoteFunction(name: string): RemoteFunction
 	name = `RemoteFunctions/{name}`
 	local remoteFunction
 	if RunService:IsServer() then
@@ -238,8 +238,8 @@ end
 	end)
 	```
 ]=]
-function Weave:Handle(name: string, handler: (player: Player, ...any) -> ...any)
-	self:RemoteFunction(name).OnServerInvoke = handler
+function Weave.Handle(name: string, handler: (player: Player, ...any) -> ...any)
+	Weave.RemoteFunction(name).OnServerInvoke = handler
 end
 
 --[=[
@@ -250,8 +250,8 @@ end
 	local points = Weave:Invoke("GetPoints")
 	```
 ]=]
-function Weave:Invoke(name: string, ...: any): ...any
-	return self:RemoteFunction(name):InvokeServer(...)
+function Weave.Invoke(name: string, ...: any): ...any
+	return Weave.RemoteFunction(name):InvokeServer(...)
 end
 
 --[=[

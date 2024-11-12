@@ -6,24 +6,11 @@ import { cleanup, doNothing } from "../Fusion";
 import {
   Connect,
   Handle,
-  ReadOnlyValue,
-  RemoteEvent,
-  RemoteFunction,
-  UnreliableRemoteEvent,
+  WeaveRemoteEvent,
+  WeaveUnreliableRemoteEvent,
+  WeaveRemoteFunction,
 } from "../PubTypes";
-
-type FunctionToConstructor<T extends (...args: any[]) => any> = {
-  new (...args: Parameters<T>): ReturnType<T>;
-};
-
-type ClientValue<T> = FunctionToConstructor<
-  <T>(name: string) => ReadOnlyValue<T>
->;
-
-type NetworkValue<T> = ClientValue<T>;
-type PlayerValue<T> = ClientValue<T>;
-type ProfileValue<T> = ClientValue<T>;
-type ProfilePlayerValue<T> = ClientValue<T>;
+import { ReadOnlyValue } from "../ReadOnlyValue";
 
 declare namespace WeaveClient {
   // State
@@ -38,14 +25,19 @@ declare namespace WeaveClient {
   export { cleanup, doNothing };
   // networking events
   export {
-    RemoteEvent,
-    UnreliableRemoteEvent,
-    RemoteFunction,
+    WeaveRemoteEvent as RemoteEvent,
+    WeaveUnreliableRemoteEvent as UnreliableRemoteEvent,
+    WeaveRemoteFunction as RemoteFunction,
     Handle,
     Connect,
   };
   // networking variables
-  export { NetworkValue, PlayerValue, ProfileValue, ProfilePlayerValue };
+  export {
+    ReadOnlyValue as NetworkValue,
+    ReadOnlyValue as PlayerValue,
+    ReadOnlyValue as ProfileValue,
+    ReadOnlyValue as ProfilePlayerValue,
+  };
 }
 
 export = WeaveClient;

@@ -7,25 +7,11 @@ export declare class ProfileValue<T> {
   kind: "Value";
   constructor(profileKey: string);
   /**
-   * Returns the value currently stored in this State object.
-   * The state object will be registered as a dependency unless `asDependency` is
-   * false.
-   */
-  get(asDependency?: boolean): T;
-  /**
    * Returns the value currently stored in this State object for a player.
    * The state object will be registered as a dependency unless `asDependency` is
    * false.
    */
   getFor(player: Player): T;
-  /**
-   * Updates the value stored in this State object.
-   *
-   * If `force` is enabled, this will skip equality checks and always update the
-   * state object and any dependents - use this with care as this can lead to
-   * unnecessary updates.
-   */
-  set(value: T, force?: boolean): void;
   /**
    * Updates the value stored in this State object for a player.
    *

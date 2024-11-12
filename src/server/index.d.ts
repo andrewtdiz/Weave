@@ -8,11 +8,11 @@ import {
   NetworkValue,
   PlayerValue,
   ProfileValue,
-  RemoteEvent,
-  RemoteFunction,
+  WeaveRemoteEvent,
+  WeaveUnreliableRemoteEvent,
+  WeaveRemoteFunction,
   Handle,
   Connect,
-  UnreliableRemoteEvent,
   ProfilePlayerValue,
 } from "../PubTypes";
 
@@ -29,9 +29,9 @@ declare namespace WeaveServer {
   export { cleanup, doNothing };
   // networking events
   export {
-    RemoteEvent,
-    UnreliableRemoteEvent,
-    RemoteFunction,
+    WeaveRemoteEvent as RemoteEvent,
+    WeaveUnreliableRemoteEvent as UnreliableRemoteEvent,
+    WeaveRemoteFunction as RemoteFunction,
     Handle,
     Connect,
   };
