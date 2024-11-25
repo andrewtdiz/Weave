@@ -41,7 +41,7 @@ local WPubTypes = require(script.WPubTypes)
 local PubTypes = require(script.Fusion.PubTypes)
 local WeaveUtils = require(script.WeaveUtils)
 
-type Weave = {
+export type Weave = {
 	NetworkValue: { new: <T>(eventName: string, initialValue: T) -> WPubTypes.NetworkValue<T> },
 	PlayerValue: { new: <T>(eventName: string, initialValue: T) -> WPubTypes.PlayerValue<T> },
 	ProfileValue: { new: <T>(profileServiceKey: string) -> WPubTypes.ProfileValue<T> },
@@ -52,13 +52,13 @@ type Weave = {
 		new: <T>(valueName: string, zapEventName: string, profileServiceKey: string) -> WPubTypes.PlayerValue<T>,
 	},
 
-	RemoteEvent: (Weave: Weave, name: string) -> RemoteEvent | nil,
-	RemoteFunction: (Weave: Weave, name: string) -> RemoteFunction | nil,
-	UnreliableRemoteEvent: (Weave: Weave, name: string) -> UnreliableRemoteEvent | nil,
-	Connect: (Weave: Weave, name: string, handler: (...any) -> ()) -> RBXScriptConnection,
-	ConnectUnreliable: (Weave: Weave, name: string, handler: (...any) -> ()) -> RBXScriptConnection,
-	Handle: (Weave: Weave, name: string, handler: (player: Player, ...any) -> ...any) -> RBXScriptConnection,
-	Invoke: (Weave: Weave, name: string, ...any) -> ...any,
+	RemoteEvent: (name: string) -> RemoteEvent | nil,
+	RemoteFunction: (name: string) -> RemoteFunction | nil,
+	UnreliableRemoteEvent: (name: string) -> UnreliableRemoteEvent | nil,
+	Connect: (name: string, handler: (...any) -> ()) -> RBXScriptConnection,
+	ConnectUnreliable: (name: string, handler: (...any) -> ()) -> RBXScriptConnection,
+	Handle: (name: string, handler: (player: Player, ...any) -> ...any) -> RBXScriptConnection,
+	Invoke: (name: string, ...any) -> ...any,
 	Clean: () -> (),
 
 	New: (className: string) -> (propertyTable: PubTypes.PropertyTable) -> Instance,
