@@ -29,6 +29,24 @@ function ProfileValue:getWeaveValue()
 	return self._playerObject:getWeaveValue()
 end
 
+function ProfileValue:updateFor(player: Player, func: (t: any) -> nil, force: boolean)
+	if RunService:IsClient() then
+		error("Cannot use getFor on the client. Try using get() for the value or Fusion() for the fusion value")
+		return
+	end
+	if typeof(func) ~= "function" then
+		error("Update for must use a callback function")
+		return
+	end
+
+	local initialValue = self:getFor(player)
+	local updatedValue = func(initialValue)
+
+	self:setFor(player, updatedValue, force)
+
+	return self:getFor(player)
+end
+
 function ProfileValue:setFor(player: Player, newValue: any, force: boolean?)
 	if RunService:IsClient() then
 		error("Cannot set ProfileValue value on the client. Only the Server")
