@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/weave",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "TypeScript support for Weave",
   "main": "src/init.lua",
   "types": "src/index.d.ts",
@@ -21,9 +21,9 @@
   "license": "MIT",
   "contributors": [
     {
-			"name": "andrewtdiz",
-			"url": "https://github.com/andrewtdiz"
-		}
+      "name": "andrewtdiz",
+      "url": "https://github.com/andrewtdiz"
+    }
   ],
   "repository": {
     "type": "git",
@@ -34,10 +34,12 @@
   "publishConfig": {
     "access": "public"
   },
-	"directories": {
-		"lib": "src"
-	},
-  "files": ["src"],
+  "directories": {
+    "lib": "src"
+  },
+  "files": [
+    "src"
+  ],
   "homepage": "https://andrewtdiz.github.io/Weave/",
   "devDependencies": {
     "@rbxts/compiler-types": "^1.2.3-types.0",
