@@ -5,7 +5,6 @@ import { Cleanup } from "./Instances/Cleanup";
 import { Hydrate } from "./Instances/Hydrate";
 import { New } from "./Instances/New";
 import { OnChange } from "./Instances/OnChange";
-import { OnEvent } from "./Instances/OnEvent";
 import { Out } from "./Instances/Out";
 import { Ref } from "./Instances/Ref";
 import {
@@ -47,7 +46,7 @@ declare namespace Fusion {
 		Version,
 	};
 	// Default SpecialKeys
-	export { Children, Cleanup, OnChange, OnEvent, Out, Ref };
+	export { Children, Cleanup, OnChange, Out, Ref };
 	// Instances
 	export { Hydrate, New };
 	// Destructors
