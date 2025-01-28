@@ -60,6 +60,15 @@ function ProfileValue:setFor(player: Player, newValue: any, force: boolean?)
 	end)
 end
 
+function ProfileValue:updateFor(player: Player, cb: (a: any) -> any, force: boolean?)
+	assert(typeof(player) == "Instance" and player:IsA("Player"), "updateFor requires a Player")
+	assert(typeof(cb) == "function", "updateFor must use a callback function")
+
+	local currentValue = self:getFor(player)
+	local newValue = cb(currentValue)
+	self:setFor(player, newValue, force)
+end
+
 function ProfileValue:_PlayerAdded(player: Player)
 	if not RunService:IsServer() then
 		return

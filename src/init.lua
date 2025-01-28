@@ -19,8 +19,6 @@ local Weave = {
 	Ref = require(Fusion.Instances.Ref),
 	Out = require(Fusion.Instances.Out),
 	Cleanup = require(Fusion.Instances.Cleanup),
-	Children = require(Fusion.Instances.Children),
-	OnEvent = require(Fusion.Instances.OnEvent),
 	OnChange = require(Fusion.Instances.OnChange),
 
 	Value = require(Fusion.State.Value),

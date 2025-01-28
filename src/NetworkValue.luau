@@ -31,27 +31,12 @@ function NetworkValue:set(newValue: any, force: boolean?)
 	end
 end
 
-function NetworkValue:update(func: (t: any) -> nil, force: boolean)
-	if RunService:IsClient() then
-		error("Cannot set Weave PlayerValue value on the client. Only the Server")
-		return
-	end
+function NetworkValue:update(cb: (t: any) -> nil, force: boolean)
+	assert(typeof(cb) == "function", "updateFor must use a callback function")
 
-	local fusionValue = self._fusionValue:get()
-	local newValue = fusionValue
-
-	if typeof(fusionValue) == "table" then
-		func(fusionValue)
-	else
-		newValue = func(fusionValue)
-	end
-
-	self._value = newValue
-	self._fusionValue:set(self._value, force)
-
-	if RunService:IsServer() then
-		self:UpdateGameWorkspace(self._parentInstance, self._fusionValue:get())
-	end
+	local currentValue = self:get()
+	local newValue = cb(currentValue)
+	self:set(newValue, force)
 end
 
 function NetworkValue:UpdateGameWorkspace(parentInstance: Instance, valueObject)

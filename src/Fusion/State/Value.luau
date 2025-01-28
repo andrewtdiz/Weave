@@ -66,9 +66,7 @@ function class:update(cb: (a: any) -> any)
 	end
 	local oldValue = self._value
 	if typeof(cb) == "function" then
-		self._value = cb(oldValue)
-		updateAll(self)
-		self._OnChanged:Fire(self._value)
+		self:set(cb(oldValue))
 	end
 end
 

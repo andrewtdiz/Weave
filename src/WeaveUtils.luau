@@ -23,6 +23,26 @@ function WeaveUtils.GetWeaveFolder()
 	return weaveFolder
 end
 
+function WeaveUtils.CloneTable(table: any, deep: boolean)
+	if table == nil then
+		return nil
+	end
+
+	if typeof(table) ~= "table" then
+		return table
+	end
+
+	local copy = {}
+	for key, value in pairs(table) do
+		if deep and typeof(value) == "table" then
+			copy[key] = WeaveUtils.CloneTable(value, true)
+		else
+			copy[key] = value
+		end
+	end
+	return copy
+end
+
 function WeaveUtils.GetPlayerDataHandler()
 	local child = game:GetService("ServerStorage"):FindFirstChild("WeaveProfileHandler", true)
 	

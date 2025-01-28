@@ -1,4 +1,5 @@
 --!strict
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 --[[
 	Applies a table of properties to an instance, including binding to any
@@ -18,9 +19,13 @@ local PubTypes = require(Package.PubTypes)
 local cleanup = require(Package.Utility.cleanup)
 local xtypeof = require(Package.Utility.xtypeof)
 local logError = require(Package.Logging.logError)
+local Children = require(ReplicatedStorage.Weave.Fusion.Instances.Children)
 
 local function setProperty_unsafe(instance: Instance, property: string, value: any)
 	(instance :: any)[property] = value
+end
+local function getPropertyType_unsafe(instance: Instance, property: string, value: any)
+	return typeof((instance :: any)[property])
 end
 
 local function testPropertyAssignable(instance: Instance, property: string)
@@ -81,14 +86,28 @@ local function applyInstanceProps(props: PubTypes.PropertyTable, applyTo: Instan
 		observer = {} :: {[PubTypes.SpecialKey]: any}
 	}
 	local cleanupTasks = {}
-
+	
 	for key, value in pairs(props) do
 		local keyType = xtypeof(key)
 
 		if keyType == "string" then
-			if key ~= "Parent" then
+			local ok, propertyType = pcall(getPropertyType_unsafe, applyTo, key)
+			if propertyType == "RBXScriptSignal" then
+				if typeof(value) ~= "function" then
+					logError("invalidEventHandler", nil, key)
+				else
+					table.insert(cleanupTasks, applyTo[key]:Connect(value))
+				end
+			elseif key ~= "Parent" then
 				bindProperty(applyTo, key :: string, value, cleanupTasks)
 			end
+		elseif keyType == "number" then
+			if typeof(value) ~= "Instance" then
+				logError("invalidEventHandler", nil, key)
+			else
+				Children:apply(value, applyTo, cleanupTasks)
+			end
+			
 		elseif keyType == "SpecialKey" then
 			local stage = (key :: PubTypes.SpecialKey).stage
 			local keys = specialKeys[stage]

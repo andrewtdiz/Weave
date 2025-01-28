@@ -40,16 +40,12 @@ function PlayerValue:setFor(player: Player, newValue: any, force: boolean?)
 end
 
 function PlayerValue:updateFor(player: Player, cb: (a: any) -> any, force: boolean?)
-	if RunService:IsClient() then
-		error("Cannot set PlayerValue value on the client. Only the Server")
-		return
-	end
+	assert(typeof(player) == "Instance" and player:IsA("Player"), "updateFor requires a Player")
+	assert(typeof(cb) == "function", "updateFor must use a callback function")
 
-	local fusionValue = self._fusionValue:get()
-	local updatedValue = cb(fusionValue[player])
-	fusionValue[player] = updatedValue
-	self._fusionValue:set(fusionValue, force)
-	self:_UpdateValueToClient(player, updatedValue)
+	local currentValue = self:getFor(player)
+	local newValue = cb(currentValue)
+	self:setFor(player, newValue, force)
 end
 
 function PlayerValue:_UpdateValueToClient(player: Player, newValue: any)
@@ -66,7 +62,7 @@ function PlayerValue:_PlayerAdded(player: Player)
 	end
 
 	self._fusionValue:update(function(current)
-		current[player] = self._initialValue
+		current[player] = WeaveUtils.CloneTable(self._initialValue, true)
 		return current
 	end)
 end
