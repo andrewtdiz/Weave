@@ -22,9 +22,8 @@ export type Spring<T> = PubTypes.Spring<T>
 export type Fusion = {
 	version: PubTypes.Version,
 
-	
-	New: (className: string) -> ((propertyTable: PubTypes.PropertyTable) -> Instance),
-	Attach: (target: Instance) -> ((propertyTable: PubTypes.PropertyTable) -> Instance),
+	New: (className: string) -> (propertyTable: PubTypes.PropertyTable) -> Instance,
+	Attach: (target: Instance) -> (propertyTable: PubTypes.PropertyTable) -> Instance,
 	Ref: PubTypes.SpecialKey,
 	Cleanup: PubTypes.SpecialKey,
 	Children: PubTypes.SpecialKey,
@@ -32,22 +31,34 @@ export type Fusion = {
 	OnEvent: (eventName: string) -> PubTypes.SpecialKey,
 	OnChange: (propertyName: string) -> PubTypes.SpecialKey,
 
-	Value: { new:  <T>(v: T) -> Value<T> },
+	Value: { new: <T>(v: T) -> Value<T> },
 	AttributeValue: { new: <T>(instance: Instance, attributeName: string, initialValue: T?) -> AttributeValue<T> },
 	Computed: { new: <T>(callback: () -> T, destructor: (T) -> ()?) -> Computed<T> },
-	ForPairs: <KI, VI, KO, VO, M>(inputTable: CanBeState<{[KI]: VI}>, processor: (KI, VI) -> (KO, VO, M?), destructor: (KO, VO, M?) -> ()?) -> ForPairs<KO, VO>,
-	ForKeys: <KI, KO, M>(inputTable: CanBeState<{[KI]: any}>, processor: (KI) -> (KO, M?), destructor: (KO, M?) -> ()?) -> ForKeys<KO, any>,
-	ForValues: <VI, VO, M>(inputTable: CanBeState<{[any]: VI}>, processor: (VI) -> (VO, M?), destructor: (VO, M?) -> ()?) -> ForValues<any, VO>,
+	ForPairs: <KI, VI, KO, VO, M>(
+		inputTable: CanBeState<{ [KI]: VI }>,
+		processor: (KI, VI) -> (KO, VO, M?),
+		destructor: (KO, VO, M?) -> ()?
+	) -> ForPairs<KO, VO>,
+	ForKeys: <KI, KO, M>(
+		inputTable: CanBeState<{ [KI]: any }>,
+		processor: (KI) -> (KO, M?),
+		destructor: (KO, M?) -> ()?
+	) -> ForKeys<KO, any>,
+	ForValues: <VI, VO, M>(
+		inputTable: CanBeState<{ [any]: VI }>,
+		processor: (VI) -> (VO, M?),
+		destructor: (VO, M?) -> ()?
+	) -> ForValues<any, VO>,
 
 	Tween: <T>(goalState: StateObject<T>, tweenInfo: TweenInfo?) -> Tween<T>,
 	Spring: <T>(goalState: StateObject<T>, speed: number?, damping: number?) -> Spring<T>,
 
 	cleanup: (...any) -> (),
-	doNothing: (...any) -> ()
+	doNothing: (...any) -> (),
 }
 
 return restrictRead("Fusion", {
-	version = {major = 0, minor = 2, isRelease = true},
+	version = { major = 0, minor = 2, isRelease = true },
 
 	New = require(script.Instances.New),
 	Attach = require(script.Instances.Attach),
@@ -55,7 +66,6 @@ return restrictRead("Fusion", {
 	Out = require(script.Instances.Out),
 	Cleanup = require(script.Instances.Cleanup),
 	Children = require(script.Instances.Children),
-	OnEvent = require(script.Instances.OnEvent),
 	OnChange = require(script.Instances.OnChange),
 
 	Value = require(script.State.Value),
@@ -69,5 +79,5 @@ return restrictRead("Fusion", {
 	Spring = require(script.Animation.Spring),
 
 	cleanup = require(script.Utility.cleanup),
-	doNothing = require(script.Utility.doNothing)
+	doNothing = require(script.Utility.doNothing),
 }) :: Fusion
