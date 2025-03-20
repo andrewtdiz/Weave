@@ -7,6 +7,7 @@ local PubTypes = require(script.Fusion.PubTypes)
 
 local Weave = {
 	NetworkValue = require(script.NetworkValue),
+	WorkspaceValue = require(script.WorkspaceValue),
 	PlayerValue = require(script.PlayerValue),
 	ProfileValue = require(script.ProfileValue),
 	ProfilePlayerValue = require(script.ProfilePlayerValue),
@@ -40,7 +41,8 @@ local PubTypes = require(script.Fusion.PubTypes)
 local WeaveUtils = require(script.WeaveUtils)
 
 export type Weave = {
-	NetworkValue: { new: <T>(eventName: string, initialValue: T) -> WPubTypes.NetworkValue<T> },
+	NetworkValue: { new: <T>(eventName: string, initialValue: T) -> WPubTypes.NetworkValue<T> },	
+	WorkspaceValue: { new: <T>(folder: Folder, initialValue: T?) -> WPubTypes.NetworkValue<T> },
 	PlayerValue: { new: <T>(eventName: string, initialValue: T) -> WPubTypes.PlayerValue<T> },
 	ProfileValue: { new: <T>(profileServiceKey: string) -> WPubTypes.ProfileValue<T> },
 	ProfilePlayerValue: { new: <T>(profileServiceKey: string) -> WPubTypes.ProfilePlayerValue<T> },

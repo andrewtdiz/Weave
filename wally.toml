@@ -1,9 +1,9 @@
 [package]
-name = "andrewtdiz/weave"
+name = "andrewtdiz/Weave"
 description = "Weave is a state management and networking library for insanely fast Roblox development."
 license = "MIT"
 authors = ["andrewtdiz"]
-version = "0.1.9"
+version = "0.1.10"
 
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
