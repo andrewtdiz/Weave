@@ -19,7 +19,7 @@ local PubTypes = require(Package.PubTypes)
 local cleanup = require(Package.Utility.cleanup)
 local xtypeof = require(Package.Utility.xtypeof)
 local logError = require(Package.Logging.logError)
-local Children = require(script.Parent.Children)
+local Children = require(Package.Instances.Children)
 
 local function setProperty_unsafe(instance: Instance, property: string, value: any)
 	(instance :: any)[property] = value
@@ -52,12 +52,7 @@ local function setProperty(instance: Instance, property: string, value: any)
 	end
 end
 
-local function bindProperty(
-	instance: Instance,
-	property: string,
-	value: PubTypes.CanBeState<any>,
-	cleanupTasks: { PubTypes.Task }
-)
+local function bindProperty(instance: Instance, property: string, value: PubTypes.CanBeState<any>, cleanupTasks: {PubTypes.Task})
 	if xtypeof(value) == "State" then
 		-- value is a state object - assign and observe for changes
 		local willUpdate = false
@@ -85,13 +80,13 @@ end
 
 local function applyInstanceProps(props: PubTypes.PropertyTable, applyTo: Instance)
 	local specialKeys = {
-		self = {} :: { [PubTypes.SpecialKey]: any },
-		descendants = {} :: { [PubTypes.SpecialKey]: any },
-		ancestor = {} :: { [PubTypes.SpecialKey]: any },
-		observer = {} :: { [PubTypes.SpecialKey]: any },
+		self = {} :: {[PubTypes.SpecialKey]: any},
+		descendants = {} :: {[PubTypes.SpecialKey]: any},
+		ancestor = {} :: {[PubTypes.SpecialKey]: any},
+		observer = {} :: {[PubTypes.SpecialKey]: any}
 	}
 	local cleanupTasks = {}
-
+	
 	for key, value in pairs(props) do
 		local keyType = xtypeof(key)
 
@@ -107,11 +102,17 @@ local function applyInstanceProps(props: PubTypes.PropertyTable, applyTo: Instan
 				bindProperty(applyTo, key :: string, value, cleanupTasks)
 			end
 		elseif keyType == "number" then
+			
 			if typeof(value) ~= "Instance" then
-				logError("invalidEventHandler", nil, key)
+				if typeof(value) == "table" and value.type == "State" then
+					Children:apply(value, applyTo, cleanupTasks)
+				else
+					logError("unrecognisedChildType", nil, keyType)
+				end
 			else
 				Children:apply(value, applyTo, cleanupTasks)
 			end
+			
 		elseif keyType == "SpecialKey" then
 			local stage = (key :: PubTypes.SpecialKey).stage
 			local keys = specialKeys[stage]
@@ -122,6 +123,7 @@ local function applyInstanceProps(props: PubTypes.PropertyTable, applyTo: Instan
 			end
 		else
 			-- we don't recognise what this key is supposed to be
+			warn("here", key)
 			logError("unrecognisedPropertyKey", nil, xtypeof(key))
 		end
 	end
