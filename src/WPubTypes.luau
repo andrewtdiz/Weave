@@ -35,7 +35,7 @@ export type PlayerValue<T> = {
 	getWeaveValue: (PlayerValue<T>) -> Types.State<T>,
 	getFor: (PlayerValue<T>, player: Player) -> T,
 	setFor: (PlayerValue<T>, player: Player, newValue: any, force: boolean?) -> nil,
-	updateFor: (player: Player, cb: (a: any) -> any, force: boolean?) -> nil,
+	updateFor: (PlayerValue<T>, player: Player, cb: (a: any) -> any, force: boolean?) -> nil,
 }
 
 export type ProfileValue<T> = {
@@ -54,6 +54,5 @@ export type ProfilePlayerValue<T> = {
 	setFor: (ProfilePlayerValue<T>, player: Player, newValue: any, force: boolean?) -> nil,
 	updateFor: (ProfilePlayerValue<T>, player: Player, cb: (a: any) -> any, force: boolean?) -> nil,
 }
-
 
 return nil

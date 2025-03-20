@@ -2,7 +2,7 @@ import WeaveClient from "./client";
 import WeaveServer from "./server";
 import { Computed, ForKeys, ForPairs, ForValues, Value } from "./Fusion";
 import { Spring, Tween } from "./Fusion";
-import { Children, Cleanup, OnChange, OnEvent, Out, Ref } from "./Fusion";
+import { Children, Cleanup, OnChange, Out, Ref } from "./Fusion";
 import { Hydrate, New } from "./Fusion";
 import { cleanup, doNothing } from "./Fusion";
 
@@ -56,7 +56,7 @@ declare namespace Weave {
   // Animation
   export { Spring, Tween };
   // Default SpecialKeys
-  export { Children, Cleanup, OnChange, OnEvent, Out, Ref };
+  export { Children, Cleanup, OnChange, Out, Ref };
   // Instances
   export { Hydrate, New };
   // Destructors
