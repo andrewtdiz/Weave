@@ -1,5 +1,5 @@
 [package]
-name = "andrewtdiz/Weave"
+name = "andrewtdiz/weave"
 description = "Weave is a state management and networking library for insanely fast Roblox development."
 license = "MIT"
 authors = ["andrewtdiz"]
