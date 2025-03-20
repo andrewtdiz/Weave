@@ -3,7 +3,7 @@ name = "andrewtdiz/weave"
 description = "Weave is a state management and networking library for insanely fast Roblox development."
 license = "MIT"
 authors = ["andrewtdiz"]
-version = "0.1.8"
+version = "0.1.9"
 
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
